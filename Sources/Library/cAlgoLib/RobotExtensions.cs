@@ -51,11 +51,11 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <param name="risk">le pourcentage de risque (perte) maximun accepté</param>
-		/// <param name="stopLossPips">Le stop Loss necessaire à la position à prendre</param>
+		/// <param name="stopLossPips">Le stop Loss en PIPS nécessaire à la position à prendre</param>
 		/// <returns></returns>
 		public static long moneyManagement(this Robot robot, double risk, double stopLossPips)
 		{
-			if (stopLossPips ==0)
+			if (stopLossPips <=0)
 				throw new System.ArgumentException(String.Format("the 'stopLossPips' : {0} parameter must be non zero", stopLossPips));
 			else
 			{
