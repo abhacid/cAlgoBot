@@ -53,18 +53,18 @@ namespace cAlgo.Lib
 		/// <param name="risk">le pourcentage de risque (perte) maximun accepté</param>
 		/// <param name="stopLossPips">Le stop Loss en PIPS nécessaire à la position à prendre</param>
 		/// <returns></returns>
-		public static long moneyManagement(this Robot robot, double risk, double stopLossPips)
+		public static double moneyManagement(this Robot robot, double risk, double stopLossPips)
 		{
 			if (stopLossPips <=0)
-				throw new System.ArgumentException(String.Format("the 'stopLossPips' : {0} parameter must be non zero", stopLossPips));
+				throw new System.ArgumentException(String.Format("the 'stopLossPips' : {0} parameter must be positive and not null", stopLossPips));
 			else
 			{
-				double moneyToInvestInDepositCurrency = robot.Account.Balance * risk;
+				double moneyToInvestInDepositCurrency = robot.Account.Balance * risk/ (double)100;
 				double moneyToInvestInQuoteCurrency = moneyToInvestInDepositCurrency / robot.Symbol.PipValue;
 				double volume = moneyToInvestInQuoteCurrency / stopLossPips;
-				long normalizedVolume = robot.Symbol.NormalizeVolume(volume);
+				//long normalizedVolume = robot.Symbol.NormalizeVolume(volume);
 
-				return normalizedVolume;
+				return volume;
 			}
 		}
 
