@@ -155,13 +155,13 @@ namespace cAlgo.Robots
 				{
 					double stopLoss = VolFactor*volatility;
 					this.closeAllSellPositions();
-					ExecuteMarketOrder(TradeType.Buy, Symbol, this.moneyManagement(MMFactor/100, stopLoss), this.botName(), stopLoss, TPFactor * stopLoss);
+					ExecuteMarketOrder(TradeType.Buy, Symbol, Symbol.NormalizeVolume(this.moneyManagement(MMFactor/100, stopLoss),RoundingMode.ToNearest), this.botName(), stopLoss, TPFactor * stopLoss);
 				}
 				else if (!(this.existSellPositions()) && rsi.Result.HasCrossedBelow(maxRSI-1, 0))
 				{
 					double stopLoss = VolFactor*volatility;
 					this.closeAllBuyPositions();
-					ExecuteMarketOrder(TradeType.Sell, Symbol, this.moneyManagement(MMFactor/100, stopLoss), this.botName(), stopLoss, TPFactor * stopLoss);
+					ExecuteMarketOrder(TradeType.Sell, Symbol, Symbol.NormalizeVolume(this.moneyManagement(MMFactor / 100, stopLoss), RoundingMode.ToNearest), this.botName(), stopLoss, TPFactor * stopLoss);
 				}
 			}
         }

@@ -9,11 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Robots", "Robots", "{5EF8F7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{08355505-B855-4E2A-915E-2CDD1A253843}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{40BDB55E-F121-424F-B4F1-4A846C3826E4}"
-	ProjectSection(SolutionItems) = preProject
-		API\cAlgo.API.dll = API\cAlgo.API.dll
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strategies", "Strategies", "{C66E9A90-8938-4C1E-A82A-E51D8584C8EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KfAdaptMAIndicator", "Sources\Indicators\KfAdaptMAIndicator\KfAdaptMAIndicator\KfAdaptMAIndicator.csproj", "{8EE522AB-70BE-4019-B655-5FDAAD34242A}"

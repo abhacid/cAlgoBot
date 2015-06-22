@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MQ4Lib">
-      <HintPath>..\..\..\Library\MQ4Lib\bin\Debug\MQ4Lib.dll</HintPath>
+    <Reference Include="cAlgo.API">
+      <HintPath>..\..\..\..\..\..\..\Documents\cAlgo\API\cAlgo.API.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,10 +41,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="cAlgo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3499da3018340880, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\API\cAlgo.API.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ZigZagKwanIndicator.cs" />
@@ -54,6 +50,10 @@
     <ProjectReference Include="..\..\..\Library\cAlgoLib\cAlgo.Lib.csproj">
       <Project>{d3e50b06-5578-42a2-addd-42f25d5a1f4c}</Project>
       <Name>cAlgo.Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Library\MQ4Lib\MQ4Lib.csproj">
+      <Project>{747044e7-4e4b-458b-94c3-3b8a9797b1a5}</Project>
+      <Name>MQ4Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
