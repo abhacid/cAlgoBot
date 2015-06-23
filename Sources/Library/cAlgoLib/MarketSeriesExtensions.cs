@@ -173,17 +173,8 @@ namespace cAlgo.Lib
 		/// <param name="marketSeries"></param>
 		/// <param name="period"></param>
 		/// <returns></returns>
-		public static double volatility(this MarketSeries marketSeries, int period, MovingAverageType maType=MovingAverageType.Exponential)
+		public static double volatility(this MarketSeries marketSeries, int period)
 		{
-			Algo algo = new Algo();
-
-			DataSeries close = marketSeries.Close;
-
-			MovingAverage ma = algo.Indicators.MovingAverage(close, period, maType);
-
-
-
-
 			double maximum = marketSeries.High.Maximum(period);
 			double minimum = marketSeries.Low.Minimum(period);
 
