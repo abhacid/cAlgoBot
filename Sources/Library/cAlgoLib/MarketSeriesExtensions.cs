@@ -114,7 +114,7 @@ namespace cAlgo.Lib
 		}
 
 		/// <summary>
-		/// Teste si une bougie est en dessous d'une bougie
+		/// Teste si une bougie est en dessous d'une limite
 		/// </summary>
 		/// <param name="marketSeries">L'instance de MarketSeries actuel</param>
 		/// <param name="index">index de la bougie à tester (ordre inversé)</param>
