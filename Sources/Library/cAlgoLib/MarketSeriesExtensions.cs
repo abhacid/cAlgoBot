@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Codeplex : https://github.com/abhacid/cAlgoBot
 #endregion
 
 using System;
@@ -114,7 +114,7 @@ namespace cAlgo.Lib
 		}
 
 		/// <summary>
-		/// Teste si une bougie est en dessous d'une limite
+		/// Teste si une bougie est en dessous d'une bougie
 		/// </summary>
 		/// <param name="marketSeries">L'instance de MarketSeries actuel</param>
 		/// <param name="index">index de la bougie à tester (ordre inversé)</param>

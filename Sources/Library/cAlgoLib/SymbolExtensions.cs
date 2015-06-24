@@ -20,13 +20,21 @@
 // Project Hosting for Open Source Software on Codeplex : https://github.com/abhacid/cAlgoBot
 #endregion
 
-
+using cAlgo.API.Internals;
 
 namespace cAlgo.Lib
 {
-	class Utils
+	/// <summary>
+	/// Méthodes d'extensions du type cAlgo.API.Robot.Symbol
+	/// </summary>
+	public static class SymbolExtensions
 	{
+		public static double Mid(this Symbol symbol)
+		{
+			double midPrice = (symbol.Ask + symbol.Bid) / 2; 
+
+			return midPrice;
+		}
 	}
-
-
 }
+
