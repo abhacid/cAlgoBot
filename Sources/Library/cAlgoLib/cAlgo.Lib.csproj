@@ -60,6 +60,7 @@
     <Compile Include="RobotExtensions.cs" />
     <Compile Include="Strategy.cs" />
     <Compile Include="StringExtensions.cs" />
+    <Compile Include="SymbolExtensions.cs" />
     <Compile Include="TradeTypeExtensions.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Codeplex : https://github.com/abhacid/cAlgoBot
 #endregion
 
 using cAlgo.API;
@@ -60,7 +60,7 @@ namespace cAlgo.Lib
 			else
 			{
 				double moneyToInvestInDepositCurrency = robot.Account.Balance * risk/ (double)100;
-				double moneyToInvestInQuoteCurrency = moneyToInvestInDepositCurrency / robot.Symbol.PipValue;
+				double moneyToInvestInQuoteCurrency = moneyToInvestInDepositCurrency * robot.Symbol.Mid();
 				double volume = moneyToInvestInQuoteCurrency / stopLossPips;
 				//long normalizedVolume = robot.Symbol.NormalizeVolume(volume);
 
