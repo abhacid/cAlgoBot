@@ -71,107 +71,106 @@ using cAlgo.API.Indicators;
 using cAlgo.API.Internals;
 using cAlgo.Lib;
 using cAlgo.Indicators;
- 
+
 namespace cAlgo.Robots
 {
     [Robot(TimeZone = TimeZones.UTC)]
     public class RsiAtrII : Robot
-	{
-		#region cBot parameters
-		[Parameter("TP Factor", DefaultValue = 2.43, MinValue=0.1)]
-		public double TPFactor { get; set; }
+    {
+        #region cBot parameters
+        [Parameter("TP Factor", DefaultValue = 2.43, MinValue = 0.1)]
+        public double TPFactor { get; set; }
 
-        [Parameter("Volatility Factor", DefaultValue = 2.7, MinValue=0.1)]
+        [Parameter("Volatility Factor", DefaultValue = 2.7, MinValue = 0.1)]
         public double VolFactor { get; set; }
 
-        [Parameter("MM Factor", DefaultValue = 5, MinValue=0.1)]
+        [Parameter("MM Factor", DefaultValue = 5, MinValue = 0.1)]
         public double MMFactor { get; set; }
 
         [Parameter("RSI Source")]
-		public DataSeries RsiSource { get; set; } // Close
-
-        [Parameter("RSI Period", DefaultValue = 14, MinValue=1)]
+        public DataSeries RsiSource { get; set; }
+        // Close
+        [Parameter("RSI Period", DefaultValue = 14, MinValue = 1)]
         public int RsiPeriod { get; set; }
 
         [Parameter("RSI Ceil", DefaultValue = 1)]
         public int RsiCeil { get; set; }
 
-        [Parameter("ATR Period", DefaultValue = 20, MinValue=1)]
+        [Parameter("ATR Period", DefaultValue = 20, MinValue = 1)]
         public int AtrPeriod { get; set; }
- 
-        [Parameter("ATR MAType", DefaultValue=4)]
-        public MovingAverageType AtrMaType { get; set; } // VIDYA
 
-		#endregion
+        [Parameter("ATR MAType", DefaultValue = 4)]
+        public MovingAverageType AtrMaType { get; set; }
+        // VIDYA
+        #endregion
 
 
-		private RelativeStrengthIndex rsi;
+        private RelativeStrengthIndex rsi;
         private PipsATRIndicator pipsATR;
 
-		// Prefix commands the robot passes
-		private const string botPrefix = "RSI-ATR-II";
-		// Label orders the robot passes
-		private string botLabel;
-		double minPipsATR;
-		double maxPipsATR;
-		double ceilSignalPipsATR;     
-		double minRSI;
-		double maxRSI;
+        // Prefix commands the robot passes
+        private const string botPrefix = "RSI-ATR-II";
+        // Label orders the robot passes
+        private string botLabel;
+        double minPipsATR;
+        double maxPipsATR;
+        double ceilSignalPipsATR;
+        double minRSI;
+        double maxRSI;
 
         protected override void OnStart()
         {
-			botLabel = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
+            botLabel = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
             rsi = Indicators.RelativeStrengthIndex(RsiSource, RsiPeriod);
-			pipsATR = Indicators.GetIndicator<PipsATRIndicator>(TimeFrame, AtrPeriod, AtrMaType);
+            pipsATR = Indicators.GetIndicator<PipsATRIndicator>(TimeFrame, AtrPeriod, AtrMaType);
 
-			minPipsATR = pipsATR.Result.Minimum(pipsATR.Result.Count);
-			maxPipsATR = pipsATR.Result.Maximum(pipsATR.Result.Count);
+            minPipsATR = pipsATR.Result.Minimum(pipsATR.Result.Count);
+            maxPipsATR = pipsATR.Result.Maximum(pipsATR.Result.Count);
 
         }
- 
+
         protected override void OnTick()
         {
-			double volatility = pipsATR.Result.lastRealValue(0);
-			int minimaxPeriod = (int)((4.0/3.0)*volatility);
+            double volatility = pipsATR.Result.lastRealValue(0);
+            int minimaxPeriod = (int)((4.0 / 3.0) * volatility);
 
-			minPipsATR = Math.Min(minPipsATR, pipsATR.Result.LastValue);
-			maxPipsATR = Math.Max(maxPipsATR, pipsATR.Result.LastValue);
-			minRSI = rsi.Result.Minimum(minimaxPeriod);
-			maxRSI = rsi.Result.Maximum(minimaxPeriod);
+            minPipsATR = Math.Min(minPipsATR, pipsATR.Result.LastValue);
+            maxPipsATR = Math.Max(maxPipsATR, pipsATR.Result.LastValue);
+            minRSI = rsi.Result.Minimum(minimaxPeriod);
+            maxRSI = rsi.Result.Maximum(minimaxPeriod);
 
-			ceilSignalPipsATR = minPipsATR + ((maxPipsATR - minPipsATR)/9)*VolFactor;
+            ceilSignalPipsATR = minPipsATR + ((maxPipsATR - minPipsATR) / 9) * VolFactor;
 
-			if (rsi.Result.LastValue< minRSI)
-				this.closeAllSellPositions();
-			else
-				if (rsi.Result.LastValue>maxRSI)
-					this.closeAllBuyPositions();
+            if (rsi.Result.LastValue < minRSI)
+                this.closeAllSellPositions();
+            else if (rsi.Result.LastValue > maxRSI)
+                this.closeAllBuyPositions();
 
-			// Do nothing if daily ATR > Max allowed
-			if (pipsATR.Result.LastValue <= ceilSignalPipsATR)
-			{
+            // Do nothing if daily ATR > Max allowed
+            if (pipsATR.Result.LastValue <= ceilSignalPipsATR)
+            {
 
-				if ((!(this.existBuyPositions())) && rsi.Result.HasCrossedAbove(minRSI+1, 0))
-				{
-					double stopLoss = VolFactor*volatility;
-					this.closeAllSellPositions();
-					ExecuteMarketOrder(TradeType.Buy, Symbol, Symbol.NormalizeVolume(this.moneyManagement(MMFactor/100, stopLoss),RoundingMode.ToNearest), this.botName(), stopLoss, TPFactor * stopLoss);
-				}
-				else if (!(this.existSellPositions()) && rsi.Result.HasCrossedBelow(maxRSI-1, 0))
-				{
-					double stopLoss = VolFactor*volatility;
-					this.closeAllBuyPositions();
-					ExecuteMarketOrder(TradeType.Sell, Symbol, Symbol.NormalizeVolume(this.moneyManagement(MMFactor / 100, stopLoss), RoundingMode.ToNearest), this.botName(), stopLoss, TPFactor * stopLoss);
-				}
-			}
+                if ((!(this.existBuyPositions())) && rsi.Result.HasCrossedAbove(minRSI + 1, 0))
+                {
+                    double stopLoss = VolFactor * volatility;
+                    this.closeAllSellPositions();
+                    ExecuteMarketOrder(TradeType.Buy, Symbol, Symbol.NormalizeVolume(this.moneyManagement(MMFactor / 100, stopLoss), RoundingMode.ToNearest), this.botName(), stopLoss, TPFactor * stopLoss);
+                }
+                else if (!(this.existSellPositions()) && rsi.Result.HasCrossedBelow(maxRSI - 1, 0))
+                {
+                    double stopLoss = VolFactor * volatility;
+                    this.closeAllBuyPositions();
+                    ExecuteMarketOrder(TradeType.Sell, Symbol, Symbol.NormalizeVolume(this.moneyManagement(MMFactor / 100, stopLoss), RoundingMode.ToNearest), this.botName(), stopLoss, TPFactor * stopLoss);
+                }
+            }
         }
 
-		protected override void OnStop()
-		{
-			base.OnStop();
-			this.closeAllPositions();
+        protected override void OnStop()
+        {
+            base.OnStop();
+            this.closeAllPositions();
 
-		}
-      
+        }
+
     }
 }

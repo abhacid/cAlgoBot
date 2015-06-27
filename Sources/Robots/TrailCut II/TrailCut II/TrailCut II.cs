@@ -109,236 +109,244 @@ using System.Collections.Generic;
 
 namespace cAlgo.Robots
 {
-	[Robot("TrailCutII", TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
-	public class TrailCutII : Robot
-	{
-		#region cBot Parameters
+    [Robot("TrailCutII", TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
+    public class TrailCutII : Robot
+    {
+        #region cBot Parameters
 
-		[Parameter("William Percent Range", DefaultValue = true)]
-		public bool IsWPRActif { get; set; }
+        [Parameter("William Percent Range", DefaultValue = true)]
+        public bool IsWPRActif { get; set; }
 
-		[Parameter("Zigzag Kwan MBFX Timing", DefaultValue = false)]
-		public bool IsZZKwanActif { get; set; }
+        [Parameter("Zigzag Kwan MBFX Timing", DefaultValue = false)]
+        public bool IsZZKwanActif { get; set; }
 
-		[Parameter("Zigzag", DefaultValue = false)]
-		public bool IsZZActif { get; set; }
+        [Parameter("Zigzag", DefaultValue = false)]
+        public bool IsZZActif { get; set; }
 
-		[Parameter("Double Candle", DefaultValue = false)]
-		public bool IsDCActif { get; set; }
+        [Parameter("Double Candle", DefaultValue = false)]
+        public bool IsDCActif { get; set; }
 
-		[Parameter("Trend Magic", DefaultValue = false)]
-		public bool IsTMActif { get; set; }
+        [Parameter("Trend Magic", DefaultValue = false)]
+        public bool IsTMActif { get; set; }
 
-		[Parameter("Multi-Strategie Signal Ceil", DefaultValue = 1, MinValue = 1)]
-		public int MultiStrategieSignalCeil { get; set; }
+        [Parameter("Multi-Strategie Signal Ceil", DefaultValue = 1, MinValue = 1)]
+        public int MultiStrategieSignalCeil { get; set; }
 
-		[Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
-		public int InitialVolume { get; set; }
+        [Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
+        public int InitialVolume { get; set; }
 
-		[Parameter("Stop Loss", DefaultValue = 150)]
-		public double StopLoss { get; set; }
+        [Parameter("Stop Loss", DefaultValue = 150)]
+        public double StopLoss { get; set; }
 
-		[Parameter("Take Profit", DefaultValue = 1000)]
-		public double TakeProfit { get; set; }
+        [Parameter("Take Profit", DefaultValue = 1000)]
+        public double TakeProfit { get; set; }
 
-		[Parameter("Period", DefaultValue = 1000)]
-		public int Period { get; set; }
+        [Parameter("Period", DefaultValue = 1000)]
+        public int Period { get; set; }
 
-		[Parameter("OnTick", DefaultValue = false)]
-		public bool IsOnTick { get; set; }
+        [Parameter("OnTick", DefaultValue = false)]
+        public bool IsOnTick { get; set; }
 
-		[Parameter("Cut Loss", DefaultValue = false)]
-		public bool CutLoss { get; set; }
+        [Parameter("Cut Loss", DefaultValue = false)]
+        public bool CutLoss { get; set; }
 
-		[Parameter("Buy Only", DefaultValue = false)]
-		public bool BuyOnly { get; set; }
+        [Parameter("Buy Only", DefaultValue = false)]
+        public bool BuyOnly { get; set; }
 
-		[Parameter("Sell Only", DefaultValue = false)]
-		public bool SellOnly { get; set; }
+        [Parameter("Sell Only", DefaultValue = false)]
+        public bool SellOnly { get; set; }
 
-		[Parameter("Martingale", DefaultValue = false)]
-		public bool Martingale { get; set; }
+        [Parameter("Martingale", DefaultValue = false)]
+        public bool Martingale { get; set; }
 
-		[Parameter("Trail Start", DefaultValue = 3000, MinValue = 1)]
-		public int TrailStart { get; set; }
+        [Parameter("Trail Start", DefaultValue = 3000, MinValue = 1)]
+        public int TrailStart { get; set; }
 
-		[Parameter("Trail Step", DefaultValue = 3, MinValue = 0)]
-		public int TrailStep { get; set; }
+        [Parameter("Trail Step", DefaultValue = 3, MinValue = 0)]
+        public int TrailStep { get; set; }
 
-		[Parameter("Trail Stop Min", DefaultValue = 29, MinValue = 0)]
-		public int TrailStopMin { get; set; }
+        [Parameter("Trail Stop Min", DefaultValue = 29, MinValue = 0)]
+        public int TrailStopMin { get; set; }
 
-		[Parameter("WPR Source")]		// Placer a Open
-		public DataSeries WprSource { get; set; }
+        [Parameter("WPR Source")]
+        // Placer a Open
+        public DataSeries WprSource { get; set; }
 
-		[Parameter("WPR Period", DefaultValue = 17, MinValue = 1)]
-		public int WprPeriod { get; set; }
+        [Parameter("WPR Period", DefaultValue = 17, MinValue = 1)]
+        public int WprPeriod { get; set; }
 
-		[Parameter("WPR Overbuy Ceil", DefaultValue = -20, MinValue = -100, MaxValue = 0)]
-		public int WprOverbuyCeil { get; set; }
+        [Parameter("WPR Overbuy Ceil", DefaultValue = -20, MinValue = -100, MaxValue = 0)]
+        public int WprOverbuyCeil { get; set; }
 
-		[Parameter("WPR Oversell Ceil", DefaultValue = -80, MinValue = -100, MaxValue = 0)]
-		public int WprOversellCeil { get; set; }
+        [Parameter("WPR Oversell Ceil", DefaultValue = -80, MinValue = -100, MaxValue = 0)]
+        public int WprOversellCeil { get; set; }
 
-		[Parameter("WPR Magic Number", DefaultValue = 2, MinValue = 0)]
-		public int WprMagicNumber { get; set; }
+        [Parameter("WPR Magic Number", DefaultValue = 2, MinValue = 0)]
+        public int WprMagicNumber { get; set; }
 
-		[Parameter("WPR Min/Max Period", DefaultValue = 114)]
-		public int WprMinMaxPeriod { get; set; }
+        [Parameter("WPR Min/Max Period", DefaultValue = 114)]
+        public int WprMinMaxPeriod { get; set; }
 
-		[Parameter("WPR Exceed MinMax", DefaultValue = 2)]
-		public int WprExceedMinMax { get; set; }
+        [Parameter("WPR Exceed MinMax", DefaultValue = 2)]
+        public int WprExceedMinMax { get; set; }
 
-		[Parameter("MBFX Len", DefaultValue = 4, MinValue = 0)]
-		public int MbfxLen { get; set; }
+        [Parameter("MBFX Len", DefaultValue = 4, MinValue = 0)]
+        public int MbfxLen { get; set; }
 
-		[Parameter("MBFX Filter", DefaultValue = -1.0)]
-		public double MbfxFilter { get; set; }
+        [Parameter("MBFX Filter", DefaultValue = -1.0)]
+        public double MbfxFilter { get; set; }
 
-		[Parameter("ZigZagIndicator Depth",DefaultValue = 12)]
-		public int ZzDepth { get; set; }
+        [Parameter("ZigZagIndicator Depth", DefaultValue = 12)]
+        public int ZzDepth { get; set; }
 
-		[Parameter("ZigZagIndicator Deviation",DefaultValue = 5)]
-		public int ZzDeviation { get; set; }
+        [Parameter("ZigZagIndicator Deviation", DefaultValue = 5)]
+        public int ZzDeviation { get; set; }
 
-		[Parameter("ZigZagIndicator BackStep",DefaultValue = 3)]
-		public int ZzBackStep { get; set; }
+        [Parameter("ZigZagIndicator BackStep", DefaultValue = 3)]
+        public int ZzBackStep { get; set; }
 
-		[Parameter("Double Candle step",DefaultValue = 7)]
-		public int DoubleCandleStep { get; set; }
+        [Parameter("Double Candle step", DefaultValue = 7)]
+        public int DoubleCandleStep { get; set; }
 
 
-		[Parameter("Trend Magic CCIPeriod", DefaultValue = 50)]
-		public int TMCciPeriod { get; set; }
-
-		[Parameter("Trend Magic ATRPeriod", DefaultValue = 5)]
-		public int TMAtrPeriod { get; set; }
-
-		#endregion
-
-		#region cBot globals
-
-		OrderParams initialOP;
-		List<Strategy> strategies;
-
-		#endregion
-
-		#region cBot Events
-
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void OnStart()
-		{
-			base.OnStart();
-
-			double slippage = 2;			// maximum slippage in point, if order execution imposes a higher slippage, the order is not executed.
-			string botPrefix = "TCII";		// order prefix passed by the bot
-			string comment = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame); 		// order label passed by the bot
-
-			initialOP = new OrderParams(null, Symbol, InitialVolume, this.botName(), StopLoss, TakeProfit, slippage, comment, null, new List<double>() { 5, 3, 2 });
-
-			Positions.Closed += OnPositionClosed;
-
-			strategies = new List<Strategy>();
-
-			if (IsZZKwanActif)
-				strategies.Add(new ZigZagKwanStrategy(this,MbfxLen,MbfxFilter));
-
-			if (IsWPRActif)
-				strategies.Add(new WPRSStrategy(this, WprSource, WprPeriod, WprOverbuyCeil, WprOversellCeil, WprMagicNumber, WprMinMaxPeriod, WprExceedMinMax, IsOnTick));
-
-			if (IsDCActif)
-				strategies.Add(new DoubleCandleStrategy(this,Period,DoubleCandleStep));
-
-			if (IsZZActif)
-				strategies.Add(new ZigZagStrategy(this, ZzDepth,ZzDeviation,ZzBackStep));
-
-			if (IsTMActif)
-				strategies.Add(new TrendMagicStrategy(this,TMCciPeriod,TMAtrPeriod));
-		}
-
-     	/// <summary>
-     	/// Controle des positions et relance.  
-     	/// </summary>
-		protected override void OnTick()
-		{
-			if (IsOnTick)
-				controlRobot();
-		}
-
-		/// <summary>
-		/// A Chaque nouvelle bougie on peut evaluer la possibilite d'achat ou de vente ou de neutralite
-		/// </summary>
-		protected override void OnBar()
-		{
-			if (!IsOnTick)
-				controlRobot();
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="args"></param>
-		protected void OnPositionClosed(PositionClosedEventArgs args)
-		{
-			Position position = args.Position;
-
-			// Manage a selective Martingale.
-			if (Martingale)
-			{
-				OrderParams op = this.martingale(position);
-				op.Slippage = initialOP.Slippage;
-				this.splitAndExecuteOrder(op);
-			}
-			
-			Print(position.log(this, false));
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="error"></param>
-		protected override void OnError(Error error)
-		{
-			base.OnError(error);
-
-			this.notifyError(error, new System.Net.Mail.MailAddress("ab.hacid@gmail.com"));
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void OnStop()
-		{
-			base.OnStop();
-			this.closeAllPositions();
-		}
-
-		#endregion
-
-		#region cBot Action
-
-		/// <summary>
-		/// Manage taking position
-		/// </summary>
-		private void controlRobot()
-		{
-			if (CutLoss)
-				this.partialClose(initialOP.Label);
-
-			foreach (Position position in Positions)
-				position.trailStop(this, TrailStart, TrailStep, TrailStopMin);
-
-			initialOP.TradeType = this.signal(strategies, MultiStrategieSignalCeil);
-
-			if (initialOP.TradeType.HasValue)
-				this.splitAndExecuteOrder(initialOP);
-
-		}
-		#endregion
-
-	}
+        [Parameter("Trend Magic CCIPeriod", DefaultValue = 50)]
+        public int TMCciPeriod { get; set; }
+
+        [Parameter("Trend Magic ATRPeriod", DefaultValue = 5)]
+        public int TMAtrPeriod { get; set; }
+
+        #endregion
+
+        #region cBot globals
+
+        OrderParams initialOP;
+        List<Strategy> strategies;
+
+        #endregion
+
+        #region cBot Events
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            double slippage = 2;
+            // maximum slippage in point, if order execution imposes a higher slippage, the order is not executed.
+            string botPrefix = "TCII";
+            // order prefix passed by the bot
+            string comment = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
+            // order label passed by the bot
+            initialOP = new OrderParams(null, Symbol, InitialVolume, this.botName(), StopLoss, TakeProfit, slippage, comment, null, new List<double> 
+            {
+                5,
+                3,
+                2
+            });
+
+            Positions.Closed += OnPositionClosed;
+
+            strategies = new List<Strategy>();
+
+            if (IsZZKwanActif)
+                strategies.Add(new ZigZagKwanStrategy(this, MbfxLen, MbfxFilter));
+
+            if (IsWPRActif)
+                strategies.Add(new WPRSStrategy(this, WprSource, WprPeriod, WprOverbuyCeil, WprOversellCeil, WprMagicNumber, WprMinMaxPeriod, WprExceedMinMax, IsOnTick));
+
+            if (IsDCActif)
+                strategies.Add(new DoubleCandleStrategy(this, Period, DoubleCandleStep));
+
+            if (IsZZActif)
+                strategies.Add(new ZigZagStrategy(this, ZzDepth, ZzDeviation, ZzBackStep));
+
+            if (IsTMActif)
+                strategies.Add(new TrendMagicStrategy(this, TMCciPeriod, TMAtrPeriod));
+        }
+
+        /// <summary>
+        /// Controle des positions et relance.  
+        /// </summary>
+        protected override void OnTick()
+        {
+            if (IsOnTick)
+                controlRobot();
+        }
+
+        /// <summary>
+        /// A Chaque nouvelle bougie on peut evaluer la possibilite d'achat ou de vente ou de neutralite
+        /// </summary>
+        protected override void OnBar()
+        {
+            if (!IsOnTick)
+                controlRobot();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
+        protected void OnPositionClosed(PositionClosedEventArgs args)
+        {
+            Position position = args.Position;
+
+            // Manage a selective Martingale.
+            if (Martingale)
+            {
+                OrderParams op = this.martingale(position);
+                op.Slippage = initialOP.Slippage;
+                this.splitAndExecuteOrder(op);
+            }
+
+            Print(position.log(this, false));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="error"></param>
+        protected override void OnError(Error error)
+        {
+            base.OnError(error);
+
+            this.notifyError(error, new System.Net.Mail.MailAddress("ab.hacid@gmail.com"));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void OnStop()
+        {
+            base.OnStop();
+            this.closeAllPositions();
+        }
+
+        #endregion
+
+        #region cBot Action
+
+        /// <summary>
+        /// Manage taking position
+        /// </summary>
+        private void controlRobot()
+        {
+            if (CutLoss)
+                this.partialClose(initialOP.Label);
+
+            foreach (Position position in Positions)
+                position.trailStop(this, TrailStart, TrailStep, TrailStopMin);
+
+            initialOP.TradeType = this.signal(strategies, MultiStrategieSignalCeil);
+
+            if (initialOP.TradeType.HasValue)
+                this.splitAndExecuteOrder(initialOP);
+
+        }
+        #endregion
+
+    }
 }
 
 

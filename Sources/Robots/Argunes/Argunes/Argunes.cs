@@ -88,79 +88,88 @@ namespace cAlgo
     [Robot(TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
     public class Argunes : Robot
     {
-		#region cBot Parameters
-		[Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
-		public int InitialVolume { get; set; }
+        #region cBot Parameters
+        [Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
+        public int InitialVolume { get; set; }
 
-		[Parameter("Stop Loss", DefaultValue = 150)]
-		public int StopLoss { get; set; }
+        [Parameter("Stop Loss", DefaultValue = 150)]
+        public int StopLoss { get; set; }
 
-		[Parameter("Take Profit", DefaultValue = 1000)]
-		public int TakeProfit { get; set; }
+        [Parameter("Take Profit", DefaultValue = 1000)]
+        public int TakeProfit { get; set; }
 
-		#endregion
+        #endregion
 
-		#region cBot variables
-		OrderParams initialOP;
-		List<Strategy> strategies;
-		#endregion
+        #region cBot variables
+        OrderParams initialOP;
+        List<Strategy> strategies;
+        #endregion
 
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void OnStart()
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void OnStart()
         {
-			base.OnStart();
+            base.OnStart();
 
-			double slippage = 2;			// maximum slippage in point, if order execution imposes a higher slippage, the order is not executed.
-			string botPrefix = "Argunes";	// order prefix passed by the bot
-			string positionComment = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame); ;				// order label passed by the bot
-			initialOP = new OrderParams(null, Symbol, InitialVolume, this.botName(), StopLoss, TakeProfit, slippage, positionComment, null, new List<double>() { 5, 3, 2 });
-			
-			strategies = new List<Strategy>();
-			strategies.Add(new ArgunesStrategy(this));
+            double slippage = 2;
+            // maximum slippage in point, if order execution imposes a higher slippage, the order is not executed.
+            string botPrefix = "Argunes";
+            // order prefix passed by the bot
+            string positionComment = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
+            ;
+            // order label passed by the bot
+            initialOP = new OrderParams(null, Symbol, InitialVolume, this.botName(), StopLoss, TakeProfit, slippage, positionComment, null, new List<double> 
+            {
+                5,
+                3,
+                2
+            });
+
+            strategies = new List<Strategy>();
+            strategies.Add(new ArgunesStrategy(this));
         }
 
-		/// <summary>
-		/// 
-		/// </summary>
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void OnTick()
         {
 
         }
 
-		protected override void OnBar()
-		{
-			base.OnBar();
-
-			controlRobot();
-
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-        protected override void OnStop()
+        protected override void OnBar()
         {
-			base.OnStop();
-			this.closeAllPositions();
+            base.OnBar();
+
+            controlRobot();
+
         }
 
-		/// <summary>
-		/// Manage taking position.
-		/// </summary>
-		private void controlRobot()
-		{
-			TradeType? tradeType = this.signal(strategies);
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void OnStop()
+        {
+            base.OnStop();
+            this.closeAllPositions();
+        }
 
-			if (tradeType.HasValue)
-			{
-				initialOP.TradeType = tradeType.Value;
-				initialOP.Volume = InitialVolume;
+        /// <summary>
+        /// Manage taking position.
+        /// </summary>
+        private void controlRobot()
+        {
+            TradeType? tradeType = this.signal(strategies);
 
-				this.splitAndExecuteOrder(initialOP);
-			}
-				
-		}
+            if (tradeType.HasValue)
+            {
+                initialOP.TradeType = tradeType.Value;
+                initialOP.Volume = InitialVolume;
+
+                this.splitAndExecuteOrder(initialOP);
+            }
+
+        }
     }
 }

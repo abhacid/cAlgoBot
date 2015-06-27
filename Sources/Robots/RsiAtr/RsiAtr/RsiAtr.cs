@@ -75,104 +75,103 @@ using cAlgo.API.Indicators;
 using cAlgo.API.Internals;
 using cAlgo.Lib;
 using cAlgo.Indicators;
- 
+
 namespace cAlgo.Robots
 {
     [Robot(TimeZone = TimeZones.UTC)]
     public class RsiAtr : Robot
-	{
-		#region cBot parameters
-		[Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
-		public int Volume { get; set; }
+    {
+        #region cBot parameters
+        [Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
+        public int Volume { get; set; }
 
-		[Parameter("Stop Loss", DefaultValue = 51)]
-		public int StopLoss { get; set; }
+        [Parameter("Stop Loss", DefaultValue = 51)]
+        public int StopLoss { get; set; }
 
-		[Parameter("Take Profit", DefaultValue = 153)]
-		public int TakeProfit { get; set; }
+        [Parameter("Take Profit", DefaultValue = 153)]
+        public int TakeProfit { get; set; }
 
         [Parameter("RSI Source")]
-		public DataSeries RsiSource { get; set; } // Close
-
-        [Parameter("RSI Period", DefaultValue = 17, MinValue=1)]
+        public DataSeries RsiSource { get; set; }
+        // Close
+        [Parameter("RSI Period", DefaultValue = 17, MinValue = 1)]
         public int RsiPeriod { get; set; }
 
-		[Parameter("RSI Overbuy Ceil", DefaultValue = 65, MinValue = 0, MaxValue = 100)]
-		public int rsiOverbuyCeil { get; set; }
+        [Parameter("RSI Overbuy Ceil", DefaultValue = 65, MinValue = 0, MaxValue = 100)]
+        public int rsiOverbuyCeil { get; set; }
 
-		[Parameter("RSI Oversell Ceil", DefaultValue = 30, MinValue = 0, MaxValue = 100)]
-		public int rsiOversellCeil { get; set; }
+        [Parameter("RSI Oversell Ceil", DefaultValue = 30, MinValue = 0, MaxValue = 100)]
+        public int rsiOversellCeil { get; set; }
 
-		[Parameter("RSI Exceed Ceil", DefaultValue = 3, MinValue = 0, MaxValue = 50)]
-		public int rsiExceedCeil { get; set; }
+        [Parameter("RSI Exceed Ceil", DefaultValue = 3, MinValue = 0, MaxValue = 50)]
+        public int rsiExceedCeil { get; set; }
 
-		[Parameter("RSI MimMax Period", DefaultValue = 70, MinValue = 1)]
-		public int rsiMinMaxPeriod { get; set; }
+        [Parameter("RSI MimMax Period", DefaultValue = 70, MinValue = 1)]
+        public int rsiMinMaxPeriod { get; set; }
 
-        [Parameter("ATR Period", DefaultValue = 20,MinValue=1)]
+        [Parameter("ATR Period", DefaultValue = 20, MinValue = 1)]
         public int AtrPeriod { get; set; }
- 
-        [Parameter("ATR MAType", DefaultValue=6)]
-        public MovingAverageType AtrMaType { get; set; } // Wilder Smoothing
 
-		#endregion
+        [Parameter("ATR MAType", DefaultValue = 6)]
+        public MovingAverageType AtrMaType { get; set; }
+        // Wilder Smoothing
+        #endregion
 
-		private RelativeStrengthIndex rsi;
+        private RelativeStrengthIndex rsi;
         private PipsATRIndicator pipsATR;
 
-		// Prefix commands the robot passes
-		private const string botPrefix = "RSI-ATR";
-		// Label orders the robot passes
-		private string botLabel;
-		double minPipsATR;
-		double maxPipsATR;
-		double ceilSignalPipsATR;     
-		double minRSI;
-		double maxRSI;
+        // Prefix commands the robot passes
+        private const string botPrefix = "RSI-ATR";
+        // Label orders the robot passes
+        private string botLabel;
+        double minPipsATR;
+        double maxPipsATR;
+        double ceilSignalPipsATR;
+        double minRSI;
+        double maxRSI;
 
         protected override void OnStart()
         {
-			botLabel = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
+            botLabel = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
             rsi = Indicators.RelativeStrengthIndex(RsiSource, RsiPeriod);
-			pipsATR = Indicators.GetIndicator<PipsATRIndicator>(TimeFrame, AtrPeriod, AtrMaType);
+            pipsATR = Indicators.GetIndicator<PipsATRIndicator>(TimeFrame, AtrPeriod, AtrMaType);
 
-			minPipsATR = pipsATR.Result.Minimum(pipsATR.Result.Count);
-			maxPipsATR = pipsATR.Result.Maximum(pipsATR.Result.Count);
+            minPipsATR = pipsATR.Result.Minimum(pipsATR.Result.Count);
+            maxPipsATR = pipsATR.Result.Maximum(pipsATR.Result.Count);
 
         }
- 
+
         protected override void OnTick()
         {
             if (Trade.IsExecuting)
                 return;
 
-			minPipsATR = Math.Min(minPipsATR, pipsATR.Result.LastValue);
-			maxPipsATR = Math.Max(maxPipsATR, pipsATR.Result.LastValue);
-			minRSI = rsi.Result.Minimum(rsiMinMaxPeriod);
-			maxRSI = rsi.Result.Maximum(rsiMinMaxPeriod); 
-			ceilSignalPipsATR = minPipsATR + (maxPipsATR - minPipsATR)/3;
+            minPipsATR = Math.Min(minPipsATR, pipsATR.Result.LastValue);
+            maxPipsATR = Math.Max(maxPipsATR, pipsATR.Result.LastValue);
+            minRSI = rsi.Result.Minimum(rsiMinMaxPeriod);
+            maxRSI = rsi.Result.Maximum(rsiMinMaxPeriod);
+            ceilSignalPipsATR = minPipsATR + (maxPipsATR - minPipsATR) / 3;
 
-			if (rsi.Result.LastValue< minRSI+rsiExceedCeil)
-				this.closeAllSellPositions();
-			else
-				if (rsi.Result.LastValue>maxRSI-rsiExceedCeil)
-					this.closeAllBuyPositions();
+            if (rsi.Result.LastValue < minRSI + rsiExceedCeil)
+                this.closeAllSellPositions();
+            else if (rsi.Result.LastValue > maxRSI - rsiExceedCeil)
+                this.closeAllBuyPositions();
 
-			// Do nothing if daily ATR > Max allowed
-			if (pipsATR.Result.LastValue <= ceilSignalPipsATR)
-			{
-				if ((!(this.existBuyPositions())) && rsi.Result.HasCrossedAbove(rsiOversellCeil, 0))
-				{
-					this.closeAllSellPositions();
-					ExecuteMarketOrder(TradeType.Buy, Symbol, Volume, this.botName(), StopLoss, TakeProfit);
-				}
-				else if (!(this.existSellPositions()) && rsi.Result.HasCrossedBelow(rsiOverbuyCeil, 0))
-				{
-					this.closeAllBuyPositions();
-					ExecuteMarketOrder(TradeType.Sell, Symbol, Volume, this.botName(), StopLoss, TakeProfit);
-				}
-			}
+            // Do nothing if daily ATR > Max allowed
+            if (pipsATR.Result.LastValue <= ceilSignalPipsATR)
+            {
+                if ((!(this.existBuyPositions())) && rsi.Result.HasCrossedAbove(rsiOversellCeil, 0))
+                {
+                    this.closeAllSellPositions();
+                    ExecuteMarketOrder(TradeType.Buy, Symbol, Volume, this.botName(), StopLoss, TakeProfit);
+                }
+                else if (!(this.existSellPositions()) && rsi.Result.HasCrossedBelow(rsiOverbuyCeil, 0))
+                {
+                    this.closeAllBuyPositions();
+                    ExecuteMarketOrder(TradeType.Sell, Symbol, Volume, this.botName(), StopLoss, TakeProfit);
+                }
+            }
         }
-      
+
     }
 }

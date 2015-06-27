@@ -65,110 +65,110 @@ using cAlgo.Lib;
 
 namespace cAlgo.Robots
 {
-	[Robot(AccessRights = AccessRights.None)]
-	public class PayBackII : Robot
-	{
-		[Parameter("Initial Volume", DefaultValue = 100000, MinValue = 0)]
-		public int InitialVolume { get; set; }
-		[Parameter("Stop Loss", DefaultValue = 57)]
-		public int StopLoss { get; set; }
-		[Parameter("Take Profit", DefaultValue = 150)]
-		public int TakeProfit { get; set; }
+    [Robot(AccessRights = AccessRights.None)]
+    public class PayBackII : Robot
+    {
+        [Parameter("Initial Volume", DefaultValue = 100000, MinValue = 0)]
+        public int InitialVolume { get; set; }
+        [Parameter("Stop Loss", DefaultValue = 57)]
+        public int StopLoss { get; set; }
+        [Parameter("Take Profit", DefaultValue = 150)]
+        public int TakeProfit { get; set; }
 
-		const long microVolume = 1000;
-		const string botLabel = "PB-II";
-
-
-		protected override void OnStart()
-		{
-			Positions.Opened += OnPositionOpened;
-			Positions.Closed += OnPositionClosed;
-
-			relanceOrders();
-		}
-
-		private void relanceOrders()
-		{
-			manageOpen(TradeType.Buy, InitialVolume);
-			manageOpen(TradeType.Sell, InitialVolume);
-		}
-
-		private void manageOpen(TradeType tradeType, long volume, string prefixLabel = botLabel)
-		{
-			int nVolumePartition = 10, part1 = 5, part2 = 3;
-			long nVol = (long)Math.Floor((double)(volume / (microVolume * nVolumePartition)));
-			long partialVolume = nVol * microVolume;
-
-			var result1 = ExecuteMarketOrder(tradeType, Symbol, partialVolume * part1, prefixLabel + tradeType.ToString() + "-1");
-			var result2 = ExecuteMarketOrder(tradeType, Symbol, partialVolume * part2, prefixLabel + tradeType.ToString() + "-2");
-			var result3 = ExecuteMarketOrder(tradeType, Symbol, volume - (part1 + part2) * partialVolume, prefixLabel + tradeType.ToString() + "-3");
-		}
-
-		private void manageClose()
-		{
-			foreach (var position in Positions)
-			{
-				if (position.TakeProfit.HasValue)
-				{
-					string labelType = position.Label.Substring(position.Label.Length - 1, 1);
-					double potentialGainPips = ((position.TradeType == TradeType.Buy) ? 1 : -1) * (position.TakeProfit.Value - position.EntryPrice) / Symbol.PipSize;
-					double potentialLosePips = ((position.TradeType == TradeType.Buy) ? 1 : -1) * (position.StopLoss.Value - position.EntryPrice) / Symbol.PipSize;
-					double percentGain = position.Pips / potentialGainPips;
-					double percentLose = -position.Pips / potentialLosePips;
-
-					if ((percentGain >= 0.43) && (labelType == "3"))
-						ClosePosition(position);
-
-					if ((percentGain >= 0.76) && (labelType == "2"))
-						ClosePosition(position);
-
-					if ((percentLose <= -0.33) && (labelType == "1"))
-						ClosePosition(position);
-
-					if ((percentLose <= -0.66) && (labelType == "2"))
-						ClosePosition(position);
-
-				}
-			}
-		}
+        const long microVolume = 1000;
+        const string botLabel = "PB-II";
 
 
-		protected void OnPositionOpened(PositionOpenedEventArgs args)
-		{
-			var position = args.Position;
+        protected override void OnStart()
+        {
+            Positions.Opened += OnPositionOpened;
+            Positions.Closed += OnPositionClosed;
 
-			ModifyPosition(position, position.pipsToStopLoss(Symbol,StopLoss), position.pipsToTakeProfit(Symbol,TakeProfit));
-		}
+            relanceOrders();
+        }
 
-		protected void OnPositionClosed(PositionClosedEventArgs args)
-		{
-			Position position = args.Position;
+        private void relanceOrders()
+        {
+            manageOpen(TradeType.Buy, InitialVolume);
+            manageOpen(TradeType.Sell, InitialVolume);
+        }
 
-			if (position.Pips < 0)
-				manageOpen(position.inverseTradeType(), position.Volume, botLabel + "Mart-");
+        private void manageOpen(TradeType tradeType, long volume, string prefixLabel = botLabel)
+        {
+            int nVolumePartition = 10, part1 = 5, part2 = 3;
+            long nVol = (long)Math.Floor((double)(volume / (microVolume * nVolumePartition)));
+            long partialVolume = nVol * microVolume;
 
-			if (Positions.Count == 0)
-				relanceOrders();
-		}
+            var result1 = ExecuteMarketOrder(tradeType, Symbol, partialVolume * part1, prefixLabel + tradeType.ToString() + "-1");
+            var result2 = ExecuteMarketOrder(tradeType, Symbol, partialVolume * part2, prefixLabel + tradeType.ToString() + "-2");
+            var result3 = ExecuteMarketOrder(tradeType, Symbol, volume - (part1 + part2) * partialVolume, prefixLabel + tradeType.ToString() + "-3");
+        }
+
+        private void manageClose()
+        {
+            foreach (var position in Positions)
+            {
+                if (position.TakeProfit.HasValue)
+                {
+                    string labelType = position.Label.Substring(position.Label.Length - 1, 1);
+                    double potentialGainPips = ((position.TradeType == TradeType.Buy) ? 1 : -1) * (position.TakeProfit.Value - position.EntryPrice) / Symbol.PipSize;
+                    double potentialLosePips = ((position.TradeType == TradeType.Buy) ? 1 : -1) * (position.StopLoss.Value - position.EntryPrice) / Symbol.PipSize;
+                    double percentGain = position.Pips / potentialGainPips;
+                    double percentLose = -position.Pips / potentialLosePips;
+
+                    if ((percentGain >= 0.43) && (labelType == "3"))
+                        ClosePosition(position);
+
+                    if ((percentGain >= 0.76) && (labelType == "2"))
+                        ClosePosition(position);
+
+                    if ((percentLose <= -0.33) && (labelType == "1"))
+                        ClosePosition(position);
+
+                    if ((percentLose <= -0.66) && (labelType == "2"))
+                        ClosePosition(position);
+
+                }
+            }
+        }
 
 
-		protected override void OnTick()
-		{
-			manageClose();
+        protected void OnPositionOpened(PositionOpenedEventArgs args)
+        {
+            var position = args.Position;
 
-		}
-		protected override void OnError(Error error)
-		{
-			if (error.Code != ErrorCode.BadVolume)
-			{
-				Print("erreur : " + error.Code);
-				Stop();
-			}
-		}
+            ModifyPosition(position, position.pipsToStopLoss(Symbol, StopLoss), position.pipsToTakeProfit(Symbol, TakeProfit));
+        }
+
+        protected void OnPositionClosed(PositionClosedEventArgs args)
+        {
+            Position position = args.Position;
+
+            if (position.Pips < 0)
+                manageOpen(position.inverseTradeType(), position.Volume, botLabel + "Mart-");
+
+            if (Positions.Count == 0)
+                relanceOrders();
+        }
+
+
+        protected override void OnTick()
+        {
+            manageClose();
+
+        }
+        protected override void OnError(Error error)
+        {
+            if (error.Code != ErrorCode.BadVolume)
+            {
+                Print("erreur : " + error.Code);
+                Stop();
+            }
+        }
 
 
 
-	}
+    }
 }
 
 

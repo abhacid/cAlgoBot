@@ -73,6 +73,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendMagicIndicator", "Sour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Martingale_Forex", "Sources\Robots\Martingale_Forex\Martingale_Forex\Martingale_Forex.csproj", "{A85418F4-AC57-4E5E-804A-6610F778042A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastCrossSlow", "Sources\Indicators\FastCrossSlow\FastCrossSlow\FastCrossSlow.csproj", "{3DFD8876-4A61-496F-8358-2B004432208F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread", "Sources\Indicators\Spread\Spread\Spread.csproj", "{26F08C99-8105-4006-8011-A25F4A935CC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -203,6 +207,14 @@ Global
 		{A85418F4-AC57-4E5E-804A-6610F778042A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A85418F4-AC57-4E5E-804A-6610F778042A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A85418F4-AC57-4E5E-804A-6610F778042A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DFD8876-4A61-496F-8358-2B004432208F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DFD8876-4A61-496F-8358-2B004432208F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DFD8876-4A61-496F-8358-2B004432208F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DFD8876-4A61-496F-8358-2B004432208F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F08C99-8105-4006-8011-A25F4A935CC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F08C99-8105-4006-8011-A25F4A935CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F08C99-8105-4006-8011-A25F4A935CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F08C99-8105-4006-8011-A25F4A935CC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -239,5 +251,7 @@ Global
 		{F5913048-87E6-4458-8A31-243A5601AC41} = {C66E9A90-8938-4C1E-A82A-E51D8584C8EA}
 		{40E27026-684C-4266-830A-B827A44A03E9} = {02014D73-3510-41FC-AC02-DA49715E9071}
 		{A85418F4-AC57-4E5E-804A-6610F778042A} = {5EF8F7EB-C125-433A-A9AB-27CF2BB14CC7}
+		{3DFD8876-4A61-496F-8358-2B004432208F} = {02014D73-3510-41FC-AC02-DA49715E9071}
+		{26F08C99-8105-4006-8011-A25F4A935CC1} = {02014D73-3510-41FC-AC02-DA49715E9071}
 	EndGlobalSection
 EndGlobal

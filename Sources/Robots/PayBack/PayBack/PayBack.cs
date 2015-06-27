@@ -65,7 +65,7 @@ namespace cAlgo.Robots
         public int TakeProfit { get; set; }
 
         private Position position;
-       
+
 
         protected override void OnStart()
         {
@@ -85,10 +85,10 @@ namespace cAlgo.Robots
         }
 
         protected override void OnPositionClosed(Position closedPosition)
-         {
+        {
             if (closedPosition.GrossProfit > 0)
             {
-                ExecuteOrder(InitialVolume, closedPosition.TradeType);                
+                ExecuteOrder(InitialVolume, closedPosition.TradeType);
             }
             else
             {
@@ -103,16 +103,12 @@ namespace cAlgo.Robots
 
         private double GetAbsoluteStopLoss(Position position, int stopLossInPips)
         {
-            return position.TradeType == TradeType.Buy
-                ? position.EntryPrice - Symbol.PipSize * stopLossInPips
-                : position.EntryPrice + Symbol.PipSize * stopLossInPips;
+            return position.TradeType == TradeType.Buy ? position.EntryPrice - Symbol.PipSize * stopLossInPips : position.EntryPrice + Symbol.PipSize * stopLossInPips;
         }
 
         private double GetAbsoluteTakeProfit(Position position, int takeProfitInPips)
         {
-            return position.TradeType == TradeType.Buy
-                ? position.EntryPrice + Symbol.PipSize * takeProfitInPips
-                : position.EntryPrice - Symbol.PipSize * takeProfitInPips;
+            return position.TradeType == TradeType.Buy ? position.EntryPrice + Symbol.PipSize * takeProfitInPips : position.EntryPrice - Symbol.PipSize * takeProfitInPips;
         }
     }
 }

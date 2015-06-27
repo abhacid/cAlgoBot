@@ -81,12 +81,12 @@ namespace cAlgo.Robots
 {
     [Robot(TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
     public class ZephynScalperII : Robot
-	{
-		#region Prameters
+    {
+        #region Prameters
         [Parameter("Source SMA")]
         public DataSeries Source_SMA { get; set; }
 
-		[Parameter("Periods SMA", DefaultValue = 37)]
+        [Parameter("Periods SMA", DefaultValue = 37)]
         public int Periods_SMA { get; set; }
 
         [Parameter("Volume", DefaultValue = 100000, MinValue = 10000)]
@@ -105,9 +105,9 @@ namespace cAlgo.Robots
         public int Trail { get; set; }
 
         [Parameter(DefaultValue = 1)]
-        public MovingAverageType MaType { get; set; }// Exponential
-
-        [Parameter("K Periods", DefaultValue = 5)] 
+        public MovingAverageType MaType { get; set; }
+        // Exponential
+        [Parameter("K Periods", DefaultValue = 5)]
         public int KPeriods { get; set; }
 
         [Parameter("D Periods", DefaultValue = 3)]
@@ -115,22 +115,22 @@ namespace cAlgo.Robots
 
         [Parameter("K Slowing", DefaultValue = 3)]
         public int K_Slowing { get; set; }
-		#endregion
+        #endregion
 
-		#region Globals
+        #region Globals
 
         private SimpleMovingAverage _SMA;
         private StochasticOscillator _SOC;
-		// Nom du robot
-		private const string botName = "ZephynScalperII";
-		private const int highCeil = 80;
-		private const int lowCeil = 20;
-		#endregion
+        // Nom du robot
+        private const string botName = "ZephynScalperII";
+        private const int highCeil = 80;
+        private const int lowCeil = 20;
+        #endregion
 
-		#region cBot Events
-		protected override void OnStart()
+        #region cBot Events
+        protected override void OnStart()
         {
-			base.OnStart();
+            base.OnStart();
             _SMA = Indicators.SimpleMovingAverage(Source_SMA, Periods_SMA);
             _SOC = Indicators.StochasticOscillator(KPeriods, K_Slowing, DPeriods, MaType);
 
@@ -139,170 +139,157 @@ namespace cAlgo.Robots
 
         }
 
-		protected override void OnStop()
-		{
-			base.OnStop();
-			closePositions();
+        protected override void OnStop()
+        {
+            base.OnStop();
+            closePositions();
 
-		}
+        }
 
         protected override void OnTick()
         {
-			foreach (var position in Positions.FindAll(botName, Symbol))
+            foreach (var position in Positions.FindAll(botName, Symbol))
             {
                 if (position.Pips > Trail_start)
                 {
-					double actualPrice = isBuy(position) ? Symbol.Bid : Symbol.Ask;
-					int factor = isBuy(position) ? 1 : -1;
-				
-					double? newStopLoss = position.StopLoss;
+                    double actualPrice = isBuy(position) ? Symbol.Bid : Symbol.Ask;
+                    int factor = isBuy(position) ? 1 : -1;
 
-					// Stop a ZERO
-					if ((position.EntryPrice - newStopLoss) * factor > 0)
-						newStopLoss = position.EntryPrice;
+                    double? newStopLoss = position.StopLoss;
 
-					if ((actualPrice - newStopLoss)*factor > Trail * Symbol.PipSize)
+                    // Stop a ZERO
+                    if ((position.EntryPrice - newStopLoss) * factor > 0)
+                        newStopLoss = position.EntryPrice;
+
+                    if ((actualPrice - newStopLoss) * factor > Trail * Symbol.PipSize)
                     {
-						newStopLoss += factor * Trail * Symbol.PipSize;
+                        newStopLoss += factor * Trail * Symbol.PipSize;
 
-						if (newStopLoss!=position.StopLoss)
-							ModifyPosition(position, newStopLoss, position.TakeProfit.Value);
+                        if (newStopLoss != position.StopLoss)
+                            ModifyPosition(position, newStopLoss, position.TakeProfit.Value);
                     }
                 }
             }
 
 
             if (!isBuyPositions && isSOCBuySignal)
-			{
-				closePositions(TradeType.Sell);
+            {
+                closePositions(TradeType.Sell);
                 Open(TradeType.Buy);
-			}
-            else
-				if (!isSellPositions && isSOCSellSignal)
-				{
-					closePositions(TradeType.Buy);
-					Open(TradeType.Sell);
-				}
-                       
+            }
+            else if (!isSellPositions && isSOCSellSignal)
+            {
+                closePositions(TradeType.Buy);
+                Open(TradeType.Sell);
+            }
+
 
         }
 
-		private void OnPositionClosed(PositionClosedEventArgs args)
+        private void OnPositionClosed(PositionClosedEventArgs args)
         {
         }
-		#endregion
+        #endregion
 
-		#region cBot Action
-		private void Open(TradeType tradeType)
+        #region cBot Action
+        private void Open(TradeType tradeType)
         {
-				ExecuteMarketOrder(tradeType, Symbol, Volume, botName, StopLoss, TakeProfit);
+            ExecuteMarketOrder(tradeType, Symbol, Volume, botName, StopLoss, TakeProfit);
         }
 
-		private void closePosition(Position position)
-		{
-			var result = ClosePosition(position);
+        private void closePosition(Position position)
+        {
+            var result = ClosePosition(position);
 
-			if (!result.IsSuccessful)
-				Print("error : {0}", result.Error);
+            if (!result.IsSuccessful)
+                Print("error : {0}", result.Error);
 
-		}
+        }
 
-		// Cloture toutes les positions de type "tradeType"
-		private void closePositions(TradeType tradeType)
-		{
-			foreach (Position position in Positions.FindAll(botName, Symbol, tradeType))
-				closePosition(position);
+        // Cloture toutes les positions de type "tradeType"
+        private void closePositions(TradeType tradeType)
+        {
+            foreach (Position position in Positions.FindAll(botName, Symbol, tradeType))
+                closePosition(position);
 
-		}
+        }
 
-		// Cloture toutes les positions ouvertes
-		private void closePositions()
-		{
-			closePositions(TradeType.Buy);
-			closePositions(TradeType.Sell);
-		}
-		#endregion
+        // Cloture toutes les positions ouvertes
+        private void closePositions()
+        {
+            closePositions(TradeType.Buy);
+            closePositions(TradeType.Sell);
+        }
+        #endregion
 
-		#region cBot Predicate
+        #region cBot Predicate
 
-		private bool isSOCBuySignal
-		{
-			get
-			{
-				return (_SMA.Result.LastValue < Symbol.Bid) &&
-						(_SOC.PercentD.LastValue < lowCeil) &&
-						(_SOC.PercentK.LastValue < lowCeil) &&
-						(_SOC.PercentK.LastValue > _SOC.PercentD.LastValue);
-			}
-
-		}
-
-		private bool isSOCSellSignal
-		{
-			get 
-			{ 
-				return	(_SMA.Result.LastValue > Symbol.Ask) && 
-						(_SOC.PercentD.LastValue > highCeil) &&
-						(_SOC.PercentK.LastValue > highCeil) &&
-						(_SOC.PercentK.LastValue < _SOC.PercentD.LastValue);
-			}
-
-		}
-		private bool isBuy(Position position)
-		{
-			return TradeType.Buy == position.TradeType;
-		}
-		private bool isBuy(TradeType tradeType)
-		{
-			return TradeType.Buy == tradeType;
-		}
-
-		private bool isSell(Position position)
-		{
-			return TradeType.Sell == position.TradeType;
-		}
-
-		private bool isSell(TradeType tradeType)
-		{
-			return TradeType.Sell == tradeType;
-		}
-
-		private bool isBuyPositions
-		{
-			get { return Positions.Find(botName, Symbol, TradeType.Buy) != null; }
-
-		}
-
-		private bool isSellPositions
-		{
-			get { return Positions.Find(botName, Symbol, TradeType.Sell) != null; }
-		}
-
-		private bool isBuyAndSellPositions
-		{
-			get { return isBuyPositions && isSellPositions; }
-		}
-		private bool isPosition
-		{
-			//get { return Positions.Find(botName,Symbol)!=null; }
-			get { return isBuyPositions || isSellPositions; }
-
-		}
-
-		private bool isNoPosition
-		{
-			get { return !isPosition; }
-		}
+        private bool isSOCBuySignal
+        {
+            get { return (_SMA.Result.LastValue < Symbol.Bid) && (_SOC.PercentD.LastValue < lowCeil) && (_SOC.PercentK.LastValue < lowCeil) && (_SOC.PercentK.LastValue > _SOC.PercentD.LastValue); }
+        }
 
 
-		#endregion
+        private bool isSOCSellSignal
+        {
+            get { return (_SMA.Result.LastValue > Symbol.Ask) && (_SOC.PercentD.LastValue > highCeil) && (_SOC.PercentK.LastValue > highCeil) && (_SOC.PercentK.LastValue < _SOC.PercentD.LastValue); }
+        }
 
-		#region cBot Utils
-		private int OpenedTrades
-		{
-			get { return Positions.FindAll(botName, Symbol).Count(); }
-		}
-		#endregion
+        private bool isBuy(Position position)
+        {
+            return TradeType.Buy == position.TradeType;
+        }
+        private bool isBuy(TradeType tradeType)
+        {
+            return TradeType.Buy == tradeType;
+        }
 
-	}
+        private bool isSell(Position position)
+        {
+            return TradeType.Sell == position.TradeType;
+        }
+
+        private bool isSell(TradeType tradeType)
+        {
+            return TradeType.Sell == tradeType;
+        }
+
+        private bool isBuyPositions
+        {
+            get { return Positions.Find(botName, Symbol, TradeType.Buy) != null; }
+        }
+
+
+        private bool isSellPositions
+        {
+            get { return Positions.Find(botName, Symbol, TradeType.Sell) != null; }
+        }
+
+        private bool isBuyAndSellPositions
+        {
+            get { return isBuyPositions && isSellPositions; }
+        }
+        private bool isPosition
+        {
+            //get { return Positions.Find(botName,Symbol)!=null; }
+            get { return isBuyPositions || isSellPositions; }
+        }
+
+
+        private bool isNoPosition
+        {
+            get { return !isPosition; }
+        }
+
+
+        #endregion
+
+        #region cBot Utils
+        private int OpenedTrades
+        {
+            get { return Positions.FindAll(botName, Symbol).Count(); }
+        }
+        #endregion
+
+    }
 }

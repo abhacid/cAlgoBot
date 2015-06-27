@@ -51,98 +51,99 @@ using cAlgo.Lib;
 
 namespace cAlgo.Robots
 {
-	/// <summary>
-	/// https://calgobots.codeplex.com/discussions/552542
-	/// </summary>
-	[Robot("BreakOut", TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
-	public partial class BreakoutII : Robot
-	{
-		#region cBot Parameters
-		[Parameter("Source")]  // positionner a Open
-		public DataSeries Source { get; set; }
+    /// <summary>
+    /// https://calgobots.codeplex.com/discussions/552542
+    /// </summary>
+    [Robot("BreakOut", TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
+    public partial class BreakoutII : Robot
+    {
+        #region cBot Parameters
+        [Parameter("Source")]
+        // positionner a Open
+        public DataSeries Source { get; set; }
 
-		[Parameter("Stop Loss", DefaultValue = 57)]
-		public int StopLoss { get; set; }
+        [Parameter("Stop Loss", DefaultValue = 57)]
+        public int StopLoss { get; set; }
 
-		[Parameter("Take Profit", DefaultValue = 115)]
-		public int TakeProfit { get; set; }
+        [Parameter("Take Profit", DefaultValue = 115)]
+        public int TakeProfit { get; set; }
 
-		[Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
-		public int Volume { get; set; }
+        [Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
+        public int Volume { get; set; }
 
-		[Parameter("Periods", DefaultValue = 16)]
-		public int Periods { get; set; }
+        [Parameter("Periods", DefaultValue = 16)]
+        public int Periods { get; set; }
 
-		[Parameter("MA Type", DefaultValue = 6)] //Wilder Smoothing
-		public MovingAverageType MAType { get; set; }
+        [Parameter("MA Type", DefaultValue = 6)]
+        //Wilder Smoothing
+        public MovingAverageType MAType { get; set; }
 
-		[Parameter("Deviation", DefaultValue = 2)]
-		public int Deviation { get; set; }
+        [Parameter("Deviation", DefaultValue = 2)]
+        public int Deviation { get; set; }
 
-		#endregion
+        #endregion
 
-		private BollingerBands bb;
+        private BollingerBands bb;
 
-		protected override void OnStart()
-		{
-			Positions.Opened += OnPositionOpened;
+        protected override void OnStart()
+        {
+            Positions.Opened += OnPositionOpened;
 
-			bb = Indicators.BollingerBands(Source, Periods, Deviation, MAType);
-		}
+            bb = Indicators.BollingerBands(Source, Periods, Deviation, MAType);
+        }
 
-		protected override void OnBar()
-		{
-			double bbTop = bb.Top.LastValue ;
-			double bbBottom = bb.Bottom.LastValue ;
-			double middle = (bbTop + bbBottom) / 2;
-			int index = 1;
+        protected override void OnBar()
+        {
+            double bbTop = bb.Top.LastValue;
+            double bbBottom = bb.Bottom.LastValue;
+            double middle = (bbTop + bbBottom) / 2;
+            int index = 1;
 
-			TradeType? tradeType = null;
+            TradeType? tradeType = null;
 
-			// Cloture si les prix repassent le milieu de la bande de bollinger
-			if (this.existBuyPositions() && MarketSeries.isCandleOver(index, middle))
-				this.closeAllBuyPositions();
-			else
-				if (this.existSellPositions() && MarketSeries.isCandleOver(index, middle))
-					this.closeAllSellPositions();
-
-
-			if (Symbol.Ask < bbTop && Symbol.Bid > bbBottom) // Nous sommes entre les bandes de Bollinger.
-				return;
+            // Cloture si les prix repassent le milieu de la bande de bollinger
+            if (this.existBuyPositions() && MarketSeries.isCandleOver(index, middle))
+                this.closeAllBuyPositions();
+            else if (this.existSellPositions() && MarketSeries.isCandleOver(index, middle))
+                this.closeAllSellPositions();
 
 
-			//achat en haut des BB, vente en bas
-			if (!(this.existBuyPositions()) && MarketSeries.isCandleAbove(index, bbTop))
-			{
-				this.closeAllSellPositions();
-				tradeType = TradeType.Buy;
-			}
-			else
-				if (!(this.existSellPositions()) && MarketSeries.iscandleBelow(index, bbBottom))
-				{
-					this.closeAllBuyPositions();
-					tradeType = TradeType.Sell;
-				}
-
-			if (tradeType.HasValue)
-				ExecuteMarketOrder(tradeType.Value, Symbol, Volume, this.botName());
-
-		}
-
-		protected void OnPositionOpened(PositionOpenedEventArgs args)
-		{
-			Position position = args.Position;
-
-			ModifyPosition(position, position.pipsToStopLoss(Symbol, StopLoss), position.pipsToTakeProfit(Symbol, TakeProfit));
-		}
-
-		protected override void OnStop()
-		{
-			base.OnStop();
-			this.closeAllPositions();
-		}
+            if (Symbol.Ask < bbTop && Symbol.Bid > bbBottom)
+                // Nous sommes entre les bandes de Bollinger.
+                return;
 
 
-	}
+            //achat en haut des BB, vente en bas
+            if (!(this.existBuyPositions()) && MarketSeries.isCandleAbove(index, bbTop))
+            {
+                this.closeAllSellPositions();
+                tradeType = TradeType.Buy;
+            }
+            else if (!(this.existSellPositions()) && MarketSeries.iscandleBelow(index, bbBottom))
+            {
+                this.closeAllBuyPositions();
+                tradeType = TradeType.Sell;
+            }
+
+            if (tradeType.HasValue)
+                ExecuteMarketOrder(tradeType.Value, Symbol, Volume, this.botName());
+
+        }
+
+        protected void OnPositionOpened(PositionOpenedEventArgs args)
+        {
+            Position position = args.Position;
+
+            ModifyPosition(position, position.pipsToStopLoss(Symbol, StopLoss), position.pipsToTakeProfit(Symbol, TakeProfit));
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            this.closeAllPositions();
+        }
+
+
+    }
 }
 

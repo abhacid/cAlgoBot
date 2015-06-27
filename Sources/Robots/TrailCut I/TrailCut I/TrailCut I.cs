@@ -41,7 +41,7 @@ using cAlgo.Indicators;
 
 namespace cAlgo.Robots
 {
-	[Robot(TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
+    [Robot(TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
     public class TrailCut : Robot
     {
         #region cBot Parameters
@@ -54,41 +54,41 @@ namespace cAlgo.Robots
         [Parameter("Take Profit", DefaultValue = 300)]
         public int TakeProfit { get; set; }
 
-		[Parameter("Martingale", DefaultValue = 0)]
+        [Parameter("Martingale", DefaultValue = 0)]
         public bool Martingale { get; set; }
 
-		[Parameter("TrailStart", DefaultValue = 30, MinValue = 1)]
-		public int TrailStart{ get; set; }
+        [Parameter("TrailStart", DefaultValue = 30, MinValue = 1)]
+        public int TrailStart { get; set; }
 
-		[Parameter("TrailStep", DefaultValue = 4, MinValue = 1)]
-		public int TrailStep{ get; set; }
-		
-		[Parameter("PeriodWPR", DefaultValue = 14, MinValue = 1)]
-		public int PeriodWPR{ get; set; }
+        [Parameter("TrailStep", DefaultValue = 4, MinValue = 1)]
+        public int TrailStep { get; set; }
+
+        [Parameter("PeriodWPR", DefaultValue = 14, MinValue = 1)]
+        public int PeriodWPR { get; set; }
         #endregion
 
         #region cBot globals
         // Slippage maximun en point, si l'execution de l'ordre impose un slippage superieur, l'ordre n'est pas execute.
         private const double slippage = 2;
         // Nom du robot
-		private const string botName = "TrailCut-I";
+        private const string botName = "TrailCut-I";
         // Prefixe des ordres passes par le robot
         private const string botPrefix = "TCI";
-		// Label des  ordres passes par le robot
-		private string botLabel;
-		
-		private const int Buy = 1;
-		private const int Sell = -1;
+        // Label des  ordres passes par le robot
+        private string botLabel;
 
-		private WPRIndicator wpr;
+        private const int Buy = 1;
+        private const int Sell = -1;
+
+        private WPRIndicator wpr;
         #endregion
 
         #region cBot Events
         protected override void OnStart()
         {
-			botLabel = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
+            botLabel = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
 
-			wpr = Indicators.GetIndicator<WPRIndicator>(PeriodWPR);
+            wpr = Indicators.GetIndicator<WPRIndicator>(PeriodWPR);
 
             Positions.Opened += OnPositionOpened;
             Positions.Closed += OnPositionClosed;
@@ -104,37 +104,37 @@ namespace cAlgo.Robots
         protected void OnPositionClosed(PositionClosedEventArgs args)
         {
             Position position = args.Position;
-			bool isBuy = TradeType.Buy == position.TradeType;
+            bool isBuy = TradeType.Buy == position.TradeType;
 
             if (Martingale && (position.Pips < 0))
-                splitAndExecuteOrder(position.TradeType==TradeType.Buy ?TradeType.Sell:TradeType.Buy, position.Volume * 1.2, botPrefix + "Mart-");
+                splitAndExecuteOrder(position.TradeType == TradeType.Buy ? TradeType.Sell : TradeType.Buy, position.Volume * 1.2, botPrefix + "Mart-");
 
             Print("{0}, Volume : {1}, G/P : {2}, open : {3}, close : {4}, {5}", Symbol.Code, position.Volume, position.Pips, position.EntryPrice, isBuy ? Symbol.Bid : Symbol.Ask, position.Id);
 
         }
 
-		// Controle des positions et relance.        
-		protected override void OnTick()
+        // Controle des positions et relance.        
+        protected override void OnTick()
         {
             controlClose();
 
-			controlTrail();
+            controlTrail();
 
 
         }
 
-		// A Chaque nouvelle bougie on peut evaluer la possibilite d'achat ou de vente ou de neutralite
-		protected override void OnBar()
-		{
-			controlBuyAndSell();			
-		}
+        // A Chaque nouvelle bougie on peut evaluer la possibilite d'achat ou de vente ou de neutralite
+        protected override void OnBar()
+        {
+            controlBuyAndSell();
+        }
 
         protected override void OnError(Error error)
         {
-			if (error.Code == ErrorCode.NoMoney)
-				Print("ERROR!!! No money for order open");
-			else if (error.Code == ErrorCode.BadVolume)
-				Print("ERROR!!! Bad volume for order open");
+            if (error.Code == ErrorCode.NoMoney)
+                Print("ERROR!!! No money for order open");
+            else if (error.Code == ErrorCode.BadVolume)
+                Print("ERROR!!! Bad volume for order open");
         }
         #endregion
 
@@ -143,16 +143,16 @@ namespace cAlgo.Robots
         private void controlClose()
         {
 
-			foreach (var position in Positions.FindAll(botLabel, Symbol))
+            foreach (var position in Positions.FindAll(botLabel, Symbol))
             {
                 if (position.TakeProfit.HasValue && position.StopLoss.HasValue)
                 {
                     string label = position.Comment.Substring(position.Comment.Length - 1, 1);
 
-					bool isBuy = TradeType.Buy == position.TradeType; 
-					double profitLoss = isBuy ? Symbol.Bid - position.EntryPrice : position.EntryPrice - Symbol.Ask;
+                    bool isBuy = TradeType.Buy == position.TradeType;
+                    double profitLoss = isBuy ? Symbol.Bid - position.EntryPrice : position.EntryPrice - Symbol.Ask;
                     double potentialProfit = isBuy ? Symbol.Bid - position.EntryPrice : position.EntryPrice - Symbol.Ask;
-					double potentialLoss = isBuy ? Symbol.Bid - position.StopLoss.Value : position.StopLoss.Value - Symbol.Ask;
+                    double potentialLoss = isBuy ? Symbol.Bid - position.StopLoss.Value : position.StopLoss.Value - Symbol.Ask;
 
                     double percentGain = profitLoss / potentialProfit;
                     double percentLoss = profitLoss / potentialLoss;
@@ -180,8 +180,8 @@ namespace cAlgo.Robots
             long volume3 = (long)Math.Floor(volume * percent3);
 
             executeOrder(tradeType, volume1, String.Format("{0}-{1}-1", prefixLabel, tradeType));
-			executeOrder(tradeType, volume2, String.Format("{0}-{1}-2", prefixLabel, tradeType));
-			executeOrder(tradeType, volume3, String.Format("{0}-{1}-3", prefixLabel, tradeType));
+            executeOrder(tradeType, volume2, String.Format("{0}-{1}-2", prefixLabel, tradeType));
+            executeOrder(tradeType, volume3, String.Format("{0}-{1}-3", prefixLabel, tradeType));
 
         }
 
@@ -204,97 +204,97 @@ namespace cAlgo.Robots
         // Gere la prise de position
         private void controlBuyAndSell()
         {
-			int signal = signalStrategie();
+            int signal = signalStrategie();
 
-			if (signal != 0)
-				splitAndExecuteOrder((signal == 1) ? TradeType.Buy : TradeType.Sell, InitialVolume,botLabel);
+            if (signal != 0)
+                splitAndExecuteOrder((signal == 1) ? TradeType.Buy : TradeType.Sell, InitialVolume, botLabel);
         }
 
 
 
-		// Gere le stop suiveur dynamique
-		private void controlTrail()
-		{
-			foreach(Position position in Positions)
-			{
-				if (position.Pips>TrailStart)
-				{
-					bool isBuy = TradeType.Buy == position.TradeType;
-					double? actualPotentialLoss = isBuy ? Symbol.Bid - position.StopLoss : position.StopLoss - Symbol.Ask;
-					double? newStopLoss = position.StopLoss + (isBuy ? 1:-1)*TrailStep * Symbol.PipSize;
+        // Gere le stop suiveur dynamique
+        private void controlTrail()
+        {
+            foreach (Position position in Positions)
+            {
+                if (position.Pips > TrailStart)
+                {
+                    bool isBuy = TradeType.Buy == position.TradeType;
+                    double? actualPotentialLoss = isBuy ? Symbol.Bid - position.StopLoss : position.StopLoss - Symbol.Ask;
+                    double? newStopLoss = position.StopLoss + (isBuy ? 1 : -1) * TrailStep * Symbol.PipSize;
 
-					if (actualPotentialLoss >TrailStep* Symbol.PipSize)
-					{
-						ModifyPosition(position, newStopLoss, position.TakeProfit);
-					}
-				}
+                    if (actualPotentialLoss > TrailStep * Symbol.PipSize)
+                    {
+                        ModifyPosition(position, newStopLoss, position.TakeProfit);
+                    }
+                }
 
-			}
+            }
 
-		}
-
-
-
-		// STRATEGIE DE TRADING
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// Renvoie un signal d'achat, de vente ou neutre. C'est ici qu'il faut ecrire la strategie de declanchement des ordres
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		private int signalStrategie()
-		{
-			// retourne 
-			//  0 : pas de signal (neutre), 
-			//  1 : achat, 
-			// -1: vente
-
-			
-			
-			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			// Strategie : deux bougies haussieres donne un signal d'achat, deux bougies baissieres un signal de vente
-			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-			//double step = 7 * Symbol.PipSize;
-			//int LastBarIndex = MarketSeries.Close.Count - 2;
-			//int PrevBarIndex = LastBarIndex - 1;
-
-			//if ((MarketSeries.Close[LastBarIndex] > MarketSeries.Open[LastBarIndex]+step) && (MarketSeries.Close[PrevBarIndex] > MarketSeries.Open[PrevBarIndex]+step))
-			//	return Buy;
-
-			//if ((MarketSeries.Close[LastBarIndex] +step < MarketSeries.Open[LastBarIndex]) && (MarketSeries.Close[PrevBarIndex] +step< MarketSeries.Open[PrevBarIndex]))
-			//	return Sell;
-
-			//return 0;
+        }
 
 
 
-			///////////////////////////////////////////////////////
-			// Strategie selon indicateur Williams Percent Range
-			///////////////////////////////////////////////////////
-			//if (wpr.Result[wpr.Result.Count - 1] < -95)
-			//	foreach (Position position in Positions.FindAll(botName, Symbol, TradeType.Sell)) 
-			//		ClosePosition(position);
+        // STRATEGIE DE TRADING
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Renvoie un signal d'achat, de vente ou neutre. C'est ici qu'il faut ecrire la strategie de declanchement des ordres
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        private int signalStrategie()
+        {
+            // retourne 
+            //  0 : pas de signal (neutre), 
+            //  1 : achat, 
+            // -1: vente
 
-			//if (wpr.Result[wpr.Result.Count - 1] > -5)
-			//	foreach (Position position in Positions.FindAll(botName, Symbol, TradeType.Buy))
-			//		ClosePosition(position);
 
 
-			if ((wpr.Result[wpr.Result.Count - 2] < -80) && (wpr.Result[wpr.Result.Count - 1] > -80))
-			{
-				foreach (Position position in Positions.FindAll(botName, Symbol, TradeType.Sell)) 
-					ClosePosition(position);
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Strategie : deux bougies haussieres donne un signal d'achat, deux bougies baissieres un signal de vente
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-				return Buy;
-			}
-			else if ((wpr.Result[wpr.Result.Count - 2] > -20) && (wpr.Result[wpr.Result.Count - 1] < -20))
-			{
-				foreach (Position position in Positions.FindAll(botName, Symbol, TradeType.Buy))
-					ClosePosition(position);
+            //double step = 7 * Symbol.PipSize;
+            //int LastBarIndex = MarketSeries.Close.Count - 2;
+            //int PrevBarIndex = LastBarIndex - 1;
 
-				return Sell;
-			}
+            //if ((MarketSeries.Close[LastBarIndex] > MarketSeries.Open[LastBarIndex]+step) && (MarketSeries.Close[PrevBarIndex] > MarketSeries.Open[PrevBarIndex]+step))
+            //	return Buy;
 
-			return 0;
-		}
+            //if ((MarketSeries.Close[LastBarIndex] +step < MarketSeries.Open[LastBarIndex]) && (MarketSeries.Close[PrevBarIndex] +step< MarketSeries.Open[PrevBarIndex]))
+            //	return Sell;
+
+            //return 0;
+
+
+
+            ///////////////////////////////////////////////////////
+            // Strategie selon indicateur Williams Percent Range
+            ///////////////////////////////////////////////////////
+            //if (wpr.Result[wpr.Result.Count - 1] < -95)
+            //	foreach (Position position in Positions.FindAll(botName, Symbol, TradeType.Sell)) 
+            //		ClosePosition(position);
+
+            //if (wpr.Result[wpr.Result.Count - 1] > -5)
+            //	foreach (Position position in Positions.FindAll(botName, Symbol, TradeType.Buy))
+            //		ClosePosition(position);
+
+
+            if ((wpr.Result[wpr.Result.Count - 2] < -80) && (wpr.Result[wpr.Result.Count - 1] > -80))
+            {
+                foreach (Position position in Positions.FindAll(botName, Symbol, TradeType.Sell))
+                    ClosePosition(position);
+
+                return Buy;
+            }
+            else if ((wpr.Result[wpr.Result.Count - 2] > -20) && (wpr.Result[wpr.Result.Count - 1] < -20))
+            {
+                foreach (Position position in Positions.FindAll(botName, Symbol, TradeType.Buy))
+                    ClosePosition(position);
+
+                return Sell;
+            }
+
+            return 0;
+        }
     }
 }
 
