@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="cAlgo.API">
-      <HintPath>..\..\..\..\..\..\..\Documents\cAlgo\API\cAlgo.API.dll</HintPath>
+      <HintPath>..\..\..\..\API\cAlgo.API.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,6 +53,10 @@
     <ProjectReference Include="..\..\..\Library\cAlgoLib\cAlgo.Lib.csproj">
       <Project>{d3e50b06-5578-42a2-addd-42f25d5a1f4c}</Project>
       <Name>cAlgo.Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Library\MQ4Lib\MQ4Lib.csproj">
+      <Project>{747044e7-4e4b-458b-94c3-3b8a9797b1a5}</Project>
+      <Name>MQ4Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
