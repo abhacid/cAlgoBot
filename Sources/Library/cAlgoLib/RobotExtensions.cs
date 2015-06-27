@@ -139,7 +139,6 @@ namespace cAlgo.Lib
 			if (!result.IsSuccessful)
 				robot.Print("error : {0}", result.Error);
 		}
-
 		
 		/// <summary>
 		/// Cloture toute les positions de type tradeType
@@ -220,7 +219,6 @@ namespace cAlgo.Lib
 			robot.cancelAllPendingBuyOrders();
 			robot.cancelAllPendingSellOrders();
 		}
-
 
 		/// <summary>
 		/// Notify a message at mail address

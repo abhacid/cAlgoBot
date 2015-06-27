@@ -39,6 +39,7 @@ namespace cAlgo.Strategies
 
 
 		private RelativeStrengthIndex _rsi;
+		private BollingerBands _bollingerBand;
 
 		public DoubleCandleStrategy(Robot robot, int doubleCandleperiod, int doubleCandleStep): base(robot)
 		{
@@ -51,6 +52,8 @@ namespace cAlgo.Strategies
 		protected override void Initialize()
 		{
 			_rsi = Robot.Indicators.RelativeStrengthIndex(Robot.MarketSeries.Close,Period);
+			_bollingerBand = Robot.Indicators.BollingerBands(Robot.MarketSeries.Close, 20, 2, MovingAverageType.Simple);
+
 
 		}
 
@@ -69,14 +72,17 @@ namespace cAlgo.Strategies
 			double lastOpen = Robot.MarketSeries.Open[lastIndex];
 			double lastClose = Robot.MarketSeries.Close[lastIndex];
 
+			bool bollingerTestBuy = _bollingerBand.Top.LastValue - Robot.Symbol.Mid() > 0.0005;
+			bool bollingerTestSell = Robot.Symbol.Mid() - _bollingerBand.Bottom.LastValue > 0.0005;
 
-			if (!Robot.existBuyPositions() && (lastClose > lastOpen + step) && (previewClose > previewOpen + step) && lastClose > previewClose && _rsi.Result.LastValue<65)
+
+			if (!Robot.existBuyPositions() && (lastClose > lastOpen + step) && (previewClose > previewOpen + step) && lastClose > previewClose && _rsi.Result.LastValue<65 && bollingerTestBuy)
 			{
 				Robot.closeAllSellPositions();
 				return TradeType.Buy;
 			}
 
-			if (!Robot.existSellPositions() && (lastClose + step < lastOpen) && (previewClose + step < previewOpen) && lastClose < previewClose && _rsi.Result.LastValue>35)
+			if (!Robot.existSellPositions() && (lastClose + step < lastOpen) && (previewClose + step < previewOpen) && lastClose < previewClose && _rsi.Result.LastValue>35 && bollingerTestSell)
 			{
 				Robot.closeAllBuyPositions();
 				return TradeType.Sell;
