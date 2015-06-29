@@ -81,8 +81,8 @@ namespace cAlgo
             FastMAResult[index] = fastMA.Result[index];
             SlowMAResult[index] = slowMA.Result[index];
 
-            double high = MarketSeries.High[index];
-            double low = MarketSeries.Low[index];
+            double high = MarketSeries.High[index-1];
+            double low = MarketSeries.Low[index-1];
 
             if (isCrossAbove())
                 ChartObjects.DrawText(string.Format("Buy {0}", index), upArrow, index - 1, low - arrowOffset, VerticalAlignment.Top, HorizontalAlignment.Center, Colors.Green);
