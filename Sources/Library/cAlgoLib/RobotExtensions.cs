@@ -47,7 +47,7 @@ namespace cAlgo.Lib
 		}
 
 		/// <summary>
-		/// Calcule le volume maximum a engager en fonction du risque maximum
+		/// Calcule le volume maximum a engager en nombre de Lot en fonction du risque maximum
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <param name="risk">le pourcentage de risque (perte) maximun accepté</param>
@@ -55,16 +55,16 @@ namespace cAlgo.Lib
 		/// <returns></returns>
 		public static double moneyManagement(this Robot robot, double risk, double stopLossPips)
 		{
+
 			if (stopLossPips <=0)
 				throw new System.ArgumentException(String.Format("the 'stopLossPips' : {0} parameter must be positive and not null", stopLossPips));
 			else
 			{
 				double moneyToInvestInDepositCurrency = robot.Account.Balance * risk/ (double)100;
 				double moneyToInvestInQuoteCurrency = moneyToInvestInDepositCurrency * robot.Symbol.Mid();
-				double volume = moneyToInvestInQuoteCurrency / stopLossPips;
-				//long normalizedVolume = robot.Symbol.NormalizeVolume(volume);
+				double volumeToInvestInQuoteCurrency = moneyToInvestInQuoteCurrency / (stopLossPips * robot.Symbol.PipValue);
 
-				return volume;
+				return volumeToInvestInQuoteCurrency;
 			}
 		}
 
