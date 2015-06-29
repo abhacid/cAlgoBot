@@ -83,7 +83,6 @@ namespace cAlgo.Strategies
 			bool bollingerTestBuy = Math.Abs(_bollingerBand.Top.LastValue - Robot.Symbol.Mid()) >= thresholTridggering;
 			bool bollingerTestSell = Math.Abs(_bollingerBand.Bottom.LastValue - Robot.Symbol.Mid()) >= thresholTridggering;
 
-
 			if (!Robot.existBuyPositions() && (lastClose > lastOpen + candleSize) && (previewClose > previewOpen + candleSize) && _rsi.Result.LastValue<65 && bollingerTestBuy)
 				return TradeType.Buy;
 
