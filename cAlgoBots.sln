@@ -77,6 +77,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastCrossSlow", "Sources\In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread", "Sources\Indicators\Spread\Spread\Spread.csproj", "{26F08C99-8105-4006-8011-A25F4A935CC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot_Forex", "Sources\Robots\Robot_Forex\Robot_Forex\Robot_Forex.csproj", "{0F3B6E3E-AB88-4405-A735-276580755DBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -215,6 +217,10 @@ Global
 		{26F08C99-8105-4006-8011-A25F4A935CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26F08C99-8105-4006-8011-A25F4A935CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26F08C99-8105-4006-8011-A25F4A935CC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F3B6E3E-AB88-4405-A735-276580755DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F3B6E3E-AB88-4405-A735-276580755DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F3B6E3E-AB88-4405-A735-276580755DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F3B6E3E-AB88-4405-A735-276580755DBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -253,5 +259,6 @@ Global
 		{A85418F4-AC57-4E5E-804A-6610F778042A} = {5EF8F7EB-C125-433A-A9AB-27CF2BB14CC7}
 		{3DFD8876-4A61-496F-8358-2B004432208F} = {02014D73-3510-41FC-AC02-DA49715E9071}
 		{26F08C99-8105-4006-8011-A25F4A935CC1} = {02014D73-3510-41FC-AC02-DA49715E9071}
+		{0F3B6E3E-AB88-4405-A735-276580755DBF} = {5EF8F7EB-C125-433A-A9AB-27CF2BB14CC7}
 	EndGlobalSection
 EndGlobal
