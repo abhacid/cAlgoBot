@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region cBot Infos
@@ -75,7 +75,6 @@ namespace cAlgo.Robots
         [Parameter("Take Profit", DefaultValue = 150)]
         public int TakeProfit { get; set; }
 
-        const long microVolume = 1000;
         const string botLabel = "PB-II";
 
 
@@ -95,11 +94,10 @@ namespace cAlgo.Robots
 
         private void manageOpen(TradeType tradeType, long volume, string prefixLabel = botLabel)
         {
-            int nVolumePartition = 10, part1 = 5, part2 = 3;
-            long nVol = (long)Math.Floor((double)(volume / (microVolume * nVolumePartition)));
-            long partialVolume = nVol * microVolume;
+            int parties = 10, part1 = 5, part2 = 3;
+			long partialVolume = Symbol.NormalizeVolume(volume / parties, RoundingMode.ToNearest);
 
-            var result1 = ExecuteMarketOrder(tradeType, Symbol, partialVolume * part1, prefixLabel + tradeType.ToString() + "-1");
+			var result1 = ExecuteMarketOrder(tradeType, Symbol, partialVolume * part1, prefixLabel + tradeType.ToString() + "-1");
             var result2 = ExecuteMarketOrder(tradeType, Symbol, partialVolume * part2, prefixLabel + tradeType.ToString() + "-2");
             var result3 = ExecuteMarketOrder(tradeType, Symbol, volume - (part1 + part2) * partialVolume, prefixLabel + tradeType.ToString() + "-3");
         }
@@ -110,9 +108,10 @@ namespace cAlgo.Robots
             {
                 if (position.TakeProfit.HasValue)
                 {
+					int factor = (position.TradeType == TradeType.Buy).factor();
                     string labelType = position.Label.Substring(position.Label.Length - 1, 1);
-                    double potentialGainPips = ((position.TradeType == TradeType.Buy) ? 1 : -1) * (position.TakeProfit.Value - position.EntryPrice) / Symbol.PipSize;
-                    double potentialLosePips = ((position.TradeType == TradeType.Buy) ? 1 : -1) * (position.StopLoss.Value - position.EntryPrice) / Symbol.PipSize;
+                    double potentialGainPips = factor* (position.TakeProfit.Value - position.EntryPrice) / Symbol.PipSize;
+                    double potentialLosePips = factor * (position.StopLoss.Value - position.EntryPrice) / Symbol.PipSize;
                     double percentGain = position.Pips / potentialGainPips;
                     double percentLose = -position.Pips / potentialLosePips;
 

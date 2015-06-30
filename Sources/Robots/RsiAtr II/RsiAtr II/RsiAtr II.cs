@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region cBot Infos
@@ -71,6 +71,7 @@ using cAlgo.API.Indicators;
 using cAlgo.API.Internals;
 using cAlgo.Lib;
 using cAlgo.Indicators;
+using System.Reflection;
 
 namespace cAlgo.Robots
 {
@@ -105,23 +106,30 @@ namespace cAlgo.Robots
         #endregion
 
 
-        private RelativeStrengthIndex rsi;
+		#region Bot Variables
+		private RelativeStrengthIndex rsi;
         private PipsATRIndicator pipsATR;
 
-        // Prefix commands the robot passes
-        private const string botPrefix = "RSI-ATR-II";
-        // Label orders the robot passes
-        private string botLabel;
-        double minPipsATR;
+
+		private string _botName;
+		private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
+
+		// le label permet de s'y retrouver parmis toutes les instances possibles.
+		private string _instanceLabel;
+
+		double minPipsATR;
         double maxPipsATR;
         double ceilSignalPipsATR;
         double minRSI;
         double maxRSI;
+		#endregion
 
-        protected override void OnStart()
+		protected override void OnStart()
         {
-            botLabel = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
-            rsi = Indicators.RelativeStrengthIndex(RsiSource, RsiPeriod);
+			_botName = ToString();
+			_instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
+			rsi = Indicators.RelativeStrengthIndex(RsiSource, RsiPeriod);
+
             pipsATR = Indicators.GetIndicator<PipsATRIndicator>(TimeFrame, AtrPeriod, AtrMaType);
 
             minPipsATR = pipsATR.Result.Minimum(pipsATR.Result.Count);
@@ -131,8 +139,8 @@ namespace cAlgo.Robots
 
         protected override void OnTick()
         {
-            double volatility = pipsATR.Result.lastRealValue(0);
-            int minimaxPeriod = (int)((4.0 / 3.0) * volatility);
+           double volatility = pipsATR.Result.lastRealValue(0);
+           int minimaxPeriod = (int)((4.0 / 3.0) * volatility);
 
             minPipsATR = Math.Min(minPipsATR, pipsATR.Result.LastValue);
             maxPipsATR = Math.Max(maxPipsATR, pipsATR.Result.LastValue);
@@ -142,33 +150,52 @@ namespace cAlgo.Robots
             ceilSignalPipsATR = minPipsATR + ((maxPipsATR - minPipsATR) / 9) * VolFactor;
 
             if (rsi.Result.LastValue < minRSI)
-                this.closeAllSellPositions();
+                this.closeAllSellPositions(_instanceLabel);
             else if (rsi.Result.LastValue > maxRSI)
-                this.closeAllBuyPositions();
+                this.closeAllBuyPositions(_instanceLabel);
 
-            // Do nothing if daily ATR > Max allowed
-            if (pipsATR.Result.LastValue <= ceilSignalPipsATR)
-            {
+            TradeType? tradeType = signal(volatility);
 
-                if ((!(this.existBuyPositions())) && rsi.Result.HasCrossedAbove(minRSI + 1, 0))
-                {
-                    double stopLoss = VolFactor * volatility;
-                    this.closeAllSellPositions();
-                    ExecuteMarketOrder(TradeType.Buy, Symbol, Symbol.NormalizeVolume(this.moneyManagement(MMFactor / 100, stopLoss), RoundingMode.ToNearest), this.botName(), stopLoss, TPFactor * stopLoss);
-                }
-                else if (!(this.existSellPositions()) && rsi.Result.HasCrossedBelow(maxRSI - 1, 0))
-                {
-                    double stopLoss = VolFactor * volatility;
-                    this.closeAllBuyPositions();
-                    ExecuteMarketOrder(TradeType.Sell, Symbol, Symbol.NormalizeVolume(this.moneyManagement(MMFactor / 100, stopLoss), RoundingMode.ToNearest), this.botName(), stopLoss, TPFactor * stopLoss);
-                }
-            }
+			if(tradeType.HasValue)
+			{
+				if(!(this.existPositions(tradeType.Value, _instanceLabel)))
+				{
+					this.closeAllPositions(tradeType.inverseTradeType().Value, _instanceLabel);
+
+					double stopLoss = VolFactor * volatility;
+					double volume = this.moneyManagement(MMFactor / 100, stopLoss);
+					long normalizedVolume =Symbol.NormalizeVolume(volume, RoundingMode.ToNearest);
+
+					ExecuteMarketOrder(TradeType.Buy, Symbol, normalizedVolume, _instanceLabel, stopLoss, TPFactor * stopLoss);
+
+				}
+			}
+
         }
+
+		private TradeType? signal(double volatility)
+		{
+
+			TradeType? tradeType=null;
+
+			// Do nothing if daily ATR > Max allowed
+			if(pipsATR.Result.LastValue <= ceilSignalPipsATR)
+			{
+
+				if(rsi.Result.HasCrossedAbove(minRSI + 1, 0))
+					tradeType = TradeType.Buy;
+				else if(rsi.Result.HasCrossedBelow(maxRSI - 1, 0))
+					tradeType = TradeType.Sell;
+
+			}
+				
+			return tradeType;
+		}
 
         protected override void OnStop()
         {
             base.OnStop();
-            this.closeAllPositions();
+            this.closeAllPositions(_instanceLabel);
 
         }
 

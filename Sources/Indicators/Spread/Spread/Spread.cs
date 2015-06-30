@@ -16,9 +16,9 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 
-// Efficiency Ratio Indicator (ERIndicator) measure noise signal, see the article: https://calgobots.codeplex.com/discussions/557184 
+// Efficiency Ratio Indicator (ERIndicator) measure noise signal, see the article: https://github.com/abhacid/cAlgoBotdiscussions/557184 
 // 
 // If ERIndicator is near to 1.0 the noise is low, it is near to 0 the noise is important. It is better to take a position 
 // when ERIndicator is greater than 0.6.

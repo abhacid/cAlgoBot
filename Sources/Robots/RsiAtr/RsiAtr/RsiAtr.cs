@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region cBot Infos
@@ -75,6 +75,7 @@ using cAlgo.API.Indicators;
 using cAlgo.API.Internals;
 using cAlgo.Lib;
 using cAlgo.Indicators;
+using System.Reflection;
 
 namespace cAlgo.Robots
 {
@@ -117,23 +118,28 @@ namespace cAlgo.Robots
         // Wilder Smoothing
         #endregion
 
+		#region Bot Variables
+		private string _botName;
+		private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
+
+		// le label permet de s'y retrouver parmis toutes les instances possibles.
+		private string _instanceLabel;
         private RelativeStrengthIndex rsi;
         private PipsATRIndicator pipsATR;
 
-        // Prefix commands the robot passes
-        private const string botPrefix = "RSI-ATR";
-        // Label orders the robot passes
-        private string botLabel;
         double minPipsATR;
         double maxPipsATR;
         double ceilSignalPipsATR;
         double minRSI;
         double maxRSI;
+		#endregion
 
-        protected override void OnStart()
+		protected override void OnStart()
         {
-            botLabel = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
-            rsi = Indicators.RelativeStrengthIndex(RsiSource, RsiPeriod);
+			_botName = ToString();
+			_instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
+
+			rsi = Indicators.RelativeStrengthIndex(RsiSource, RsiPeriod);
             pipsATR = Indicators.GetIndicator<PipsATRIndicator>(TimeFrame, AtrPeriod, AtrMaType);
 
             minPipsATR = pipsATR.Result.Minimum(pipsATR.Result.Count);
@@ -153,22 +159,22 @@ namespace cAlgo.Robots
             ceilSignalPipsATR = minPipsATR + (maxPipsATR - minPipsATR) / 3;
 
             if (rsi.Result.LastValue < minRSI + rsiExceedCeil)
-                this.closeAllSellPositions();
+                this.closeAllSellPositions(_instanceLabel);
             else if (rsi.Result.LastValue > maxRSI - rsiExceedCeil)
-                this.closeAllBuyPositions();
+                this.closeAllBuyPositions(_instanceLabel);
 
             // Do nothing if daily ATR > Max allowed
             if (pipsATR.Result.LastValue <= ceilSignalPipsATR)
             {
-                if ((!(this.existBuyPositions())) && rsi.Result.HasCrossedAbove(rsiOversellCeil, 0))
+                if ((!(this.existBuyPositions(_instanceLabel))) && rsi.Result.HasCrossedAbove(rsiOversellCeil, 0))
                 {
-                    this.closeAllSellPositions();
-                    ExecuteMarketOrder(TradeType.Buy, Symbol, Volume, this.botName(), StopLoss, TakeProfit);
+                    this.closeAllSellPositions(_instanceLabel);
+                    ExecuteMarketOrder(TradeType.Buy, Symbol, Volume, _instanceLabel, StopLoss, TakeProfit);
                 }
-                else if (!(this.existSellPositions()) && rsi.Result.HasCrossedBelow(rsiOverbuyCeil, 0))
+                else if (!(this.existSellPositions(_instanceLabel)) && rsi.Result.HasCrossedBelow(rsiOverbuyCeil, 0))
                 {
-                    this.closeAllBuyPositions();
-                    ExecuteMarketOrder(TradeType.Sell, Symbol, Volume, this.botName(), StopLoss, TakeProfit);
+                    this.closeAllBuyPositions(_instanceLabel);
+                    ExecuteMarketOrder(TradeType.Sell, Symbol, Volume, _instanceLabel, StopLoss, TakeProfit);
                 }
             }
         }

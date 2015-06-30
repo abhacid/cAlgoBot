@@ -17,12 +17,13 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://github.com/abhacid/cAlgoBot
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using cAlgo;
 using cAlgo.API;
 using cAlgo.API.Indicators;
@@ -40,9 +41,10 @@ namespace cAlgo.Strategies
 			public int? BollingerDivisions { get; set; }
 		#endregion
 
-
+		#region Bot Variables
 		private RelativeStrengthIndex _rsi;
 		private BollingerBands _bollingerBand;
+		#endregion
 
 		public DoubleCandleStrategy(Robot robot, int period, int candleSize, int? bollingerDivisions=null)
 			: base(robot)
@@ -83,10 +85,10 @@ namespace cAlgo.Strategies
 			bool bollingerTestBuy = Math.Abs(_bollingerBand.Top.LastValue - Robot.Symbol.Mid()) >= thresholTridggering;
 			bool bollingerTestSell = Math.Abs(_bollingerBand.Bottom.LastValue - Robot.Symbol.Mid()) >= thresholTridggering;
 
-			if (!Robot.existBuyPositions() && (lastClose > lastOpen + candleSize) && (previewClose > previewOpen + candleSize) && _rsi.Result.LastValue<65 && bollingerTestBuy)
+			if ((lastClose > lastOpen + candleSize) && (previewClose > previewOpen + candleSize) && _rsi.Result.LastValue<65 && bollingerTestBuy)
 				return TradeType.Buy;
 
-			if (!Robot.existSellPositions() && (lastClose + candleSize < lastOpen) && (previewClose + candleSize < previewOpen) && _rsi.Result.LastValue>35 && bollingerTestSell)
+			if ((lastClose + candleSize < lastOpen) && (previewClose + candleSize < previewOpen) && _rsi.Result.LastValue>35 && bollingerTestSell)
 				return TradeType.Sell;
 
 			return null;

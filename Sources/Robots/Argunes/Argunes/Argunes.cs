@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region cBot Infos
@@ -78,6 +78,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using cAlgo.API;
 using cAlgo.API.Indicators;
 using cAlgo.Lib;
@@ -92,15 +93,22 @@ namespace cAlgo
         [Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
         public int InitialVolume { get; set; }
 
-        [Parameter("Stop Loss", DefaultValue = 150)]
+        [Parameter("Stop Loss", DefaultValue = 53, MinValue = 3)]
         public int StopLoss { get; set; }
 
-        [Parameter("Take Profit", DefaultValue = 1000)]
+        [Parameter("Take Profit", DefaultValue = 151, MinValue = 5)]
         public int TakeProfit { get; set; }
 
         #endregion
 
         #region cBot variables
+
+		private string _botName;
+		private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
+
+		// le label permet de s'y retrouver parmis toutes les instances possibles.
+		private string _instanceLabel;
+
         OrderParams initialOP;
         List<Strategy> strategies;
         #endregion
@@ -112,14 +120,16 @@ namespace cAlgo
         {
             base.OnStart();
 
+			_botName = ToString();
+			_instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
+
             double slippage = 2;
             // maximum slippage in point, if order execution imposes a higher slippage, the order is not executed.
-            string botPrefix = "Argunes";
-            // order prefix passed by the bot
-            string positionComment = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
+
+			string positionComment = string.Format("{0}-v{1}", _botName, _botVersion);
             ;
             // order label passed by the bot
-            initialOP = new OrderParams(null, Symbol, InitialVolume, this.botName(), StopLoss, TakeProfit, slippage, positionComment, null, new List<double> 
+            initialOP = new OrderParams(null, Symbol, InitialVolume, _instanceLabel, StopLoss, TakeProfit, slippage, positionComment, null, new List<double> 
             {
                 5,
                 3,
@@ -152,7 +162,7 @@ namespace cAlgo
         protected override void OnStop()
         {
             base.OnStop();
-            this.closeAllPositions();
+            this.closeAllPositions(_instanceLabel);
         }
 
         /// <summary>
@@ -164,11 +174,26 @@ namespace cAlgo
 
             if (tradeType.HasValue)
             {
-                initialOP.TradeType = tradeType.Value;
-                initialOP.Volume = InitialVolume;
+				if(tradeType.isBuy())
+				{
+					this.closeAllSellPositions(_instanceLabel);
 
-                this.splitAndExecuteOrder(initialOP);
-            }
+					if(this.existBuyPositions(_instanceLabel))
+						return;
+				}
+				else
+				{
+					this.closeAllBuyPositions(_instanceLabel);
+
+					if(this.existSellPositions(_instanceLabel))
+						return;
+
+				}
+
+				initialOP.TradeType = tradeType.Value;
+				initialOP.Volume = InitialVolume;
+				this.splitAndExecuteOrder(initialOP);
+			}
 
         }
     }

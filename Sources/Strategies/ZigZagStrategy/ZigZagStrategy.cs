@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 
@@ -65,13 +65,14 @@ namespace cAlgo.Strategies
 		public override TradeType? signal()
 		{
 			double lastValue = zigZag.Result.LastValue;
+
 			TradeType? tradeType = null;
 
 			if (!double.IsNaN(lastValue))
 			{
-				if (!(Robot.existBuyPositions()) && (lastValue < zigZagPrevValue))
+				if (lastValue < zigZagPrevValue)
 					tradeType = TradeType.Buy;
-				else if (!(Robot.existSellPositions()) && (lastValue > zigZagPrevValue && zigZagPrevValue > 0.0))
+				else if (lastValue > zigZagPrevValue && zigZagPrevValue > 0.0)
 					tradeType = TradeType.Sell;
 
 				zigZagPrevValue = lastValue;

@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region cBot Infos
@@ -44,7 +44,7 @@
 
 using System;
 using System.Diagnostics;
-
+using System.Reflection;
 using cAlgo.API;
 using cAlgo.API.Indicators;
 using cAlgo.Lib;
@@ -52,9 +52,9 @@ using cAlgo.Lib;
 namespace cAlgo.Robots
 {
     /// <summary>
-    /// https://calgobots.codeplex.com/discussions/552542
+	/// https://github.com/abhacid/cAlgoBot/wiki/Breakout-avec-les-bandes-de-Bollinger
     /// </summary>
-    [Robot("BreakOut", TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
+    [Robot("BreakOutII", TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
     public partial class BreakoutII : Robot
     {
         #region cBot Parameters
@@ -83,10 +83,21 @@ namespace cAlgo.Robots
 
         #endregion
 
-        private BollingerBands bb;
+		#region cBot variables
+		private string _botName;
+		private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
 
-        protected override void OnStart()
+		// le label permet de s'y retrouver parmis toutes les instances possibles.
+		private string _instanceLabel;
+
+        private BollingerBands bb;
+		#endregion
+
+		protected override void OnStart()
         {
+			_botName = ToString();
+			_instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
+
             Positions.Opened += OnPositionOpened;
 
             bb = Indicators.BollingerBands(Source, Periods, Deviation, MAType);
@@ -94,41 +105,53 @@ namespace cAlgo.Robots
 
         protected override void OnBar()
         {
-            double bbTop = bb.Top.LastValue;
-            double bbBottom = bb.Bottom.LastValue;
-            double middle = (bbTop + bbBottom) / 2;
-            int index = 1;
-
-            TradeType? tradeType = null;
+			double middle = (bb.Top.LastValue + bb.Bottom.LastValue) / 2;
 
             // Cloture si les prix repassent le milieu de la bande de bollinger
-            if (this.existBuyPositions() && MarketSeries.isCandleOver(index, middle))
-                this.closeAllBuyPositions();
-            else if (this.existSellPositions() && MarketSeries.isCandleOver(index, middle))
-                this.closeAllSellPositions();
+			if(MarketSeries.isCandleOver(1, middle))
+				this.closeAllPositions(_instanceLabel);
 
+            TradeType? tradeType = signal();
+				
+			if(tradeType.HasValue)
+			{
+				if(tradeType.isBuy())
+				{
+					this.closeAllSellPositions(_instanceLabel);
 
-            if (Symbol.Ask < bbTop && Symbol.Bid > bbBottom)
-                // Nous sommes entre les bandes de Bollinger.
-                return;
+					if(this.existBuyPositions(_instanceLabel))
+						return;
+				}
+				else
+				{
+					this.closeAllBuyPositions(_instanceLabel);
 
+					if(this.existSellPositions(_instanceLabel))
+						return;
 
-            //achat en haut des BB, vente en bas
-            if (!(this.existBuyPositions()) && MarketSeries.isCandleAbove(index, bbTop))
-            {
-                this.closeAllSellPositions();
-                tradeType = TradeType.Buy;
-            }
-            else if (!(this.existSellPositions()) && MarketSeries.iscandleBelow(index, bbBottom))
-            {
-                this.closeAllBuyPositions();
-                tradeType = TradeType.Sell;
-            }
+				}
 
-            if (tradeType.HasValue)
-                ExecuteMarketOrder(tradeType.Value, Symbol, Volume, this.botName());
-
+				ExecuteMarketOrder(tradeType.Value, Symbol, Volume, _instanceLabel);
+			}
         }
+
+		private TradeType? signal()
+		{
+			TradeType? tradeType=null;
+            double bbTop = bb.Top.LastValue;
+            double bbBottom = bb.Bottom.LastValue;
+
+            if (Symbol.Ask < bbTop && Symbol.Bid > bbBottom) // Nous sommes entre les bandes de Bollinger.
+				return null;
+
+			//achat en haut des BB, vente en bas
+			if (MarketSeries.isCandleAbove(1, bbTop))
+				tradeType = TradeType.Buy;
+			else if (MarketSeries.iscandleBelow(1, bbBottom))
+				tradeType = TradeType.Sell;
+
+			return tradeType;
+		}
 
         protected void OnPositionOpened(PositionOpenedEventArgs args)
         {
@@ -140,7 +163,7 @@ namespace cAlgo.Robots
         protected override void OnStop()
         {
             base.OnStop();
-            this.closeAllPositions();
+            this.closeAllPositions(_instanceLabel);
         }
 
 

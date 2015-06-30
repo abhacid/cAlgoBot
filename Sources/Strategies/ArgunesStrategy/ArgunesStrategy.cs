@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://github.com/abhacid/cAlgoBot
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region Strategy Infos
@@ -85,17 +85,11 @@ namespace cAlgo.Strategies
 		/// <returns></returns>
 		public override TradeType? signal()
 		{
-			if (!Robot.existBuyPositions() && (ema21.Result.LastValue > ema55.Result.LastValue) && (ema5.Result.HasCrossedAbove(sma8.Result, 0)))
-			{
-				Robot.closeAllSellPositions();
+			if ((ema21.Result.LastValue > ema55.Result.LastValue) && (ema5.Result.HasCrossedAbove(sma8.Result, 0)))
 				return TradeType.Buy;
-			}
 
-			if (!Robot.existSellPositions() && (ema21.Result.LastValue < ema55.Result.LastValue) && (ema5.Result.HasCrossedBelow(sma8.Result, 0)))
-			{
-				Robot.closeAllBuyPositions();
+			if ((ema21.Result.LastValue < ema55.Result.LastValue) && (ema5.Result.HasCrossedBelow(sma8.Result, 0)))
 				return TradeType.Sell;
-			}
 
 			return null;
 		}

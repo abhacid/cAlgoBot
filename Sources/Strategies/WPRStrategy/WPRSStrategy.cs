@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 
@@ -40,12 +40,12 @@ namespace cAlgo.Strategies
 		public int WprMagicNumber { get; set; }
 		public int WprMinMaxPeriod { get; set; }
 		public int WprExceedMinMax { get; set; }
-		public bool IsOnTick { get; set; }
+
 		#endregion
 
 		WPRSIndicator wprs;
 
-		public WPRSStrategy(Robot robot, DataSeries wprSource, int wprPeriod, int wprOverbuyCeil, int wprOversellCeil, int wprMagicNumber, int wprMinMaxPeriod, int wprExceedMinMax, bool isOnTick): base(robot)
+		public WPRSStrategy(Robot robot, DataSeries wprSource, int wprPeriod, int wprOverbuyCeil, int wprOversellCeil, int wprMagicNumber, int wprMinMaxPeriod, int wprExceedMinMax): base(robot)
 		{
 			this.WprSource = wprSource;
 			this.WprPeriod = wprPeriod;
@@ -54,7 +54,6 @@ namespace cAlgo.Strategies
 			this.WprMagicNumber = wprMagicNumber;
 			this.WprMinMaxPeriod = wprMinMaxPeriod;
 			this.WprExceedMinMax = wprExceedMinMax;
-			this.IsOnTick = isOnTick;
 
 			Initialize();
 		}
@@ -72,22 +71,10 @@ namespace cAlgo.Strategies
 		/// <returns></returns>
 		public override TradeType? signal()
 		{
-			if (wprs.IsExceedLow)
-				Robot.closeAllSellPositions();
-			else
-				if (wprs.IsExceedHigh)
-					Robot.closeAllBuyPositions();
-
-			if ((!(Robot.existBuyPositions()) || !IsOnTick) && wprs.IsCrossAboveOversell)
-			{
-				Robot.closeAllSellPositions();
+			if (wprs.IsExceedLow && wprs.IsCrossAboveOversell)
 				return TradeType.Buy;
-			}
-			else if (!(Robot.existSellPositions()) && wprs.IsCrossBelowOverbuy && wprs.IsExceedHigh)
-			{
-				Robot.closeAllBuyPositions();
+			else if (wprs.IsCrossBelowOverbuy && wprs.IsExceedHigh)
 				return TradeType.Sell;
-			}
 
 			return null;
 		}

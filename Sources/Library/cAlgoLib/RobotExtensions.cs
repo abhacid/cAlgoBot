@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://github.com/abhacid/cAlgoBot
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 using cAlgo.API;
@@ -69,14 +69,25 @@ namespace cAlgo.Lib
 		}
 
 		/// <summary>
+		/// Existe t-il au moins une position du type précisé
+		/// </summary>
+		/// <param name="robot">instance of the current robot</param>
+		/// <param name="tradeType">type Buy ou Sell</param>
+		/// <returns>true si le robot actuel possède au moins une position du type tradeType, false sinon</returns>
+		public static bool existPositions(this Robot robot, TradeType tradeType, string label = "")
+		{
+			return (robot.Positions.Find(label, robot.Symbol, tradeType) != null);
+		}
+
+
+		/// <summary>
 		/// Existe t-il au moins une position à l'achat active
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <returns>true si le robot actuel possède au moins une position à l'achat, false sinon</returns>
-		public static bool existBuyPositions(this Robot robot)
+		public static bool existBuyPositions(this Robot robot, string label = "")
 		{
-			return (robot.Positions.Find(botName(robot), robot.Symbol, TradeType.Buy) != null);
-
+			return robot.existPositions(TradeType.Buy,label);
 		}
 
 		/// <summary>
@@ -84,9 +95,9 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <returns>true si le robot actuel possède au moins une position à la vente, false sinon</returns>
-		public static bool existSellPositions(this Robot robot)
+		public static bool existSellPositions(this Robot robot, string label = "")
 		{
-			return (robot.Positions.Find(robot.botName(), robot.Symbol, TradeType.Sell) != null); 
+			return robot.existPositions(TradeType.Sell, label); 
 		}
 
 		/// <summary>
@@ -94,9 +105,9 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <returns>true si le robot actuel possède au moins une position à l'achat, et au moins une à la vente,false sinon</returns>
-		public static bool existBuyAndSellPositions(this Robot robot)
+		public static bool existBuyAndSellPositions(this Robot robot, string label = "")
 		{
-			return robot.existBuyPositions() && robot.existSellPositions();
+			return robot.existBuyPositions(label) && robot.existSellPositions(label);
 		}
 
 		/// <summary>
@@ -104,9 +115,9 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <returns>true Positions.count==0, false sinon</returns>
-		public static bool isNoPositions(this Robot robot)
+		public static bool isNoPositions(this Robot robot, string label = "")
 		{
-			return !(robot.existBuyPositions()) && !(robot.existSellPositions()); 
+			return !(robot.existBuyPositions(label)) && !(robot.existSellPositions(label)); 
 		}
 
 		/// <summary>
@@ -145,9 +156,9 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <param name="tradeType">Le type de trade à clôturer</param>
-		public static void closeAllPositions(this Robot robot, TradeType tradeType)
+		public static void closeAllPositions(this Robot robot, TradeType tradeType, string label = "")
 		{
-			foreach (Position position in robot.Positions.FindAll(robot.botName(), robot.Symbol, tradeType))
+			foreach (Position position in robot.Positions.FindAll(label, robot.Symbol, tradeType))
 				robot.closePosition(position);
 
 		}
@@ -156,28 +167,28 @@ namespace cAlgo.Lib
 		/// Cloture toute les positions de type Buy
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
-		public static void closeAllBuyPositions(this Robot robot)
+		public static void closeAllBuyPositions(this Robot robot, string label = "")
 		{
-			closeAllPositions(robot, TradeType.Buy);
+			closeAllPositions(robot, TradeType.Buy, label);
 		}
 
 		/// <summary>
 		/// Cloture toute les positions de type Sell
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
-		public static void closeAllSellPositions(this Robot robot)
+		public static void closeAllSellPositions(this Robot robot, string label = "")
 		{
-			closeAllPositions(robot, TradeType.Sell);
+			closeAllPositions(robot, TradeType.Sell, label);
 		}
 
 		/// <summary>
 		/// Clôture toutes les positions du robot
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
-		public static void closeAllPositions(this Robot robot)
+		public static void closeAllPositions(this Robot robot, string label = "")
 		{
-			robot.closeAllBuyPositions();
-			robot.closeAllSellPositions();
+			robot.closeAllBuyPositions(label);
+			robot.closeAllSellPositions(label);
 		}
 
 		/// <summary>
@@ -185,10 +196,10 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <param name="tradeType">Tradetype to cancel</param>
-		public static void cancelAllPendingOrders(this Robot robot, TradeType tradeType)
+		public static void cancelAllPendingOrders(this Robot robot, TradeType tradeType, string label = "")
 		{
 			foreach (PendingOrder order in robot.PendingOrders)
-				if (order.Label == robot.botName() && order.SymbolCode == robot.Symbol.Code && order.TradeType==tradeType)
+				if (order.Label == label && order.SymbolCode == robot.Symbol.Code && order.TradeType==tradeType)
                     robot.CancelPendingOrderAsync(order);
 		}
 
@@ -196,28 +207,28 @@ namespace cAlgo.Lib
 		/// Cancel all buy pending orders
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
-		public static void cancelAllPendingBuyOrders(this Robot robot)
+		public static void cancelAllPendingBuyOrders(this Robot robot, string label = "")
 		{
-			cancelAllPendingOrders(robot, TradeType.Buy);
+			cancelAllPendingOrders(robot, TradeType.Buy, label);
 		}
 
 		/// <summary>
 		/// Cancel all sell pending orders
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
-		public static void cancelAllPendingSellOrders(this Robot robot)
+		public static void cancelAllPendingSellOrders(this Robot robot, string label = "")
 		{
-			cancelAllPendingOrders(robot, TradeType.Sell);
+			cancelAllPendingOrders(robot, TradeType.Sell, label);
 		}
 
 		/// <summary>
 		/// Cancel all pending orders
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
-		public static void cancelAllPendingOrders(this Robot robot)
+		public static void cancelAllPendingOrders(this Robot robot, string label = "")
 		{
-			robot.cancelAllPendingBuyOrders();
-			robot.cancelAllPendingSellOrders();
+			robot.cancelAllPendingBuyOrders(label);
+			robot.cancelAllPendingSellOrders(label);
 		}
 
 		/// <summary>
@@ -295,7 +306,7 @@ namespace cAlgo.Lib
 		/// <summary>
 		/// Close losses positions as the saying goes jogging leave earnings, fenced losses.
 		/// </summary>
-		public static void partialClose(this Robot robot, string label)
+		public static void partialClose(this Robot robot, string label = "")
 		{
 			foreach (var position in robot.Positions.FindAll(label, robot.Symbol))
 			{

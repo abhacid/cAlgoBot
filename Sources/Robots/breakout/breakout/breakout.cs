@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region cBot Infos
@@ -31,7 +31,18 @@
 #endregion
 
 #region cBot Parameters Comments
-// h4, GBPUSD, Source=Open, SL=37,TP=62,Volume=100k,BBD=1,BBP=26,BBMAType=Wilder Smoothing,Consolidation=0 donne 20943 euros de gain entre 1/1/2014 et 22/7/2014
+// h4, 
+//GBPUSD, 
+//Source		= Open, 
+//SL			= 37,
+//TP			= 62,
+//Volume		= 100k,
+//BBD			= 1,
+//BBP			= 26,
+//BBMAType		= Wilder Smoothing,
+//Consolidation	= 0 
+
+//donne 20943 euros de gain entre 1/1/2014 et 22/7/2014
 #endregion
 
 #region advertisement
@@ -105,23 +116,23 @@ namespace cAlgo.Robots
             Positions.Opened += OnPositionOpened;
 
             bollingerBands = Indicators.BollingerBands(Source, Periods, Deviation, MAType);
-            BandHeight = (bollingerBands.Top.LastValue - bollingerBands.Bottom.LastValue) / 3;
-            DeltaBollinger = BandHeight / 5;
+            //BandHeight = (bollingerBands.Top.LastValue - bollingerBands.Bottom.LastValue) / 3;
+            //DeltaBollinger = BandHeight / 5;
         }
 
         protected override void OnTick()
         {
-            var isNewTrendBar = lastTrendBarIndex < MarketSeries.Close.Count;
+            bool isNewTrendBar = lastTrendBarIndex < MarketSeries.Close.Count;
             lastTrendBarIndex = MarketSeries.Close.Count;
 
             if (isNewTrendBar)
             {
-                double top = bollingerBands.Top.LastValue + DeltaBollinger;
-                double bottom = bollingerBands.Bottom.LastValue - DeltaBollinger;
+                double top = bollingerBands.Top.LastValue;
+                double bottom = bollingerBands.Bottom.LastValue;
 
                 consolidation = (top - bottom <= BandHeight) ? consolidation + 1 : 0;
 
-                if (Symbol.Ask <= top && Symbol.Bid >= bottom)
+				if((Symbol.Ask <= top + DeltaBollinger) && (Symbol.Bid >= bottom - DeltaBollinger))
                     return;
 
                 if (consolidation >= ConsolidationPeriods)
@@ -129,10 +140,10 @@ namespace cAlgo.Robots
                     TradeType tradeType = TradeType.Sell;
 
                     if (Symbol.Ask > top)
-                        tradeType = (Symbol.Bid > top) ? TradeType.Sell : TradeType.Buy;
+                        tradeType = (Symbol.Bid > top + DeltaBollinger) ? TradeType.Sell : TradeType.Buy;
 
                     if (Symbol.Bid < bottom)
-                        tradeType = (Symbol.Ask < bottom) ? TradeType.Buy : TradeType.Sell;
+                        tradeType = (Symbol.Ask < bottom - DeltaBollinger) ? TradeType.Buy : TradeType.Sell;
 
                     ExecuteMarketOrder(tradeType, Symbol, Volume, this.botName());
 

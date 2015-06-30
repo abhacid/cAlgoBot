@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region cBot Infos
@@ -69,23 +69,28 @@ namespace cAlgo.Robots
 
         protected override void OnStart()
         {
+			Positions.Opened += OnPositionOpened;
+			Positions.Closed += OnPositionClosed;
+
             ExecuteOrder(InitialVolume, TradeType.Sell);
             ExecuteOrder(InitialVolume, TradeType.Buy);
         }
 
-        private void ExecuteOrder(int volume, TradeType tradeType)
+        protected void ExecuteOrder(int volume, TradeType tradeType)
         {
             ExecuteMarketOrder(tradeType, Symbol, volume);
         }
 
-        protected override void OnPositionOpened(Position openedPosition)
+		private void OnPositionOpened(PositionOpenedEventArgs args)
         {
-            position = openedPosition;
+			Position openedPosition = position = args.Position;
             ModifyPosition(openedPosition, GetAbsoluteStopLoss(openedPosition, StopLoss), GetAbsoluteTakeProfit(openedPosition, TakeProfit));
         }
 
-        protected override void OnPositionClosed(Position closedPosition)
+		private void OnPositionClosed(PositionClosedEventArgs args)
         {
+			Position closedPosition = args.Position;
+
             if (closedPosition.GrossProfit > 0)
             {
                 ExecuteOrder(InitialVolume, closedPosition.TradeType);

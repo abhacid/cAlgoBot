@@ -7,7 +7,7 @@ using cAlgo.Lib;
 namespace cAlgo.Indicators
 {
     /// <summary>
-    /// https://calgobots.codeplex.com/discussions/554324
+    /// https://github.com/abhacid/cAlgoBotdiscussions/554324
     /// </summary>
     [Indicator(ScalePrecision = 0, IsOverlay = false, AccessRights = AccessRights.None)]
     [Levels(30, 70)]

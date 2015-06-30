@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region cBot Infos
@@ -40,14 +40,15 @@
 
 using System;
 using cAlgo.API;
+using cAlgo.Lib;
 
 namespace cAlgo.Robots
 {
     [Robot(AccessRights = AccessRights.None)]
     public class PayBackI : Robot
     {
-        [Parameter("Initial Volume", DefaultValue = 10000, MinValue = 0)]
-        public int InitialVolume { get; set; }
+        [Parameter("Volume", DefaultValue = 10000, MinValue = 0)]
+        public int Volume { get; set; }
 
         [Parameter("Stop Loss", DefaultValue = 20)]
         public int StopLoss { get; set; }
@@ -55,7 +56,6 @@ namespace cAlgo.Robots
         [Parameter("Take Profit", DefaultValue = 20)]
         public int TakeProfit { get; set; }
 
-        const long microVolume = 1000;
         const string partialLabel = "PB-I";
 
 
@@ -63,16 +63,15 @@ namespace cAlgo.Robots
         {
             Positions.Opened += OnPositionOpened;
 
-            ExecuteOrder(TradeType.Buy, InitialVolume);
-            ExecuteOrder(TradeType.Sell, InitialVolume);
+            ExecuteOrder(TradeType.Buy, Volume);
+            ExecuteOrder(TradeType.Sell, Volume);
 
         }
 
         private void ExecuteOrder(TradeType tradeType, long volume, string prefixLabel = partialLabel)
         {
-            int nVolumePartition = 6, part1 = 2, part2 = 2;
-            long nVol = (long)Math.Floor((double)(volume / (microVolume * nVolumePartition)));
-            long partialVolume = nVol * microVolume;
+            int parties = 6, part1 = 2, part2 = 2;
+			long partialVolume = Symbol.NormalizeVolume(volume/parties,RoundingMode.ToNearest);
 
             var result1 = ExecuteMarketOrder(tradeType, Symbol, partialVolume * part1, prefixLabel + "1");
             var result2 = ExecuteMarketOrder(tradeType, Symbol, partialVolume * part2, prefixLabel + "2");
@@ -96,9 +95,10 @@ namespace cAlgo.Robots
             {
                 if (position.TakeProfit.HasValue)
                 {
+					int factor = (position.TradeType == TradeType.Buy).factor();
                     string labelType = position.Label.Substring(position.Label.Length - 1, 1);
-                    double potentialGainPips = ((position.TradeType == TradeType.Buy) ? 1 : -1) * (position.TakeProfit.Value - position.EntryPrice) / Symbol.PipSize;
-                    double potentialLosePips = ((position.TradeType == TradeType.Buy) ? 1 : -1) * (position.StopLoss.Value - position.EntryPrice) / Symbol.PipSize;
+                    double potentialGainPips = factor * (position.TakeProfit.Value - position.EntryPrice) / Symbol.PipSize;
+                    double potentialLosePips = factor * (position.StopLoss.Value - position.EntryPrice) / Symbol.PipSize;
                     double percentGain = position.Pips / potentialGainPips;
                     double percentLose = position.Pips / potentialLosePips;
 

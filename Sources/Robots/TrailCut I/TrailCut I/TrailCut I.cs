@@ -139,7 +139,7 @@ namespace cAlgo.Robots
         #endregion
 
 
-        // Gere les cloture des positions pertes selon l'adage laisser courrir les gains, cloturer les pertes.
+        // Gere les cloture des positions en perte selon l'adage laisser courrir les gains, cloturer les pertes.
         private void controlClose()
         {
 
@@ -185,7 +185,7 @@ namespace cAlgo.Robots
 
         }
 
-        private void executeOrder(TradeType tradeType, long volume, string label)
+        private void executeOrder(TradeType tradeType, long volume, string label = "")
         {
             if (volume <= 0)
                 return;

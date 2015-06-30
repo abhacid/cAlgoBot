@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Codeplex : https://calgobots.codeplex.com/
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region cBot Infos
@@ -106,6 +106,7 @@ using cAlgo.Strategies;
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace cAlgo.Robots
 {
@@ -217,7 +218,14 @@ namespace cAlgo.Robots
 
         #endregion
 
-        #region cBot globals
+        #region cBot Variables
+
+
+		private string _botName;
+		private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
+
+		// le label permet de s'y retrouver parmis toutes les instances possibles.
+		private string _instanceLabel;
 
         OrderParams initialOP;
         List<Strategy> strategies;
@@ -235,11 +243,13 @@ namespace cAlgo.Robots
 
             double slippage = 2;
             // maximum slippage in point, if order execution imposes a higher slippage, the order is not executed.
-            string botPrefix = "TCII";
-            // order prefix passed by the bot
-            string comment = string.Format("{0}-{1} {2}", botPrefix, Symbol.Code, TimeFrame);
+
+			_botName = ToString();
+			_instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
+			string positionComment = string.Format("{0}-v{1}", _botName, _botVersion);
+
             // order label passed by the bot
-            initialOP = new OrderParams(null, Symbol, InitialVolume, this.botName(), StopLoss, TakeProfit, slippage, comment, null, new List<double> 
+            initialOP = new OrderParams(null, Symbol, InitialVolume, _instanceLabel, StopLoss, TakeProfit, slippage, positionComment, null, new List<double> 
             {
                 5,
                 3,
@@ -254,7 +264,7 @@ namespace cAlgo.Robots
                 strategies.Add(new ZigZagKwanStrategy(this, MbfxLen, MbfxFilter));
 
             if (IsWPRActif)
-                strategies.Add(new WPRSStrategy(this, WprSource, WprPeriod, WprOverbuyCeil, WprOversellCeil, WprMagicNumber, WprMinMaxPeriod, WprExceedMinMax, IsOnTick));
+                strategies.Add(new WPRSStrategy(this, WprSource, WprPeriod, WprOverbuyCeil, WprOversellCeil, WprMagicNumber, WprMinMaxPeriod, WprExceedMinMax));
 
             if (IsDCActif)
                 strategies.Add(new DoubleCandleStrategy(this, Period, DoubleCandleStep));
@@ -320,7 +330,7 @@ namespace cAlgo.Robots
         protected override void OnStop()
         {
             base.OnStop();
-            this.closeAllPositions();
+            this.closeAllPositions(_instanceLabel);
         }
 
         #endregion
@@ -335,13 +345,20 @@ namespace cAlgo.Robots
             if (CutLoss)
                 this.partialClose(initialOP.Label);
 
-            foreach (Position position in Positions)
+            foreach (Position position in Positions.FindAll(_instanceLabel))
                 position.trailStop(this, TrailStart, TrailStep, TrailStopMin);
 
-            initialOP.TradeType = this.signal(strategies, MultiStrategieSignalCeil);
+            TradeType? tradeType  = this.signal(strategies, MultiStrategieSignalCeil);
 
-            if (initialOP.TradeType.HasValue)
-                this.splitAndExecuteOrder(initialOP);
+			if(tradeType.HasValue)
+			{
+				if(!(this.existPositions(tradeType.Value, _instanceLabel)))
+				{
+					initialOP.TradeType = tradeType;
+					this.closeAllPositions(initialOP.TradeType.inverseTradeType().Value,_instanceLabel);
+					this.splitAndExecuteOrder(initialOP);
+				}
+			}
 
         }
         #endregion
