@@ -119,7 +119,7 @@ namespace cAlgo.Lib
 		/// <returns>le take profit en valeur</returns>
 		public static double? pipsToTakeProfit(this Position position, Symbol symbol, int TPPips)
 		{
-			
+
 			return position.EntryPrice + position.factor() * symbol.PipSize * TPPips;
 
 		}
@@ -129,7 +129,7 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="position">Used position</param>
 		/// <param name="number">valeur à transformer</param>
-		/// <returns>la valeur en pips de number pour Used position</returns>
+		/// <returns>la valeur en pips de number pour position</returns>
 		public static int? valueToPips(this Position position, Symbol symbol, double? number)
 		{
 			if (number.HasValue)
@@ -302,7 +302,7 @@ namespace cAlgo.Lib
 		/// <param name="trailStopMin">Minimal StopLoss</param>
 		/// <param name="isModifyPosition">change the stoploss position or not ?</param>
 		/// <returns>The new stoploss</returns>
-		public static double? trailStop(this  Position position, Robot robot, int trailStart, int trailStep, int trailStopMin, bool isModifyPosition=true)
+		public static double? trailStop(this  Position position, Robot robot, double trailStart, double trailStep, bool isModifyPosition=true)
 		{
 			double? newStopLoss = position.StopLoss;	
 			
@@ -311,7 +311,7 @@ namespace cAlgo.Lib
 				double actualPrice = position.isBuy() ? robot.Symbol.Bid : robot.Symbol.Ask;
 				int factor = position.factor();
 
-				if ((actualPrice - newStopLoss) * factor > (trailStep + trailStopMin) * robot.Symbol.PipSize)
+				if((actualPrice - newStopLoss) * factor > trailStep * robot.Symbol.PipSize)
 				{
 					newStopLoss += factor * trailStep * robot.Symbol.PipSize;
 

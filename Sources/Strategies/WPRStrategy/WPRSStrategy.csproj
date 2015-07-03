@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Indicators\WPRSIndicator\WPRSIndicator\WPRSIndicator.csproj">
-      <Project>{ca694063-c38a-4228-9534-3ce1d442cedf}</Project>
+      <Project>{34c58eba-1b9d-4154-a28b-710dac339d8f}</Project>
       <Name>WPRSIndicator</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Library\cAlgoLib\cAlgo.Lib.csproj">

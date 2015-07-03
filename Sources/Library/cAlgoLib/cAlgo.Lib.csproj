@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BooleanExtensions.cs" />
     <Compile Include="DataSeriesExtensions.cs" />
+    <Compile Include="DoubleExtensions.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IComparableExtensions.cs" />
     <Compile Include="IndicatorDataSeriesExtensions.cs" />

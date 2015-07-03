@@ -1,0 +1,37 @@
+﻿[ChartParameters]
+Symbol = GBPUSD
+Timeframe = m4
+
+[cBotParameters]
+IsWPRActif = True
+IsZZKwanActif = False
+IsZZActif = False
+IsDCActif = False
+IsTMActif = False
+MultiStrategieSignalCeil = 1
+IsOnTick = True
+Martingale = False
+BuyOnly = False
+SellOnly = False
+PartialClose = False
+InitialVolume = 1000
+StopLoss = 107
+TakeProfit = 25
+TrailStart = 46
+TrailStep = 6
+WprSource = Open
+WprPeriod = 15
+WprOverbuyCeil = -62
+WprOversellCeil = -94
+WprMagicNumber = 3
+WprMinMaxPeriod = 119
+WprExceedMinMax = 4
+MbfxLen = 4
+MbfxFilter = -1
+ZzDepth = 12
+ZzDeviation = 5
+ZzBackStep = 3
+DoubleCandlePeriod = 1000
+DoubleCandleStep = 7
+TMCciPeriod = 50
+TMAtrPeriod = 5

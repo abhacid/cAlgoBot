@@ -70,7 +70,7 @@ namespace cAlgo
             SpreadMAResult[index] = ma.Result[index];
 
             string text = string.Format("Spread : {0}, Ask : {1}, Bid : {2}", spread, ask, bid);
-            ChartObjects.DrawText("spread", "\t" + text, StaticPosition.TopLeft, Colors.White);
+            ChartObjects.DrawText("spread", "\t" + text, StaticPosition.TopLeft, Colors.Black);
         }
 
 

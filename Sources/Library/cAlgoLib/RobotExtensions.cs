@@ -62,7 +62,7 @@ namespace cAlgo.Lib
 			{
 				double moneyToInvestInDepositCurrency = robot.Account.Balance * risk/ (double)100;
 				double moneyToInvestInQuoteCurrency = moneyToInvestInDepositCurrency * robot.Symbol.Mid();
-				double volumeToInvestInQuoteCurrency = moneyToInvestInQuoteCurrency / (stopLossPips * robot.Symbol.PipValue);
+				double volumeToInvestInQuoteCurrency = moneyToInvestInQuoteCurrency / (stopLossPips * robot.Symbol.PipSize);
 
 				return volumeToInvestInQuoteCurrency;
 			}

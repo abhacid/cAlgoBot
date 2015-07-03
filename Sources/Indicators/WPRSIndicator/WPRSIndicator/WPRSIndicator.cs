@@ -1,4 +1,28 @@
-﻿// -------------------------------------------------------------------------------
+﻿
+#region Licence
+//The MIT License (MIT)
+//Copyright (c) 2014 abdallah HACID, https://www.facebook.com/ab.hacid
+
+//Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+//and associated documentation files (the "Software"), to deal in the Software without restriction,
+//including without limitation the rights to use, copy, modify, merge, publish, distribute,
+//sublicense, and/or sell copies of the Software, and to permit persons to whom the Software
+//is furnished to do so, subject to the following conditions:
+
+//The above copyright notice and this permission notice shall be included in all copies or
+//substantial portions of the Software.
+
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+//BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+//NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+//DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/Robot_Forex
+#endregion
+
+#region Description
+// -------------------------------------------------------------------------------
 //				WPRSIndicator
 // -------------------------------------------------------------------------------
 
@@ -11,7 +35,7 @@
 //			WPR Period						=   17
 //			WPR Overbuy Ceil				=	-20						//	Seuil d'oversell
 //			WPR Oversell Ceil				=	-80						//	Seuil d'overbuy
-//			WPR Magic Number				=	2						//	Permet d'etendre le temps de detection du signal et cree plus de signaux (Magic)
+//			WPR Crossed Period				=	2						//	Permet d'etendre le temps de detection du signal et cree plus de signaux (Magic)
 //			WPR Min/Max Period				=	114						//	Periode pendant laquelle on calcule le minimum et le maximum pour detecter l'etendue du range
 //			WPR Exceed MinMax				=	2						//	Decalage par rapport au Minimum et au Maximum pour cloturer les positions
 
@@ -19,8 +43,7 @@
 //	L'indicateur Williams Percent Range avec signaux d'achat ou de vente.
 //	Les deux premiers signaux testent le franchissement des seuils de survente (-80) et surachat (-20) tandis que les deux
 //	suivants testent une limite haute et basse basee sur un range calcule sur "WPR Min/Max Period" periodes. 
-
-
+#endregion
 
 using System;
 using cAlgo.API;
@@ -44,8 +67,8 @@ namespace cAlgo.Indicators
         [Parameter("Oversell Ceil", DefaultValue = -80, MinValue = -100, MaxValue = 0)]
         public int OversellCeil { get; set; }
 
-        [Parameter("Magic Number", DefaultValue = 2, MinValue = 0)]
-        public int MagicNumber { get; set; }
+        [Parameter("Crossed Period", DefaultValue = 2, MinValue = 0)]
+        public int CrossedPeriod { get; set; }
 
         [Parameter("Min/Max Period", DefaultValue = 114)]
         public int MinMaxPeriod { get; set; }
@@ -142,25 +165,25 @@ namespace cAlgo.Indicators
                 Result[index] = 0.0;
 
             // Cross above oversell limit (Buy)
-            if (Result.HasCrossedAbove(OversellCeil, MagicNumber))
+            if (Result.HasCrossedAbove(OversellCeil, CrossedPeriod))
                 CrossAboveOversellSignal[index] = wprCrossAboveOversellSignal;
             else
                 CrossAboveOversellSignal[index] = wprCrossAboveOversellNeutralSignal;
 
             // Cross below overbuy limit (Sell)
-            if (Result.HasCrossedBelow(OverbuyCeil, MagicNumber))
+            if (Result.HasCrossedBelow(OverbuyCeil, CrossedPeriod))
                 CrossBelowOverbuySignal[index] = wprCrossBelowOverbuySignal;
             else
                 CrossBelowOverbuySignal[index] = wprCrossBelowOverbuyNeutralSignal;
 
             //Exceed low limit (Buy)
-            if (Result.HasCrossedBelow(wprMin + ExceedMinMax, MagicNumber))
+            if (Result.HasCrossedBelow(wprMin + ExceedMinMax, CrossedPeriod))
                 ExceedMinimumSignal[index] = wprExceedLowSignal;
             else
                 ExceedMinimumSignal[index] = wprExceedLowNeutralSignal;
 
             //Exceed Hight Limit (Sell)
-            if (Result.HasCrossedAbove(wprMax - ExceedMinMax, MagicNumber))
+            if (Result.HasCrossedAbove(wprMax - ExceedMinMax, CrossedPeriod))
                 ExceedMaximumSignal[index] = wprExceedHighSignal;
             else
                 ExceedMaximumSignal[index] = wprExceedHighNeutralSignal;

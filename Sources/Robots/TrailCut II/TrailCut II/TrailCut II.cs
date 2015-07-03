@@ -133,6 +133,22 @@ namespace cAlgo.Robots
         [Parameter("Multi-Strategie Signal Ceil", DefaultValue = 1, MinValue = 1)]
         public int MultiStrategieSignalCeil { get; set; }
 
+        [Parameter("OnTick", DefaultValue = false)]
+        public bool IsOnTick { get; set; }
+
+
+		[Parameter("Martingale", DefaultValue = false)]
+		public bool Martingale { get; set; }
+
+        [Parameter("Buy Only", DefaultValue = false)]
+        public bool BuyOnly { get; set; }
+
+        [Parameter("Sell Only", DefaultValue = false)]
+        public bool SellOnly { get; set; }
+
+        [Parameter("Partial CLose", DefaultValue = false)]
+        public bool PartialClose { get; set; }
+
         [Parameter("Volume", DefaultValue = 100000, MinValue = 0)]
         public int InitialVolume { get; set; }
 
@@ -142,32 +158,11 @@ namespace cAlgo.Robots
         [Parameter("Take Profit", DefaultValue = 1000)]
         public double TakeProfit { get; set; }
 
-        [Parameter("Period", DefaultValue = 1000)]
-        public int Period { get; set; }
-
-        [Parameter("OnTick", DefaultValue = false)]
-        public bool IsOnTick { get; set; }
-
-        [Parameter("Cut Loss", DefaultValue = false)]
-        public bool CutLoss { get; set; }
-
-        [Parameter("Buy Only", DefaultValue = false)]
-        public bool BuyOnly { get; set; }
-
-        [Parameter("Sell Only", DefaultValue = false)]
-        public bool SellOnly { get; set; }
-
-        [Parameter("Martingale", DefaultValue = false)]
-        public bool Martingale { get; set; }
-
         [Parameter("Trail Start", DefaultValue = 3000, MinValue = 1)]
         public int TrailStart { get; set; }
 
         [Parameter("Trail Step", DefaultValue = 3, MinValue = 0)]
         public int TrailStep { get; set; }
-
-        [Parameter("Trail Stop Min", DefaultValue = 29, MinValue = 0)]
-        public int TrailStopMin { get; set; }
 
         [Parameter("WPR Source")]
         // Placer a Open
@@ -191,24 +186,26 @@ namespace cAlgo.Robots
         [Parameter("WPR Exceed MinMax", DefaultValue = 2)]
         public int WprExceedMinMax { get; set; }
 
-        [Parameter("MBFX Len", DefaultValue = 4, MinValue = 0)]
+		[Parameter("ZigZagKwan MBFX Len", DefaultValue = 4, MinValue = 0)]
         public int MbfxLen { get; set; }
 
-        [Parameter("MBFX Filter", DefaultValue = -1.0)]
+        [Parameter("ZigZagKwan MBFX Filter", DefaultValue = -1.0)]
         public double MbfxFilter { get; set; }
 
-        [Parameter("ZigZagIndicator Depth", DefaultValue = 12)]
+        [Parameter("ZigZag Depth", DefaultValue = 12)]
         public int ZzDepth { get; set; }
 
-        [Parameter("ZigZagIndicator Deviation", DefaultValue = 5)]
+        [Parameter("ZigZag Deviation", DefaultValue = 5)]
         public int ZzDeviation { get; set; }
 
-        [Parameter("ZigZagIndicator BackStep", DefaultValue = 3)]
+        [Parameter("ZigZag BackStep", DefaultValue = 3)]
         public int ZzBackStep { get; set; }
+
+		[Parameter("Double Candle Period", DefaultValue = 1000)]
+		public int DoubleCandlePeriod { get; set; }
 
         [Parameter("Double Candle step", DefaultValue = 7)]
         public int DoubleCandleStep { get; set; }
-
 
         [Parameter("Trend Magic CCIPeriod", DefaultValue = 50)]
         public int TMCciPeriod { get; set; }
@@ -221,11 +218,11 @@ namespace cAlgo.Robots
         #region cBot Variables
 
 
-		private string _botName;
-		private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
+        private string _botName;
+        private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
 
-		// le label permet de s'y retrouver parmis toutes les instances possibles.
-		private string _instanceLabel;
+        // le label permet de s'y retrouver parmis toutes les instances possibles.
+        private string _instanceLabel;
 
         OrderParams initialOP;
         List<Strategy> strategies;
@@ -244,9 +241,9 @@ namespace cAlgo.Robots
             double slippage = 2;
             // maximum slippage in point, if order execution imposes a higher slippage, the order is not executed.
 
-			_botName = ToString();
-			_instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
-			string positionComment = string.Format("{0}-v{1}", _botName, _botVersion);
+            _botName = ToString();
+            _instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
+            string positionComment = string.Format("{0}-v{1}", _botName, _botVersion);
 
             // order label passed by the bot
             initialOP = new OrderParams(null, Symbol, InitialVolume, _instanceLabel, StopLoss, TakeProfit, slippage, positionComment, null, new List<double> 
@@ -267,7 +264,7 @@ namespace cAlgo.Robots
                 strategies.Add(new WPRSStrategy(this, WprSource, WprPeriod, WprOverbuyCeil, WprOversellCeil, WprMagicNumber, WprMinMaxPeriod, WprExceedMinMax));
 
             if (IsDCActif)
-                strategies.Add(new DoubleCandleStrategy(this, Period, DoubleCandleStep));
+                strategies.Add(new DoubleCandleStrategy(this, DoubleCandlePeriod, DoubleCandleStep));
 
             if (IsZZActif)
                 strategies.Add(new ZigZagStrategy(this, ZzDepth, ZzDeviation, ZzBackStep));
@@ -342,23 +339,23 @@ namespace cAlgo.Robots
         /// </summary>
         private void controlRobot()
         {
-            if (CutLoss)
+            if (PartialClose)
                 this.partialClose(initialOP.Label);
 
             foreach (Position position in Positions.FindAll(_instanceLabel))
-                position.trailStop(this, TrailStart, TrailStep, TrailStopMin);
+                position.trailStop(this, TrailStart, TrailStep);
 
-            TradeType? tradeType  = this.signal(strategies, MultiStrategieSignalCeil);
+            TradeType? tradeType = this.signal(strategies, MultiStrategieSignalCeil);
 
-			if(tradeType.HasValue)
-			{
-				if(!(this.existPositions(tradeType.Value, _instanceLabel)))
-				{
-					initialOP.TradeType = tradeType;
-					this.closeAllPositions(initialOP.TradeType.inverseTradeType().Value,_instanceLabel);
-					this.splitAndExecuteOrder(initialOP);
-				}
-			}
+            if (tradeType.HasValue)
+            {
+                if (!(this.existPositions(tradeType.Value, _instanceLabel)))
+                {
+                    initialOP.TradeType = tradeType;
+                    this.closeAllPositions(initialOP.TradeType.inverseTradeType().Value, _instanceLabel);
+                    this.splitAndExecuteOrder(initialOP);
+                }
+            }
 
         }
         #endregion

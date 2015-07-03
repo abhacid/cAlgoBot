@@ -37,7 +37,7 @@ namespace cAlgo.Strategies
 		public int WprPeriod { get; set; }
 		public int WprOverbuyCeil { get; set; }
 		public int WprOversellCeil { get; set; }
-		public int WprMagicNumber { get; set; }
+		public int WprCrossedPeriod { get; set; }
 		public int WprMinMaxPeriod { get; set; }
 		public int WprExceedMinMax { get; set; }
 
@@ -45,13 +45,13 @@ namespace cAlgo.Strategies
 
 		WPRSIndicator wprs;
 
-		public WPRSStrategy(Robot robot, DataSeries wprSource, int wprPeriod, int wprOverbuyCeil, int wprOversellCeil, int wprMagicNumber, int wprMinMaxPeriod, int wprExceedMinMax): base(robot)
+		public WPRSStrategy(Robot robot, DataSeries wprSource, int wprPeriod, int wprOverbuyCeil, int wprOversellCeil, int wprCrossedPeriod, int wprMinMaxPeriod, int wprExceedMinMax): base(robot)
 		{
 			this.WprSource = wprSource;
 			this.WprPeriod = wprPeriod;
 			this.WprOverbuyCeil = wprOverbuyCeil;
 			this.WprOversellCeil = wprOversellCeil;
-			this.WprMagicNumber = wprMagicNumber;
+			this.WprCrossedPeriod = wprCrossedPeriod;
 			this.WprMinMaxPeriod = wprMinMaxPeriod;
 			this.WprExceedMinMax = wprExceedMinMax;
 
@@ -60,11 +60,10 @@ namespace cAlgo.Strategies
 
 		protected override void Initialize()
 		{
-			wprs = Robot.Indicators.GetIndicator<WPRSIndicator>(WprSource, WprPeriod, WprOverbuyCeil, WprOversellCeil, WprMagicNumber, WprMinMaxPeriod, WprExceedMinMax);
+			wprs = Robot.Indicators.GetIndicator<WPRSIndicator>(WprSource, WprPeriod, WprOverbuyCeil, WprOversellCeil, WprCrossedPeriod, WprMinMaxPeriod, WprExceedMinMax);
 
 		}
 
-		static double zigZagPrevValue;
 		/// <summary>
 		/// Strategy according to Williams Percent Range indicator
 		/// </summary>

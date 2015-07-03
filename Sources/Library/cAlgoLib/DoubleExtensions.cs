@@ -20,58 +20,23 @@
 // Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
-
-using cAlgo;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using cAlgo.API;
-using cAlgo.API.Indicators;
-using cAlgo.API.Internals;
-using cAlgo.Indicators;
-using cAlgo.Lib;
 
-namespace cAlgo.Strategies
+namespace cAlgo.Lib
 {
-	public class TrendMagicStrategy : Strategy
+	/// <summary>
+	/// Extensions methods of double
+	/// </summary>	public static class DoubleExtensions
+	public static class DoubleExtensions
 	{
-		#region Strategy Parameters
-		public int TmCciPeriod { get; set; }
-
-		public int TmAtrPeriod { get; set; }
-		#endregion
-
-		TrendMagicIndicator trendMagic;
-		private CommodityChannelIndex _cci;
-
-		public TrendMagicStrategy(Robot robot,int tmCciPeriod, int tmAtrPeriod) : base(robot)
+		public static double round(this double value, Robot robot)
 		{
-			this.TmAtrPeriod = tmAtrPeriod;
-			this.TmCciPeriod = TmCciPeriod;
-
-			Initialize();
+			return (double)Math.Round((decimal)value, robot.Symbol.Digits, MidpointRounding.AwayFromZero);
 		}
-
-		protected override void Initialize()
-		{
-			trendMagic = Robot.Indicators.GetIndicator<TrendMagicIndicator>(TmCciPeriod, TmAtrPeriod);
-			_cci = Robot.Indicators.CommodityChannelIndex(TmCciPeriod);
-
-
-		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <returns></returns>
-		public override TradeType? signal()
-		{
-			if (trendMagic.BufferUpOutput.HasCrossedAbove(Robot.Symbol.Ask, 1) && _cci.Result.LastValue > 0)
-				return TradeType.Buy;
-			else
-				if (trendMagic.BufferDnOutput.HasCrossedBelow(Robot.Symbol.Bid, 1) && _cci.Result.LastValue < 0)
-					return TradeType.Sell;
-
-			return null;
-		}
-
 
 	}
 }

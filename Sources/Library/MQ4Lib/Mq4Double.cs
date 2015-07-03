@@ -18,6 +18,16 @@ namespace cAlgo.MQ4
             _value = value;
         }
 
+		public override bool Equals(object obj)
+		{
+			return base.Equals(obj);
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+
         public static implicit operator double(Mq4Double property)
         {
             return property._value;

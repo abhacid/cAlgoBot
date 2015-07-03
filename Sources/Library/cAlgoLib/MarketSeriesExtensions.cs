@@ -187,9 +187,9 @@ namespace cAlgo.Lib
 		/// <param name="period"></param>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		public static int volatilityInPips(this MarketSeries marketSeries, int period, Symbol symbol)
+		public static double volatilityInPips(this MarketSeries marketSeries, int period, Symbol symbol)
 		{
-			return (int)(marketSeries.volatility(period)/symbol.PipSize);
+			return marketSeries.volatility(period) / symbol.PipSize;
 		}
 
 

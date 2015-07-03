@@ -1915,6 +1915,17 @@ namespace cAlgo.Indicators
             _value = value;
         }
 
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+
+		public override bool Equals(object obj)
+		{
+			return base.Equals(obj);
+		}
+
+
         public static implicit operator Mq4String(string value)
         {
             return new Mq4String(value);
@@ -2485,6 +2496,18 @@ namespace cAlgo.Indicators
         {
             _value = value;
         }
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+
+		public override bool Equals(object obj)
+		{
+			return base.Equals(obj);
+		}
+
+
 
         public static implicit operator double(Mq4Double property)
         {

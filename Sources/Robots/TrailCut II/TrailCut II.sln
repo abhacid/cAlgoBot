@@ -1,7 +1,42 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrailCut II", "TrailCut II\TrailCut II.csproj", "{3E5CAA92-0072-45EF-8390-B3F22D13ACDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleCandleStrategy", "..\..\Strategies\DoubleCandleStrategy\DoubleCandleStrategy.csproj", "{3A72E9D5-59D4-453F-9DEB-416357BCA25F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendMagicStrategy", "..\..\Strategies\TrendMagicStrategy\TrendMagicStrategy.csproj", "{F5913048-87E6-4458-8A31-243A5601AC41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPRSStrategy", "..\..\Strategies\WPRStrategy\WPRSStrategy.csproj", "{E185CAD6-92BC-422F-AEA4-8E8CAA741043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZigZagKwanStrategy", "..\..\Strategies\ZigZagKwanStrategy\ZigZagKwanStrategy.csproj", "{A07128EA-E3F4-487F-A2A2-63FDBA056639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZigZagStrategy", "..\..\Strategies\ZigZagStrategy\ZigZagStrategy.csproj", "{5F23260E-3FBD-4301-A255-F228A11AB154}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cAlgo.Lib", "..\..\Library\cAlgoLib\cAlgo.Lib.csproj", "{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendMagicIndicator", "..\..\Indicators\TrendMagicIndicator\TrendMagicIndicator\TrendMagicIndicator.csproj", "{40E27026-684C-4266-830A-B827A44A03E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPRSIndicator", "..\..\Indicators\WPRSIndicator\WPRSIndicator\WPRSIndicator.csproj", "{34C58EBA-1B9D-4154-A28B-710DAC339D8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZigZagIndicator", "..\..\Indicators\ZigZagIndicator\ZigZagIndicator\ZigZagIndicator.csproj", "{7A611B24-22F6-4E20-AF96-E85C501C5108}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZigZagKwanIndicator", "..\..\Indicators\ZigZagKwanIndicator\ZigZagKwanIndicator\ZigZagKwanIndicator.csproj", "{02DB3BC1-493B-476E-A1BE-B2372229AF59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQ4Lib", "..\..\Library\MQ4Lib\MQ4Lib.csproj", "{747044E7-4E4B-458B-94C3-3B8A9797B1A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backtests and optimisations", "Backtests and optimisations", "{8757E2A2-1722-4624-80DC-3308CF591663}"
+	ProjectSection(SolutionItems) = preProject
+		TrailCut II\Backtests et optimisations\TrailCut II, GBPUSD m4.cbotset = TrailCut II\Backtests et optimisations\TrailCut II, GBPUSD m4.cbotset
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strategies", "Strategies", "{AD75F212-3DFC-42EB-8602-A953390FCCA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Indicators", "Indicators", "{10CBC211-B480-46C3-96D3-3CADF1AB5E17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{56127ADE-162B-4C1B-B151-D646A3BA4CBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,8 +48,65 @@ Global
 		{3E5CAA92-0072-45EF-8390-B3F22D13ACDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E5CAA92-0072-45EF-8390-B3F22D13ACDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E5CAA92-0072-45EF-8390-B3F22D13ACDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A72E9D5-59D4-453F-9DEB-416357BCA25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A72E9D5-59D4-453F-9DEB-416357BCA25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A72E9D5-59D4-453F-9DEB-416357BCA25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A72E9D5-59D4-453F-9DEB-416357BCA25F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5913048-87E6-4458-8A31-243A5601AC41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5913048-87E6-4458-8A31-243A5601AC41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5913048-87E6-4458-8A31-243A5601AC41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5913048-87E6-4458-8A31-243A5601AC41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E185CAD6-92BC-422F-AEA4-8E8CAA741043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E185CAD6-92BC-422F-AEA4-8E8CAA741043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E185CAD6-92BC-422F-AEA4-8E8CAA741043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E185CAD6-92BC-422F-AEA4-8E8CAA741043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A07128EA-E3F4-487F-A2A2-63FDBA056639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A07128EA-E3F4-487F-A2A2-63FDBA056639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A07128EA-E3F4-487F-A2A2-63FDBA056639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A07128EA-E3F4-487F-A2A2-63FDBA056639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F23260E-3FBD-4301-A255-F228A11AB154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F23260E-3FBD-4301-A255-F228A11AB154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F23260E-3FBD-4301-A255-F228A11AB154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F23260E-3FBD-4301-A255-F228A11AB154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40E27026-684C-4266-830A-B827A44A03E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40E27026-684C-4266-830A-B827A44A03E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40E27026-684C-4266-830A-B827A44A03E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40E27026-684C-4266-830A-B827A44A03E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C58EBA-1B9D-4154-A28B-710DAC339D8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C58EBA-1B9D-4154-A28B-710DAC339D8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C58EBA-1B9D-4154-A28B-710DAC339D8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C58EBA-1B9D-4154-A28B-710DAC339D8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A611B24-22F6-4E20-AF96-E85C501C5108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A611B24-22F6-4E20-AF96-E85C501C5108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A611B24-22F6-4E20-AF96-E85C501C5108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A611B24-22F6-4E20-AF96-E85C501C5108}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02DB3BC1-493B-476E-A1BE-B2372229AF59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02DB3BC1-493B-476E-A1BE-B2372229AF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02DB3BC1-493B-476E-A1BE-B2372229AF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02DB3BC1-493B-476E-A1BE-B2372229AF59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{747044E7-4E4B-458B-94C3-3B8A9797B1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747044E7-4E4B-458B-94C3-3B8A9797B1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747044E7-4E4B-458B-94C3-3B8A9797B1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747044E7-4E4B-458B-94C3-3B8A9797B1A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3A72E9D5-59D4-453F-9DEB-416357BCA25F} = {AD75F212-3DFC-42EB-8602-A953390FCCA0}
+		{F5913048-87E6-4458-8A31-243A5601AC41} = {AD75F212-3DFC-42EB-8602-A953390FCCA0}
+		{E185CAD6-92BC-422F-AEA4-8E8CAA741043} = {AD75F212-3DFC-42EB-8602-A953390FCCA0}
+		{A07128EA-E3F4-487F-A2A2-63FDBA056639} = {AD75F212-3DFC-42EB-8602-A953390FCCA0}
+		{5F23260E-3FBD-4301-A255-F228A11AB154} = {AD75F212-3DFC-42EB-8602-A953390FCCA0}
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C} = {56127ADE-162B-4C1B-B151-D646A3BA4CBA}
+		{40E27026-684C-4266-830A-B827A44A03E9} = {10CBC211-B480-46C3-96D3-3CADF1AB5E17}
+		{34C58EBA-1B9D-4154-A28B-710DAC339D8F} = {10CBC211-B480-46C3-96D3-3CADF1AB5E17}
+		{7A611B24-22F6-4E20-AF96-E85C501C5108} = {10CBC211-B480-46C3-96D3-3CADF1AB5E17}
+		{02DB3BC1-493B-476E-A1BE-B2372229AF59} = {10CBC211-B480-46C3-96D3-3CADF1AB5E17}
+		{747044E7-4E4B-458B-94C3-3B8A9797B1A5} = {56127ADE-162B-4C1B-B151-D646A3BA4CBA}
 	EndGlobalSection
 EndGlobal
