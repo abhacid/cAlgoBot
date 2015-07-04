@@ -6,7 +6,7 @@ Projet de création d'une librarie pour cAlgo en Csharp et des robots modulaires
 
 Ce projet à pour but de développer un programme intégrant divers Robots de trading en CSharp.
 
-Vous pouvez aussi visionner des vidéos sur la programmation de robots avec Visual Studio sur ma [ma chaîne Youtube](https://www.youtube.com/watch?v=jNHK04wC8vA&list=PLw0gAndxrtrFXkPCeUVqGwLrook-JeUTz)
+Vous pouvez aussi visionner des vidéos sur la programmation de robots avec Visual Studio sur ma [ma chaîne Youtube](https://www.youtube.com/channel/UCJRZFsmT5LemtSPDxeWWVJg)
 
 ## Descrition
 
