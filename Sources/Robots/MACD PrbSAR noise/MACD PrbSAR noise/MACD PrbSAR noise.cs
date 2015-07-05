@@ -1,6 +1,32 @@
-﻿//+------------------------------------------------------------------+
-//+                          Code generated using FxPro Quant 2.0.12 |
-//+------------------------------------------------------------------+
+﻿#region Licence
+//The MIT License (MIT)
+//Copyright (c) 2014 abdallah HACID, https://www.facebook.com/ab.hacid
+
+//Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+//and associated documentation files (the "Software"), to deal in the Software without restriction,
+//including without limitation the rights to use, copy, modify, merge, publish, distribute,
+//sublicense, and/or sell copies of the Software, and to permit persons to whom the Software
+//is furnished to do so, subject to the following conditions:
+
+//The above copyright notice and this permission notice shall be included in all copies or
+//substantial portions of the Software.
+
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+//BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+//NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+//DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
+#endregion
+
+#region cBot Infos
+// -------------------------------------------------------------------------------
+//	Code based on generator using FxPro Quant 2.0.12
+//	author egormas Masakou Yahor, Belarus, http://ctdn.com/algos/cbots/show/714
+//	Modified by Abdallah Hacid, France 
+// -------------------------------------------------------------------------------
+#endregion
 
 using System;
 using System.Reflection;
@@ -8,10 +34,6 @@ using System.Threading;
 using cAlgo.API;
 using cAlgo.API.Indicators;
 using cAlgo.API.Internals;
-using cAlgo.API.Requests;
-using cAlgo.Indicators;
-using cAlgo.Lib;
-using FxProQuant.Lib;
 
 
 namespace cAlgo.Robots
@@ -21,9 +43,9 @@ namespace cAlgo.Robots
     {
 
         [Parameter("Period_MACD_SMA", DefaultValue = 9)]
-        public int Period_MACD_SMA { get; set; }       
-		
-		[Parameter("Noise_MACD_sm", DefaultValue = 41)]
+        public int Period_MACD_SMA { get; set; }
+
+        [Parameter("Noise_MACD_sm", DefaultValue = 41)]
         public int Noise_MACD_sm { get; set; }
 
         [Parameter("Noise_MACD_m0", DefaultValue = 161)]
@@ -39,7 +61,7 @@ namespace cAlgo.Robots
         public double Step_PrbSAR { get; set; }
 
         [Parameter("Volume", DefaultValue = 10000)]
-        public long Volume { get; set; }
+        public int Volume { get; set; }
 
         [Parameter("Stop_Loss", DefaultValue = 300)]
         public int Stop_Loss { get; set; }
@@ -70,37 +92,32 @@ namespace cAlgo.Robots
 
         DateTime LastTradeExecution = new DateTime(0);
 
-		private string _botName;
-		private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
+        private string _botName;
+        private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
 
-		// le label permet de s'y retrouver parmis toutes les instances possibles.
-		private string _instanceLabel;
+        // le label permet de s'y retrouver parmis toutes les instances possibles.
+        private string _instanceLabel;
 
-		private Position _position;
+        private Position _position;
 
         protected override void OnStart()
         {
-			_botName = ToString();
-			_instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
-			_position = null;
+            _botName = ToString();
+            _instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
+            _position = null;
 
             i_MACD_main = Indicators.MacdHistogram(MarketSeries.Close, Period_SlowEMA, Period_FastEMA, Period_MACD_SMA);
             i_MCAD_signal = Indicators.MacdHistogram(MarketSeries.Close, Period_SlowEMA, Period_FastEMA, Period_MACD_SMA);
             i_MA_Close = Indicators.SimpleMovingAverage(MarketSeries.Close, 1);
             i_Parabolic_SAR = Indicators.ParabolicSAR(Step_PrbSAR, 0.1);
             i_MA_Open = Indicators.SimpleMovingAverage(MarketSeries.Open, 1);
-            i_EMAf = Indicators.ExponentialMovingAverage(MarketSeries.Close, (int)Period_FastEMA);
+            i_EMAf = Indicators.ExponentialMovingAverage(MarketSeries.Close, Period_FastEMA);
         }
 
         protected override void OnTick()
         {
             if (Trade.IsExecuting)
                 return;
-
-            TriState _Open_Buy = new TriState();
-            TriState _Open_Sell = new TriState();
-            TriState _Close_Sell = new TriState();
-            TriState _Close_Buy = new TriState();
 
             _MACD_main = i_MACD_main.Histogram.Last(0);
             _MCAD_signal = i_MCAD_signal.Signal.Last(0);
@@ -112,80 +129,64 @@ namespace cAlgo.Robots
             _isMacdSignalPositive = (_MCAD_signal > 0);
             _isParabolicSARBelowMaClose = (_Parabolic_SAR < _MA_Close);
 
-			TradeType? tradeType = signal();
-			if(tradeType.HasValue)
-				openPosition(tradeType, Volume, 0, Stop_Loss, null, "");
-			
-			if(_position!=null && _position.NetProfit > Math.Abs(_position.Commissions + _position.Swap))
-			{
-				if(_position.TradeType==TradeType.Sell && _isMacdMainAboveMacdSignal && _isParabolicSARBelowMaClose)
-					closePosition();
-				else
-					if (_position.TradeType==TradeType.Buy && !_isMacdMainAboveMacdSignal && !_isParabolicSARBelowMaClose)
-							closePosition();
-			}
+            TradeType? tradeType = signal();
+            if (tradeType.HasValue)
+                openPosition(tradeType, Volume, 0, Stop_Loss, null, "");
+
+            if (_position != null && _position.NetProfit > Math.Abs(_position.Commissions + _position.Swap))
+            {
+                if (_position.TradeType == TradeType.Sell && _isMacdMainAboveMacdSignal && _isParabolicSARBelowMaClose)
+                    closePosition();
+                else if (_position.TradeType == TradeType.Buy && !_isMacdMainAboveMacdSignal && !_isParabolicSARBelowMaClose)
+                    closePosition();
+            }
         }
 
-		private TradeType? signal()
-		{
-			TradeType? tradeType=null;
+        private TradeType? signal()
+        {
+            TradeType? tradeType = null;
 
-			if((_isMacdMainAboveMacdSignal &&
-				_isMacdMainPositive &&
-				_isParabolicSARBelowMaClose &&
-				(Math.Abs(_MACD_main - _MCAD_signal) > (Noise_MACD_sm / (Math.Pow(10, Symbol.Digits)))) &&
-				(Math.Abs(_MACD_main) > (Noise_MACD_m0 / (Math.Pow(10, Symbol.Digits)))) &&
-				(Math.Abs(_Parabolic_SAR - i_EMAf.Result.Last(0)) > (Noise_Prb_SAR_ema / (Math.Pow(10, Symbol.Digits)))) &&
-				(Math.Abs(_MCAD_signal) > (Noise_MACD_s0 / (Math.Pow(10, Symbol.Digits)))) &&
-				_isMacdSignalPositive))
-					
-					tradeType = TradeType.Buy;
-			else
-				if((!_isMacdMainAboveMacdSignal &&
-					  !_isMacdMainPositive &&
-					  !_isParabolicSARBelowMaClose &&
-					  (Math.Abs(_MACD_main - _MCAD_signal) > (Noise_MACD_sm / (Math.Pow(10, Symbol.Digits)))) &&
-					  (Math.Abs(_MACD_main) > (Noise_MACD_m0 / (Math.Pow(10, Symbol.Digits)))) &&
-					  (Math.Abs((_Parabolic_SAR - i_EMAf.Result.Last(0))) > (Noise_Prb_SAR_ema / (Math.Pow(10, Symbol.Digits)))) &&
-					  (Math.Abs(_MCAD_signal) > (Noise_MACD_s0 / (Math.Pow(10, Symbol.Digits)))) &&
-					  !_isMacdSignalPositive))
-						
-						tradeType = TradeType.Sell;
+            if ((_isMacdMainAboveMacdSignal && _isMacdMainPositive && _isParabolicSARBelowMaClose && (Math.Abs(_MACD_main - _MCAD_signal) > (Noise_MACD_sm / (Math.Pow(10, Symbol.Digits)))) && (Math.Abs(_MACD_main) > (Noise_MACD_m0 / (Math.Pow(10, Symbol.Digits)))) && (Math.Abs(_Parabolic_SAR - i_EMAf.Result.Last(0)) > (Noise_Prb_SAR_ema / (Math.Pow(10, Symbol.Digits)))) && (Math.Abs(_MCAD_signal) > (Noise_MACD_s0 / (Math.Pow(10, Symbol.Digits)))) && _isMacdSignalPositive))
 
-			return tradeType;
-		}
+                tradeType = TradeType.Buy;
+            else if ((!_isMacdMainAboveMacdSignal && !_isMacdMainPositive && !_isParabolicSARBelowMaClose && (Math.Abs(_MACD_main - _MCAD_signal) > (Noise_MACD_sm / (Math.Pow(10, Symbol.Digits)))) && (Math.Abs(_MACD_main) > (Noise_MACD_m0 / (Math.Pow(10, Symbol.Digits)))) && (Math.Abs((_Parabolic_SAR - i_EMAf.Result.Last(0))) > (Noise_Prb_SAR_ema / (Math.Pow(10, Symbol.Digits)))) && (Math.Abs(_MCAD_signal) > (Noise_MACD_s0 / (Math.Pow(10, Symbol.Digits)))) && !_isMacdSignalPositive))
+
+                tradeType = TradeType.Sell;
+
+            return tradeType;
+        }
 
         private TradeResult openPosition(TradeType? tradeType, long volume, double slippage, double? stopLoss, double? takeProfit, string comment)
         {
-			if(!(tradeType.HasValue) || _position != null)
-				return null;
+            if (!(tradeType.HasValue) || _position != null)
+                return null;
 
-			TradeResult tradeResult=ExecuteMarketOrder(tradeType.Value, Symbol, volume, _instanceLabel, stopLoss, takeProfit, slippage, comment);
+            TradeResult tradeResult = ExecuteMarketOrder(tradeType.Value, Symbol, volume, _instanceLabel, stopLoss, takeProfit, slippage, comment);
 
             if (!(tradeResult.IsSuccessful))
                 Thread.Sleep(400);
-			else
-				_position = tradeResult.Position;
+            else
+                _position = tradeResult.Position;
 
             return tradeResult;
         }
 
-		private TradeResult closePosition()
+        private TradeResult closePosition()
         {
-			if(_position == null)
-				return null;
-			
+            if (_position == null)
+                return null;
+
             TradeResult tradeResult = ClosePosition(_position);
 
-			if(!(tradeResult.IsSuccessful))
-				Thread.Sleep(400);
-			else
-				_position = null;
+            if (!(tradeResult.IsSuccessful))
+                Thread.Sleep(400);
+            else
+                _position = null;
 
             return tradeResult;
         }
 
-      
+
     }
 }
 
