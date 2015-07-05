@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1402ABB9-3D7C-46B2-B59F-E3DA2AB1A2C2}</ProjectGuid>
+    <ProjectGuid>{B7675495-6425-421A-ACE8-5501E0CB6BE3}</ProjectGuid>
     <ProjectTypeGuids>{DD87C1B2-3799-4CA2-93B6-5288EE928820};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -48,10 +48,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MACD PrbSAR noise.PNG" />
+    <None Include="MACD PrbSAR noise II.url" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MACD PrbSAR noise.url" />
+    <Content Include="MACD PrbSAR noise II.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
