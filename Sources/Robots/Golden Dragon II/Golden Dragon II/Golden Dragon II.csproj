@@ -71,6 +71,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Golden Dragon II, XAUUSD m1.cbotset" />
     <None Include="Golden Dragon II.url" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Golden Dragon II, XAUUSD m1.JPG" />
   </ItemGroup>
 </Project>

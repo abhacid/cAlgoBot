@@ -1,0 +1,31 @@
+﻿[ChartParameters]
+Symbol = XAUUSD
+Timeframe = m1
+
+[cBotParameters]
+DragonNumber = 1
+cogDegree = 1
+cog1Periods = 126
+cog2Periods = 219
+cog3Periods = 472
+Inner = 0.9
+Middle = 0.9
+Outer = 2.5
+cogBias = 0
+TradeVolume = 10
+Slippage = 15
+StopLoss = 60
+MinimumPips = 2
+TrailingStops = True
+TrailingStopTrigger = 500
+TrailingStopDistance = 501
+EquityStop = 0.1
+BalanceStop = 0.5
+MaxLongTrades = 7
+MaxShortTrades = 3
+TradeDelay = 1
+WaitOnLoss = 4
+Martingale = False
+BelkhayateTimingFilter = False
+HullFilter = True
+HullPeriod = 2
