@@ -192,6 +192,22 @@ namespace cAlgo.Lib
 			return marketSeries.volatility(period) / symbol.PipSize;
 		}
 
-
+		/// <summary>
+		/// Renvoie le nombre de bougies, selon l'instrument et timeframe courant du robot, terminees apres l'entree en position
+		/// </summary>
+		/// <remarks>
+		/// </remarks>
+		/// <param name="robot">instance of the current robot</param>
+		/// <param name="position">Used position</param>
+		/// <returns>Nombre de bougies écoulée depuis l'entrée en position</returns>
+		public static int barsAgo(this MarketSeries marketSeries, Position position)
+		{
+			for(var i = marketSeries.OpenTime.Count - 1; i >= 0; i--)
+			{
+				if(position.EntryTime > marketSeries.OpenTime[i])
+					return marketSeries.OpenTime.Count - 1 - i;
+			}
+			return -1;
+		}
 	}
 }

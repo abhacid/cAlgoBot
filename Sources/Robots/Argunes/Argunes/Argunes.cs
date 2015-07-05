@@ -33,7 +33,7 @@
 //
 //	Thanks for offering help. I'll share a part of my trading system with you and if possible i would like to have an indicator showing my buy/sell signals. 
 //
-//	First part of my trading system includes moving averages. 
+//	Find part of my trading system includes moving averages. 
 //	Here are the values, 
 //	5 EMA (close), 
 //	8 SMA (open), 

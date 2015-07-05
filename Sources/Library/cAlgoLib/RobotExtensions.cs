@@ -28,6 +28,7 @@ using System.Net.Mail;
 using System.Linq;
 using System.Collections.Generic;
 using cAlgo.Strategies;
+using System.Threading;
 
 namespace cAlgo.Lib
 {
@@ -121,21 +122,21 @@ namespace cAlgo.Lib
 		}
 
 		/// <summary>
-		/// Renvoie le nombre de bougies, selon l'instrument et timeframe courant du robot, terminees apres l'entree en position
+		/// Clôture une position, et gère un message d'erreur en cas d'insuccès
 		/// </summary>
-		/// <remarks>
-		/// </remarks>
 		/// <param name="robot">instance of the current robot</param>
-		/// <param name="position">Used position</param>
-		/// <returns>Nombre de bougies écoulée depuis l'entrée en position</returns>
-		public static int barsAgo(this Robot robot, Position position)
+		/// <param name="position">La position à clôturer</param>
+		public static TradeResult closePosition(this Robot robot, Position position, double volume)
 		{
-			for (var i = robot.MarketSeries.OpenTime.Count - 1; i >= 0; i--)
-			{
-				if (position.EntryTime > robot.MarketSeries.OpenTime[i])
-					return robot.MarketSeries.OpenTime.Count - 1 - i;
-			}
-			return -1;
+
+			TradeResult result;
+
+			if(volume == 0)
+				result = robot.ClosePosition(position);
+			else
+				result = robot.ClosePosition(position, robot.Symbol.NormalizeVolume(volume,RoundingMode.ToNearest));
+
+			return result;
 		}
 
 		/// <summary>

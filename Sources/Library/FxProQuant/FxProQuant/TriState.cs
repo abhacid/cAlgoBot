@@ -11,13 +11,16 @@ namespace FxProQuant.Lib
 	/// </summary>
     public class TriState
     {
-
 		public static readonly TriState TriStateNull = new TriState(0);
 		public static readonly TriState TriStateFalse = new TriState(-1);
 		public static readonly TriState TriStateTrue = new TriState(1);
 		sbyte value;
 
-		TriState(int value)
+		public TriState()
+		{
+			this.value = 0;
+		}
+		public TriState(int value)
 		{
 			this.value = (sbyte)value;
 		}
