@@ -18,11 +18,6 @@
 
 // Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 
-// Efficiency Ratio Indicator (ERIndicator) measure noise signal, see the article: https://github.com/abhacid/cAlgoBotdiscussions/557184 
-// 
-// If ERIndicator is near to 1.0 the noise is low, it is near to 0 the noise is important. It is better to take a position 
-// when ERIndicator is greater than 0.6.
-
 
 
 using System;
@@ -31,13 +26,13 @@ using cAlgo.API.Internals;
 using cAlgo.API.Indicators;
 using cAlgo.Lib;
 
-namespace cAlgo
+namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = false, TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
     [Levels(-1, -0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5,
     0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5,
     2, 3, 4)]
-    public class Spread : Indicator
+    public class SpreadIndicator : Indicator
     {
         [Parameter("Spread MA Source")]
         public DataSeries SpreadMASource { get; set; }

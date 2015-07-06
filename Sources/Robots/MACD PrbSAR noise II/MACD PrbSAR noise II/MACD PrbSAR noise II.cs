@@ -38,6 +38,7 @@ using System;
 using System.Reflection;
 using System.Threading;
 using cAlgo.API;
+using cAlgo.Indicators;
 using cAlgo.API.Indicators;
 using cAlgo.API.Internals;
 
@@ -79,24 +80,7 @@ namespace cAlgo.Robots
         public int Period_FastEMA { get; set; }
 
         //Global declaration
-        private MacdHistogram i_MACD_main;
-        private MacdHistogram i_MCAD_signal;
-        private SimpleMovingAverage i_MA_Close;
-        private ParabolicSAR i_Parabolic_SAR;
-        private SimpleMovingAverage i_MA_Open;
-        private ExponentialMovingAverage i_EMAf;
-
-        double _MACD_main;
-        double _MCAD_signal;
-        double _MA_Close;
-        double _Parabolic_SAR;
-
-        bool _isMacdMainPositive;
-        bool _isMacdMainAboveMacdSignal;
-        bool _isMacdSignalPositive;
-        bool _isParabolicSARBelowMaClose;
-
-        DateTime LastTradeExecution = new DateTime(0);
+		private MACDPrbSARnoiseIndicator _macdPrbSARnoiseIndicator; 
 
         private string _botName;
         private string _botVersion = Assembly.GetExecutingAssembly().FullName.Split(',')[1].Replace("Version=", "").Trim();
@@ -110,15 +94,9 @@ namespace cAlgo.Robots
         {
             _botName = ToString();
             _instanceLabel = string.Format("{0}-{1}-{2}-{3}", _botName, _botVersion, Symbol.Code, TimeFrame.ToString());
-			_dixPowerDigits = Math.Pow(10, Symbol.Digits);
             _position = null;
 
-            i_MACD_main = Indicators.MacdHistogram(MarketSeries.Close, Period_SlowEMA, Period_FastEMA, Period_MACD_SMA);
-            i_MCAD_signal = Indicators.MacdHistogram(MarketSeries.Close, Period_SlowEMA, Period_FastEMA, Period_MACD_SMA);
-            i_MA_Close = Indicators.SimpleMovingAverage(MarketSeries.Close, 1);
-            i_Parabolic_SAR = Indicators.ParabolicSAR(Step_PrbSAR, 0.1);
-            i_MA_Open = Indicators.SimpleMovingAverage(MarketSeries.Open, 1);
-            i_EMAf = Indicators.ExponentialMovingAverage(MarketSeries.Close, Period_FastEMA);
+			_macdPrbSARnoiseIndicator = Indicators.GetIndicator<MACDPrbSARnoiseIndicator>(Period_MACD_SMA, Noise_MACD_sm, Noise_MACD_m0, Noise_MACD_s0, Noise_Prb_SAR_ema, Step_PrbSAR, Period_SlowEMA, Period_FastEMA);
         }
 
         protected override void OnTick()
@@ -126,19 +104,12 @@ namespace cAlgo.Robots
             if (Trade.IsExecuting)
                 return;
 
-            _MACD_main = i_MACD_main.Histogram.Last(0);
-            _MCAD_signal = i_MCAD_signal.Signal.Last(0);
-            _MA_Close = i_MA_Close.Result.Last(0);
-            _Parabolic_SAR = i_Parabolic_SAR.Result.Last(0);
-
-            _isMacdMainPositive = (_MACD_main > 0);
-            _isMacdMainAboveMacdSignal = (_MACD_main > _MCAD_signal);
-            _isMacdSignalPositive = (_MCAD_signal > 0);
-            _isParabolicSARBelowMaClose = (_Parabolic_SAR < _MA_Close);
-
             TradeType? tradeType = signal();
             if (tradeType.HasValue)
                 openPosition(tradeType, Volume, 0, Stop_Loss, null, "");
+
+			bool _isMacdMainAboveMacdSignal = (_macdPrbSARnoiseIndicator.Histogram.LastValue > _macdPrbSARnoiseIndicator.Signal.LastValue);
+			bool _isParabolicSARBelowMaClose = (_macdPrbSARnoiseIndicator.ParabolicSAR.LastValue < MarketSeries.Close.LastValue);
 
             if (_position != null)// && _position.NetProfit > Math.Abs(_position.Commissions + _position.Swap))
             {
@@ -153,24 +124,11 @@ namespace cAlgo.Robots
         {
             TradeType? tradeType = null;
 
-			if(_isMacdMainAboveMacdSignal && 
-				_isMacdMainPositive && 
-				_isParabolicSARBelowMaClose && 
-				(Math.Abs(_MACD_main - _MCAD_signal) > (Noise_MACD_sm / _dixPowerDigits)) && 
-				(Math.Abs(_MACD_main) > (Noise_MACD_m0 / _dixPowerDigits)) && 
-				(Math.Abs(_Parabolic_SAR - i_EMAf.Result.Last(0)) > (Noise_Prb_SAR_ema / _dixPowerDigits)) && 
-				(Math.Abs(_MCAD_signal) > (Noise_MACD_s0 / _dixPowerDigits)) && 
-				_isMacdSignalPositive)
+			if(_macdPrbSARnoiseIndicator.Result.LastValue > 0)
 					tradeType = TradeType.Buy;
-			else if(!_isMacdMainAboveMacdSignal && 
-					!_isMacdMainPositive && 
-					!_isParabolicSARBelowMaClose && 
-					(Math.Abs(_MACD_main - _MCAD_signal) > (Noise_MACD_sm / _dixPowerDigits)) && 
-					(Math.Abs(_MACD_main) > (Noise_MACD_m0 / _dixPowerDigits)) && 
-					(Math.Abs((_Parabolic_SAR - i_EMAf.Result.Last(0))) > (Noise_Prb_SAR_ema / _dixPowerDigits)) && 
-					(Math.Abs(_MCAD_signal) > (Noise_MACD_s0 / _dixPowerDigits)) && 
-					!_isMacdSignalPositive)
-						tradeType = TradeType.Sell;
+			else
+				if(_macdPrbSARnoiseIndicator.Result.LastValue < 0)
+					tradeType = TradeType.Sell;
 
             return tradeType;
         }

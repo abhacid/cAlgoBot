@@ -180,7 +180,7 @@ namespace cAlgo.Lib
 		public static double? potentialProfit(this Position position)
 		{
 			if (position.TakeProfit.HasValue)
-				return position.isBuy() ? position.TakeProfit.Value - position.EntryPrice : position.EntryPrice - position.TakeProfit.Value;
+				return (position.isBuy() ? position.TakeProfit.Value - position.EntryPrice : position.EntryPrice - position.TakeProfit.Value) * position.Volume;
 			else
 				return null;
 
@@ -194,7 +194,7 @@ namespace cAlgo.Lib
 		public static double? potentialLoss(this Position position)
 		{
 			if (position.StopLoss.HasValue)
-				return position.isBuy() ? position.EntryPrice - position.StopLoss.Value : position.StopLoss.Value - position.EntryPrice;
+				return (position.isBuy() ? position.EntryPrice - position.StopLoss.Value : position.StopLoss.Value - position.EntryPrice) * position.Volume;
 			else
 				return null;
 
@@ -208,6 +208,7 @@ namespace cAlgo.Lib
 		public static double? percentProfit(this Position position)
 		{
 			double? potentialProfit = position.potentialProfit();
+
 			if (potentialProfit.HasValue && potentialProfit.Value !=0)
 				return position.GrossProfit / position.potentialProfit();
 			else
@@ -222,6 +223,7 @@ namespace cAlgo.Lib
 		public static double? percentLoss(this Position position)
 		{
 			double? potentialLoss = position.potentialLoss();
+
 			if (potentialLoss.HasValue && potentialLoss.Value != 0)
 				return position.GrossProfit / position.potentialLoss();
 			else

@@ -61,7 +61,7 @@ namespace cAlgo.Lib
 				throw new System.ArgumentException(String.Format("the 'stopLossPips' : {0} parameter must be positive and not null", stopLossPips));
 			else
 			{
-				double moneyToInvestInDepositCurrency = robot.Account.Balance * risk/ (double)100;
+				double moneyToInvestInDepositCurrency = robot.Account.Equity * risk/ (double)100;
 				double moneyToInvestInQuoteCurrency = moneyToInvestInDepositCurrency * robot.Symbol.Mid();
 				double volumeToInvestInQuoteCurrency = moneyToInvestInQuoteCurrency / (stopLossPips * robot.Symbol.PipSize);
 

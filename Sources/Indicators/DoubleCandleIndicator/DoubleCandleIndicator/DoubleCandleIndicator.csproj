@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1402ABB9-3D7C-46B2-B59F-E3DA2AB1A2C2}</ProjectGuid>
+    <ProjectGuid>{E66A822A-0F5C-428C-889B-BDA99773830F}</ProjectGuid>
     <ProjectTypeGuids>{DD87C1B2-3799-4CA2-93B6-5288EE928820};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>cAlgo</RootNamespace>
-    <AssemblyName>MACD PrbSAR noise II</AssemblyName>
+    <AssemblyName>DoubleCandleIndicator</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -44,14 +44,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MACD PrbSAR noise II.cs" />
+    <Compile Include="DoubleCandleIndicator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Indicators\MACDPrbSARnoiseIndicator\MACDPrbSARnoiseIndicator\MACDPrbSARnoiseIndicator.csproj">
-      <Project>{f2e27e5f-573f-4b1e-b5c2-d5ae3c1e8b78}</Project>
-      <Name>MACDPrbSARnoiseIndicator</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

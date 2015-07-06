@@ -21,47 +21,28 @@
 #endregion
 
 
-using System;
 using System.Diagnostics;
-using System.Reflection;
-using cAlgo;
 using cAlgo.API;
-using cAlgo.API.Indicators;
-using cAlgo.API.Internals;
-using cAlgo.Indicators;
-using cAlgo.Lib;
 
 namespace cAlgo.Strategies
 {
 	public class DoubleCandleStrategy : Strategy
 	{
 		#region Strategy Parameters
-			public int Period { get; set; }
-			public int CandleSize { get; set; }
-			public int? BollingerDivisions { get; set; }
+			public int CandleCeil { get; set; }
 		#endregion
 
-		#region Bot Variables
-		private RelativeStrengthIndex _rsi;
-		private BollingerBands _bollingerBand;
-		#endregion
-
-		public DoubleCandleStrategy(Robot robot, int period, int candleSize, int? bollingerDivisions=null)
+		public DoubleCandleStrategy(Robot robot, int candleCeil)
 			: base(robot)
 		{
-			this.Period = period;
-			this.CandleSize = candleSize;
-			this.BollingerDivisions = bollingerDivisions;
+			this.CandleCeil = candleCeil;
 
 			Initialize();
 		}
 
 		protected override void Initialize()
 		{
-			_rsi = Robot.Indicators.RelativeStrengthIndex(Robot.MarketSeries.Close,Period);
-			_bollingerBand = Robot.Indicators.BollingerBands(Robot.MarketSeries.Close, 20, 2, MovingAverageType.Simple);
-
-			Debug.Assert(CandleSize >= 0, "The candle size must be greather than 0");
+			Debug.Assert(CandleCeil >= 0, "The candle size must be greather than 0");
 
 		}
 
@@ -71,7 +52,7 @@ namespace cAlgo.Strategies
 		/// <returns></returns>
 		public override TradeType? signal()
 		{
-			double candleSize = CandleSize * Robot.Symbol.PipSize;
+			double candleCeil = CandleCeil * Robot.Symbol.PipSize;
 			int lastIndex = Robot.MarketSeries.Close.Count - 2;
 			int previewIndex = lastIndex - 1;
 
@@ -80,15 +61,10 @@ namespace cAlgo.Strategies
 			double lastOpen = Robot.MarketSeries.Open[lastIndex];
 			double lastClose = Robot.MarketSeries.Close[lastIndex];
 
-			double thresholTridggering = (BollingerDivisions.HasValue) ? (_bollingerBand.Top.LastValue - _bollingerBand.Bottom.LastValue) / BollingerDivisions.Value : 0;
-
-			bool bollingerTestBuy = Math.Abs(_bollingerBand.Top.LastValue - Robot.Symbol.Mid()) >= thresholTridggering;
-			bool bollingerTestSell = Math.Abs(_bollingerBand.Bottom.LastValue - Robot.Symbol.Mid()) >= thresholTridggering;
-
-			if ((lastClose > lastOpen + candleSize) && (previewClose > previewOpen + candleSize) && _rsi.Result.LastValue<65 && bollingerTestBuy)
+			if ((lastClose > lastOpen + candleCeil) && (previewClose > previewOpen + candleCeil) && (lastOpen >= previewClose))
 				return TradeType.Buy;
 
-			if ((lastClose + candleSize < lastOpen) && (previewClose + candleSize < previewOpen) && _rsi.Result.LastValue>35 && bollingerTestSell)
+			if ((lastClose + candleCeil < lastOpen) && (previewClose + candleCeil < previewOpen) && (lastOpen <= previewClose))
 				return TradeType.Sell;
 
 			return null;
