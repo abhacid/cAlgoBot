@@ -130,10 +130,10 @@ namespace cAlgo.Lib
 		/// <param name="position">Used position</param>
 		/// <param name="number">valeur à transformer</param>
 		/// <returns>la valeur en pips de number pour position</returns>
-		public static int? valueToPips(this Position position, Symbol symbol, double? number)
+		public static double? valueToPips(this Position position, Symbol symbol, double? number)
 		{
 			if (number.HasValue)
-				return (int)((number - position.EntryPrice) / (position.factor() * symbol.PipSize));
+				return (number - position.EntryPrice) / (position.factor() * symbol.PipSize);
 			else
 				return null;
 
@@ -145,7 +145,7 @@ namespace cAlgo.Lib
 		/// <param name="position">Used position</param>
 		/// <param name="value"></param>
 		/// <returns>le stop loss en pips</returns>
-		public static int? stopLossToPips(this Position position, Symbol symbol, double value)
+		public static double? stopLossToPips(this Position position, Symbol symbol)
 		{
 			return valueToPips(position, symbol, position.StopLoss);
 		}
@@ -157,7 +157,7 @@ namespace cAlgo.Lib
 		/// <param name="robot">instance of the current robot</param>
 		/// <param name="value"></param>
 		/// <returns>le take profit en pips</returns>
-		public static int? takeProfitToPips(this Position position, Symbol symbol, double value)
+		public static double? takeProfitToPips(this Position position, Symbol symbol)
 		{
 			return valueToPips(position, symbol, position.TakeProfit);
 		}
