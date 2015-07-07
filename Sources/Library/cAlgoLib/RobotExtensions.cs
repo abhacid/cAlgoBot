@@ -56,16 +56,17 @@ namespace cAlgo.Lib
 		/// <returns></returns>
 		public static double moneyManagement(this Robot robot, double risk, double stopLossPips)
 		{
-
 			if (stopLossPips <=0)
-				throw new System.ArgumentException(String.Format("the 'stopLossPips' : {0} parameter must be positive and not null", stopLossPips));
+				return 0;
 			else
 			{
-				double moneyToInvestInDepositCurrency = robot.Account.Equity * risk/ (double)100;
+				double maximumLoss = robot.potentialLoss();
+				double moneyToInvestInDepositCurrency = (robot.Account.Balance * risk / 100.0) - maximumLoss;
+
 				double moneyToInvestInQuoteCurrency = moneyToInvestInDepositCurrency * robot.Symbol.Mid();
 				double volumeToInvestInQuoteCurrency = moneyToInvestInQuoteCurrency / (stopLossPips * robot.Symbol.PipSize);
 
-				return volumeToInvestInQuoteCurrency;
+				return Math.Max(0,volumeToInvestInQuoteCurrency);
 			}
 		}
 
@@ -75,7 +76,7 @@ namespace cAlgo.Lib
 		/// <param name="robot">instance of the current robot</param>
 		/// <param name="tradeType">type Buy ou Sell</param>
 		/// <returns>true si le robot actuel possède au moins une position du type tradeType, false sinon</returns>
-		public static bool existPositions(this Robot robot, TradeType tradeType, string label = "")
+		public static bool existPositions(this Robot robot, TradeType tradeType, string label = null)
 		{
 			return (robot.Positions.Find(label, robot.Symbol, tradeType) != null);
 		}
@@ -86,7 +87,7 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <returns>true si le robot actuel possède au moins une position à l'achat, false sinon</returns>
-		public static bool existBuyPositions(this Robot robot, string label = "")
+		public static bool existBuyPositions(this Robot robot, string label = null)
 		{
 			return robot.existPositions(TradeType.Buy,label);
 		}
@@ -96,7 +97,7 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <returns>true si le robot actuel possède au moins une position à la vente, false sinon</returns>
-		public static bool existSellPositions(this Robot robot, string label = "")
+		public static bool existSellPositions(this Robot robot, string label = null)
 		{
 			return robot.existPositions(TradeType.Sell, label); 
 		}
@@ -106,7 +107,7 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <returns>true si le robot actuel possède au moins une position à l'achat, et au moins une à la vente,false sinon</returns>
-		public static bool existBuyAndSellPositions(this Robot robot, string label = "")
+		public static bool existBuyAndSellPositions(this Robot robot, string label = null)
 		{
 			return robot.existBuyPositions(label) && robot.existSellPositions(label);
 		}
@@ -116,9 +117,51 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <returns>true Positions.count==0, false sinon</returns>
-		public static bool isNoPositions(this Robot robot, string label = "")
+		public static bool isNoPositions(this Robot robot, string label = null)
 		{
 			return !(robot.existBuyPositions(label)) && !(robot.existSellPositions(label)); 
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public static double potentialGain(this Robot robot, string label=null)
+		{
+			double potential = 0;
+
+			foreach(Position position in robot.Positions)
+			{
+				if(label!=null && position.Label== label)
+				{
+					double? positionPotential = position.potentialProfit();
+					potential += positionPotential.HasValue ? positionPotential.Value : 0;				
+				}
+
+			}
+
+			return potential;
+		}
+
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public static double potentialLoss(this Robot robot, string label=null)
+		{
+			double potential = 0;
+
+			foreach(Position position in robot.Positions)
+			{
+				if(label!=null && position.Label== label)
+				{				
+					double? positionPotential = position.potentialLoss();
+					potential += positionPotential.HasValue ? positionPotential.Value : 0;
+				}
+			}
+
+			return potential;
 		}
 
 		/// <summary>
