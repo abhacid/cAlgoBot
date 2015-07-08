@@ -1,0 +1,15 @@
+﻿[ChartParameters]
+Symbol = EURUSD
+Timeframe = h1
+
+[cBotParameters]
+_Noise_MACD_sm = 38
+_Step_PrbSAR = 0.431
+_Lots = 0.1
+_Period_SlowEMA = 30
+_Noise_MACD_s0 = 22
+_Period_FastEMA = 16
+_Period_MACD_SMA = 7
+_Stop_Loss = 3000
+_Noise_Prb_SAR_ema = 348
+_Noise_MACD_m0 = 163
