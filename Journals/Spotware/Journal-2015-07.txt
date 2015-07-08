@@ -181,3 +181,37 @@
 2015.07.08 15:16:32.061 | cAlgo started
 2015.07.08 15:16:43.037 | Logged in. Account: 3104540 (demo). Proxy: France-4
 2015.07.08 15:32:43.449 | Disconnected (Manually)
+2015.07.08 16:13:43.254 | cAlgo started
+2015.07.08 16:13:52.074 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.08 16:13:54.068 | Disconnected (Manually)
+2015.07.08 16:15:16.158 | cAlgo started
+2015.07.08 16:15:24.967 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.08 16:19:34.203 | Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 16:19:34.515 | → Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7007948 created (08/07/2015 16:19:34.413 UTC+0)
+2015.07.08 16:19:35.108 | → Order OID7007948 is FILLED at 1.10678, position PID4699778 (08/07/2015 16:19:34.719 UTC+0)
+2015.07.08 16:25:00.384 | Request to close position PID4699778 is sent to server
+2015.07.08 16:25:00.821 | → Request to close position PID4699778 is ACCEPTED, order OID7007997 created (08/07/2015 16:25:00.794 UTC+0)
+2015.07.08 16:25:01.195 | → Order OID7007997 is FILLED at 1.10625, position PID4699778 closed (08/07/2015 16:25:01.092 UTC+0)
+2015.07.08 16:25:01.351 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 16:25:01.632 | → Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7007998 created (08/07/2015 16:25:01.616 UTC+0)
+2015.07.08 16:25:02.084 | → Order OID7007998 is FILLED at 1.10625, position PID4699796 (08/07/2015 16:25:01.906 UTC+0)
+2015.07.08 16:30:01.994 | Request to close position PID4699796 is sent to server
+2015.07.08 16:30:02.166 | → Request to close position PID4699796 is ACCEPTED, order OID7008059 created (08/07/2015 16:30:02.122 UTC+0)
+2015.07.08 16:30:02.431 | → Order OID7008059 is FILLED at 1.10665, position PID4699796 closed (08/07/2015 16:30:02.356 UTC+0)
+2015.07.08 16:30:02.571 | Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 16:30:03.258 | → Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7008060 created (08/07/2015 16:30:03.170 UTC+0)
+2015.07.08 16:30:03.632 | → Order OID7008060 is FILLED at 1.10663, position PID4699810 (08/07/2015 16:30:03.453 UTC+0)
+2015.07.08 16:32:00.523 | Request to close position PID4699810 is sent to server
+2015.07.08 16:32:00.585 | → Request to close position PID4699810 is ACCEPTED, order OID7008076 created (08/07/2015 16:32:00.554 UTC+0)
+2015.07.08 16:32:00.866 | → Order OID7008076 is FILLED at 1.10631, position PID4699810 closed (08/07/2015 16:32:00.798 UTC+0)
+2015.07.08 16:32:01.006 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 16:32:01.225 | → Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7008077 created (08/07/2015 16:32:01.202 UTC+0)
+2015.07.08 16:32:01.615 | → Order OID7008077 is FILLED at 1.10631, position PID4699825 (08/07/2015 16:32:01.449 UTC+0)
+2015.07.08 16:38:13.955 | → Order OID7008078 is FILLED at 1.10578, position PID4699825 closed (08/07/2015 16:38:13.885 UTC+0)
+2015.07.08 16:39:03.485 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 16:39:03.657 | → Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7008163 created (08/07/2015 16:39:03.644 UTC+0)
+2015.07.08 16:39:04.094 | → Order OID7008163 is FILLED at 1.10573, position PID4699860 (08/07/2015 16:39:03.923 UTC+0)
+2015.07.08 16:43:32.252 | → Order OID7008164 is FILLED at 1.10523, position PID4699860 closed (08/07/2015 16:43:32.185 UTC+0)
+2015.07.08 16:46:00.214 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 16:46:00.510 | → Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7008200 created (08/07/2015 16:46:00.471 UTC+0)
+2015.07.08 16:46:00.916 | → Order OID7008200 is FILLED at 1.10533, position PID4699873 (08/07/2015 16:46:00.717 UTC+0)
