@@ -48,6 +48,12 @@
     <Compile Include="Sample cBot Reference SMA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Indicators\Sample SMA\Sample SMA\Sample SMA.csproj">
+      <Project>{ff06f12b-3710-41b8-aea2-14eb0cbd621e}</Project>
+      <Name>Sample SMA</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -56,10 +62,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Indicators\Sample SMA\Sample SMA\Sample SMA.csproj">
-      <Project>{4F4CCA28-4DD8-49A2-9A8B-2517C1DD9DA4}</Project>
-      <Name>Sample SMA</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

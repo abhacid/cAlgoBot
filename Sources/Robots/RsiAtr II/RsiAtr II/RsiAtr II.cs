@@ -166,7 +166,7 @@ namespace cAlgo.Robots
 					double volume = this.moneyManagement(MMFactor / 100, stopLoss);
 					long normalizedVolume =Symbol.NormalizeVolume(volume, RoundingMode.ToNearest);
 
-					ExecuteMarketOrder(TradeType.Buy, Symbol, normalizedVolume, _instanceLabel, stopLoss, TPFactor * stopLoss);
+					ExecuteMarketOrder(tradeType.Value, Symbol, normalizedVolume, _instanceLabel, stopLoss, TPFactor * stopLoss);
 
 				}
 			}

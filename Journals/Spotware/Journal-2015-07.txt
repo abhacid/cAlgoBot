@@ -215,3 +215,11 @@
 2015.07.08 16:46:00.214 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
 2015.07.08 16:46:00.510 | → Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7008200 created (08/07/2015 16:46:00.471 UTC+0)
 2015.07.08 16:46:00.916 | → Order OID7008200 is FILLED at 1.10533, position PID4699873 (08/07/2015 16:46:00.717 UTC+0)
+2015.07.08 19:35:18.634 | cAlgo started
+2015.07.08 19:35:25.833 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 19:37:15.498 | Disconnected (Manually)
+2015.07.08 19:38:43.090 | cAlgo started
+2015.07.08 19:38:52.520 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 20:11:22.783 | Disconnected (Slow connection )
+2015.07.08 20:12:13.277 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 21:37:48.906 | Disconnected (Manually)

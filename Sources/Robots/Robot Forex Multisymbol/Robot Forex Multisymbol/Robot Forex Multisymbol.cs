@@ -49,6 +49,7 @@ namespace cAlgo.Robots
         private void InitializeSeries(string symbolCode)
         {
             _symbol2 = MarketData.GetSymbol(symbolCode);
+
             _series2 = MarketData.GetSeries(_symbol2, TimeFrame);
         }
 
