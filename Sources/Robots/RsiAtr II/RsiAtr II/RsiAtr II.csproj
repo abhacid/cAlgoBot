@@ -56,6 +56,14 @@
       <Name>cAlgo.Lib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="RsiAtr II, EURUSD h4-2.cbotset" />
+    <None Include="RsiAtr II, EURUSD h4.cbotset" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RsiAtr II, EURUSD h4-2.JPG" />
+    <Content Include="RsiAtr II, EURUSD h4.JPG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
