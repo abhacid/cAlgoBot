@@ -108,7 +108,7 @@ namespace cAlgo
         {
             manageTrailingStops();
 
-            int index = MarketSeries.Close.Count - 1;
+            int index = MarketSeries.Close.Count - 2;
 
             if (index <= previewIndex)
                 return;

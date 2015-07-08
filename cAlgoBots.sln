@@ -183,6 +183,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Trend", "Trend", "{F5347F3C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoSignals", "Sources\Indicators\TwoSignals\TwoSignals\TwoSignals.csproj", "{E27FC2FB-1345-4FA6-BD3C-15B60445C4EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mijo Exposure Currency View", "Sources\Robots\Mijo Exposure Currency View\Mijo Exposure Currency View\Mijo Exposure Currency View.csproj", "{602561DC-CDDC-4FD6-9E38-AFBC92B4E5A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -493,6 +495,10 @@ Global
 		{E27FC2FB-1345-4FA6-BD3C-15B60445C4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E27FC2FB-1345-4FA6-BD3C-15B60445C4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E27FC2FB-1345-4FA6-BD3C-15B60445C4EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{602561DC-CDDC-4FD6-9E38-AFBC92B4E5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{602561DC-CDDC-4FD6-9E38-AFBC92B4E5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{602561DC-CDDC-4FD6-9E38-AFBC92B4E5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{602561DC-CDDC-4FD6-9E38-AFBC92B4E5A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -585,5 +591,6 @@ Global
 		{BB22C237-B1B8-4E4C-907B-F1D84CBAA1BC} = {03A3DCEA-BFB9-4A9F-95C2-DB7DE6A3140D}
 		{F5347F3C-C98F-4F68-9AB8-2D757A333021} = {294C5497-4768-4582-8438-BC25CEABC224}
 		{E27FC2FB-1345-4FA6-BD3C-15B60445C4EB} = {03A3DCEA-BFB9-4A9F-95C2-DB7DE6A3140D}
+		{602561DC-CDDC-4FD6-9E38-AFBC92B4E5A0} = {294C5497-4768-4582-8438-BC25CEABC224}
 	EndGlobalSection
 EndGlobal
