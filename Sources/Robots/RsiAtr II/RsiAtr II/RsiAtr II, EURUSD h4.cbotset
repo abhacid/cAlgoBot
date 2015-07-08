@@ -1,0 +1,13 @@
+﻿[ChartParameters]
+Symbol = EURUSD
+Timeframe = h4
+
+[cBotParameters]
+TPFactor = 0.1
+VolFactor = 1.4
+MMFactor = 2.8
+RsiSource = Close
+RsiPeriod = 13
+RsiCeil = -2
+AtrPeriod = 10
+AtrMaType = Triangular
