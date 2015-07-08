@@ -9,7 +9,7 @@ namespace cAlgo
     [Indicator(IsOverlay = false, TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
     public class DoubleCandleIndicator : Indicator
     {
-        [Parameter("Signal Fineness", DefaultValue = 3, MinValue = 0.0001)]
+        [Parameter("Signal Fineness", DefaultValue = 0.01)]
         public double SignalFineness { get; set; }
 
         [Output("Main")]

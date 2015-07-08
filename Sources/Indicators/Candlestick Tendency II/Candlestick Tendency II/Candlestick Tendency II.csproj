@@ -1,21 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E185CAD6-92BC-422F-AEA4-8E8CAA741043}</ProjectGuid>
+    <ProjectGuid>{BB22C237-B1B8-4E4C-907B-F1D84CBAA1BC}</ProjectGuid>
+    <ProjectTypeGuids>{DD87C1B2-3799-4CA2-93B6-5288EE928820};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cAlgo.Strategies</RootNamespace>
-    <AssemblyName>WPRStrategy</AssemblyName>
+    <RootNamespace>cAlgo</RootNamespace>
+    <AssemblyName>Candlestick Tendency II</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,30 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="cAlgo.API">
-      <HintPath>..\..\..\API\cAlgo.API.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="cAlgo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3499da3018340880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\API\cAlgo.API.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WPRSStrategy.cs" />
+    <Compile Include="Candlestick Tendency II.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Indicators\WPRSIndicator\WPRSIndicator\WPRSIndicator.csproj">
-      <Project>{34c58eba-1b9d-4154-a28b-710dac339d8f}</Project>
-      <Name>WPRSIndicator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Library\cAlgoLib\cAlgo.Lib.csproj">
-      <Project>{d3e50b06-5578-42a2-addd-42f25d5a1f4c}</Project>
-      <Name>cAlgo.Lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -55,7 +55,8 @@ namespace cAlgo.Lib
 		/// <returns>true si achat, false sinon</returns>
 		public static bool isBuy(this Position position)
 		{
-			return TradeType.Buy == position.TradeType;
+
+			return position !=null && TradeType.Buy == position.TradeType;
 		}
 
 		/// <summary>
@@ -65,7 +66,7 @@ namespace cAlgo.Lib
 		/// <returns>true si vente, false sinon</returns>
 		public static bool isSell(this Position position)
 		{
-			return TradeType.Sell == position.TradeType;
+			return position !=null && TradeType.Sell == position.TradeType;
 		}
 
 		/// <summary>

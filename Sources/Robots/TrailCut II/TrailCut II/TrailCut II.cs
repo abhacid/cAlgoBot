@@ -201,11 +201,8 @@ namespace cAlgo.Robots
         [Parameter("ZigZag BackStep", DefaultValue = 3)]
         public int ZzBackStep { get; set; }
 
-		[Parameter("Double Candle Period", DefaultValue = 1000)]
-		public int DoubleCandlePeriod { get; set; }
-
-        [Parameter("Double Candle step", DefaultValue = 7)]
-        public int DoubleCandleStep { get; set; }
+		[Parameter("Double Candle Fineness", DefaultValue = 0.01)]
+		public double DoubleCandleFineness { get; set; }
 
         [Parameter("Trend Magic CCIPeriod", DefaultValue = 50)]
         public int TMCciPeriod { get; set; }
@@ -264,7 +261,7 @@ namespace cAlgo.Robots
                 strategies.Add(new WPRSStrategy(this, WprSource, WprPeriod, WprOverbuyCeil, WprOversellCeil, WprMagicNumber, WprMinMaxPeriod, WprExceedMinMax));
 
             if (IsDCActif)
-                strategies.Add(new DoubleCandleStrategy(this, DoubleCandlePeriod, DoubleCandleStep));
+                strategies.Add(new DoubleCandleStrategy(this, DoubleCandleFineness));
 
             if (IsZZActif)
                 strategies.Add(new ZigZagStrategy(this, ZzDepth, ZzDeviation, ZzBackStep));

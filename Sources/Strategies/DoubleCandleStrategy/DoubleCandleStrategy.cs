@@ -29,11 +29,10 @@ namespace cAlgo.Strategies
 	public class DoubleCandleStrategy : Strategy
 	{
 		#region Strategy Parameters
-			public int CandleCeil { get; set; }
+			public double CandleCeil { get; set; }
 		#endregion
 
-		public DoubleCandleStrategy(Robot robot, int candleCeil)
-			: base(robot)
+		public DoubleCandleStrategy(Robot robot, double candleCeil) : base(robot)
 		{
 			this.CandleCeil = candleCeil;
 

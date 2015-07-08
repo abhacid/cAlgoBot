@@ -1,0 +1,19 @@
+﻿[ChartParameters]
+Symbol = EURUSD
+Timeframe = m1
+
+[cBotParameters]
+HighOrderTimeFrame = Hour
+Volume = 10000
+EnableStopLoss = True
+StopLoss = 69
+EnableBreakEven = False
+BreakEvenPips = 10
+BreakEvenGain = 20
+EnableTrailingStop = False
+TrailingStop = 10
+TrailingStart = 10
+EnableTakeProfit = True
+TakeProfit = 5
+EnterOnSyncSignalOnly = False
+ExitOnOppositeSignal = True

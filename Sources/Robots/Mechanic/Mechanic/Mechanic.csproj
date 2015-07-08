@@ -61,4 +61,15 @@
       <Name>Candlestick Tendency</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Mechanic, EURUSD m1.cbotset" />
+    <None Include="Mechanic, EURUSD m3.cbotset" />
+    <None Include="Mechanic.url" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mechanic 1.png" />
+    <Content Include="Mechanic 2.png" />
+    <Content Include="Mechanic 3.png" />
+    <Content Include="Mechanic, EURUSD m1.JPG" />
+  </ItemGroup>
 </Project>
