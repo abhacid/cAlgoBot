@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFBullPower", "EFBullPower\EFBullPower.csproj", "{A6A45061-09ED-4EC1-B948-1EC157F09CD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6A45061-09ED-4EC1-B948-1EC157F09CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6A45061-09ED-4EC1-B948-1EC157F09CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6A45061-09ED-4EC1-B948-1EC157F09CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6A45061-09ED-4EC1-B948-1EC157F09CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

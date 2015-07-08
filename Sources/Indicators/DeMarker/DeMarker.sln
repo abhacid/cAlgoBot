@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeMarker", "DeMarker\DeMarker.csproj", "{EC1426A8-4FD1-46EC-B6AC-13E07BD5D764}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC1426A8-4FD1-46EC-B6AC-13E07BD5D764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC1426A8-4FD1-46EC-B6AC-13E07BD5D764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC1426A8-4FD1-46EC-B6AC-13E07BD5D764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC1426A8-4FD1-46EC-B6AC-13E07BD5D764}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

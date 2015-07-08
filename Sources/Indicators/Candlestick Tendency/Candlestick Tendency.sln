@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Candlestick Tendency", "Candlestick Tendency\Candlestick Tendency.csproj", "{7B4D77C5-3CF4-4126-8B83-208AB1DC679F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B4D77C5-3CF4-4126-8B83-208AB1DC679F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B4D77C5-3CF4-4126-8B83-208AB1DC679F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B4D77C5-3CF4-4126-8B83-208AB1DC679F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B4D77C5-3CF4-4126-8B83-208AB1DC679F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

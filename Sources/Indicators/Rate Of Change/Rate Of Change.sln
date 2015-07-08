@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rate Of Change", "Rate Of Change\Rate Of Change.csproj", "{5D3C5A22-1D4B-481F-88DB-22E7C5BC2D87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D3C5A22-1D4B-481F-88DB-22E7C5BC2D87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3C5A22-1D4B-481F-88DB-22E7C5BC2D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3C5A22-1D4B-481F-88DB-22E7C5BC2D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3C5A22-1D4B-481F-88DB-22E7C5BC2D87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

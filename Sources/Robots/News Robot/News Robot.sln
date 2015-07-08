@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "News Robot", "News Robot\News Robot.csproj", "{F69DDF5F-3316-4204-A235-C46C9EE24FCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F69DDF5F-3316-4204-A235-C46C9EE24FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F69DDF5F-3316-4204-A235-C46C9EE24FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F69DDF5F-3316-4204-A235-C46C9EE24FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F69DDF5F-3316-4204-A235-C46C9EE24FCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

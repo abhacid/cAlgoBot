@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Positions_Information", "Positions_Information\Positions_Information.csproj", "{7443523C-412E-43D6-A23F-A61C62583C9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7443523C-412E-43D6-A23F-A61C62583C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7443523C-412E-43D6-A23F-A61C62583C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7443523C-412E-43D6-A23F-A61C62583C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7443523C-412E-43D6-A23F-A61C62583C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

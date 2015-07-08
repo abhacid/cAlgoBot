@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acceleration  Deceleration  Oscillator", "Acceleration  Deceleration  Oscillator\Acceleration  Deceleration  Oscillator.csproj", "{17C79C46-B549-4269-878C-05C42C8FCE9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17C79C46-B549-4269-878C-05C42C8FCE9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C79C46-B549-4269-878C-05C42C8FCE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C79C46-B549-4269-878C-05C42C8FCE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C79C46-B549-4269-878C-05C42C8FCE9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

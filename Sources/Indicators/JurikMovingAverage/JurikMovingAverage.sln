@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JurikMovingAverage", "JurikMovingAverage\JurikMovingAverage.csproj", "{CFEA8BA2-C0DD-4FD0-9F69-8D4099E1003B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFEA8BA2-C0DD-4FD0-9F69-8D4099E1003B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEA8BA2-C0DD-4FD0-9F69-8D4099E1003B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEA8BA2-C0DD-4FD0-9F69-8D4099E1003B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEA8BA2-C0DD-4FD0-9F69-8D4099E1003B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

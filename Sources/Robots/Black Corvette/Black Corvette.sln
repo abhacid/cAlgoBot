@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black Corvette", "Black Corvette\Black Corvette.csproj", "{FCEB84F0-D3CD-4763-BD40-D57A83D7576E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCEB84F0-D3CD-4763-BD40-D57A83D7576E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEB84F0-D3CD-4763-BD40-D57A83D7576E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEB84F0-D3CD-4763-BD40-D57A83D7576E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEB84F0-D3CD-4763-BD40-D57A83D7576E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

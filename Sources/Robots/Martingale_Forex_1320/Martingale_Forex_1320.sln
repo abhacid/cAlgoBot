@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Martingale_Forex_1320", "Martingale_Forex_1320\Martingale_Forex_1320.csproj", "{424F500F-C447-4C01-9B5F-8F28BE9AB259}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cAlgo.Lib", "..\..\..\..\cAlgoBots\Sources\Library\cAlgoLib\cAlgo.Lib.csproj", "{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{424F500F-C447-4C01-9B5F-8F28BE9AB259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{424F500F-C447-4C01-9B5F-8F28BE9AB259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{424F500F-C447-4C01-9B5F-8F28BE9AB259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{424F500F-C447-4C01-9B5F-8F28BE9AB259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

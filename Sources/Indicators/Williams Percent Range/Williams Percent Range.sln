@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williams Percent Range", "Williams Percent Range\Williams Percent Range.csproj", "{1D9C5785-839C-43A2-A907-2C9AD1BEBDAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D9C5785-839C-43A2-A907-2C9AD1BEBDAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D9C5785-839C-43A2-A907-2C9AD1BEBDAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D9C5785-839C-43A2-A907-2C9AD1BEBDAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D9C5785-839C-43A2-A907-2C9AD1BEBDAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XR Multi Entries", "XR Multi Entries\XR Multi Entries.csproj", "{7B58ECB7-DD59-466A-8CA8-51328AC4D7E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B58ECB7-DD59-466A-8CA8-51328AC4D7E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B58ECB7-DD59-466A-8CA8-51328AC4D7E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B58ECB7-DD59-466A-8CA8-51328AC4D7E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B58ECB7-DD59-466A-8CA8-51328AC4D7E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGO", "PGO\PGO.csproj", "{10600D64-CAE6-4FF5-AAAB-F806A4B67A44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10600D64-CAE6-4FF5-AAAB-F806A4B67A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10600D64-CAE6-4FF5-AAAB-F806A4B67A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10600D64-CAE6-4FF5-AAAB-F806A4B67A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10600D64-CAE6-4FF5-AAAB-F806A4B67A44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

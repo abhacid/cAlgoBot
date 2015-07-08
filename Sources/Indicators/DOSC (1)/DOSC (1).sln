@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOSC (1)", "DOSC (1)\DOSC (1).csproj", "{36B8FA1F-1281-4DBF-94A2-EA2796225B09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36B8FA1F-1281-4DBF-94A2-EA2796225B09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B8FA1F-1281-4DBF-94A2-EA2796225B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B8FA1F-1281-4DBF-94A2-EA2796225B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B8FA1F-1281-4DBF-94A2-EA2796225B09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

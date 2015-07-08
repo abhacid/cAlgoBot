@@ -1,0 +1,183 @@
+2015.07.01 21:34:42.730 | cAlgo started
+2015.07.01 21:34:49.805 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.01 22:19:58.311 | Disconnected (Connection failed)
+2015.07.02 18:53:53.830 | Login failed (Could not connect to server, please check your internet connection)
+2015.07.02 18:54:06.307 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.02 19:00:42.072 | Disconnected (Manually)
+2015.07.02 19:11:20.797 | cAlgo started
+2015.07.02 19:11:32.885 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.02 19:23:52.037 | Disconnected (Manually)
+2015.07.02 19:24:03.546 | cAlgo started
+2015.07.02 19:24:13.021 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.02 19:46:27.508 | → Order OID6995582 is FILLED at 1.10887, position PID4693453 closed (02/07/2015 19:46:27.416 UTC+0)
+2015.07.02 19:46:27.570 | → Order OID6995583 is FILLED at 1.10886, position PID4693454 closed (02/07/2015 19:46:27.514 UTC+0)
+2015.07.02 19:56:45.466 | → Order OID6995589 is FILLED at 1.10897, position PID4693459 closed (02/07/2015 19:56:45.426 UTC+0)
+2015.07.02 19:56:55.161 | → Order OID6995588 is FILLED at 1.10891, position PID4693460 closed (02/07/2015 19:56:55.075 UTC+0)
+2015.07.02 20:54:53.069 | → Order OID6995616 is FILLED at 1.10857, position PID4693461 closed (02/07/2015 20:54:52.740 UTC+0)
+2015.07.02 21:35:55.525 | Disconnected (Connection failed)
+2015.07.03 09:55:26.166 | Login failed (Could not connect to server, please check your internet connection)
+2015.07.03 09:55:35.471 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.03 10:02:00.670 | → Order OID6996441 is FILLED at 1.11116, position PID4693891 closed (03/07/2015 10:02:00.609 UTC+0)
+2015.07.03 10:02:51.268 | → Order OID6996445 is FILLED at 1.11115, position PID4693893 closed (03/07/2015 10:02:51.199 UTC+0)
+2015.07.03 10:32:58.358 | → Order OID6996487 is FILLED at 1.11143, position PID4693894 closed (03/07/2015 10:32:58.272 UTC+0)
+2015.07.03 10:32:58.421 | → Order OID6996488 is FILLED at 1.11143, position PID4693901 closed (03/07/2015 10:32:58.335 UTC+0)
+2015.07.03 10:32:58.452 | → Order OID6996489 is FILLED at 1.11143, position PID4693899 closed (03/07/2015 10:32:58.344 UTC+0)
+2015.07.03 10:32:58.499 | → Order OID6996490 is FILLED at 1.11143, position PID4693900 closed (03/07/2015 10:32:58.382 UTC+0)
+2015.07.03 11:11:37.637 | → Order OID6996570 is FILLED at 1.1098, position PID4693946 closed (03/07/2015 11:11:37.584 UTC+0)
+2015.07.03 11:42:05.337 | → Order OID6996619 is FILLED at 1.10975, position PID4693957 closed (03/07/2015 11:42:05.245 UTC+0)
+2015.07.03 11:42:05.384 | → Order OID6996620 is FILLED at 1.10975, position PID4693964 closed (03/07/2015 11:42:05.297 UTC+0)
+2015.07.03 11:55:09.728 | → Order OID6996631 is FILLED at 1.11005, position PID4693982 closed (03/07/2015 11:55:09.642 UTC+0)
+2015.07.03 11:55:09.822 | → Order OID6996632 is FILLED at 1.11005, position PID4693983 closed (03/07/2015 11:55:09.745 UTC+0)
+2015.07.03 11:57:55.937 | → Order OID6996642 is FILLED at 1.10998, position PID4693986 closed (03/07/2015 11:57:55.856 UTC+0)
+2015.07.03 11:57:56.047 | → Order OID6996643 is FILLED at 1.10997, position PID4693987 closed (03/07/2015 11:57:55.991 UTC+0)
+2015.07.03 12:21:13.732 | → Order OID6996645 is FILLED at 1.10983, position PID4693988 closed (03/07/2015 12:21:13.654 UTC+0)
+2015.07.03 12:31:04.852 | → Order OID6996670 is FILLED at 1.10872, position PID4694002 closed (03/07/2015 12:31:04.755 UTC+0)
+2015.07.03 12:31:04.898 | → Order OID6996653 is FILLED at 1.10872, position PID4693993 closed (03/07/2015 12:31:04.764 UTC+0)
+2015.07.03 12:31:04.945 | → Order OID6996672 is FILLED at 1.10872, position PID4694003 closed (03/07/2015 12:31:04.816 UTC+0)
+2015.07.03 12:40:52.181 | → Order OID6996679 is FILLED at 1.10844, position PID4694006 closed (03/07/2015 12:40:52.125 UTC+0)
+2015.07.03 13:03:41.213 | → Order OID6996724 is FILLED at 1.10929, position PID4694011 closed (03/07/2015 13:03:41.146 UTC+0)
+2015.07.03 13:18:50.220 | Disconnected (Manually)
+2015.07.03 18:31:51.909 | cAlgo started
+2015.07.03 18:31:59.185 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.03 19:11:52.255 | Disconnected (Manually)
+2015.07.03 19:12:10.486 | cAlgo started
+2015.07.03 19:12:16.390 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.03 19:41:49.988 | Disconnected (Manually)
+2015.07.04 18:26:38.114 | cAlgo started
+2015.07.04 18:26:45.261 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.04 21:57:31.642 | Disconnected (Manually)
+2015.07.05 11:19:02.604 | cAlgo started
+2015.07.05 11:19:10.183 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 13:24:23.550 | Disconnected (Manually)
+2015.07.05 13:54:25.350 | cAlgo started
+2015.07.05 13:54:31.577 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 13:54:59.181 | Disconnected (Manually)
+2015.07.05 16:01:06.491 | cAlgo started
+2015.07.05 16:01:13.956 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 17:03:35.783 | Disconnected (Manually)
+2015.07.05 17:03:42.976 | cAlgo started
+2015.07.05 17:03:49.438 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 17:04:37.813 | Disconnected (Manually)
+2015.07.05 17:04:44.411 | cAlgo started
+2015.07.05 17:04:50.698 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 17:05:03.226 | Disconnected (Manually)
+2015.07.05 17:05:10.052 | cAlgo started
+2015.07.05 17:05:16.264 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 17:06:11.762 | Disconnected (Manually)
+2015.07.05 17:07:20.071 | cAlgo started
+2015.07.05 17:07:29.344 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 17:19:43.016 | Disconnected (Manually)
+2015.07.05 17:19:51.152 | cAlgo started
+2015.07.05 17:19:58.712 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 20:29:52.015 | Disconnected (Slow connection )
+2015.07.05 20:29:57.517 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 21:17:03.983 | Disconnected (Manually)
+2015.07.05 22:19:11.343 | cAlgo started
+2015.07.05 22:19:19.963 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.05 22:49:16.235 | Disconnected (Manually)
+2015.07.07 20:25:25.668 | cAlgo started
+2015.07.07 20:25:33.910 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.08 07:16:48.424 | cAlgo started
+2015.07.08 07:16:58.021 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.08 07:17:35.053 | Disconnected (Manually)
+2015.07.08 07:17:42.132 | cAlgo started
+2015.07.08 07:17:50.177 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.08 07:19:13.179 | Disconnected (Manually)
+2015.07.08 07:20:48.673 | cAlgo started
+2015.07.08 07:20:57.115 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.08 07:21:07.384 | Disconnected (Manually)
+2015.07.08 07:21:39.701 | cAlgo started
+2015.07.08 07:21:48.017 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.08 09:01:02.706 | → Order OID7004180 is FILLED at 1.10418, position PID4697726 closed (08/07/2015 09:01:02.382 UTC+0)
+2015.07.08 09:34:26.006 | → Order OID7004182 is FILLED at 1.10363, position PID4698020 closed (08/07/2015 09:34:25.927 UTC+0)
+2015.07.08 10:37:35.094 | → Order OID7004562 is FILLED at 1.10284, position PID4698193 closed (08/07/2015 10:37:35.002 UTC+0)
+2015.07.08 10:44:05.617 | → Order OID7004850 is FILLED at 1.10225, position PID4698319 closed (08/07/2015 10:44:05.555 UTC+0)
+2015.07.08 10:44:08.757 | → Order OID7004862 is FILLED at 1.1019, position PID4698322 closed (08/07/2015 10:44:08.693 UTC+0)
+2015.07.08 10:50:50.986 | → Order OID7004877 is FILLED at 1.10158, position PID4698329 closed (08/07/2015 10:50:50.911 UTC+0)
+2015.07.08 10:50:51.049 | → Order OID7004876 is FILLED at 1.10158, position PID4698328 closed (08/07/2015 10:50:50.911 UTC+0)
+2015.07.08 11:02:19.647 | → Order OID7004894 is FILLED at 1.10095, position PID4698336 closed (08/07/2015 11:02:19.577 UTC+0)
+2015.07.08 11:02:19.709 | → Order OID7004893 is FILLED at 1.10095, position PID4698335 closed (08/07/2015 11:02:19.641 UTC+0)
+2015.07.08 11:26:34.059 | Disconnected (Connection failed)
+2015.07.08 11:26:36.173 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.08 11:27:59.758 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 11:28:00.333 | Disconnected (Connection failed)
+2015.07.08 11:28:00.758 | → Order OID0 is REJECTED with error "DISCONNECTED"
+2015.07.08 11:28:12.101 | → Order OID0 is REJECTED with error ""
+2015.07.08 11:28:13.186 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.08 11:31:02.561 | → Order OID7005098 is FILLED at 1.10146, position PID4698354 closed (08/07/2015 11:31:00.987 UTC+0)
+2015.07.08 11:31:36.874 | Request to close position PID4698353 is sent to server
+2015.07.08 11:31:36.874 | Request to close position PID4698440 is sent to server
+2015.07.08 11:31:36.983 | → Request to close position PID4698353 is ACCEPTED, order OID7005102 created (08/07/2015 11:31:36.916 UTC+0)
+2015.07.08 11:31:37.014 | → Request to close position PID4698440 is ACCEPTED, order OID7005103 created (08/07/2015 11:31:36.984 UTC+0)
+2015.07.08 11:31:37.311 | → Order OID7005102 is FILLED at 1.10146, position PID4698353 closed (08/07/2015 11:31:37.169 UTC+0)
+2015.07.08 11:31:37.468 | → Order OID7005103 is FILLED at 1.10133, position PID4698440 closed (08/07/2015 11:31:37.286 UTC+0)
+2015.07.08 11:33:43.752 | Request to close position PID4698441 is sent to server
+2015.07.08 11:33:43.752 | Request to close position PID4698442 is sent to server
+2015.07.08 11:33:43.846 | → Request to close position PID4698441 is ACCEPTED, order OID7005127 created (08/07/2015 11:33:43.913 UTC+0)
+2015.07.08 11:33:44.314 | → Request to close position PID4698442 is ACCEPTED, order OID7005128 created (08/07/2015 11:33:44.099 UTC+0)
+2015.07.08 11:33:44.346 | → Order OID7005127 is FILLED at 1.10102, position PID4698441 closed (08/07/2015 11:33:44.203 UTC+0)
+2015.07.08 11:33:44.471 | → Order OID7005128 is FILLED at 1.10115, position PID4698442 closed (08/07/2015 11:33:44.318 UTC+0)
+2015.07.08 11:34:07.177 | Disconnected (Manually)
+2015.07.08 11:34:08.054 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 11:37:04.270 | Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 11:37:04.817 | → Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7005150 created (08/07/2015 11:37:04.769 UTC+0)
+2015.07.08 11:37:05.051 | → Order OID7005150 is FILLED at 1.10131, position PID4698459 (08/07/2015 11:37:05.009 UTC+0)
+2015.07.08 11:41:52.988 | → Order OID7005151 is FILLED at 1.10183, position PID4698459 closed (08/07/2015 11:41:52.924 UTC+0)
+2015.07.08 11:44:00.425 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 11:44:00.503 | → Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7005226 created (08/07/2015 11:44:00.547 UTC+0)
+2015.07.08 11:44:00.862 | → Order OID7005226 is FILLED at 1.10170, position PID4698501 (08/07/2015 11:44:00.817 UTC+0)
+2015.07.08 11:48:25.945 | → Order OID7005227 is FILLED at 1.10116, position PID4698501 closed (08/07/2015 11:48:25.872 UTC+0)
+2015.07.08 11:49:10.537 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 11:49:10.740 | → Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7005269 created (08/07/2015 11:49:10.669 UTC+0)
+2015.07.08 11:49:11.115 | → Order OID7005269 is FILLED at 1.10141, position PID4698510 (08/07/2015 11:49:10.941 UTC+0)
+2015.07.08 11:50:32.116 | Disconnected (Manually)
+2015.07.08 11:51:28.784 | cAlgo started
+2015.07.08 11:51:37.728 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 11:53:57.998 | Request to close position PID4698510 is sent to server
+2015.07.08 11:53:58.420 | → Request to close position PID4698510 is ACCEPTED, order OID7005341 created (08/07/2015 11:53:58.058 UTC+0)
+2015.07.08 11:53:58.967 | → Order OID7005341 is FILLED at 1.10243, position PID4698510 closed (08/07/2015 11:53:58.328 UTC+0)
+2015.07.08 12:11:14.722 | Disconnected (Manually)
+2015.07.08 12:11:26.311 | cAlgo started
+2015.07.08 12:11:36.060 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 13:01:05.291 | Disconnected (Connection failed)
+2015.07.08 13:01:07.049 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 14:27:42.830 | Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 14:27:42.987 | → Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7006693 created (08/07/2015 14:27:43.039 UTC+0)
+2015.07.08 14:27:43.877 | → Order OID7006693 is FILLED at 1.10457, position PID4699195 (08/07/2015 14:27:43.254 UTC+0)
+2015.07.08 14:28:56.502 | → Order OID7006694 is FILLED at 1.10512, position PID4699195 closed (08/07/2015 14:28:56.370 UTC+0)
+2015.07.08 14:28:56.627 | Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 14:28:57.127 | → Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7006711 created (08/07/2015 14:28:56.680 UTC+0)
+2015.07.08 14:28:57.143 | → Order OID7006711 is FILLED at 1.10527, position PID4699210 (08/07/2015 14:28:56.975 UTC+0)
+2015.07.08 14:30:09.226 | Request to close position PID4699210 is sent to server
+2015.07.08 14:30:09.851 | → Request to close position PID4699210 is ACCEPTED, order OID7006728 created (08/07/2015 14:30:09.398 UTC+0)
+2015.07.08 14:30:09.867 | → Order OID7006728 is FILLED at 1.10513, position PID4699210 closed (08/07/2015 14:30:09.659 UTC+0)
+2015.07.08 14:30:09.883 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 14:30:10.133 | → Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7006729 created (08/07/2015 14:30:09.970 UTC+0)
+2015.07.08 14:30:10.289 | → Order OID7006729 is FILLED at 1.10513, position PID4699223 (08/07/2015 14:30:10.208 UTC+0)
+2015.07.08 14:30:11.101 | Request to close position PID4699223 is sent to server
+2015.07.08 14:30:11.367 | → Request to close position PID4699223 is ACCEPTED, order OID7006731 created (08/07/2015 14:30:11.305 UTC+0)
+2015.07.08 14:30:11.695 | → Order OID7006731 is FILLED at 1.10541, position PID4699223 closed (08/07/2015 14:30:11.584 UTC+0)
+2015.07.08 14:30:11.695 | Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 14:30:12.023 | → Request to Buy EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7006732 created (08/07/2015 14:30:11.865 UTC+0)
+2015.07.08 14:30:12.242 | → Order OID7006732 is FILLED at 1.10543, position PID4699224 (08/07/2015 14:30:12.155 UTC+0)
+2015.07.08 14:31:04.096 | Request to close position PID4699224 is sent to server
+2015.07.08 14:31:04.268 | → Request to close position PID4699224 is ACCEPTED, order OID7006736 created (08/07/2015 14:31:04.167 UTC+0)
+2015.07.08 14:31:04.268 | → Order OID7006736 is FILLED at 1.1052, position PID4699224 closed (08/07/2015 14:31:04.432 UTC+0)
+2015.07.08 14:31:04.268 | Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is sent to server
+2015.07.08 14:31:04.799 | → Request to Sell EUR 10k EURUSD (SL: 69, TP: 5) is ACCEPTED, order OID7006737 created (08/07/2015 14:31:04.671 UTC+0)
+2015.07.08 14:31:05.018 | → Order OID7006737 is FILLED at 1.10519, position PID4699225 (08/07/2015 14:31:04.968 UTC+0)
+2015.07.08 14:33:00.711 | Request to close position PID4699225 is sent to server
+2015.07.08 14:33:00.836 | → Request to close position PID4699225 is ACCEPTED, order OID7006764 created (08/07/2015 14:33:00.750 UTC+0)
+2015.07.08 14:33:01.351 | → Order OID7006764 is FILLED at 1.10492, position PID4699225 closed (08/07/2015 14:33:01.053 UTC+0)
+2015.07.08 14:41:18.179 | Disconnected (Connection failed)
+2015.07.08 14:41:20.888 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 14:43:56.666 | Disconnected (Connection failed)
+2015.07.08 14:43:58.449 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 14:44:11.779 | Disconnected (Manually)
+2015.07.08 14:44:19.791 | cAlgo started
+2015.07.08 14:44:28.829 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 15:06:49.764 | cAlgo started
+2015.07.08 15:07:02.484 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 15:16:32.061 | cAlgo started
+2015.07.08 15:16:43.037 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.08 15:32:43.449 | Disconnected (Manually)

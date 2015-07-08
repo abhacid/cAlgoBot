@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic Range Indicator", "Dynamic Range Indicator\Dynamic Range Indicator.csproj", "{A756F14D-2E72-4B26-8BBA-E980640DD143}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A756F14D-2E72-4B26-8BBA-E980640DD143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A756F14D-2E72-4B26-8BBA-E980640DD143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A756F14D-2E72-4B26-8BBA-E980640DD143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A756F14D-2E72-4B26-8BBA-E980640DD143}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

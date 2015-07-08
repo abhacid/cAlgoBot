@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mechanic II", "Mechanic II\Mechanic II.csproj", "{0AEFB47D-DC6C-4E1C-8FAA-62E9B5CEE7A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Candlestick Tendency II", "..\..\Indicators\Candlestick Tendency II\Candlestick Tendency II\Candlestick Tendency II.csproj", "{BB22C237-B1B8-4E4C-907B-F1D84CBAA1BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cAlgo.Lib", "..\..\Library\cAlgoLib\cAlgo.Lib.csproj", "{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AEFB47D-DC6C-4E1C-8FAA-62E9B5CEE7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AEFB47D-DC6C-4E1C-8FAA-62E9B5CEE7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AEFB47D-DC6C-4E1C-8FAA-62E9B5CEE7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AEFB47D-DC6C-4E1C-8FAA-62E9B5CEE7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB22C237-B1B8-4E4C-907B-F1D84CBAA1BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB22C237-B1B8-4E4C-907B-F1D84CBAA1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB22C237-B1B8-4E4C-907B-F1D84CBAA1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB22C237-B1B8-4E4C-907B-F1D84CBAA1BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

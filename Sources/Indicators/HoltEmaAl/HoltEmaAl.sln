@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoltEmaAl", "HoltEmaAl\HoltEmaAl.csproj", "{406F9EA7-F310-44CD-9C60-39F4BE545E98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{406F9EA7-F310-44CD-9C60-39F4BE545E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{406F9EA7-F310-44CD-9C60-39F4BE545E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{406F9EA7-F310-44CD-9C60-39F4BE545E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{406F9EA7-F310-44CD-9C60-39F4BE545E98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

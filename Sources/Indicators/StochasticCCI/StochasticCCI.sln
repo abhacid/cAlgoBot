@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StochasticCCI", "StochasticCCI\StochasticCCI.csproj", "{AB91A7F0-67D8-4521-8330-253046063E8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB91A7F0-67D8-4521-8330-253046063E8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB91A7F0-67D8-4521-8330-253046063E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB91A7F0-67D8-4521-8330-253046063E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB91A7F0-67D8-4521-8330-253046063E8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
