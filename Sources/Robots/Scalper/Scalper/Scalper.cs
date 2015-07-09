@@ -62,7 +62,7 @@ namespace cAlgo.Robots
             if(bp<0 && Math.Abs(bp)>=MaxProfit && MaxProfit!=0) return;
             if(BarCount<1)
             {
-              Print("Мало баров для анализа тренда. BarCount должно быть больше или равно 1");
+				Print("Few bars for trend analysis. BarCount must be greater than or equal to 1");
               return;
             }
             if(PosOpen<MaxOrders)

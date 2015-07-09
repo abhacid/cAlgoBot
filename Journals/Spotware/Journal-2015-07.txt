@@ -223,3 +223,250 @@
 2015.07.08 20:11:22.783 | Disconnected (Slow connection )
 2015.07.08 20:12:13.277 | Logged in. Account: 3104540 (demo). Proxy: France-4
 2015.07.08 21:37:48.906 | Disconnected (Manually)
+2015.07.09 06:24:12.157 | cAlgo started
+2015.07.09 06:24:22.268 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.09 09:51:42.635 | Disconnected (Manually)
+2015.07.09 15:39:30.104 | cAlgo started
+2015.07.09 15:39:38.945 | Logged in. Account: 3104540 (demo). Proxy: France-4
+2015.07.09 16:08:38.026 | Disconnected (Manually)
+2015.07.09 16:08:38.677 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.09 16:11:00.332 | Request to Sell EUR 600k EURUSD (Price: 1.10131, SL: 28, MR: 10) is sent to server
+2015.07.09 16:11:00.894 | → Request to Sell EUR 600k EURUSD (Price: 1.10131, SL: 28, MR: 10) is ACCEPTED, order OID7013376 created (09/07/2015 16:11:00.710 UTC+0)
+2015.07.09 16:11:01.550 | → Order OID7013376 is FILLED at 1.10129, position PID4702111 (09/07/2015 16:11:01.007 UTC+0)
+2015.07.09 16:41:20.875 | cAlgo started
+2015.07.09 16:41:29.941 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.09 16:42:56.777 | Request to Sell EUR 990k EURUSD (Price: 1.10096, SL: 28, MR: 10) is sent to server
+2015.07.09 16:42:56.824 | → Request to Sell EUR 990k EURUSD (Price: 1.10096, SL: 28, MR: 10) is ACCEPTED, order OID7013813 created (09/07/2015 16:42:56.789 UTC+0)
+2015.07.09 16:42:57.465 | → Order OID7013813 is FILLED at 1.10089, position PID4702298 (09/07/2015 16:42:57.011 UTC+0)
+2015.07.09 16:42:57.496 | Request to amend position PID4702111 (SL: 1.10384) is sent to server
+2015.07.09 16:42:57.637 | → Request to amend position PID4702111 (SL: 1.10384) is ACCEPTED
+2015.07.09 16:42:57.793 | Request to amend position PID4702111 (SL: 1.10377) is sent to server
+2015.07.09 16:42:57.840 | → Request to amend position PID4702111 (SL: 1.10377) is ACCEPTED
+2015.07.09 16:42:56.813 | Request to Sell EUR 990k EURUSD (Price: 1.10096, SL: 28, MR: 10) is sent to server
+2015.07.09 16:42:58.891 | → Request to Sell EUR 990k EURUSD (Price: 1.10096, SL: 28, MR: 10) is ACCEPTED, order OID7013817 created (09/07/2015 16:42:57.185 UTC+0)
+2015.07.09 16:42:59.032 | → Order OID7013817 is FILLED at 1.10086, position PID4702300 (09/07/2015 16:42:57.474 UTC+0)
+2015.07.09 16:47:37.261 | Disconnected (Manually)
+2015.07.09 16:57:09.918 | Request to amend position PID4702111 (SL: 1.10106) is sent to server
+2015.07.09 16:57:09.981 | → Request to amend position PID4702111 (SL: 1.10106) is ACCEPTED
+2015.07.09 16:57:10.278 | Request to Sell EUR 1.77m EURUSD (Price: 1.10051, SL: 28, MR: 10) is sent to server
+2015.07.09 16:57:10.324 | → Request to Sell EUR 1.77m EURUSD (Price: 1.10051, SL: 28, MR: 10) is ACCEPTED, order OID7013986 created (09/07/2015 16:57:10.288 UTC+0)
+2015.07.09 16:57:10.731 | → Order OID7013986 is FILLED at 1.10048, position PID4702375 (09/07/2015 16:57:10.591 UTC+0)
+2015.07.09 16:57:10.871 | Request to amend position PID4702111 (SL: 1.10103) is sent to server
+2015.07.09 16:57:11.074 | → Request to amend position PID4702111 (SL: 1.10103) is ACCEPTED
+2015.07.09 16:57:11.090 | Request to amend position PID4702298 (SL: 1.10357) is sent to server
+2015.07.09 16:57:11.137 | → Request to amend position PID4702298 (SL: 1.10357) is ACCEPTED
+2015.07.09 16:57:11.137 | Request to amend position PID4702300 (SL: 1.10357) is sent to server
+2015.07.09 16:57:11.387 | → Request to amend position PID4702300 (SL: 1.10357) is ACCEPTED
+2015.07.09 16:57:18.905 | Request to amend position PID4702111 (SL: 1.10102) is sent to server
+2015.07.09 16:57:18.968 | → Request to amend position PID4702111 (SL: 1.10102) is ACCEPTED
+2015.07.09 16:57:19.515 | Request to amend position PID4702111 (SL: 1.10098) is sent to server
+2015.07.09 16:57:19.561 | → Request to amend position PID4702111 (SL: 1.10098) is ACCEPTED
+2015.07.09 16:57:44.405 | Request to amend position PID4702111 (SL: 1.10097) is sent to server
+2015.07.09 16:57:44.468 | → Request to amend position PID4702111 (SL: 1.10097) is ACCEPTED
+2015.07.09 16:57:44.561 | Request to amend position PID4702111 (SL: 1.10094) is sent to server
+2015.07.09 16:57:44.749 | → Request to amend position PID4702111 (SL: 1.10094) is ACCEPTED
+2015.07.09 16:57:44.999 | Request to amend position PID4702111 (SL: 1.10093) is sent to server
+2015.07.09 16:57:45.046 | → Request to amend position PID4702111 (SL: 1.10093) is ACCEPTED
+2015.07.09 16:57:45.624 | Request to amend position PID4702111 (SL: 1.10092) is sent to server
+2015.07.09 16:57:45.686 | → Request to amend position PID4702111 (SL: 1.10092) is ACCEPTED
+2015.07.09 16:58:07.468 | Request to amend position PID4702111 (SL: 1.10088) is sent to server
+2015.07.09 16:58:07.515 | → Request to amend position PID4702111 (SL: 1.10088) is ACCEPTED
+2015.07.09 16:58:07.765 | Request to amend position PID4702111 (SL: 1.10086) is sent to server
+2015.07.09 16:58:07.827 | → Request to amend position PID4702111 (SL: 1.10086) is ACCEPTED
+2015.07.09 16:58:36.686 | Request to amend position PID4702111 (SL: 1.10084) is sent to server
+2015.07.09 16:58:36.733 | → Request to amend position PID4702111 (SL: 1.10084) is ACCEPTED
+2015.07.09 16:58:46.843 | Request to amend position PID4702111 (SL: 1.10082) is sent to server
+2015.07.09 16:58:46.890 | → Request to amend position PID4702111 (SL: 1.10082) is ACCEPTED
+2015.07.09 16:58:47.155 | Request to amend position PID4702111 (SL: 1.10079) is sent to server
+2015.07.09 16:58:47.202 | → Request to amend position PID4702111 (SL: 1.10079) is ACCEPTED
+2015.07.09 16:58:57.000 | Request to amend position PID4702111 (SL: 1.10076) is sent to server
+2015.07.09 16:58:57.062 | → Request to amend position PID4702111 (SL: 1.10076) is ACCEPTED
+2015.07.09 16:59:59.127 | Request to amend position PID4702111 (SL: 1.10075) is sent to server
+2015.07.09 16:59:59.174 | → Request to amend position PID4702111 (SL: 1.10075) is ACCEPTED
+2015.07.09 16:59:59.658 | Request to amend position PID4702111 (SL: 1.10073) is sent to server
+2015.07.09 16:59:59.705 | → Request to amend position PID4702111 (SL: 1.10073) is ACCEPTED
+2015.07.09 17:00:05.783 | → Order OID7013377 is FILLED at 1.10084, position PID4702111 closed (09/07/2015 17:00:05.674 UTC+0)
+2015.07.09 17:00:05.908 | Request to amend position PID4702298 (SL: 1.10349) is sent to server
+2015.07.09 17:00:05.955 | → Request to amend position PID4702298 (SL: 1.10349) is ACCEPTED
+2015.07.09 17:00:05.955 | Request to amend position PID4702300 (SL: 1.10349) is sent to server
+2015.07.09 17:00:06.033 | → Request to amend position PID4702300 (SL: 1.10349) is ACCEPTED
+2015.07.09 17:23:38.600 | Request to Sell EUR 1.769m EURUSD (Price: 1.10018, SL: 28, MR: 10) is sent to server
+2015.07.09 17:23:38.647 | → Request to Sell EUR 1.769m EURUSD (Price: 1.10018, SL: 28, MR: 10) is ACCEPTED, order OID7014335 created (09/07/2015 17:23:38.608 UTC+0)
+2015.07.09 17:23:39.272 | → Order OID7014335 is FILLED at 1.10015, position PID4702538 (09/07/2015 17:23:38.906 UTC+0)
+2015.07.09 17:23:39.397 | Request to amend position PID4702298 (SL: 1.10332) is sent to server
+2015.07.09 17:23:39.585 | → Request to amend position PID4702298 (SL: 1.10332) is ACCEPTED
+2015.07.09 17:23:39.600 | Request to amend position PID4702300 (SL: 1.10332) is sent to server
+2015.07.09 17:23:39.647 | → Request to amend position PID4702300 (SL: 1.10332) is ACCEPTED
+2015.07.09 17:23:39.819 | Request to amend position PID4702298 (SL: 1.10066) is sent to server
+2015.07.09 17:23:39.866 | → Request to amend position PID4702298 (SL: 1.10066) is ACCEPTED
+2015.07.09 17:23:39.913 | Request to amend position PID4702298 (SL: 1.10065) is sent to server
+2015.07.09 17:23:40.069 | → Request to amend position PID4702298 (SL: 1.10065) is ACCEPTED
+2015.07.09 17:23:40.085 | Request to amend position PID4702300 (SL: 1.10065) is sent to server
+2015.07.09 17:23:40.147 | → Request to amend position PID4702300 (SL: 1.10065) is ACCEPTED
+2015.07.09 17:24:21.491 | Request to amend position PID4702298 (SL: 1.10063) is sent to server
+2015.07.09 17:24:21.538 | → Request to amend position PID4702298 (SL: 1.10063) is ACCEPTED
+2015.07.09 17:24:21.553 | Request to amend position PID4702300 (SL: 1.10063) is sent to server
+2015.07.09 17:24:21.647 | → Request to amend position PID4702300 (SL: 1.10063) is ACCEPTED
+2015.07.09 17:24:21.647 | Request to amend position PID4702298 (SL: 1.10060) is sent to server
+2015.07.09 17:24:21.835 | → Request to amend position PID4702298 (SL: 1.10060) is ACCEPTED
+2015.07.09 17:24:21.850 | Request to amend position PID4702300 (SL: 1.10060) is sent to server
+2015.07.09 17:24:21.897 | → Request to amend position PID4702300 (SL: 1.10060) is ACCEPTED
+2015.07.09 17:24:24.116 | Request to amend position PID4702298 (SL: 1.10053) is sent to server
+2015.07.09 17:24:24.163 | → Request to amend position PID4702298 (SL: 1.10053) is ACCEPTED
+2015.07.09 17:24:24.163 | Request to amend position PID4702300 (SL: 1.10053) is sent to server
+2015.07.09 17:24:24.225 | → Request to amend position PID4702300 (SL: 1.10053) is ACCEPTED
+2015.07.09 17:24:24.413 | Request to amend position PID4702298 (SL: 1.10052) is sent to server
+2015.07.09 17:24:24.460 | → Request to amend position PID4702298 (SL: 1.10052) is ACCEPTED
+2015.07.09 17:24:24.460 | Request to amend position PID4702300 (SL: 1.10052) is sent to server
+2015.07.09 17:24:24.631 | → Request to amend position PID4702300 (SL: 1.10052) is ACCEPTED
+2015.07.09 17:24:24.694 | Request to amend position PID4702298 (SL: 1.10050) is sent to server
+2015.07.09 17:24:24.819 | → Request to amend position PID4702298 (SL: 1.10050) is ACCEPTED
+2015.07.09 17:24:24.881 | Request to amend position PID4702300 (SL: 1.10050) is sent to server
+2015.07.09 17:24:24.928 | → Request to amend position PID4702300 (SL: 1.10050) is ACCEPTED
+2015.07.09 17:24:25.147 | Request to amend position PID4702298 (SL: 1.10036) is sent to server
+2015.07.09 17:24:25.225 | → Request to amend position PID4702298 (SL: 1.10036) is ACCEPTED
+2015.07.09 17:24:25.288 | Request to amend position PID4702300 (SL: 1.10036) is sent to server
+2015.07.09 17:24:25.381 | → Request to amend position PID4702300 (SL: 1.10036) is ACCEPTED
+2015.07.09 17:24:25.397 | Request to amend position PID4702298 (SL: 1.10033) is sent to server
+2015.07.09 17:24:25.460 | → Request to amend position PID4702298 (SL: 1.10033) is ACCEPTED
+2015.07.09 17:24:25.538 | Request to amend position PID4702300 (SL: 1.10033) is sent to server
+2015.07.09 17:24:25.600 | → Request to amend position PID4702300 (SL: 1.10033) is ACCEPTED
+2015.07.09 17:24:25.663 | Request to Sell EUR 2.158m EURUSD (Price: 1.09981, SL: 28, MR: 10) is sent to server
+2015.07.09 17:24:25.835 | → Request to Sell EUR 2.158m EURUSD (Price: 1.09981, SL: 28, MR: 10) is ACCEPTED, order OID7014341 created (09/07/2015 17:24:25.674 UTC+0)
+2015.07.09 17:24:26.194 | → Order OID7014341 is FILLED at 1.09974, position PID4702540 (09/07/2015 17:24:25.955 UTC+0)
+2015.07.09 17:24:26.335 | Request to amend position PID4702298 (SL: 1.10025) is sent to server
+2015.07.09 17:24:26.538 | → Request to amend position PID4702298 (SL: 1.10025) is ACCEPTED
+2015.07.09 17:24:26.553 | Request to amend position PID4702300 (SL: 1.10032) is sent to server
+2015.07.09 17:24:26.600 | → Request to amend position PID4702300 (SL: 1.10032) is ACCEPTED
+2015.07.09 17:24:26.600 | Request to amend position PID4702375 (SL: 1.10310) is sent to server
+2015.07.09 17:24:26.819 | → Request to amend position PID4702375 (SL: 1.10310) is ACCEPTED
+2015.07.09 17:24:26.819 | Request to amend position PID4702300 (SL: 1.10030) is sent to server
+2015.07.09 17:24:26.960 | → Request to amend position PID4702300 (SL: 1.10030) is ACCEPTED
+2015.07.09 17:24:27.069 | Request to amend position PID4702300 (SL: 1.10025) is sent to server
+2015.07.09 17:24:27.225 | → Request to amend position PID4702300 (SL: 1.10025) is ACCEPTED
+2015.07.09 17:24:27.225 | Request to amend position PID4702375 (SL: 1.10026) is sent to server
+2015.07.09 17:24:27.303 | → Request to amend position PID4702375 (SL: 1.10026) is ACCEPTED
+2015.07.09 17:24:27.303 | Request to amend position PID4702375 (SL: 1.10025) is sent to server
+2015.07.09 17:24:27.522 | → Request to amend position PID4702375 (SL: 1.10025) is ACCEPTED
+2015.07.09 17:24:27.522 | Request to amend position PID4702298 (SL: 1.10015) is sent to server
+2015.07.09 17:24:27.694 | → Request to amend position PID4702298 (SL: 1.10015) is ACCEPTED
+2015.07.09 17:24:27.694 | Request to amend position PID4702300 (SL: 1.10006) is sent to server
+2015.07.09 17:24:27.819 | → Request to amend position PID4702300 (SL: 1.10006) is ACCEPTED
+2015.07.09 17:24:27.835 | Request to amend position PID4702375 (SL: 1.10015) is sent to server
+2015.07.09 17:24:27.991 | → Request to amend position PID4702375 (SL: 1.10015) is ACCEPTED
+2015.07.09 17:24:28.335 | Request to amend position PID4702298 (SL: 1.10011) is sent to server
+2015.07.09 17:24:28.397 | → Request to amend position PID4702298 (SL: 1.10011) is ACCEPTED
+2015.07.09 17:24:28.397 | Request to amend position PID4702375 (SL: 1.10011) is sent to server
+2015.07.09 17:24:28.475 | → Request to amend position PID4702375 (SL: 1.10011) is ACCEPTED
+2015.07.09 17:25:23.361 | → Order OID7013818 is FILLED at 1.1001, position PID4702300 closed (09/07/2015 17:25:23.267 UTC+0)
+2015.07.09 17:27:36.201 | Request to amend position PID4702298 (SL: 1.10010) is sent to server
+2015.07.09 17:27:36.247 | → Request to amend position PID4702298 (SL: 1.10010) is ACCEPTED
+2015.07.09 17:27:36.247 | Request to amend position PID4702375 (SL: 1.10007) is sent to server
+2015.07.09 17:27:36.794 | → Request to amend position PID4702375 (SL: 1.10007) is ACCEPTED
+2015.07.09 17:27:36.826 | Request to amend position PID4702298 (SL: 1.10008) is sent to server
+2015.07.09 17:27:36.888 | → Request to amend position PID4702298 (SL: 1.10008) is ACCEPTED
+2015.07.09 17:27:36.888 | Request to amend position PID4702375 (SL: 1.10006) is sent to server
+2015.07.09 17:27:37.013 | → Request to amend position PID4702375 (SL: 1.10006) is ACCEPTED
+2015.07.09 17:27:37.044 | Request to amend position PID4702298 (SL: 1.10006) is sent to server
+2015.07.09 17:27:37.122 | → Request to amend position PID4702298 (SL: 1.10006) is ACCEPTED
+2015.07.09 17:27:37.497 | Request to amend position PID4702298 (SL: 1.10005) is sent to server
+2015.07.09 17:27:37.591 | → Request to amend position PID4702298 (SL: 1.10005) is ACCEPTED
+2015.07.09 17:27:38.388 | Request to amend position PID4702375 (SL: 1.10005) is sent to server
+2015.07.09 17:27:38.435 | → Request to amend position PID4702375 (SL: 1.10005) is ACCEPTED
+2015.07.09 17:27:42.857 | Request to amend position PID4702298 (SL: 1.10004) is sent to server
+2015.07.09 17:27:42.919 | → Request to amend position PID4702298 (SL: 1.10004) is ACCEPTED
+2015.07.09 17:27:42.919 | Request to amend position PID4702375 (SL: 1.10004) is sent to server
+2015.07.09 17:27:42.966 | → Request to amend position PID4702375 (SL: 1.10004) is ACCEPTED
+2015.07.09 17:27:46.451 | Request to amend position PID4702298 (SL: 1.09998) is sent to server
+2015.07.09 17:27:46.513 | → Request to amend position PID4702298 (SL: 1.09998) is ACCEPTED
+2015.07.09 17:27:46.513 | Request to amend position PID4702375 (SL: 1.09998) is sent to server
+2015.07.09 17:27:46.560 | → Request to amend position PID4702375 (SL: 1.09998) is ACCEPTED
+2015.07.09 17:27:46.997 | Request to amend position PID4702298 (SL: 1.09995) is sent to server
+2015.07.09 17:27:47.044 | → Request to amend position PID4702298 (SL: 1.09995) is ACCEPTED
+2015.07.09 17:27:47.044 | Request to amend position PID4702375 (SL: 1.09995) is sent to server
+2015.07.09 17:27:47.107 | → Request to amend position PID4702375 (SL: 1.09995) is ACCEPTED
+2015.07.09 17:27:47.747 | Request to amend position PID4702298 (SL: 1.09993) is sent to server
+2015.07.09 17:27:47.794 | → Request to amend position PID4702298 (SL: 1.09993) is ACCEPTED
+2015.07.09 17:27:47.810 | Request to amend position PID4702375 (SL: 1.09993) is sent to server
+2015.07.09 17:27:47.857 | → Request to amend position PID4702375 (SL: 1.09993) is ACCEPTED
+2015.07.09 17:27:47.857 | Request to amend position PID4702538 (SL: 1.09993) is sent to server
+2015.07.09 17:27:48.060 | → Request to amend position PID4702538 (SL: 1.09993) is ACCEPTED
+2015.07.09 17:27:48.076 | Request to amend position PID4702298 (SL: 1.09992) is sent to server
+2015.07.09 17:27:48.185 | → Request to amend position PID4702298 (SL: 1.09992) is ACCEPTED
+2015.07.09 17:27:48.982 | Request to Sell EUR 2.159m EURUSD (Price: 1.09942, SL: 28, MR: 10) is sent to server
+2015.07.09 17:27:49.044 | → Request to Sell EUR 2.159m EURUSD (Price: 1.09942, SL: 28, MR: 10) is ACCEPTED, order OID7014378 created (09/07/2015 17:27:48.995 UTC+0)
+2015.07.09 17:27:49.482 | → Order OID7014378 is FILLED at 1.09939, position PID4702554 (09/07/2015 17:27:49.284 UTC+0)
+2015.07.09 17:28:50.554 | Request to amend position PID4702375 (SL: 1.09992) is sent to server
+2015.07.09 17:28:50.585 | → Request to amend position PID4702375 (SL: 1.09992) is ACCEPTED
+2015.07.09 17:28:50.601 | Request to amend position PID4702538 (SL: 1.09992) is sent to server
+2015.07.09 17:28:51.085 | → Request to amend position PID4702538 (SL: 1.09992) is ACCEPTED
+2015.07.09 17:28:51.085 | Request to amend position PID4702298 (SL: 1.09984) is sent to server
+2015.07.09 17:28:51.148 | → Request to amend position PID4702298 (SL: 1.09984) is ACCEPTED
+2015.07.09 17:28:51.148 | Request to amend position PID4702375 (SL: 1.09984) is sent to server
+2015.07.09 17:28:51.351 | → Request to amend position PID4702375 (SL: 1.09984) is ACCEPTED
+2015.07.09 17:28:51.366 | Request to amend position PID4702538 (SL: 1.09979) is sent to server
+2015.07.09 17:28:51.413 | → Request to amend position PID4702538 (SL: 1.09979) is ACCEPTED
+2015.07.09 17:28:51.429 | Request to amend position PID4702298 (SL: 1.09982) is sent to server
+2015.07.09 17:28:51.491 | → Request to amend position PID4702298 (SL: 1.09982) is ACCEPTED
+2015.07.09 17:28:52.163 | Request to amend position PID4702375 (SL: 1.09983) is sent to server
+2015.07.09 17:28:52.210 | → Request to amend position PID4702375 (SL: 1.09983) is ACCEPTED
+2015.07.09 17:30:40.409 | Request to amend position PID4702298 (SL: 1.09980) is sent to server
+2015.07.09 17:30:40.456 | → Request to amend position PID4702298 (SL: 1.09980) is ACCEPTED
+2015.07.09 17:30:40.456 | Request to amend position PID4702375 (SL: 1.09980) is sent to server
+2015.07.09 17:30:40.691 | → Request to amend position PID4702375 (SL: 1.09980) is ACCEPTED
+2015.07.09 17:30:40.691 | Request to amend position PID4702538 (SL: 1.09978) is sent to server
+2015.07.09 17:30:41.050 | → Request to amend position PID4702538 (SL: 1.09978) is ACCEPTED
+2015.07.09 17:30:41.050 | Request to amend position PID4702298 (SL: 1.09974) is sent to server
+2015.07.09 17:30:41.112 | → Request to amend position PID4702298 (SL: 1.09974) is ACCEPTED
+2015.07.09 17:30:41.128 | Request to amend position PID4702375 (SL: 1.09974) is sent to server
+2015.07.09 17:30:41.362 | → Request to amend position PID4702375 (SL: 1.09974) is ACCEPTED
+2015.07.09 17:30:41.362 | Request to amend position PID4702538 (SL: 1.09974) is sent to server
+2015.07.09 17:30:41.566 | → Request to amend position PID4702538 (SL: 1.09974) is ACCEPTED
+2015.07.09 17:30:43.972 | Request to amend position PID4702298 (SL: 1.09968) is sent to server
+2015.07.09 17:30:44.019 | → Request to amend position PID4702298 (SL: 1.09968) is ACCEPTED
+2015.07.09 17:30:44.034 | Request to amend position PID4702375 (SL: 1.09968) is sent to server
+2015.07.09 17:30:44.081 | → Request to amend position PID4702375 (SL: 1.09968) is ACCEPTED
+2015.07.09 17:30:44.081 | Request to amend position PID4702538 (SL: 1.09968) is sent to server
+2015.07.09 17:30:44.253 | → Request to amend position PID4702538 (SL: 1.09968) is ACCEPTED
+2015.07.09 17:35:01.205 | Request to amend position PID4702298 (SL: 1.09967) is sent to server
+2015.07.09 17:35:01.252 | → Request to amend position PID4702298 (SL: 1.09967) is ACCEPTED
+2015.07.09 17:35:01.267 | Request to amend position PID4702375 (SL: 1.09967) is sent to server
+2015.07.09 17:35:01.705 | → Request to amend position PID4702375 (SL: 1.09967) is ACCEPTED
+2015.07.09 17:35:01.705 | Request to amend position PID4702538 (SL: 1.09967) is sent to server
+2015.07.09 17:35:01.970 | → Request to amend position PID4702538 (SL: 1.09967) is ACCEPTED
+2015.07.09 17:37:51.842 | → Order OID7013815 is FILLED at 1.09968, position PID4702298 closed (09/07/2015 17:37:51.765 UTC+0)
+2015.07.09 17:37:51.983 | → Order OID7014336 is FILLED at 1.09969, position PID4702538 closed (09/07/2015 17:37:51.787 UTC+0)
+2015.07.09 17:37:52.124 | → Order OID7013987 is FILLED at 1.09969, position PID4702375 closed (09/07/2015 17:37:51.794 UTC+0)
+2015.07.09 17:37:52.264 | Request to amend position PID4702540 (SL: 1.10236) is sent to server
+2015.07.09 17:37:52.342 | → Request to amend position PID4702540 (SL: 1.10236) is ACCEPTED
+2015.07.09 18:38:56.885 | Disconnected (Connection failed)
+2015.07.09 18:38:58.178 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.09 18:42:13.123 | Disconnected (Connection failed)
+2015.07.09 18:42:14.482 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.09 18:54:01.741 | Disconnected (Connection failed)
+2015.07.09 18:54:03.155 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.09 19:03:07.072 | Disconnected (Connection failed)
+2015.07.09 19:03:08.340 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.09 19:08:22.592 | → Order OID7014379 is FILLED at 1.10222, position PID4702554 closed (09/07/2015 19:08:22.523 UTC+0)
+2015.07.09 19:08:29.232 | → Order OID7014343 is FILLED at 1.10237, position PID4702540 closed (09/07/2015 19:08:29.161 UTC+0)
+2015.07.09 19:08:29.436 | Request to Buy EUR 596k EURUSD (Price: 1.10261, SL: 28, MR: 10) is sent to server
+2015.07.09 19:08:29.467 | → Request to Buy EUR 596k EURUSD (Price: 1.10261, SL: 28, MR: 10) is ACCEPTED, order OID7014492 created (09/07/2015 19:08:29.452 UTC+0)
+2015.07.09 19:08:30.201 | → Order OID7014492 is FILLED at 1.10274, position PID4702594 (09/07/2015 19:08:29.758 UTC+0)
+2015.07.09 19:09:02.623 | Request to Buy EUR 984k EURUSD (Price: 1.10307, SL: 28, MR: 10) is sent to server
+2015.07.09 19:09:02.686 | → Request to Buy EUR 984k EURUSD (Price: 1.10307, SL: 28, MR: 10) is ACCEPTED, order OID7014498 created (09/07/2015 19:09:02.642 UTC+0)
+2015.07.09 19:09:03.045 | → Order OID7014498 is FILLED at 1.10308, position PID4702597 (09/07/2015 19:09:02.893 UTC+0)
+2015.07.09 19:09:03.154 | Request to amend position PID4702594 (SL: 1.10015) is sent to server
+2015.07.09 19:09:03.201 | → Request to amend position PID4702594 (SL: 1.10015) is ACCEPTED
+2015.07.09 20:12:49.565 | Request to Buy EUR 1.372m EURUSD (Price: 1.10338, SL: 28, MR: 10) is sent to server
+2015.07.09 20:12:49.690 | → Request to Buy EUR 1.372m EURUSD (Price: 1.10338, SL: 28, MR: 10) is ACCEPTED, order OID7014569 created (09/07/2015 20:12:49.583 UTC+0)
+2015.07.09 20:12:50.127 | → Order OID7014569 is FILLED at 1.10339, position PID4702618 (09/07/2015 20:12:49.806 UTC+0)
+2015.07.09 20:12:51.127 | Request to amend position PID4702594 (SL: 1.10036) is sent to server
+2015.07.09 20:12:51.252 | → Request to amend position PID4702594 (SL: 1.10036) is ACCEPTED
+2015.07.09 20:12:51.252 | Request to amend position PID4702597 (SL: 1.10036) is sent to server
+2015.07.09 20:12:51.330 | → Request to amend position PID4702597 (SL: 1.10036) is ACCEPTED
+2015.07.09 20:27:32.190 | Request to close position PID4702594 is sent to server
+2015.07.09 20:27:32.596 | → Request to close position PID4702594 is ACCEPTED, order OID7014607 created (09/07/2015 20:27:32.444 UTC+0)
+2015.07.09 20:27:32.877 | → Order OID7014607 is FILLED at 1.10306, position PID4702594 closed (09/07/2015 20:27:32.675 UTC+0)
+2015.07.09 20:28:53.764 | Disconnected (Manually)
+2015.07.09 20:29:02.089 | cAlgo started
+2015.07.09 20:29:11.865 | Logged in. Account: 3104534 (demo). Proxy: France-4
