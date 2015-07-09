@@ -56,8 +56,6 @@ namespace cAlgo
 		public const int _Up = _basePlot + _sizeSignalPlot;
 		public const int _Dn = _basePlot - _sizeSignalPlot;
 
-		DataSeries _open;
-		DataSeries _close;
 		double _candleCeil;
 
 		#endregion
@@ -68,8 +66,6 @@ namespace cAlgo
 		{
 			// Initialize and create nested indicators
 			_candleCeil = SignalFineness * Symbol.PipSize;
-			_open = MarketSeries.Open;
-			_close = MarketSeries.Close;
 		}
 
 		public override void Calculate(int index)
@@ -77,26 +73,27 @@ namespace cAlgo
 			bool testUp = true;
 			bool testDn = true;
 
-			if(NumberOfCandle <= index)
+			if(NumberOfCandle > index || NumberOfCandle <= 0)
+				Signal[index] = _Neutral;
+			else
 			{
-				int i = index;
 
-				do
+				for( int i=index; i > index-NumberOfCandle; i--)
 				{
-					if(i != index - NumberOfCandle + 1)
-					{
-						testUp = _open[i] >= _close[i - 1];
-						testDn = _open[i] <= _close[i - 1];
-					}
+					//if(i != index - NumberOfCandle + 1)
+					//{
+					//	testUp = MarketSeries.Open[i] >= MarketSeries.Close[i - 1];
+					//	testDn = MarketSeries.Open[i] <= MarketSeries.Close[i - 1];
+					//}
 
-					testUp = testUp && (_close[i] >= _open[i] + _candleCeil);
-					testDn = testDn && (_close[i] + _candleCeil <= _open[i]);
+					testUp = testUp && (MarketSeries.Close[i] >= MarketSeries.Open[i] + _candleCeil);
+					testDn = testDn && (MarketSeries.Close[i] + _candleCeil <= MarketSeries.Open[i]);
 				}
-				while((testUp || testDn) && --i > index-NumberOfCandle);			
+				
+				Signal[index] = testUp ? _Up : testDn ? _Dn : _Neutral;
 			}
 			
 
-			Signal[index] = testUp ? _Up : testDn ? _Dn : _Neutral;
 		}
 	}
 }
