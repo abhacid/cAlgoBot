@@ -60,10 +60,10 @@ namespace cAlgo.Lib
 				return 0;
 			else
 			{
-				double maximumLoss = robot.potentialLoss();
-				double moneyToInvestInDepositCurrency = (robot.Account.Balance * risk / 100.0) - maximumLoss;
+				double actualMaximumLossInQuoteCurrency = robot.potentialLoss();
+				double moneyToInvestInDepositCurrency = (robot.Account.Balance * risk / 100.0);
 
-				double moneyToInvestInQuoteCurrency = moneyToInvestInDepositCurrency * robot.Symbol.Mid();
+				double moneyToInvestInQuoteCurrency = (moneyToInvestInDepositCurrency * robot.Symbol.Mid()) - actualMaximumLossInQuoteCurrency;
 				double volumeToInvestInQuoteCurrency = moneyToInvestInQuoteCurrency / (stopLossPips * robot.Symbol.PipSize);
 
 				return Math.Max(0,volumeToInvestInQuoteCurrency);
@@ -154,7 +154,7 @@ namespace cAlgo.Lib
 
 			foreach(Position position in robot.Positions)
 			{
-				if(label!=null && position.Label== label)
+				if( label==null || label!=null && position.Label== label)
 				{				
 					double? positionPotential = position.potentialLoss();
 					potential += positionPotential.HasValue ? positionPotential.Value : 0;

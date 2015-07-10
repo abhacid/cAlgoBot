@@ -87,11 +87,7 @@ namespace cAlgo
 
         private CandlestickTendencyII tendency;
 
-        //private bool previewIsGlobalTendencyRising;
-        //private bool previewIsGlobalTendencyFalling;
-        //private bool previewIsLocalTrendRising;
-        //private bool previewIsLocalTrendFalling;
-        private int previewIndex;
+        private int savedIndex;
         #endregion
 
         protected override void OnStart()
@@ -101,31 +97,27 @@ namespace cAlgo
 
             tendency = Indicators.GetIndicator<CandlestickTendencyII>(HighOrderTimeFrame);
 
-            //saveTentency(MarketSeries.Close.Count-2);
         }
 
         protected override void OnTick()
         {
             manageTrailingStops();
 
-            int index = MarketSeries.Close.Count - 2;
+            int index = MarketSeries.Close.Count - 1;
 
-            if (index <= previewIndex)
+            if (index <= savedIndex)
                 return;
 
-            previewIndex = index;
+            savedIndex = index;
 
             Position position = CurrentPosition();
 
-            if (ExitOnOppositeSignal && position != null && isCloseSignal(index - 1))
+            if (ExitOnOppositeSignal && position != null && isCloseSignal(index))
                 ClosePosition(position);
 
-            TradeType? tradeType = signal(index - 1);
+            TradeType? tradeType = signal(index);
             if (tradeType.HasValue)
                 executeOrder(tradeType.Value);
-
-            //saveTentency(index);		
-
         }
 
         private TradeType? signal(int index)
@@ -135,19 +127,24 @@ namespace cAlgo
             // this occur when the preceding boolean test instruction is true or there is no active position.
             if (CurrentPosition() == null)
             {
+				bool isShortSignal = tendency.Signal[index] < 0 ;
+				bool isLongSignal  = tendency.Signal[index] > 0 ;
+				bool isShortPreviewSignal = tendency.Signal[index - 1] < 0 ;
+				bool isLongPreviewSignal  = tendency.Signal[index - 1] > 0 ;
+
                 if (EnterOnSyncSignalOnly)
                 {
-                    if (tendency.IsShortSignal(index - 1) && tendency.IsLongSignal(index))
+					if(isShortPreviewSignal && isLongSignal)
                         tradeType = TradeType.Buy;
-                    else if (tendency.IsLongSignal(index - 1) && tendency.IsShortSignal(index))
+                    else if (isLongPreviewSignal && isShortSignal)
                         tradeType = TradeType.Sell;
                 }
                 else
                 {
 
-                    if (tendency.IsLongSignal(index))
+                    if (isLongSignal)
                         tradeType = TradeType.Buy;
-                    else if (tendency.IsShortSignal(index))
+                    else if (isShortSignal)
                         tradeType = TradeType.Sell;
 
                 }
@@ -194,20 +191,10 @@ namespace cAlgo
             Position position = CurrentPosition();
 
             if (position != null)
-                return ((position.TradeType == TradeType.Sell) ? tendency.IsLongSignal(index) : tendency.IsShortSignal(index));
+				return ((position.TradeType == TradeType.Sell) ? tendency.Signal[index] > 0 : tendency.Signal[index] < 0);
             else
                 return false;
         }
-
-        //private void saveTentency(int index)
-        //{
-        //	previewIndex = index;
-        //	previewIsLocalTrendRising = tendency.isLocalTrendRising(index);
-        //	previewIsLocalTrendFalling = tendency.isLocalTrendFalling(index);
-        //	previewIsGlobalTendencyRising = tendency.isGlobalTrendRising(index);
-        //	previewIsGlobalTendencyFalling = tendency.isGlobalTrendFalling(index);			
-        //}
-
 
         protected void manageTrailingStops()
         {

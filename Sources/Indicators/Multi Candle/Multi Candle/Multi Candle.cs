@@ -17,7 +17,7 @@
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-// Project Hosting for Open Source Software on Github : https://github.com/abhacid/Robot_Forex
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot
 #endregion
 
 #region Description
@@ -34,66 +34,66 @@ using cAlgo.Indicators;
 
 namespace cAlgo
 {
-	[Indicator(IsOverlay = false, TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
-	[Levels(-10, 0, 10)]
-	public class MultiCandleIndicator : Indicator
-	{
-		[Parameter("Number Of Candle", DefaultValue = 2, MinValue=0)]
-		public int NumberOfCandle { get; set; }
+    [Indicator(IsOverlay = false, TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
+    [Levels(-10, 0, 10)]
+    public class MultiCandleIndicator : Indicator
+    {
+        [Parameter("Number Of Candle", DefaultValue = 2, MinValue = 0)]
+        public int NumberOfCandle { get; set; }
 
-		[Parameter("Signal Fineness", DefaultValue = 0.01)]
-		public double SignalFineness { get; set; }
+        [Parameter("Signal Fineness", DefaultValue = 0.01)]
+        public double SignalFineness { get; set; }
 
-		[Output("Main")]
-		public IndicatorDataSeries Signal { get; set; }
+        [Output("Main")]
+        public IndicatorDataSeries Signal { get; set; }
 
-		#region Globals
-		const int _basePlot = 0;
-		const int _sizeSignalPlot = 10;
-		const int _spaceBetweenPlot = 2 * _sizeSignalPlot + 5;
+        #region Globals
+        const int _basePlot = 0;
+        const int _sizeSignalPlot = 10;
+        const int _spaceBetweenPlot = 2 * _sizeSignalPlot + 5;
 
-		public const int _Neutral = _basePlot;
-		public const int _Up = _basePlot + _sizeSignalPlot;
-		public const int _Dn = _basePlot - _sizeSignalPlot;
+        public const int _Neutral = _basePlot;
+        public const int _Up = _basePlot + _sizeSignalPlot;
+        public const int _Dn = _basePlot - _sizeSignalPlot;
 
-		double _candleCeil;
+        double _candleCeil;
 
-		#endregion
+        #endregion
 
 
 
-		protected override void Initialize()
-		{
-			// Initialize and create nested indicators
-			_candleCeil = SignalFineness * Symbol.PipSize;
-		}
+        protected override void Initialize()
+        {
+            // Initialize and create nested indicators
+            _candleCeil = SignalFineness * Symbol.PipSize;
+        }
 
-		public override void Calculate(int index)
-		{
-			bool testUp = true;
-			bool testDn = true;
+        public override void Calculate(int index)
+        {
+            bool testUp = true;
+            bool testDn = true;
 
-			if(NumberOfCandle > index || NumberOfCandle <= 0)
-				Signal[index] = _Neutral;
-			else
-			{
+            if (NumberOfCandle > index || NumberOfCandle <= 0)
+                Signal[index] = _Neutral;
+            else
+            {
 
-				for( int i=index; i > index-NumberOfCandle; i--)
-				{
-					//if(i != index - NumberOfCandle + 1)
-					//{
-					//	testUp = MarketSeries.Open[i] >= MarketSeries.Close[i - 1];
-					//	testDn = MarketSeries.Open[i] <= MarketSeries.Close[i - 1];
-					//}
+                for (int i = index; i > index - NumberOfCandle; i--)
+                {
+                    //if(i != index - NumberOfCandle + 1)
+                    //{
+                    //	testUp = MarketSeries.Open[i] >= MarketSeries.Close[i - 1];
+                    //	testDn = MarketSeries.Open[i] <= MarketSeries.Close[i - 1];
+                    //}
 
-					testUp = testUp && (MarketSeries.Close[i] >= MarketSeries.Open[i] + _candleCeil);
-					testDn = testDn && (MarketSeries.Close[i] + _candleCeil <= MarketSeries.Open[i]);
-				}
-				
-				Signal[index] = testUp ? _Up : testDn ? _Dn : _Neutral;
-			}
-			
+                    testUp = testUp && (MarketSeries.Close[i] >= MarketSeries.Open[i] + _candleCeil);
+                    testDn = testDn && (MarketSeries.Close[i] + _candleCeil <= MarketSeries.Open[i]);
+                }
 
-		}
-	}
+                Signal[index] = testUp ? _Up : testDn ? _Dn : _Neutral;
+            }
+
+
+        }
+    }
 }

@@ -487,3 +487,145 @@
 2015.07.09 21:13:42.923 | Logged in. Account: 3104534 (demo). Proxy: France-4
 2015.07.09 21:27:18.326 | Disconnected (Connection failed)
 2015.07.09 21:27:19.760 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.09 22:01:52.485 | Disconnected (Manually)
+2015.07.10 05:17:47.921 | cAlgo started
+2015.07.10 05:18:00.424 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.10 05:24:53.155 | Disconnected (Manually)
+2015.07.10 06:30:11.071 | cAlgo started
+2015.07.10 06:30:21.160 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.10 06:35:09.701 | Request to Buy EUR 6.913m EURUSD (Price: 1.11148, SL: 28, MR: 10) is sent to server
+2015.07.10 06:35:10.295 | → Request to Buy EUR 6.913m EURUSD (Price: 1.11148, SL: 28, MR: 10) is ACCEPTED, order OID7015382 created (10/07/2015 06:35:10.032 UTC+0)
+2015.07.10 06:35:10.748 | → Order OID7015382 is FILLED at 1.11137, position PID4703026 (10/07/2015 06:35:10.317 UTC+0)
+2015.07.10 06:44:59.422 | Disconnected (Connection failed)
+2015.07.10 06:45:01.883 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.10 06:45:18.229 | Request to close position PID4703026 is sent to server
+2015.07.10 06:45:18.541 | → Request to close position PID4703026 is ACCEPTED, order OID7015439 created (10/07/2015 06:45:18.498 UTC+0)
+2015.07.10 06:45:18.885 | → Order OID7015439 is FILLED at 1.11168, position PID4703026 closed (10/07/2015 06:45:18.797 UTC+0)
+2015.07.10 06:51:13.576 | Request to Buy EUR 6.926m EURUSD (Price: 1.11161, SL: 28, MR: 10) is sent to server
+2015.07.10 06:51:13.873 | → Request to Buy EUR 6.926m EURUSD (Price: 1.11161, SL: 28, MR: 10) is ACCEPTED, order OID7015502 created (10/07/2015 06:51:13.676 UTC+0)
+2015.07.10 06:51:14.170 | → Order OID7015502 is FILLED at 1.11141, position PID4703077 (10/07/2015 06:51:13.944 UTC+0)
+2015.07.10 07:00:34.273 | → Order OID7015503 is FILLED at 1.10848, position PID4703077 closed (10/07/2015 07:00:34.177 UTC+0)
+2015.07.10 07:00:34.382 | Request to Sell EUR 6.759m EURUSD (Price: 1.10851, SL: 28, MR: 10) is sent to server
+2015.07.10 07:00:34.679 | → Request to Sell EUR 6.759m EURUSD (Price: 1.10851, SL: 28, MR: 10) is ACCEPTED, order OID7015603 created (10/07/2015 07:00:34.576 UTC+0)
+2015.07.10 07:00:35.039 | → Order OID7015603 is FILLED at 1.10835, position PID4703124 (10/07/2015 07:00:34.835 UTC+0)
+2015.07.10 07:00:57.617 | Request to Sell EUR 10.954m EURUSD (Price: 1.10803, SL: 28, MR: 10) is sent to server
+2015.07.10 07:00:57.742 | → Request to Sell EUR 10.954m EURUSD (Price: 1.10803, SL: 28, MR: 10) is ACCEPTED, order OID7015610 created (10/07/2015 07:00:57.721 UTC+0)
+2015.07.10 07:00:58.210 | → Order OID7015610 is FILLED at 1.10797, position PID4703125 (10/07/2015 07:00:58.017 UTC+0)
+2015.07.10 07:00:58.351 | Request to amend position PID4703124 (SL: 1.11092) is sent to server
+2015.07.10 07:00:58.742 | → Request to amend position PID4703124 (SL: 1.11092) is ACCEPTED
+2015.07.10 07:00:59.210 | Request to amend position PID4703124 (SL: 1.10811) is sent to server
+2015.07.10 07:00:59.554 | → Request to amend position PID4703124 (SL: 1.10811) is ACCEPTED
+2015.07.10 07:00:59.570 | Request to amend position PID4703124 (SL: 1.10804) is sent to server
+2015.07.10 07:00:59.820 | → Request to amend position PID4703124 (SL: 1.10804) is ACCEPTED
+2015.07.10 07:01:00.164 | → Order OID7015604 is FILLED at 1.10815, position PID4703124 closed (10/07/2015 07:01:00.056 UTC+0)
+2015.07.10 07:16:12.914 | → Order OID7015611 is FILLED at 1.11075, position PID4703125 closed (10/07/2015 07:16:12.815 UTC+0)
+2015.07.10 07:16:24.648 | Request to Buy EUR 6.556m EURUSD (Price: 1.11077, SL: 28, MR: 10) is sent to server
+2015.07.10 07:16:24.945 | → Request to Buy EUR 6.556m EURUSD (Price: 1.11077, SL: 28, MR: 10) is ACCEPTED, order OID7015648 created (10/07/2015 07:16:24.811 UTC+0)
+2015.07.10 07:16:25.289 | → Order OID7015648 is FILLED at 1.11089, position PID4703140 (10/07/2015 07:16:25.076 UTC+0)
+2015.07.10 07:17:07.804 | Request to Buy EUR 10.633m EURUSD (Price: 1.11119, SL: 28, MR: 10) is sent to server
+2015.07.10 07:17:08.070 | → Request to Buy EUR 10.633m EURUSD (Price: 1.11119, SL: 28, MR: 10) is ACCEPTED, order OID7015651 created (10/07/2015 07:17:07.915 UTC+0)
+2015.07.10 07:17:08.336 | → Order OID7015651 is FILLED at 1.11122, position PID4703141 (10/07/2015 07:17:08.142 UTC+0)
+2015.07.10 07:17:08.461 | Request to amend position PID4703140 (SL: 1.10829) is sent to server
+2015.07.10 07:17:08.679 | → Request to amend position PID4703140 (SL: 1.10829) is ACCEPTED
+2015.07.10 07:18:16.244 | Request to amend position PID4703140 (SL: 1.11110) is sent to server
+2015.07.10 07:18:16.462 | → Request to amend position PID4703140 (SL: 1.11110) is ACCEPTED
+2015.07.10 07:18:16.744 | Request to amend position PID4703140 (SL: 1.11115) is sent to server
+2015.07.10 07:18:16.978 | → Request to amend position PID4703140 (SL: 1.11115) is ACCEPTED
+2015.07.10 07:18:17.353 | Request to amend position PID4703140 (SL: 1.11122) is sent to server
+2015.07.10 07:18:17.556 | → Request to amend position PID4703140 (SL: 1.11122) is ACCEPTED
+2015.07.10 07:18:17.556 | Request to amend position PID4703140 (SL: 1.11129) is sent to server
+2015.07.10 07:18:17.822 | → Request to amend position PID4703140 (SL: 1.11129) is ACCEPTED
+2015.07.10 07:18:17.822 | Request to amend position PID4703140 (SL: 1.11132) is sent to server
+2015.07.10 07:18:18.087 | → Request to amend position PID4703140 (SL: 1.11132) is ACCEPTED
+2015.07.10 07:18:18.103 | Request to amend position PID4703141 (SL: 1.11143) is sent to server
+2015.07.10 07:18:18.369 | → Request to amend position PID4703141 (SL: 1.11143) is ACCEPTED
+2015.07.10 07:18:18.384 | Request to Buy EUR 14.327m EURUSD (Price: 1.11167, SL: 28, MR: 10) is sent to server
+2015.07.10 07:18:18.915 | → Request to Buy EUR 14.327m EURUSD (Price: 1.11167, SL: 28, MR: 10) is ACCEPTED, order OID7015660 created (10/07/2015 07:18:18.860 UTC+0)
+2015.07.10 07:18:19.306 | → Order OID7015660 is FILLED at 1.11173, position PID4703145 (10/07/2015 07:18:19.104 UTC+0)
+2015.07.10 07:18:19.400 | Request to amend position PID4703140 (SL: 1.11139) is sent to server
+2015.07.10 07:18:19.665 | → Request to amend position PID4703140 (SL: 1.11139) is ACCEPTED
+2015.07.10 07:18:19.665 | Request to amend position PID4703141 (SL: 1.11144) is sent to server
+2015.07.10 07:18:19.915 | → Request to amend position PID4703141 (SL: 1.11144) is ACCEPTED
+2015.07.10 07:18:20.837 | → Order OID7015652 is FILLED at 1.11133, position PID4703141 closed (10/07/2015 07:18:20.753 UTC+0)
+2015.07.10 07:18:21.165 | → Order OID7015649 is FILLED at 1.11134, position PID4703140 closed (10/07/2015 07:18:20.824 UTC+0)
+2015.07.10 07:19:27.298 | Request to Buy EUR 10.676m EURUSD (Price: 1.11204, SL: 28, MR: 10) is sent to server
+2015.07.10 07:19:27.564 | → Request to Buy EUR 10.676m EURUSD (Price: 1.11204, SL: 28, MR: 10) is ACCEPTED, order OID7015665 created (10/07/2015 07:19:27.411 UTC+0)
+2015.07.10 07:19:27.923 | → Order OID7015665 is FILLED at 1.11197, position PID4703147 (10/07/2015 07:19:27.637 UTC+0)
+2015.07.10 07:19:28.033 | Request to amend position PID4703145 (SL: 1.10903) is sent to server
+2015.07.10 07:19:28.267 | → Request to amend position PID4703145 (SL: 1.10903) is ACCEPTED
+2015.07.10 07:19:29.689 | Request to amend position PID4703145 (SL: 1.11195) is sent to server
+2015.07.10 07:19:29.830 | → Request to amend position PID4703145 (SL: 1.11195) is ACCEPTED
+2015.07.10 07:19:29.845 | Request to amend position PID4703145 (SL: 1.11196) is sent to server
+2015.07.10 07:19:30.080 | → Request to amend position PID4703145 (SL: 1.11196) is ACCEPTED
+2015.07.10 07:19:30.705 | → Order OID7015661 is FILLED at 1.11193, position PID4703145 closed (10/07/2015 07:19:30.570 UTC+0)
+2015.07.10 07:19:52.330 | Request to Buy EUR 10.7m EURUSD (Price: 1.11227, SL: 28, MR: 10) is sent to server
+2015.07.10 07:19:52.486 | → Request to Buy EUR 10.7m EURUSD (Price: 1.11227, SL: 28, MR: 10) is ACCEPTED, order OID7015667 created (10/07/2015 07:19:52.414 UTC+0)
+2015.07.10 07:19:52.877 | → Order OID7015667 is FILLED at 1.11224, position PID4703148 (10/07/2015 07:19:52.625 UTC+0)
+2015.07.10 07:19:53.002 | Request to amend position PID4703147 (SL: 1.10931) is sent to server
+2015.07.10 07:19:53.173 | → Request to amend position PID4703147 (SL: 1.10931) is ACCEPTED
+2015.07.10 07:27:04.684 | Request to amend position PID4703147 (SL: 1.11225) is sent to server
+2015.07.10 07:27:04.934 | → Request to amend position PID4703147 (SL: 1.11225) is ACCEPTED
+2015.07.10 07:27:05.543 | Request to amend position PID4703147 (SL: 1.11233) is sent to server
+2015.07.10 07:27:05.668 | → Request to amend position PID4703147 (SL: 1.11233) is ACCEPTED
+2015.07.10 07:27:05.684 | Request to Buy EUR 14.415m EURUSD (Price: 1.11254, SL: 28, MR: 10) is sent to server
+2015.07.10 07:27:05.981 | → Request to Buy EUR 14.415m EURUSD (Price: 1.11254, SL: 28, MR: 10) is ACCEPTED, order OID7015732 created (10/07/2015 07:27:05.750 UTC+0)
+2015.07.10 07:27:06.184 | → Order OID7015732 is FILLED at 1.11259, position PID4703178 (10/07/2015 07:27:05.960 UTC+0)
+2015.07.10 07:27:06.497 | Request to amend position PID4703148 (SL: 1.10950) is sent to server
+2015.07.10 07:27:06.778 | → Request to amend position PID4703148 (SL: 1.10950) is ACCEPTED
+2015.07.10 07:27:06.793 | Request to amend position PID4703147 (SL: 1.11253) is sent to server
+2015.07.10 07:27:07.059 | → Request to amend position PID4703147 (SL: 1.11253) is ACCEPTED
+2015.07.10 07:27:07.075 | Request to amend position PID4703148 (SL: 1.11265) is sent to server
+2015.07.10 07:27:07.340 | → Request to amend position PID4703148 (SL: 1.11265) is ACCEPTED
+2015.07.10 07:27:07.340 | Request to Buy EUR 17.121m EURUSD (Price: 1.11299, SL: 28, MR: 10) is sent to server
+2015.07.10 07:27:07.559 | → Request to Buy EUR 17.121m EURUSD (Price: 1.11299, SL: 28, MR: 10) is ACCEPTED, order OID7015734 created (10/07/2015 07:27:07.378 UTC+0)
+2015.07.10 07:27:07.887 | → Order OID7015734 is FILLED at 1.11283, position PID4703179 (10/07/2015 07:27:07.669 UTC+0)
+2015.07.10 07:27:08.387 | → Order OID7015668 is FILLED at 1.11259, position PID4703148 closed (10/07/2015 07:27:08.271 UTC+0)
+2015.07.10 07:27:09.575 | → Order OID7015666 is FILLED at 1.11243, position PID4703147 closed (10/07/2015 07:27:09.460 UTC+0)
+2015.07.10 07:27:09.731 | Request to amend position PID4703178 (SL: 1.10992) is sent to server
+2015.07.10 07:27:09.918 | → Request to amend position PID4703178 (SL: 1.10992) is ACCEPTED
+2015.07.10 07:43:18.975 | Request to amend position PID4703178 (SL: 1.11104) is sent to server
+2015.07.10 07:43:19.913 | → Request to amend position PID4703178 (SL: 1.11104) is ACCEPTED
+2015.07.10 07:43:19.928 | Request to amend position PID4703179 (SL: 1.11104) is sent to server
+2015.07.10 07:43:20.281 | → Request to amend position PID4703179 (SL: 1.11104) is ACCEPTED
+2015.07.10 07:49:09.975 | → Order OID7015733 is FILLED at 1.11098, position PID4703178 closed (10/07/2015 07:49:09.877 UTC+0)
+2015.07.10 07:49:10.163 | → Order OID7015735 is FILLED at 1.11098, position PID4703179 closed (10/07/2015 07:49:09.880 UTC+0)
+2015.07.10 07:49:12.444 | Request to Buy EUR 396k EURUSD (Price: 1.11133, SL: 28, MR: 10) is sent to server
+2015.07.10 07:49:12.756 | → Request to Buy EUR 396k EURUSD (Price: 1.11133, SL: 28, MR: 10) is ACCEPTED, order OID7015921 created (10/07/2015 07:49:12.686 UTC+0)
+2015.07.10 07:49:13.116 | → Order OID7015921 is FILLED at 1.11129, position PID4703265 (10/07/2015 07:49:12.920 UTC+0)
+2015.07.10 07:49:13.225 | Request to amend position PID4703265 (SL: 1.10905) is sent to server
+2015.07.10 07:49:13.444 | → Request to amend position PID4703265 (SL: 1.10905) is ACCEPTED
+2015.07.10 07:50:12.342 | Request to Buy EUR 2.635m EURUSD (Price: 1.11159, SL: 28, MR: 10) is sent to server
+2015.07.10 07:50:12.842 | → Request to Buy EUR 2.635m EURUSD (Price: 1.11159, SL: 28, MR: 10) is ACCEPTED, order OID7015929 created (10/07/2015 07:50:12.774 UTC+0)
+2015.07.10 07:50:13.264 | → Order OID7015929 is FILLED at 1.11162, position PID4703270 (10/07/2015 07:50:13.058 UTC+0)
+2015.07.10 07:50:13.357 | Request to amend position PID4703265 (SL: 1.10990) is sent to server
+2015.07.10 07:50:13.701 | → Request to amend position PID4703265 (SL: 1.10990) is ACCEPTED
+2015.07.10 07:50:13.701 | Request to amend position PID4703270 (SL: 1.10990) is sent to server
+2015.07.10 07:50:14.248 | → Request to amend position PID4703270 (SL: 1.10990) is ACCEPTED
+2015.07.10 07:58:36.116 | Request to amend position PID4703265 (SL: 1.11151) is sent to server
+2015.07.10 07:58:36.428 | → Request to amend position PID4703265 (SL: 1.11151) is ACCEPTED
+2015.07.10 07:58:36.444 | Request to amend position PID4703265 (SL: 1.11152) is sent to server
+2015.07.10 07:58:36.756 | → Request to amend position PID4703265 (SL: 1.11152) is ACCEPTED
+2015.07.10 07:58:48.981 | → Order OID7015922 is FILLED at 1.11148, position PID4703265 closed (10/07/2015 07:58:48.855 UTC+0)
+2015.07.10 08:20:12.446 | Request to Buy EUR 2.057m EURUSD (Price: 1.11192, SL: 28, MR: 10) is sent to server
+2015.07.10 08:20:14.274 | → Request to Buy EUR 2.057m EURUSD (Price: 1.11192, SL: 28, MR: 10) is ACCEPTED, order OID7016290 created (10/07/2015 08:20:14.220 UTC+0)
+2015.07.10 08:20:14.712 | → Order OID7016290 is FILLED at 1.11195, position PID4703473 (10/07/2015 08:20:14.523 UTC+0)
+2015.07.10 08:20:14.727 | Request to amend position PID4703270 (SL: 1.11008) is sent to server
+2015.07.10 08:20:15.055 | → Request to amend position PID4703270 (SL: 1.11008) is ACCEPTED
+2015.07.10 08:20:15.071 | Request to amend position PID4703473 (SL: 1.11008) is sent to server
+2015.07.10 08:20:15.258 | → Request to amend position PID4703473 (SL: 1.11008) is ACCEPTED
+2015.07.10 08:31:40.275 | → Order OID7016292 is FILLED at 1.11001, position PID4703473 closed (10/07/2015 08:31:40.178 UTC+0)
+2015.07.10 08:31:40.416 | → Order OID7015930 is FILLED at 1.11001, position PID4703270 closed (10/07/2015 08:31:40.228 UTC+0)
+2015.07.10 08:31:40.572 | Request to Sell EUR 392k EURUSD (Price: 1.11000, SL: 28, MR: 10) is sent to server
+2015.07.10 08:31:40.728 | → Request to Sell EUR 392k EURUSD (Price: 1.11000, SL: 28, MR: 10) is ACCEPTED, order OID7016416 created (10/07/2015 08:31:40.661 UTC+0)
+2015.07.10 08:31:41.166 | → Order OID7016416 is FILLED at 1.10998, position PID4703510 (10/07/2015 08:31:40.951 UTC+0)
+2015.07.10 08:31:41.181 | Request to amend position PID4703510 (SL: 1.11222) is sent to server
+2015.07.10 08:31:41.369 | → Request to amend position PID4703510 (SL: 1.11222) is ACCEPTED
+2015.07.10 08:32:19.369 | Request to Sell EUR 2.604m EURUSD (Price: 1.10964, SL: 28, MR: 10) is sent to server
+2015.07.10 08:32:19.619 | → Request to Sell EUR 2.604m EURUSD (Price: 1.10964, SL: 28, MR: 10) is ACCEPTED, order OID7016418 created (10/07/2015 08:32:19.468 UTC+0)
+2015.07.10 08:32:19.900 | → Order OID7016418 is FILLED at 1.10967, position PID4703511 (10/07/2015 08:32:19.684 UTC+0)
+2015.07.10 08:32:19.931 | Request to amend position PID4703510 (SL: 1.11139) is sent to server
+2015.07.10 08:32:20.228 | → Request to amend position PID4703510 (SL: 1.11139) is ACCEPTED
+2015.07.10 08:32:20.259 | Request to amend position PID4703511 (SL: 1.11139) is sent to server
+2015.07.10 08:32:20.541 | → Request to amend position PID4703511 (SL: 1.11139) is ACCEPTED
+2015.07.10 08:36:54.508 | → Order OID7016419 is FILLED at 1.11142, position PID4703511 closed (10/07/2015 08:36:54.386 UTC+0)
+2015.07.10 08:36:54.711 | → Order OID7016417 is FILLED at 1.11141, position PID4703510 closed (10/07/2015 08:36:54.438 UTC+0)

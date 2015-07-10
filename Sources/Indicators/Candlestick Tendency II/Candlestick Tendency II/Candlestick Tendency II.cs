@@ -74,67 +74,42 @@ namespace cAlgo
             marketSerieGlobal = MarketData.GetSeries(Global);
         }
 
-		#region Indicator predicates
-		public bool isLocalTrendRising(int index)
-        {
-			return (MarketSeries.Close[index] > MarketSeries.Open[index - 1]); 
-        }
-        public bool isLocalTrendFalling(int index)
-        {
-			return (MarketSeries.Close[index] < MarketSeries.Open[index - 1]); 
-        }
-        public bool isGlobalTrendRising(int index)
-        {
-			return (marketSerieGlobal.Close[index] > marketSerieGlobal.Open[index - 1]); 
-        }
-        public bool isGlobalTrendFalling(int index)
-        {
-			return (marketSerieGlobal.Close[index] < marketSerieGlobal.Open[index - 1]); 
-        }
-
-		public bool IsLongSignal(int index)
-		{
-			int globalIndex = marketSerieGlobal.OpenTime.GetIndexByTime(MarketSeries.OpenTime[index]);
-
-			return isGlobalTrendRising(globalIndex) && isLocalTrendRising(index); 
-		}
-
-		public bool IsShortSignal(int index)
-		{
-			int globalIndex = marketSerieGlobal.OpenTime.GetIndexByTime(MarketSeries.OpenTime[index]);
-
-			return isGlobalTrendFalling(globalIndex) && isLocalTrendFalling(index); 
-		}
-
-
-		#endregion
-
 		double signal = 0;
 		double localTrendValue = 0;
 		double globalTrendValue = 0;
 
 		public override void Calculate(int index)
         {
-			int globalIndex = marketSerieGlobal.OpenTime.GetIndexByTime(MarketSeries.OpenTime[index]); // GetIndexByExactTime don't allway work by example if attached timeframe is 1T (One Tick)!
+			// GetIndexByExactTime don't allway work by example if attached timeframe is 1T (One Tick)!			
+			int globalIndex = marketSerieGlobal.OpenTime.GetIndexByTime(MarketSeries.OpenTime[index]); 
+
+			bool isLocalTrendRising = MarketSeries.Close[index] > MarketSeries.Open[index - 1]; 
+			bool isLocalTrendFalling = MarketSeries.Close[index] < MarketSeries.Open[index - 1];
+			bool isGlobalTrendRising = marketSerieGlobal.Close[globalIndex] > marketSerieGlobal.Open[globalIndex - 1];
+			bool isGlobalTrendFalling = marketSerieGlobal.Close[globalIndex] < marketSerieGlobal.Open[index - 1]; 
+
+			bool IsLongSignal =  isGlobalTrendRising && isLocalTrendRising; 
+			bool IsShortSignal = isGlobalTrendFalling && isLocalTrendFalling; 
 
 
-			if(isLocalTrendFalling(index))
+			if(isLocalTrendFalling)
 				localTrendValue = -1;
-			else if(isLocalTrendRising(index))
+			else if(isLocalTrendRising)
 				localTrendValue = 1;
 			else
 				localTrendValue = 0;
 
-			if(isGlobalTrendFalling(globalIndex))
+			if(isGlobalTrendFalling)
 				globalTrendValue = -2;
-			else if(isGlobalTrendRising(globalIndex))
+			else if(isGlobalTrendRising)
 				globalTrendValue = 2;
 			else
 				globalTrendValue = 0;
 
-			if(IsLongSignal(index))
+
+			if(IsLongSignal)
 				signal = 3;
-			else if(IsShortSignal(index))
+			else if(IsShortSignal)
 				signal = -3;
 			else
 				signal = 0;
