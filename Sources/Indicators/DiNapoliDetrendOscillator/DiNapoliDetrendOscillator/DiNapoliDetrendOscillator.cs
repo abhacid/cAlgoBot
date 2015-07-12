@@ -8,8 +8,8 @@ namespace cAlgo.Indicators
     public class DiNapoliDetrendOscillator : Indicator
     {
         private MovingAverage _movingAverage;
-        
-        [Parameter]
+
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = MovingAverageType.Simple)]
@@ -20,11 +20,11 @@ namespace cAlgo.Indicators
 
         [Output("DiNapoliDPO")]
         public IndicatorDataSeries Result { get; set; }
-        
+
         [Output("OverBought", Color = Colors.Gray)]
         public IndicatorDataSeries OverBought { get; set; }
-        
-        [Output("OverSold" , Color = Colors.Gray)]
+
+        [Output("OverSold", Color = Colors.Gray)]
         public IndicatorDataSeries OverSold { get; set; }
 
         protected override void Initialize()

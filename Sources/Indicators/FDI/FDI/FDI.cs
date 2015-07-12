@@ -30,21 +30,21 @@ namespace cAlgo.Indicators
             _lownow = Functions.Minimum(MarketSeries.Close, Period);
             _length = 0;
             _priorDiff = 0;
-            
+
             for (int idx = 1; idx < Period; idx++)
                 if (_highnow - _lownow > 0)
                 {
-                    _diff = (MarketSeries.Close[index - idx] - _lownow)/(_highnow - _lownow);
+                    _diff = (MarketSeries.Close[index - idx] - _lownow) / (_highnow - _lownow);
                     if (idx > 1)
-                        _length = (_length + Math.Sqrt(Math.Pow((_diff - _priorDiff) + (1/Math.Pow(Period, 2)), 2)));
+                        _length = (_length + Math.Sqrt(Math.Pow((_diff - _priorDiff) + (1 / Math.Pow(Period, 2)), 2)));
                     _priorDiff = _diff;
                 }
 
             if (_length > 0)
-                Result[index] = 1 + (Math.Log(_length) + Math.Log(2))/Math.Log(2*(Period));
+                Result[index] = 1 + (Math.Log(_length) + Math.Log(2)) / Math.Log(2 * (Period));
             else
                 Result[index] = 0;
-                
+
             Midline[index] = MidLine;
         }
     }

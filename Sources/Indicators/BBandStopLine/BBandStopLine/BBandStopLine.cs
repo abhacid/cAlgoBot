@@ -7,7 +7,7 @@ namespace cAlgo.Indicators
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
     public class BBandStopLine : Indicator
     {
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 1.5)]

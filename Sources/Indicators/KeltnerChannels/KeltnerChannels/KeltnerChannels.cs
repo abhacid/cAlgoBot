@@ -19,7 +19,7 @@ namespace cAlgo.Indicators
         [Output("LowerBand", Color = Colors.Blue)]
         public IndicatorDataSeries LowerBand { get; set; }
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter("MA Type", DefaultValue = MovingAverageType.Simple)]
@@ -40,7 +40,7 @@ namespace cAlgo.Indicators
         public override void Calculate(int index)
         {
             // Middle Channel
-            _typicalPrice[index] = (MarketSeries.High[index] + MarketSeries.Low[index] + MarketSeries.Close[index])/3;
+            _typicalPrice[index] = (MarketSeries.High[index] + MarketSeries.Low[index] + MarketSeries.Close[index]) / 3;
             Result[index] = _ma.Result[index];
             // Upper and Lower Channel
             _highLowRange[index] = MarketSeries.High[index] - MarketSeries.Low[index];

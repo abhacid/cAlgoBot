@@ -8,13 +8,13 @@ namespace cAlgo.Indicators
     [Indicator(IsOverlay = false, AccessRights = AccessRights.None)]
     public class percentB : Indicator
     {
-    	[Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
-		[Parameter("MAType")]
-		public MovingAverageType matype { get; set; }
+        [Parameter("MAType")]
+        public MovingAverageType matype { get; set; }
 
-        [Parameter("Period", DefaultValue =20)]
+        [Parameter("Period", DefaultValue = 20)]
         public int Period { get; set; }
 
         [Parameter("Standard Deviation", DefaultValue = 2.0)]
@@ -23,16 +23,16 @@ namespace cAlgo.Indicators
         [Output("Main", Color = Colors.Yellow)]
         public IndicatorDataSeries Result { get; set; }
 
-		BollingerBands bb;
+        BollingerBands bb;
 
         protected override void Initialize()
         {
-			bb = Indicators.BollingerBands(Source, Period, std, matype);
+            bb = Indicators.BollingerBands(Source, Period, std, matype);
         }
 
         public override void Calculate(int index)
         {
-			Result[index] = (Source[index] - bb.Bottom[index]) / (bb.Top[index] - bb.Bottom[index]);
+            Result[index] = (Source[index] - bb.Bottom[index]) / (bb.Top[index] - bb.Bottom[index]);
         }
     }
 }

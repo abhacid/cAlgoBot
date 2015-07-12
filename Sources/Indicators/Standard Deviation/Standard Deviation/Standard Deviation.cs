@@ -7,7 +7,7 @@ namespace cAlgo.Indicators
     [Indicator(AccessRights = AccessRights.None)]
     public class StandardDeviation : Indicator
     {
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 14, MinValue = 2)]

@@ -62,8 +62,7 @@ namespace cAlgo.Indicators
             }
 
             // Calculate High & Low of previous day
-            if ((currentOpenTime.Day == yesterday.Day && today.DayOfWeek != DayOfWeek.Monday) ||
-            (today.DayOfWeek == DayOfWeek.Monday && currentOpenTime.DayOfYear == today.AddDays(-3).Day))
+            if ((currentOpenTime.Day == yesterday.Day && today.DayOfWeek != DayOfWeek.Monday) || (today.DayOfWeek == DayOfWeek.Monday && currentOpenTime.DayOfYear == today.AddDays(-3).Day))
             {
                 if (MarketSeries.High[index] > _higher)
                 {
@@ -80,16 +79,17 @@ namespace cAlgo.Indicators
             {
                 _close = MarketSeries.Close[index - 1];
             }
-            
+
             // Only show output in todays timeframe
-            if (currentOpenTime.Date != today.Date) return;
-            
+            if (currentOpenTime.Date != today.Date)
+                return;
+
             // Calculate output
-            Pivot[index] = (_higher + _lower + _close)/3;
-            
-            R1[index] = 2*Pivot[index] - _lower;
-            S1[index] = 2*Pivot[index] - _higher;
-            
+            Pivot[index] = (_higher + _lower + _close) / 3;
+
+            R1[index] = 2 * Pivot[index] - _lower;
+            S1[index] = 2 * Pivot[index] - _higher;
+
             // Display additional pivots according to input
             if (NoPiv >= 2)
             {
@@ -98,8 +98,8 @@ namespace cAlgo.Indicators
             }
             if (NoPiv >= 3)
             {
-                R3[index] = _higher + 2*(Pivot[index] - _lower);
-                S3[index] = _lower - 2*(_higher - Pivot[index]);
+                R3[index] = _higher + 2 * (Pivot[index] - _lower);
+                S3[index] = _lower - 2 * (_higher - Pivot[index]);
             }
         }
     }

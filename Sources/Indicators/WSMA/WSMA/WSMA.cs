@@ -20,27 +20,27 @@ namespace cAlgo.Indicators
     {
         [Output("WSMA", Color = Colors.Maroon, PlotType = PlotType.Line)]
         public IndicatorDataSeries Result { get; set; }
-		
-		[Parameter("Data Source")]
+
+        [Parameter("Data Source")]
         public DataSeries DataSource { get; set; }
 
         [Parameter(DefaultValue = 14)]
         public int Period { get; set; }
 
 
-		private SimpleMovingAverage sma;
-		private IndicatorDataSeries sumBuffer;
-		
-		protected override void Initialize()
+        private SimpleMovingAverage sma;
+        private IndicatorDataSeries sumBuffer;
+
+        protected override void Initialize()
         {
-        	sumBuffer = CreateDataSeries();        
-            sma = Indicators.SimpleMovingAverage(DataSource,Period);            
+            sumBuffer = CreateDataSeries();
+            sma = Indicators.SimpleMovingAverage(DataSource, Period);
         }
-		
+
         public override void Calculate(int index)
         {
-			var previousValue = Result[index - 1];
-			var previousSum = sumBuffer[index - 1];
+            var previousValue = Result[index - 1];
+            var previousSum = sumBuffer[index - 1];
 
             if (double.IsNaN(previousValue))
             {
@@ -51,8 +51,8 @@ namespace cAlgo.Indicators
             {
                 sumBuffer[index] = sumBuffer[index - 1] - previousValue + DataSource[index];
                 Result[index] = sumBuffer[index] / Period;
-            }                 
+            }
         }
-     }
+    }
 }
 

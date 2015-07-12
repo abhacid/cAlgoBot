@@ -65,7 +65,7 @@ namespace cAlgo.Indicators
 
             ChartObjects.DrawText("max", text, maxIndex, max + 0.0002, top, center, _colorText);
             ChartObjects.DrawLine("line", maxIndex, max, index, Source[index], _colorLine);
-			
+
         }
     }
 }

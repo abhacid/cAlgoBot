@@ -11,7 +11,7 @@ using cAlgo.API.Indicators;
 
 namespace cAlgo.Indicators
 {
-    [Levels(-100,0,100)]
+    [Levels(-100, 0, 100)]
     [Indicator(AccessRights = AccessRights.None)]
     public class AroonOscilator : Indicator
     {

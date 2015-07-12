@@ -6,11 +6,11 @@ using cAlgo.API.Indicators;
 namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
-    public class SidusBago:Indicator
+    public class SidusBago : Indicator
     {
         #region Input
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Price { get; set; }
 
         [Parameter("FastEMA", DefaultValue = 5)]
@@ -53,7 +53,7 @@ namespace cAlgo.Indicators
         private ExponentialMovingAverage _slowEma;
         private RelativeStrengthIndex iRSI;
 
-        protected override void  Initialize()
+        protected override void Initialize()
         {
             _fastEma = Indicators.ExponentialMovingAverage(MarketSeries.Close, FastEMA);
             _slowEma = Indicators.ExponentialMovingAverage(MarketSeries.Close, SlowEMA);
@@ -71,31 +71,33 @@ namespace cAlgo.Indicators
             pipdiffCurrent = Math.Round((ExtMapBuffer1[index] - ExtMapBuffer2[index]), Symbol.Digits);
 
             if (IsRealTime)
-            {                
-                ChartObjects.DrawText("pipdiffCurrent", "pipdiffCurrent = " + pipdiffCurrent + " ",
-                                      StaticPosition.TopLeft,
-                                      Colors.White);
+            {
+                ChartObjects.DrawText("pipdiffCurrent", "pipdiffCurrent = " + pipdiffCurrent + " ", StaticPosition.TopLeft, Colors.White);
             }
             if (pipdiffCurrent > 0 && rsi_sig > 50)
             {
-                sigCurrent = 1; //Up
+                sigCurrent = 1;
+                //Up
             }
             else if (pipdiffCurrent < 0 && rsi_sig < 50)
             {
-                sigCurrent = 2; //Down
+                sigCurrent = 2;
+                //Down
             }
 
-            ExtMapBuffer3[index-1] = double.NaN;
-            ExtMapBuffer4[index-1] = double.NaN;
+            ExtMapBuffer3[index - 1] = double.NaN;
+            ExtMapBuffer4[index - 1] = double.NaN;
 
-            if (sigCurrent == 1 && sigPrevious == 2) // Down-> Up
+            // Down-> Up
+            if (sigCurrent == 1 && sigPrevious == 2)
             {
-                
-                ExtMapBuffer3[index - 1] = MarketSeries.Low[index - 1] - 5 * Symbol.PointSize; 
+
+                ExtMapBuffer3[index - 1] = MarketSeries.Low[index - 1] - 5 * Symbol.PointSize;
                 entry = true;
                 entry_point = Symbol.Ask;
             }
-            else if (sigCurrent == 2 && sigPrevious == 1) // Up -> Down
+            // Up -> Down
+            else if (sigCurrent == 2 && sigPrevious == 1)
             {
                 ExtMapBuffer4[index - 1] = MarketSeries.High[index - 1] - 5 * Symbol.PointSize;
                 entry = true;
@@ -112,14 +114,12 @@ namespace cAlgo.Indicators
                     if (sigPrevious == 1)
                     {
                         ChartObjects.RemoveObject("EntryPointBuy");
-                        ChartObjects.DrawText("EntryPointBuy", "Entry point: Buy at " + entry_point + "!!",
-                                              StaticPosition.TopRight, Colors.Green);
+                        ChartObjects.DrawText("EntryPointBuy", "Entry point: Buy at " + entry_point + "!!", StaticPosition.TopRight, Colors.Green);
                     }
                     else if (sigPrevious == 2)
                     {
                         ChartObjects.RemoveObject("EntryPointBuy");
-                        ChartObjects.DrawText("EntryPointSell", "Entry point: Sell at " + entry_point + "!!",
-                                              StaticPosition.TopRight, Colors.Red);
+                        ChartObjects.DrawText("EntryPointSell", "Entry point: Sell at " + entry_point + "!!", StaticPosition.TopRight, Colors.Red);
                     }
                 }
                 else

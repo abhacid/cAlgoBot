@@ -10,7 +10,7 @@ using cAlgo.API;
 namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
-    public class DailyOpenClose: Indicator
+    public class DailyOpenClose : Indicator
     {
         [Output("Open", Color = Colors.Wheat, PlotType = PlotType.Points)]
         public IndicatorDataSeries Open { get; set; }
@@ -35,11 +35,11 @@ namespace cAlgo.Indicators
             if (!ApplicableTimeFrame(openTime, lastOpenTime))
             {
                 // Display message that timeframe is N/A
-                const string text = "TimeFrame Not Applicable. Choose a lower Timeframe";                
+                const string text = "TimeFrame Not Applicable. Choose a lower Timeframe";
                 ChartObjects.DrawText(objectName, text, StaticPosition.TopLeft, Colors.Red);
                 return;
             }
-            
+
             // If TimeFrame chosen is applicable remove N/A message
             ChartObjects.RemoveObject(objectName);
 
@@ -50,7 +50,7 @@ namespace cAlgo.Indicators
         private bool ApplicableTimeFrame(DateTime openTime, DateTime lastOpenTime)
         {
             // minutes difference between bars
-            var timeFrameMinutes = (int) (openTime - lastOpenTime).TotalMinutes;
+            var timeFrameMinutes = (int)(openTime - lastOpenTime).TotalMinutes;
 
             bool daily = timeFrameMinutes == 1440;
             bool weeklyOrGreater = timeFrameMinutes >= 7200;
@@ -83,7 +83,8 @@ namespace cAlgo.Indicators
                     i--;
                 }
             }
-            else // Same Day
+            // Same Day
+            else
             {
                 // Plot Open 
                 Open[index] = Open[index - 1];
@@ -91,7 +92,8 @@ namespace cAlgo.Indicators
 
             // Plot todays close 
             DateTime today = DateTime.Now.Date;
-            if (openTime.Date != today) return;
+            if (openTime.Date != today)
+                return;
 
             close = MarketSeries.Close[index];
             i = index;

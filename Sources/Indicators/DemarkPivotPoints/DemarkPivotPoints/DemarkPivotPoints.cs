@@ -10,8 +10,8 @@ namespace cAlgo.Indicators
         private double _higher;
         private double _lower;
         private double _open;
-		private double x;
-		
+        private double x;
+
         #region Output
 
         [Output("Pivot", LineStyle = LineStyle.Lines)]
@@ -64,8 +64,7 @@ namespace cAlgo.Indicators
             }
 
             // Calculate High & Low of previous day
-            if ((currentOpenTime.Day == yesterday.Day && today.DayOfWeek != DayOfWeek.Monday) ||
-            (today.DayOfWeek == DayOfWeek.Monday && currentOpenTime.DayOfYear == today.AddDays(-3).Day))
+            if ((currentOpenTime.Day == yesterday.Day && today.DayOfWeek != DayOfWeek.Monday) || (today.DayOfWeek == DayOfWeek.Monday && currentOpenTime.DayOfYear == today.AddDays(-3).Day))
             {
                 if (MarketSeries.High[index] > _higher)
                 {
@@ -83,27 +82,32 @@ namespace cAlgo.Indicators
                 _close = MarketSeries.Close[index - 1];
                 _open = MarketSeries.Open[index];
             }
-            
+
             // Only show output in todays timeframe
-            if (currentOpenTime.Date != today.Date) return;
-            
-            if ( _close < _open )
+            if (currentOpenTime.Date != today.Date)
+                return;
+
+            if (_close < _open)
             {
-            	x = _higher + 2 * _lower + _close;
-            }else if ( _close > _open )
-            {
-            	x = 2 * _higher + _lower + _close; 
-            }else{
-            	x = _higher + _lower + 2* _close;
+                x = _higher + 2 * _lower + _close;
             }
-            
-            
+            else if (_close > _open)
+            {
+                x = 2 * _higher + _lower + _close;
+            }
+            else
+            {
+                x = _higher + _lower + 2 * _close;
+            }
+
+
             // Calculate output
             Pivot[index] = x / 4;
-            
+
             R1[index] = x / 2 - _lower;
             S1[index] = x / 2 - _higher;
-            
+
+        }
             /*
             // Display additional pivots according to input
             if (NoPiv >= 2)
@@ -117,6 +121,5 @@ namespace cAlgo.Indicators
                 S3[index] = Pivot[index] - ( 1 * ( _higher - _lower ));
             }
             */
-        }
-    }
+            }
 }

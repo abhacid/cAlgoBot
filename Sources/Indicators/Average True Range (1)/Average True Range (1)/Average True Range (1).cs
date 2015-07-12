@@ -15,7 +15,7 @@ namespace cAlgo.Indicators
         public IndicatorDataSeries Result { get; set; }
 
         protected override void Initialize()
-        {            
+        {
             _tri = Indicators.TrueRange();
         }
 
@@ -27,7 +27,7 @@ namespace cAlgo.Indicators
             }
             if (index >= Period)
             {
-                Result[index] = (Result[index - 1]*(Period - 1) + _tri.Result[index])/Period;
+                Result[index] = (Result[index - 1] * (Period - 1) + _tri.Result[index]) / Period;
             }
         }
     }

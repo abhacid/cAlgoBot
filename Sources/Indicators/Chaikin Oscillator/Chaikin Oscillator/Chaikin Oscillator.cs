@@ -35,7 +35,7 @@ namespace cAlgo.Indicators
 
             marketSeriesDaily = MarketData.GetSeries(TimeFrame.Daily);
 
-            
+
 
         }
 
@@ -49,7 +49,7 @@ namespace cAlgo.Indicators
                 return;
             }
 
-            if(TimeFrame != TimeFrame.Daily)
+            if (TimeFrame != TimeFrame.Daily)
             {
                 DisplayTFMessage();
 
@@ -61,7 +61,7 @@ namespace cAlgo.Indicators
 
             // Timeframe Daily
             CalculateAccumulationDistribution(MarketSeries, index);
-            
+
             Result[index] = ema3.Result[index] - ema10.Result[index];
 
         }
@@ -89,7 +89,7 @@ namespace cAlgo.Indicators
             else
                 accDist[index] = accDist[index - 1];
 
-           
+
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace cAlgo.Indicators
         /// <param name="index"></param>
         private void DisplayInCorrectIndex(int index)
         {
-            
+
             var indexDaily = GetIndexByDate(marketSeriesDaily, MarketSeries.OpenTime[index]);
             Print(index);
             Print(MarketSeries.OpenTime[index]);

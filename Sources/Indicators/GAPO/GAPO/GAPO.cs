@@ -14,7 +14,7 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-            Result[index] = Math.Log(High(index) - Low(index))/ Math.Log(Period);
+            Result[index] = Math.Log(High(index) - Low(index)) / Math.Log(Period);
         }
 
         /// <summary>

@@ -14,10 +14,10 @@ namespace cAlgo.Indicators
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
     public class ShiftedMovingAverage : Indicator
     {
-        [Parameter("MA Type",DefaultValue = MovingAverageType.Simple)]
+        [Parameter("MA Type", DefaultValue = MovingAverageType.Simple)]
         public MovingAverageType MAType { get; set; }
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 14)]

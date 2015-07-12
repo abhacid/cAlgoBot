@@ -6,7 +6,7 @@ using cAlgo.API.Internals;
 namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
-    public class ZigZag:Indicator
+    public class ZigZag : Indicator
     {
 
         [Parameter(DefaultValue = 12)]
@@ -14,7 +14,7 @@ namespace cAlgo.Indicators
 
         [Parameter(DefaultValue = 5)]
         public int Deviation { get; set; }
-        
+
         [Parameter(DefaultValue = 3)]
         public int BackStep { get; set; }
 
@@ -22,7 +22,7 @@ namespace cAlgo.Indicators
         public IndicatorDataSeries Result { get; set; }
 
         #region Private fields
-        
+
         private double _lastLow;
         private double _lastHigh;
         private double _low;
@@ -34,9 +34,9 @@ namespace cAlgo.Indicators
         private double _currentLow;
         private double _currentHigh;
 
-        private IndicatorDataSeries _highZigZags; 
+        private IndicatorDataSeries _highZigZags;
         private IndicatorDataSeries _lowZigZags;
-        
+
         #endregion
 
         protected override void Initialize()
@@ -48,7 +48,7 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-           
+
             if (index < Depth)
             {
                 Result[index] = 0;
@@ -57,21 +57,20 @@ namespace cAlgo.Indicators
                 return;
             }
 
-            _currentLow = Functions.Minimum(MarketSeries.Low, Depth);            
+            _currentLow = Functions.Minimum(MarketSeries.Low, Depth);
             if (Math.Abs(_currentLow - _lastLow) < double.Epsilon)
                 _currentLow = 0.0;
             else
             {
                 _lastLow = _currentLow;
-                
+
                 if ((MarketSeries.Low[index] - _currentLow) > (Deviation * _point))
                     _currentLow = 0.0;
                 else
                 {
                     for (int i = 1; i <= BackStep; i++)
                     {
-                        if (Math.Abs(_lowZigZags[index - i]) > double.Epsilon 
-                            && _lowZigZags[index - i] > _currentLow)
+                        if (Math.Abs(_lowZigZags[index - i]) > double.Epsilon && _lowZigZags[index - i] > _currentLow)
                             _lowZigZags[index - i] = 0.0;
                     }
                 }
@@ -89,7 +88,7 @@ namespace cAlgo.Indicators
             {
                 _lastHigh = _currentHigh;
 
-                if ((_currentHigh - MarketSeries.High[index] ) > (Deviation * _point))
+                if ((_currentHigh - MarketSeries.High[index]) > (Deviation * _point))
                     _currentHigh = 0.0;
                 else
                 {
@@ -107,19 +106,19 @@ namespace cAlgo.Indicators
                 _highZigZags[index] = 0.0;
 
 
-            switch(_type)
+            switch (_type)
             {
                 case 0:
-                    if(Math.Abs(_low - 0) < double.Epsilon && Math.Abs(_high - 0) < double.Epsilon)
+                    if (Math.Abs(_low - 0) < double.Epsilon && Math.Abs(_high - 0) < double.Epsilon)
                     {
-                        if(Math.Abs(_highZigZags[index]) > double.Epsilon)
+                        if (Math.Abs(_highZigZags[index]) > double.Epsilon)
                         {
                             _high = MarketSeries.High[index];
                             _lastHighIndex = index;
                             _type = -1;
                             Result[index] = _high;
                         }
-                        if(Math.Abs(_lowZigZags[index]) > double.Epsilon)
+                        if (Math.Abs(_lowZigZags[index]) > double.Epsilon)
                         {
                             _low = MarketSeries.Low[index];
                             _lastLowIndex = index;
@@ -160,9 +159,10 @@ namespace cAlgo.Indicators
                         _type = 1;
                     }
                     break;
-                default: return;
+                default:
+                    return;
             }
-            
+
         }
     }
 }

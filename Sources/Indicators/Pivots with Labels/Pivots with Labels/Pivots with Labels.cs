@@ -4,7 +4,7 @@ using cAlgo.API;
 namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
-    public class Pivots:Indicator
+    public class Pivots : Indicator
     {
         private enum Timeframe
         {
@@ -166,25 +166,23 @@ namespace cAlgo.Indicators
 
             bool sameDay = currentDay == previousDay;
 
-            _isNewPeriod = _p[index - 1] == _p[index - 2] && !sameDay &&
-                                   (daily && currentDayWk != DayOfWeek.Saturday
-                                    || weekly && currentDayWk == DayOfWeek.Monday);
+            _isNewPeriod = _p[index - 1] == _p[index - 2] && !sameDay && (daily && currentDayWk != DayOfWeek.Saturday || weekly && currentDayWk == DayOfWeek.Monday);
 
             if (_isNewPeriod)
             {
                 // Calculate new values
                 double close = MarketSeries.Close[index - 1];
 
-                _p[index] = (_high + _low + close)/3;
+                _p[index] = (_high + _low + close) / 3;
 
-                _r1[index] = 2*_p[index] - _low;
-                _s1[index] = 2*_p[index] - _high;
+                _r1[index] = 2 * _p[index] - _low;
+                _s1[index] = 2 * _p[index] - _high;
 
                 _r2[index] = _p[index] + (_high - _low);
                 _s2[index] = _p[index] - (_high - _low);
 
-                _r3[index] = _high + 2*(_p[index] - _low);
-                _s3[index] = _low - 2*(_high - _p[index]);
+                _r3[index] = _high + 2 * (_p[index] - _low);
+                _s3[index] = _low - 2 * (_high - _p[index]);
 
                 _high = double.MinValue;
                 _low = double.MaxValue;
@@ -201,7 +199,7 @@ namespace cAlgo.Indicators
 
                 _r2[index] = _r2[index - 1];
                 _s2[index] = _s2[index - 1];
-                
+
                 _r3[index] = _r3[index - 1];
                 _s3[index] = _s3[index - 1];
 
@@ -238,38 +236,31 @@ namespace cAlgo.Indicators
             int xValue = index;
             double yValue = Math.Round(_p[index], Symbol.Digits);
             string objectName = string.Format("P {0}", yValue);
-            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top,
-                                  HorizontalAlignment.Center, Colors.Blue);
+            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top, HorizontalAlignment.Center, Colors.Blue);
 
             yValue = Math.Round(_r1[index], Symbol.Digits);
             objectName = string.Format("R1 {0}", yValue);
-            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top,
-                                  HorizontalAlignment.Center, Colors.Green);
+            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top, HorizontalAlignment.Center, Colors.Green);
 
             yValue = Math.Round(_s1[index], Symbol.Digits);
             objectName = string.Format("S1 {0}", yValue);
-            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top,
-                                  HorizontalAlignment.Center, Colors.Red);
+            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top, HorizontalAlignment.Center, Colors.Red);
 
             yValue = Math.Round(_r2[index], Symbol.Digits);
             objectName = string.Format("R2 {0}", yValue);
-            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top,
-                                  HorizontalAlignment.Center, Colors.Green);
+            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top, HorizontalAlignment.Center, Colors.Green);
 
             yValue = Math.Round(_s2[index], Symbol.Digits);
             objectName = string.Format("S2 {0}", yValue);
-            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top,
-                                  HorizontalAlignment.Center, Colors.Red);
+            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top, HorizontalAlignment.Center, Colors.Red);
 
             yValue = Math.Round(_r3[index], Symbol.Digits);
             objectName = string.Format("R3 {0}", yValue);
-            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top,
-                                  HorizontalAlignment.Center, Colors.Green);
+            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top, HorizontalAlignment.Center, Colors.Green);
 
             yValue = Math.Round(_s3[index], Symbol.Digits);
             objectName = string.Format("S3 {0}", yValue);
-            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top,
-                                  HorizontalAlignment.Center, Colors.Red);
+            ChartObjects.DrawText(objectName, objectName, xValue, yValue, VerticalAlignment.Top, HorizontalAlignment.Center, Colors.Red);
 
 
         }

@@ -5,14 +5,14 @@ using cAlgo.API.Indicators;
 namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
-    public class HullMovingAverage:Indicator
+    public class HullMovingAverage : Indicator
     {
         private WeightedMovingAverage _wma;
         private WeightedMovingAverage _wma2;
         private WeightedMovingAverage _wma3;
         private IndicatorDataSeries _iSeries;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 20, MinValue = 1)]
@@ -29,7 +29,7 @@ namespace cAlgo.Indicators
 
             _wma = Indicators.WeightedMovingAverage(Source, Period / 2);
             _wma2 = Indicators.WeightedMovingAverage(Source, Period);
-            _wma3 = Indicators.WeightedMovingAverage(_iSeries, (int) Math.Sqrt(Period));
+            _wma3 = Indicators.WeightedMovingAverage(_iSeries, (int)Math.Sqrt(Period));
         }
         public override void Calculate(int index)
         {

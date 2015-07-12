@@ -36,13 +36,13 @@ namespace cAlgo.Indicators
             double haLow;
             Colors Color;
 
-            if (index > 0 && !double.IsNaN(maOpen.Result[index-1]))
+            if (index > 0 && !double.IsNaN(maOpen.Result[index - 1]))
             {
                 haOpen[index] = (haOpen[index - 1] + haClose[index - 1]) / 2;
                 haClose[index] = (maOpen.Result[index] + maClose.Result[index] + maHigh.Result[index] + maLow.Result[index]) / 4;
                 haHigh = Math.Max(maHigh.Result[index], Math.Max(haOpen[index], haClose[index]));
                 haLow = Math.Min(maLow.Result[index], Math.Min(haOpen[index], haClose[index]));
-                Color = (haOpen[index] > haClose[index]) ?  Colors.Red : Colors.Blue;
+                Color = (haOpen[index] > haClose[index]) ? Colors.Red : Colors.Blue;
                 ChartObjects.DrawLine("BarHA" + index, index, haOpen[index], index, haClose[index], Color, 5, LineStyle.Solid);
                 ChartObjects.DrawLine("LineHA" + index, index, haHigh, index, haLow, Color, 1, LineStyle.Solid);
             }

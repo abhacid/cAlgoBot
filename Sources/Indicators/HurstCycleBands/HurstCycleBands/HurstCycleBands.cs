@@ -21,7 +21,7 @@ namespace cAlgo.Indicators
 
         [Parameter(DefaultValue = 0, MinValue = 0, MaxValue = 1)]
         public int Camarilla { get; set; }
-        
+
         [Parameter(DefaultValue = 0, MinValue = 0, MaxValue = 1)]
         public int MidPivots { get; set; }
 
@@ -33,14 +33,14 @@ namespace cAlgo.Indicators
         public IndicatorDataSeries R2 { get; set; }
         [Output("R3", Color = Colors.Green)]
         public IndicatorDataSeries R3 { get; set; }
-        
+
         [Output("S1", Color = Colors.Red)]
         public IndicatorDataSeries S1 { get; set; }
         [Output("S2", Color = Colors.Red)]
         public IndicatorDataSeries S2 { get; set; }
         [Output("S3", Color = Colors.Red)]
         public IndicatorDataSeries S3 { get; set; }
-        
+
         [Output("Pivot", Color = Colors.Violet)]
         public IndicatorDataSeries Pivot { get; set; }
 
@@ -56,7 +56,7 @@ namespace cAlgo.Indicators
         public IndicatorDataSeries C3 { get; set; }
         [Output("C4", Color = Colors.Yellow)]
         public IndicatorDataSeries C4 { get; set; }
-        
+
         #endregion
 
         #region MidPivots
@@ -73,7 +73,7 @@ namespace cAlgo.Indicators
         public IndicatorDataSeries M5 { get; set; }
         [Output("M6", Color = Colors.Blue)]
         public IndicatorDataSeries M6 { get; set; }
-        
+
         #endregion
 
         protected override void Initialize()
@@ -113,18 +113,18 @@ namespace cAlgo.Indicators
 
 
 
-                if (openTime.Date == today.Date )
+                if (openTime.Date == today.Date)
                 {
-                    _q = (_yesterdayHigh - _yesterdayLow);                    
-                    _p = (_yesterdayHigh + _yesterdayLow + _yesterdayClose)/3;
+                    _q = (_yesterdayHigh - _yesterdayLow);
+                    _p = (_yesterdayHigh + _yesterdayLow + _yesterdayClose) / 3;
 
                     double r1 = (2 * _p) - _yesterdayLow;
                     double r2 = _p + (_yesterdayHigh - _yesterdayLow);
-                    double r3 = (2*_p) + (_yesterdayHigh - (2*_yesterdayLow));
+                    double r3 = (2 * _p) + (_yesterdayHigh - (2 * _yesterdayLow));
 
-                    double s1 = (2*_p) - _yesterdayHigh;
+                    double s1 = (2 * _p) - _yesterdayHigh;
                     double s2 = _p - (_yesterdayHigh - _yesterdayLow);
-                    double s3 = (2*_p) - ((2*_yesterdayHigh) - _yesterdayLow);
+                    double s3 = (2 * _p) - ((2 * _yesterdayHigh) - _yesterdayLow);
 
                     if (Pivots == 1)
                     {
@@ -135,26 +135,26 @@ namespace cAlgo.Indicators
                         S1[0] = S1[index] = s1;
                         S2[0] = S2[index] = s2;
                         S3[0] = S3[index] = s3;
-                        
+
                         Pivot[0] = Pivot[index] = _p;
                     }
 
-                    if(Camarilla == 1)
+                    if (Camarilla == 1)
                     {
-                        C4[0] = C4[index] = (_q * 0.55) + _yesterdayClose;                        
-                        C3[0] = C3[index] = (_q * 0.27) + _yesterdayClose;                        
+                        C4[0] = C4[index] = (_q * 0.55) + _yesterdayClose;
+                        C3[0] = C3[index] = (_q * 0.27) + _yesterdayClose;
                         C2[0] = C2[index] = _yesterdayClose - (_q * 0.55);
-                        C1[0] = C1[index] = _yesterdayClose - (_q*0.27);
-                        
+                        C1[0] = C1[index] = _yesterdayClose - (_q * 0.27);
+
                     }
 
                     if (MidPivots == 1)
                     {
-                        M6[0] = M6[index] = (r2 + r3)/2;
-                        M5[0] = M5[index] = (r1 + r2)/2;
-                        M4[0] = M4[index] = (_p + r1)/2;
-                        M3[0] = M3[index] = (_p + s1)/2;
-                        M2[0] = M2[index] = (s1 + s2)/2;
+                        M6[0] = M6[index] = (r2 + r3) / 2;
+                        M5[0] = M5[index] = (r1 + r2) / 2;
+                        M4[0] = M4[index] = (_p + r1) / 2;
+                        M3[0] = M3[index] = (_p + s1) / 2;
+                        M2[0] = M2[index] = (s1 + s2) / 2;
                         M1[0] = M1[index] = (s2 + s3) / 2;
                     }
                 }

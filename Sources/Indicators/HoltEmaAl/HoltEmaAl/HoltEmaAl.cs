@@ -9,7 +9,7 @@ namespace cAlgo.Indicators
         private double _gamma;
         private IndicatorDataSeries _trend;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 89, MinValue = 50)]
@@ -27,20 +27,20 @@ namespace cAlgo.Indicators
         protected override void Initialize()
         {
             _trend = CreateDataSeries();
-            _alpha = 2/(1.0 + Period);
+            _alpha = 2 / (1.0 + Period);
             _gamma = 2 / (1.0 + TrendPeriod);
         }
 
         public override void Calculate(int index)
         {
-            if(index == 0)
+            if (index == 0)
             {
                 Result[index] = Source[index];
                 _trend[index] = 0.0;
                 return;
             }
-            Result[index] = _alpha * Source[index] + (1 - _alpha)*(Result[index - 1] + _trend[index - 1]);
-            _trend[index] = _gamma*(Result[index] - Result[index - 1]) + (1 - _gamma)*_trend[index - 1];
+            Result[index] = _alpha * Source[index] + (1 - _alpha) * (Result[index - 1] + _trend[index - 1]);
+            _trend[index] = _gamma * (Result[index] - Result[index - 1]) + (1 - _gamma) * _trend[index - 1];
 
         }
     }

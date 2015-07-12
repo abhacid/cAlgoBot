@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonLagDot Robot", "NonLagDot Robot\NonLagDot Robot.csproj", "{6ABFDC60-3C2E-499A-B30A-D4A6D0557F8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonlagDot", "..\..\Indicators\NonlagDot\NonlagDot\NonlagDot.csproj", "{B5F51AA7-7F87-4D2A-80C6-CC642F7C1D15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6ABFDC60-3C2E-499A-B30A-D4A6D0557F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABFDC60-3C2E-499A-B30A-D4A6D0557F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABFDC60-3C2E-499A-B30A-D4A6D0557F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABFDC60-3C2E-499A-B30A-D4A6D0557F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F51AA7-7F87-4D2A-80C6-CC642F7C1D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F51AA7-7F87-4D2A-80C6-CC642F7C1D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F51AA7-7F87-4D2A-80C6-CC642F7C1D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F51AA7-7F87-4D2A-80C6-CC642F7C1D15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

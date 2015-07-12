@@ -20,7 +20,7 @@ namespace cAlgo.Indicators
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
     public class LWMA : Indicator
     {
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 25)]
@@ -34,17 +34,17 @@ namespace cAlgo.Indicators
         {
             double sum = 0.0;
             int weightSum = 0;
-			int k = 1;
-			
+            int k = 1;
+
             for (int i = index - Period + 1; i <= index; i++)
             {
-            	sum += Source[i] * k;
+                sum += Source[i] * k;
                 weightSum += k;
                 k++;
             }
-            
+
             Result[index] = sum / weightSum;
-            
+
         }
     }
 }

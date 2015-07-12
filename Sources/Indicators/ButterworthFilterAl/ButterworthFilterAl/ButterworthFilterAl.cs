@@ -11,7 +11,7 @@ namespace cAlgo.Indicators
         private double _coef3;
         private double _coef4;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 20, MinValue = 5)]
@@ -37,20 +37,15 @@ namespace cAlgo.Indicators
                 return;
             }
 
-            Result[index] = _coef1*price;
+            Result[index] = _coef1 * price;
 
             switch (Poles)
             {
                 case 2:
-                    Result[index] += _coef1*(2*Source[index - 1] + Source[index - 2])
-                                     + _coef2*Result[index - 1] 
-                                     + _coef3*Result[index - 2];                                     
+                    Result[index] += _coef1 * (2 * Source[index - 1] + Source[index - 2]) + _coef2 * Result[index - 1] + _coef3 * Result[index - 2];
                     break;
                 default:
-                    Result[index] += _coef1 * (3 * Source[index - 1] + 3 * Source[index - 2] + Source[index - 3]) 
-                        + _coef2 * Result[index - 1] 
-                        + _coef3 * Result[index - 2] 
-                        + _coef4 * Result[index - 3];
+                    Result[index] += _coef1 * (3 * Source[index - 1] + 3 * Source[index - 2] + Source[index - 3]) + _coef2 * Result[index - 1] + _coef3 * Result[index - 2] + _coef4 * Result[index - 3];
                     break;
             }
 
@@ -79,7 +74,7 @@ namespace cAlgo.Indicators
                         _coef3 = -a * a * (1 + b);
                         _coef4 = Math.Pow(a, 4.0);
 
-                        _coef1 =( 1 - _coef2 - _coef3 - _coef4)/8;
+                        _coef1 = (1 - _coef2 - _coef3 - _coef4) / 8;
 
                     }
                     break;

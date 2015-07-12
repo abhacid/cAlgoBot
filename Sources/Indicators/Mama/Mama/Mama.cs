@@ -100,36 +100,36 @@ namespace cAlgo.Indicators
             }
 
 
-            _price[index] = (MarketSeries.High[index] + MarketSeries.Low[index])/2;
-            _smooth[index] = (4*_price[index] + 3*_price[index - 1] + 2*_price[index - 2] + _price[index - 3])/10;            
-            _detrender[index] = (.0962*_smooth[index] + .5769*_smooth[index - 2] - .5769*_smooth[index - 4] - .0962*_smooth[index - 6])*(.075*_period[index - 1] + .54);
+            _price[index] = (MarketSeries.High[index] + MarketSeries.Low[index]) / 2;
+            _smooth[index] = (4 * _price[index] + 3 * _price[index - 1] + 2 * _price[index - 2] + _price[index - 3]) / 10;
+            _detrender[index] = (0.0962 * _smooth[index] + 0.5769 * _smooth[index - 2] - 0.5769 * _smooth[index - 4] - 0.0962 * _smooth[index - 6]) * (0.075 * _period[index - 1] + 0.54);
 
             //  Compute InPhase and Quadrature components
 
-            _q1[index] = (.0962*_detrender[index] + .5769*_detrender[index - 2] - .5769*_detrender[index - 4] - .0962*_detrender[index - 6])*(.075*_period[index - 1] + .54);
+            _q1[index] = (0.0962 * _detrender[index] + 0.5769 * _detrender[index - 2] - 0.5769 * _detrender[index - 4] - 0.0962 * _detrender[index - 6]) * (0.075 * _period[index - 1] + 0.54);
             _i1[index] = _detrender[index - 3];
 
             //  Advance the phase of I1 and Q1 by 90 degrees
 
-            _ji[index] = (.0962*_i1[index] + .5769*_i1[index - 2] - .5769*_i1[index - 4] - .0962*_i1[index - 6])*(.075*_period[index - 1] + .54);
-            _jq[index] = (.0962*_q1[index] + .5769*_q1[index - 2] - .5769*_q1[index - 4] - .0962*_q1[index - 6])*(.075*_period[index - 1] + .54);
+            _ji[index] = (0.0962 * _i1[index] + 0.5769 * _i1[index - 2] - 0.5769 * _i1[index - 4] - 0.0962 * _i1[index - 6]) * (0.075 * _period[index - 1] + 0.54);
+            _jq[index] = (0.0962 * _q1[index] + 0.5769 * _q1[index - 2] - 0.5769 * _q1[index - 4] - 0.0962 * _q1[index - 6]) * (0.075 * _period[index - 1] + 0.54);
 
             //  Phasor addition for 3 bar averaging
-            
+
             _i2[index] = _i1[index] - _jq[index];
             _q2[index] = _q1[index] + _ji[index];
-                        
+
             //  Smooth the I and Q components before applying the discriminator
 
-            _i2[index] = .2*_i2[index] + .8*_i2[index - 1];
-            _q2[index] = 0.2*_q2[index] + 0.8*_q2[index - 1];
+            _i2[index] = 0.2 * _i2[index] + 0.8 * _i2[index - 1];
+            _q2[index] = 0.2 * _q2[index] + 0.8 * _q2[index - 1];
 
             //  Homodyne Discriminator
 
-            _re[index] = _i2[index]*_i2[index - 1] + _q2[index]*_q2[index - 1];
-            _im[index] = _i2[index]*_q2[index - 1] - _q2[index]*_i2[index - 1];
-            _re[index] = 0.2*_re[index] + 0.8*_re[index - 1];
-            _im[index] = 0.2*_im[index] + 0.8*_im[index - 1];
+            _re[index] = _i2[index] * _i2[index - 1] + _q2[index] * _q2[index - 1];
+            _im[index] = _i2[index] * _q2[index - 1] - _q2[index] * _i2[index - 1];
+            _re[index] = 0.2 * _re[index] + 0.8 * _re[index - 1];
+            _im[index] = 0.2 * _im[index] + 0.8 * _im[index - 1];
 
             double epsilon = Math.Pow(10, -10);
             if (Math.Abs(_im[index] - 0.0) > epsilon && Math.Abs(_re[index] - 0.0) > epsilon)
@@ -137,12 +137,12 @@ namespace cAlgo.Indicators
                     _period[index] = 360 / Math.Atan(_im[index] / _re[index]);
                 else
                     _period[index] = 0;
-            
-            if (_period[index] > 1.5*_period[index - 1])
-                _period[index] = 1.5*_period[index - 1];
-            
-            if (_period[index] < 0.67*_period[index - 1])
-                _period[index] = 0.67*_period[index - 1];
+
+            if (_period[index] > 1.5 * _period[index - 1])
+                _period[index] = 1.5 * _period[index - 1];
+
+            if (_period[index] < 0.67 * _period[index - 1])
+                _period[index] = 0.67 * _period[index - 1];
 
             if (_period[index] < 6)
                 _period[index] = 6;
@@ -150,13 +150,13 @@ namespace cAlgo.Indicators
             if (_period[index] > 50)
                 _period[index] = 50;
 
-            _period[index] = 0.2*_period[index] + 0.8*_period[index - 1];
+            _period[index] = 0.2 * _period[index] + 0.8 * _period[index - 1];
 
-            _smoothPeriod[index] = .33*_period[index] + .67*_smoothPeriod[index - 1];
+            _smoothPeriod[index] = 0.33 * _period[index] + 0.67 * _smoothPeriod[index - 1];
 
             if (Math.Abs(_i1[index] - 0) > epsilon)
-                _phase[index] = Math.Atan(_q1[index]/_i1[index]);
-            
+                _phase[index] = Math.Atan(_q1[index] / _i1[index]);
+
             if (Math.Abs(Math.Atan(_q1[index] / _i1[index]) - 0.0) > epsilon)
                 _phase[index] = Math.Atan(_q1[index] / _i1[index]);
             else
@@ -165,16 +165,16 @@ namespace cAlgo.Indicators
             _deltaPhase[index] = _phase[index - 1] - _phase[index];
             if (_deltaPhase[index] < 1)
                 _deltaPhase[index] = 1;
-            
-            _alpha[index] = FastLimit/_deltaPhase[index];
+
+            _alpha[index] = FastLimit / _deltaPhase[index];
             if (_alpha[index] < SlowLimit)
                 _alpha[index] = SlowLimit;
 
-            MamaResult[index] = _alpha[index]*_price[index] + ((1 -_alpha[index])*MamaResult[index - 1]);
+            MamaResult[index] = _alpha[index] * _price[index] + ((1 - _alpha[index]) * MamaResult[index - 1]);
 
-            FamaResult[index] = .5 * _alpha[index] * MamaResult[index] + (1 - 0.5 * _alpha[index]) * FamaResult[index - 1];
+            FamaResult[index] = 0.5 * _alpha[index] * MamaResult[index] + (1 - 0.5 * _alpha[index]) * FamaResult[index - 1];
 
-            
+
         }
     }
 }

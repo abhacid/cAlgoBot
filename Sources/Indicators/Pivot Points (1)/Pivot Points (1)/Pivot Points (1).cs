@@ -63,7 +63,7 @@ namespace cAlgo.Indicators
 
         #region Input Parameters
 
-        [Parameter("Number of Pivots", DefaultValue = 3, MinValue = 1, MaxValue = 3)]        
+        [Parameter("Number of Pivots", DefaultValue = 3, MinValue = 1, MaxValue = 3)]
         public int NoPiv { get; set; }
 
         [Parameter("Daily", DefaultValue = 1, MinValue = 0, MaxValue = 1)]
@@ -87,7 +87,7 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-            if(index <=1)
+            if (index <= 1)
             {
                 Pivot[index] = 0;
                 return;
@@ -112,18 +112,15 @@ namespace cAlgo.Indicators
 
             ChartObjects.RemoveAllObjects();
             int currentDay = MarketSeries.OpenTime[index].Day;
-            int previousDay = MarketSeries.OpenTime[index - 1].Day;            
+            int previousDay = MarketSeries.OpenTime[index - 1].Day;
 
             DayOfWeek currentDayWk = MarketSeries.OpenTime[index].DayOfWeek;
 
             bool sameDay = currentDay == previousDay;
-            bool calculateValues = Pivot[index - 1] == Pivot[index - 2] && !sameDay &&
-                                   (daily && currentDayWk != DayOfWeek.Saturday
-                                    || weekly && currentDayWk == DayOfWeek.Monday
-                                    || monthly && currentDay == 1);
-            
-            if (!calculateValues) 
-            {                
+            bool calculateValues = Pivot[index - 1] == Pivot[index - 2] && !sameDay && (daily && currentDayWk != DayOfWeek.Saturday || weekly && currentDayWk == DayOfWeek.Monday || monthly && currentDay == 1);
+
+            if (!calculateValues)
+            {
                 // Same values for the day
                 Pivot[index] = Pivot[index - 1];
                 R1[index] = R1[index - 1];
@@ -147,8 +144,9 @@ namespace cAlgo.Indicators
                 if (MarketSeries.Low[index] < _low)
                     _low = MarketSeries.Low[index];
             }
-            else //if (calculateValues)
-            {                
+            //if (calculateValues)
+            else
+            {
                 _close = MarketSeries.Close[index - 1];
                 CalculatePivots(index);
 
@@ -157,13 +155,13 @@ namespace cAlgo.Indicators
                 _low = double.MaxValue;
             }
         }
-        
+
         private void CalculatePivots(int index)
         {
             // Calculate output            
-            Pivot[index] = (_high + _low + _close)/3;
-            R1[index] = 2*Pivot[index] - _low;
-            S1[index] = 2*Pivot[index] - _high;
+            Pivot[index] = (_high + _low + _close) / 3;
+            R1[index] = 2 * Pivot[index] - _low;
+            S1[index] = 2 * Pivot[index] - _high;
 
             // Display additional pivots according to input
             if (NoPiv >= 2)
@@ -173,9 +171,9 @@ namespace cAlgo.Indicators
             }
             if (NoPiv >= 3)
             {
-                R3[index] = _high + 2*(Pivot[index] - _low);
-                S3[index] = _low - 2*(_high - Pivot[index]);
-            }            
+                R3[index] = _high + 2 * (Pivot[index] - _low);
+                S3[index] = _low - 2 * (_high - Pivot[index]);
+            }
         }
 
         /// <summary>
@@ -185,21 +183,21 @@ namespace cAlgo.Indicators
         /// <returns></returns>
         private Timeframe GetTimeFrame(int index)
         {
-            
+
             DateTime currentOpenTime = MarketSeries.OpenTime[index];
             DateTime previousOpenTime = MarketSeries.OpenTime[index - 1];
-            
+
             if (currentOpenTime.Day == 1 && previousOpenTime.Day == 1 && currentOpenTime.Month != previousOpenTime.Month)
                 return Timeframe.M1;
 
             if (currentOpenTime.DayOfWeek == DayOfWeek.Monday && previousOpenTime.DayOfWeek != DayOfWeek.Monday)
             {
                 currentOpenTime = previousOpenTime;
-                previousOpenTime = MarketSeries.OpenTime[index - 2];                
+                previousOpenTime = MarketSeries.OpenTime[index - 2];
             }
 
             TimeSpan barTimeDiff = currentOpenTime - previousOpenTime;
-            var totalMin = (int) barTimeDiff.TotalMinutes;
+            var totalMin = (int)barTimeDiff.TotalMinutes;
 
 
             switch (totalMin)

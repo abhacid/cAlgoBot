@@ -5,12 +5,12 @@ using cAlgo.API.Indicators;
 namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
-    public class AdaptiveLaguerreMA:Indicator
+    public class AdaptiveLaguerreMA : Indicator
     {
 
-        private double[,] _priceMatrix = new double[5,500];
+        private double[,] _priceMatrix = new double[5, 500];
         private double[] _price = new double[1];
-        
+
 
         private TriangularMovingAverage _triangularMovingAverage;
 
@@ -21,12 +21,12 @@ namespace cAlgo.Indicators
         private IndicatorDataSeries _diff;
         private IndicatorDataSeries _genTriangMovingAverage;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
-        
+
         [Parameter("Length", DefaultValue = 20, MaxValue = 100)]
         public int Length { get; set; }
-        
+
         [Parameter("Period", DefaultValue = 4, MaxValue = 10)]
         public int Period { get; set; }
 
@@ -36,7 +36,7 @@ namespace cAlgo.Indicators
 
         [Parameter("Smooth Period", DefaultValue = 5, MaxValue = 100)]
         public int Smooth { get; set; }
-        
+
         [Parameter("Smooth Mode", DefaultValue = 5, MaxValue = 19)]
         public int SmoothMode { get; set; }
 
@@ -52,15 +52,15 @@ namespace cAlgo.Indicators
             _adaptiveGamma = CreateDataSeries();
             _diff = CreateDataSeries();
             _genTriangMovingAverage = CreateDataSeries();
-            
+
             _triangularMovingAverage = Indicators.TriangularMovingAverage(_adaptiveGamma, Smooth);
-            
-            Array.Resize(ref _price, Period+2);
+
+            Array.Resize(ref _price, Period + 2);
         }
 
         public override void Calculate(int index)
         {
-            if(index < Length)
+            if (index < Length)
             {
                 _lastLow[index] = 0;
                 _lastHi[index] = 0;
@@ -68,17 +68,17 @@ namespace cAlgo.Indicators
                 _diff[index] = 0;
                 _gamma[index] = 0;
                 _genTriangMovingAverage[index] = 0;
-                
+
                 return;
-            }           			
-						
-			//Compute Difference between price and Generalized Triangular moving average
-			_diff[index] = Math.Abs(Source[index] - _genTriangMovingAverage[index - 1]);
+            }
+
+            //Compute Difference between price and Generalized Triangular moving average
+            _diff[index] = Math.Abs(Source[index] - _genTriangMovingAverage[index - 1]);
 
             SetPriceArray(index);
-            
+
             _genTriangMovingAverage[index] = GetGeneralTMA(ref _price, Period + 2);
-            
+
             Laguerre[index] = _genTriangMovingAverage[index];
 
 
@@ -122,7 +122,7 @@ namespace cAlgo.Indicators
 
                 }
 
-            }		
+            }
         }
 
         /// <summary>
@@ -134,62 +134,61 @@ namespace cAlgo.Indicators
         /// <param name="index"></param>
         /// <returns></returns>
         private double GetAdaptiveGamma(int mode, IndicatorDataSeries source, int period, int index)
-		{
-			double sum = 0;
+        {
+            double sum = 0;
             double eff;
             double max = 0;
             double min = source[0];
 
-            for(int i = 0 ; i < period ; i++) 
-			{
-				if(mode == 1)
-                    sum += Math.Abs(source[index - i] - source[index - i - 1]);			    
+            for (int i = 0; i < period; i++)
+            {
+                if (mode == 1)
+                    sum += Math.Abs(source[index - i] - source[index - i - 1]);
                 else if (mode == 2)
-			    {
+                {
                     if (source[index - i] > max)
                         max = source[index - i];
-			        if (source[index - i] < min)
+                    if (source[index - i] < min)
                         min = source[index - i];
-			    }
-			}
-									
-			if(mode == 1 && sum > 0)
-                eff = Math.Abs(source[index] - source[index - period]) / sum;
-			else 
-				if(mode == 2 && max - min > 0)
-                    eff = (source[index] - min) / (max - min);
-			else
-				eff = 0;
+                }
+            }
 
-			return 1 - eff;  
-		}		
-				
-   		/// <summary>
+            if (mode == 1 && sum > 0)
+                eff = Math.Abs(source[index] - source[index - period]) / sum;
+            else if (mode == 2 && max - min > 0)
+                eff = (source[index] - min) / (max - min);
+            else
+                eff = 0;
+
+            return 1 - eff;
+        }
+
+        /// <summary>
         ///  Generalized Triangular Moving Average 
-		/// </summary>
-		/// <param name="price"></param>
-		/// <param name="period"></param>
-		/// <returns></returns>
+        /// </summary>
+        /// <param name="price"></param>
+        /// <param name="period"></param>
+        /// <returns></returns>
         private double GetGeneralTMA(ref double[] price, int period)
-		{
-   		    double sumTotal = 0;   		     
-            var periodFloor = Math.Floor( (period + 1 ) * 0.5);
-			var periodCeiling = Math.Ceiling( (period + 1) * 0.5);
-								
-			for(int i = 1 ; i <= periodCeiling  ; i++) 
-			{
-				double sum = 0;
-				for(int j = 1 ; j <= periodFloor ; j++)
-				{                    
-                    sum = sum + (double) price.GetValue(j);
-				}
-				               
+        {
+            double sumTotal = 0;
+            var periodFloor = Math.Floor((period + 1) * 0.5);
+            var periodCeiling = Math.Ceiling((period + 1) * 0.5);
+
+            for (int i = 1; i <= periodCeiling; i++)
+            {
+                double sum = 0;
+                for (int j = 1; j <= periodFloor; j++)
+                {
+                    sum = sum + (double)price.GetValue(j);
+                }
+
                 sumTotal += (sum / periodFloor);
-							
-			}
+
+            }
 
             return sumTotal / periodCeiling;
-		}		
+        }
 
     }
 }

@@ -30,10 +30,10 @@ namespace cAlgo.Indicators
         }
 
         public override void Calculate(int index)
-        {            
+        {
             double high = MarketSeries.High[index];
             double low = MarketSeries.Low[index];
-            
+
             if (index == 0)
             {
                 _tempBuffer[index] = high - low;

@@ -18,7 +18,7 @@ namespace cAlgo.Indicators
         private MovingAverage _signal;
         private IndicatorDataSeries _tsiSeries;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter("ShortPeriod", DefaultValue = 13, MinValue = 1)]
@@ -29,9 +29,8 @@ namespace cAlgo.Indicators
 
         [Parameter("SignalPeriod", DefaultValue = 7, MinValue = 1)]
         public int SignalPeriod { get; set; }
-        
-        [Parameter("MA Type", DefaultValue = MovingAverageType.Exponential, 
-            MinValue = MovingAverageType.Simple, MaxValue = MovingAverageType.Exponential)]
+
+        [Parameter("MA Type", DefaultValue = MovingAverageType.Exponential, MinValue = MovingAverageType.Simple, MaxValue = MovingAverageType.Exponential)]
         public MovingAverageType MaType { get; set; }
 
 
@@ -56,9 +55,9 @@ namespace cAlgo.Indicators
 
             _tsiSeries = CreateDataSeries();
             _signal = Indicators.MovingAverage(_tsiSeries, SignalPeriod, MaType);
-           
+
         }
-        
+
         public override void Calculate(int index)
         {
             if (index < 1)

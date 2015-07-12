@@ -12,7 +12,7 @@ namespace cAlgo.Indicators
         private IndicatorDataSeries _pf;
         private IndicatorDataSeries _xmac;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter("Short Cycle", DefaultValue = 23)]
@@ -44,14 +44,14 @@ namespace cAlgo.Indicators
             double high = Highest(_macd.Histogram, index) - low;
 
             if (high > 0)
-                _frac1[index] = 100*(_macd.Histogram[index] - low)/high;
+                _frac1[index] = 100 * (_macd.Histogram[index] - low) / high;
             else if (index > 0)
                 _frac1[index] = _frac1[index - 1];
             else
                 _frac1[index] = 0;
 
             if (index > 0)
-                _pf[index] = _pf[index - 1] + Factor*(_frac1[index] - _pf[index - 1]);
+                _pf[index] = _pf[index - 1] + Factor * (_frac1[index] - _pf[index - 1]);
             else
                 _pf[index] = _frac1[index];
 
@@ -62,10 +62,11 @@ namespace cAlgo.Indicators
                 _frac2[index] = 100 * (_pf[index] - low) / high;
             else if (index > 0)
                 _frac2[index] = _frac2[index - 1];
-            else _frac2[index] = 0;
+            else
+                _frac2[index] = 0;
 
             if (index > 0)
-                Result[index] = Result[index - 1] + Factor*(_frac2[index] - Result[index - 1]);
+                Result[index] = Result[index - 1] + Factor * (_frac2[index] - Result[index - 1]);
             else
                 Result[index] = _frac2[index];
         }

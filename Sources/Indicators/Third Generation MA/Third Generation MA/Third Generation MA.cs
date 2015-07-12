@@ -10,7 +10,7 @@ namespace cAlgo.Indicators
         private MovingAverage _movingAverage1;
         private MovingAverage _movingAverage2;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 220, MinValue = 16)]
@@ -25,14 +25,14 @@ namespace cAlgo.Indicators
 
         [Output("Main", Color = Colors.Magenta)]
         public IndicatorDataSeries Result { get; set; }
-        
+
         protected override void Initialize()
         {
-            if (Period < 2*SamplingPeriod)
+            if (Period < 2 * SamplingPeriod)
                 ChartObjects.DrawText("message", "Period >= Sampling Period * 2", StaticPosition.TopCenter, Colors.Red);
 
-            var lamda = (double) Period/SamplingPeriod;
-            _alpha = lamda*(Period - 1)/(Period - lamda);
+            var lamda = (double)Period / SamplingPeriod;
+            _alpha = lamda * (Period - 1) / (Period - lamda);
 
             _movingAverage1 = Indicators.MovingAverage(Source, Period, MAType);
             _movingAverage2 = Indicators.MovingAverage(_movingAverage1.Result, SamplingPeriod, MAType);
@@ -41,8 +41,7 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-            Result[index] = (_alpha + 1)*_movingAverage1.Result[index] -
-                            (_alpha*_movingAverage2.Result[index]);
+            Result[index] = (_alpha + 1) * _movingAverage1.Result[index] - (_alpha * _movingAverage2.Result[index]);
         }
     }
 }

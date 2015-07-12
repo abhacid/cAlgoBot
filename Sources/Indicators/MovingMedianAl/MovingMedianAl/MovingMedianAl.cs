@@ -10,7 +10,7 @@ namespace cAlgo.Indicators
 
 
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 20, MinValue = 5)]
@@ -28,19 +28,18 @@ namespace cAlgo.Indicators
         {
             if (index < Period)
             {
-                for (int i = 0; i < Period; i++ )
+                for (int i = 0; i < Period; i++)
                 {
                     if (i <= index)
                         _array[i] = Source[index - i];
                     else
                         _array[i] = 0.0;
                 }
-                    
+
                 Array.Sort(_array);
 
                 if ((index + 1) % 2 == 0)
-                    Result[index] = 0.5*(_array[Period - (index + 1)/2] 
-                        + _array[Period - (index + 1)/2 - 1]);
+                    Result[index] = 0.5 * (_array[Period - (index + 1) / 2] + _array[Period - (index + 1) / 2 - 1]);
                 else
                     Result[index] = _array[Period - (index + 2) / 2];
 
@@ -49,13 +48,13 @@ namespace cAlgo.Indicators
 
             for (int i = 0; i < Period; i++)
                 _array[i] = Source[index - i];
-            
+
             Array.Sort(_array);
 
-            if (Period%2 == 0)
-                Result[index] = 0.5*(_array[Period/2] + _array[Period/2 - 1]);
+            if (Period % 2 == 0)
+                Result[index] = 0.5 * (_array[Period / 2] + _array[Period / 2 - 1]);
             else
-                Result[index] = _array[(Period-1) / 2];
+                Result[index] = _array[(Period - 1) / 2];
 
 
         }

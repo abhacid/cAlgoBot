@@ -28,7 +28,7 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-            Result[index] = 3*_ema1.Result[index] - 3*_ema2.Result[index] + _ema3.Result[index];
+            Result[index] = 3 * _ema1.Result[index] - 3 * _ema2.Result[index] + _ema3.Result[index];
         }
     }
 }

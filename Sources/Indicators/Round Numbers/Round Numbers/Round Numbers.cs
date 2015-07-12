@@ -14,8 +14,8 @@ namespace cAlgo.Indicators
             double max = MarketSeries.High.Maximum(MarketSeries.High.Count);
             double min = MarketSeries.Low.Minimum(MarketSeries.Low.Count);
 
-            double step = Symbol.PipSize*StepPips;
-            double start = Math.Floor(min/step)*step;
+            double step = Symbol.PipSize * StepPips;
+            double start = Math.Floor(min / step) * step;
 
             for (double level = start; level <= max + step; level += step)
             {

@@ -13,9 +13,9 @@ namespace cAlgo
 
         [Parameter("Days backward", DefaultValue = 10)]
         public int DaysBackward { get; set; }
-        
+
         private MarketSeries m;
-        
+
         private double lastHi;
         private double lastLo;
 
@@ -61,15 +61,15 @@ namespace cAlgo
 
         protected override void OnTimer()
         {
-            if (lastHi > m.High.Maximum(1) && lastLo <  m.Low.Minimum(1))
+            if (lastHi > m.High.Maximum(1) && lastLo < m.Low.Minimum(1))
             {
                 return;
             }
-            
+
             ChartObjects.RemoveAllObjects();
-            
+
             double prevHi = double.MinValue, prevLo = double.MaxValue;
-            
+
             for (int i = 1; i <= DaysBackward; ++i)
             {
                 double hi = m.High.Maximum(i);
@@ -87,7 +87,7 @@ namespace cAlgo
                     prevLo = lo;
                 }
             }
-            
+
             lastHi = m.High.Maximum(1);
             lastLo = m.Low.Minimum(1);
         }

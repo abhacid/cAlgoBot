@@ -8,9 +8,9 @@ namespace cAlgo.Indicators
     [Indicator(IsOverlay = false, AccessRights = AccessRights.None)]
     public class PIDosc : Indicator
     {
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
-    
+
         [Parameter("RSI Periods", DefaultValue = 14)]
         public int rsiperiods { get; set; }
 
@@ -26,26 +26,29 @@ namespace cAlgo.Indicators
         [Output("Top", Color = Colors.Red)]
         public IndicatorDataSeries top { get; set; }
 
-		double value1;
-		
-		RelativeStrengthIndex rsi;
-		SimpleMovingAverage sma;
-		
+        double value1;
+
+        RelativeStrengthIndex rsi;
+        SimpleMovingAverage sma;
+
         protected override void Initialize()
         {
-			rsi = Indicators.RelativeStrengthIndex(Source, rsiperiods);
-			sma = Indicators.SimpleMovingAverage(Source, smaperiods);
+            rsi = Indicators.RelativeStrengthIndex(Source, rsiperiods);
+            sma = Indicators.SimpleMovingAverage(Source, smaperiods);
         }
 
         public override void Calculate(int index)
         {
-        	if(MarketSeries.Close[index] > sma.Result[index]){
-				Result[index] = (rsi.Result[index] - 35) / (85 - 35) * 100;
-			}else{
-				Result[index] = (rsi.Result[index] - 20) / (70 - 20) * 100;
-			}
-			top[index] = 100;
-			bottom[index] = 0;
+            if (MarketSeries.Close[index] > sma.Result[index])
+            {
+                Result[index] = (rsi.Result[index] - 35) / (85 - 35) * 100;
+            }
+            else
+            {
+                Result[index] = (rsi.Result[index] - 20) / (70 - 20) * 100;
+            }
+            top[index] = 100;
+            bottom[index] = 0;
         }
     }
 }

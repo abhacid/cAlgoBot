@@ -62,8 +62,7 @@ namespace cAlgo.Indicators
             }
 
             // Calculate High & Low of previous day
-            if ((currentOpenTime.Day == yesterday.Day && today.DayOfWeek != DayOfWeek.Monday) ||
-            (today.DayOfWeek == DayOfWeek.Monday && currentOpenTime.DayOfYear == today.AddDays(-3).Day))
+            if ((currentOpenTime.Day == yesterday.Day && today.DayOfWeek != DayOfWeek.Monday) || (today.DayOfWeek == DayOfWeek.Monday && currentOpenTime.DayOfYear == today.AddDays(-3).Day))
             {
                 if (MarketSeries.High[index] > _higher)
                 {
@@ -80,26 +79,27 @@ namespace cAlgo.Indicators
             {
                 _close = MarketSeries.Close[index - 1];
             }
-            
+
             // Only show output in todays timeframe
-            if (currentOpenTime.Date != today.Date) return;
-            
+            if (currentOpenTime.Date != today.Date)
+                return;
+
             // Calculate output
-            Pivot[index] = (_higher + _lower + _close)/3;
-            
-            R1[index] = Pivot[index] + (.382 * ( _higher - _lower ));
-            S1[index] = Pivot[index] - (.382 * ( _higher - _lower ));
-            
+            Pivot[index] = (_higher + _lower + _close) / 3;
+
+            R1[index] = Pivot[index] + (0.382 * (_higher - _lower));
+            S1[index] = Pivot[index] - (0.382 * (_higher - _lower));
+
             // Display additional pivots according to input
             if (NoPiv >= 2)
             {
-                R2[index] = Pivot[index] + (.618 * ( _higher - _lower ));
-                S2[index] = Pivot[index] - (.618 * ( _higher - _lower ));
+                R2[index] = Pivot[index] + (0.618 * (_higher - _lower));
+                S2[index] = Pivot[index] - (0.618 * (_higher - _lower));
             }
             if (NoPiv >= 3)
             {
-                R3[index] = Pivot[index] + ( 1 * ( _higher - _lower ));
-                S3[index] = Pivot[index] - ( 1 * ( _higher - _lower ));
+                R3[index] = Pivot[index] + (1 * (_higher - _lower));
+                S3[index] = Pivot[index] - (1 * (_higher - _lower));
             }
         }
     }

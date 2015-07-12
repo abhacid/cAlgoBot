@@ -14,7 +14,7 @@ namespace cAlgo.Indicators
         private IndicatorDataSeries _pdiSeries;
         private IndicatorDataSeries _pdmSeries;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 6)]
@@ -41,7 +41,7 @@ namespace cAlgo.Indicators
             _mdiSeries = CreateDataSeries();
             _iSeries = CreateDataSeries();
 
-            _k = 1.0/Period;
+            _k = 1.0 / Period;
         }
 
 
@@ -61,8 +61,8 @@ namespace cAlgo.Indicators
             double pdm = Math.Max((Source[index] - Source[index - 1]), 0);
             double mdm = Math.Max((Source[index - 1] - Source[index]), 0);
 
-            _pdmSeries[index] = ((1 - _k)*_pdmSeries[index - 1] + _k*pdm);
-            _mdmSeries[index] = ((1 - _k)*_mdmSeries[index - 1] + _k*mdm);
+            _pdmSeries[index] = ((1 - _k) * _pdmSeries[index - 1] + _k * pdm);
+            _mdmSeries[index] = ((1 - _k) * _mdmSeries[index - 1] + _k * mdm);
 
             double sum = _pdmSeries[index] + _mdmSeries[index];
             double pdi = 0.0;
@@ -70,19 +70,19 @@ namespace cAlgo.Indicators
 
             if (sum > double.Epsilon)
             {
-                pdi = _pdmSeries[index]/sum;
-                mdi = _mdmSeries[index]/sum;
+                pdi = _pdmSeries[index] / sum;
+                mdi = _mdmSeries[index] / sum;
             }
 
-            _pdiSeries[index] = ((1 - _k)*_pdiSeries[index - 1] + _k*pdi);
-            _mdiSeries[index] = ((1 - _k)*_mdiSeries[index - 1] + _k*mdi);
+            _pdiSeries[index] = ((1 - _k) * _pdiSeries[index - 1] + _k * pdi);
+            _mdiSeries[index] = ((1 - _k) * _mdiSeries[index - 1] + _k * mdi);
 
             double diff = Math.Abs(_pdiSeries[index] - _mdiSeries[index]);
 
             sum = _pdiSeries[index] + _mdiSeries[index];
 
             if (sum > double.Epsilon)
-                _iSeries[index] = ((1 - _k)*_iSeries[1] + _k*diff/sum);
+                _iSeries[index] = ((1 - _k) * _iSeries[1] + _k * diff / sum);
 
 
             double hhv = Math.Max(_iSeries[index], _iSeries.Maximum(Period));
@@ -92,9 +92,9 @@ namespace cAlgo.Indicators
             double vIndex = 0;
 
             if (diff > double.Epsilon)
-                vIndex = (_iSeries[index] - llv)/diff;
+                vIndex = (_iSeries[index] - llv) / diff;
 
-            Result[index] = (1 - _k*vIndex)*Result[index - 1] + _k*vIndex*Source[index];
+            Result[index] = (1 - _k * vIndex) * Result[index - 1] + _k * vIndex * Source[index];
 
             Rising[index] = double.NaN;
             Falling[index] = double.NaN;

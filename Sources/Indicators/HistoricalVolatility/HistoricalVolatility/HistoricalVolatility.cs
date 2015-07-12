@@ -4,12 +4,12 @@ using cAlgo.API;
 namespace cAlgo.Indicators
 {
     [Indicator(AccessRights = AccessRights.None)]
-    class HistoricalVolatility:Indicator
+    class HistoricalVolatility : Indicator
     {
         [Parameter("Period", DefaultValue = 14)]
         public int Period { get; set; }
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Price { get; set; }
 
         [Output("Main")]
@@ -20,18 +20,18 @@ namespace cAlgo.Indicators
             double mean = 0.0;
             double sum = 0.0;
 
-            for(int i = index - Period; i < index; i++)
+            for (int i = index - Period; i < index; i++)
             {
-                mean += Math.Log(Price[i]/Price[i - 1]);
+                mean += Math.Log(Price[i] / Price[i - 1]);
             }
             mean /= Period;
 
             for (int i = index - Period; i < index; i++)
             {
-                sum += Math.Pow(Math.Log(Price[i]/Price[i - 1]) - mean, 2);
+                sum += Math.Pow(Math.Log(Price[i] / Price[i - 1]) - mean, 2);
             }
 
-            Result[index] = Math.Sqrt(sum/(Period - 1));
+            Result[index] = Math.Sqrt(sum / (Period - 1));
 
         }
     }

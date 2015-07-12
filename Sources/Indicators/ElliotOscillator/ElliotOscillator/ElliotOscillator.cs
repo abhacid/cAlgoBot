@@ -19,12 +19,12 @@ namespace cAlgo.Indicators
         private IndicatorDataSeries _elliot;
 
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter("FastPeriod", DefaultValue = 5)]
         public int FastPeriod { get; set; }
-        
+
         [Parameter("SlowPeriod", DefaultValue = 34)]
         public int SlowPeriod { get; set; }
 
@@ -34,7 +34,7 @@ namespace cAlgo.Indicators
         public IndicatorDataSeries DownTrend { get; set; }
         [Output("Neutral", Color = Colors.Gray, PlotType = PlotType.Histogram, Thickness = 2)]
         public IndicatorDataSeries Neutral { get; set; }
-        
+
         [Output("Line", Color = Colors.Red)]
         public IndicatorDataSeries Line { get; set; }
 
@@ -56,15 +56,13 @@ namespace cAlgo.Indicators
             _elliot[index] = _fastSma.Result[index] - _slowSma.Result[index];
             Line[index] = _fastSma.Result[index - 3] - _slowSma.Result[index - 3];
 
-            if (_sma100.Result.LastValue > _sma200.Result.LastValue
-                && _sma20.Result.LastValue >_sma100.Result.LastValue)
+            if (_sma100.Result.LastValue > _sma200.Result.LastValue && _sma20.Result.LastValue > _sma100.Result.LastValue)
             {
                 UpTrend[index] = _elliot[index];
                 DownTrend[index] = double.NaN;
                 Neutral[index] = double.NaN;
             }
-            else if (_sma100.Result.LastValue < _sma200.Result.LastValue
-                && _sma20.Result.LastValue < _sma100.Result.LastValue)
+            else if (_sma100.Result.LastValue < _sma200.Result.LastValue && _sma20.Result.LastValue < _sma100.Result.LastValue)
             {
                 DownTrend[index] = _elliot[index];
                 UpTrend[index] = double.NaN;

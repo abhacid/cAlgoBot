@@ -24,17 +24,20 @@ namespace cAlgo.Indicators
 
         protected override void Initialize()
         {
-            _timer.Elapsed += OnTimedEvent; //  OnTimedEvent is called at each timer tick
-            _timer.Interval =  1000;        // Timer will tick every Interval (milliseconds)
-            _timer.Enabled = true;          // Enable the timer
-            _timer.Start();                 // Start the timer
-
+            _timer.Elapsed += OnTimedEvent;
+            //  OnTimedEvent is called at each timer tick
+            _timer.Interval = 1000;
+            // Timer will tick every Interval (milliseconds)
+            _timer.Enabled = true;
+            // Enable the timer
+            _timer.Start();
+            // Start the timer
         }
 
 
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            
+
             _index = MarketSeries.Close.Count - 1;
             _timeFrame = MarketSeries.OpenTime[_index] - MarketSeries.OpenTime[_index - 1];
 
@@ -44,8 +47,7 @@ namespace cAlgo.Indicators
                 _serverHourDiff = MarketSeries.OpenTime[_index].TimeOfDay.Hours - DateTime.Now.TimeOfDay.Hours;
                 _serverTime = DateTime.Now.AddHours(_serverHourDiff);
 
-                ChartObjects.DrawText("CountDown", (_nextOpenTime - _serverTime.TimeOfDay).ToString().Substring(0, 8),
-                                      StaticPosition.TopRight, Colors.White);
+                ChartObjects.DrawText("CountDown", (_nextOpenTime - _serverTime.TimeOfDay).ToString().Substring(0, 8), StaticPosition.TopRight, Colors.White);
             }
         }
 

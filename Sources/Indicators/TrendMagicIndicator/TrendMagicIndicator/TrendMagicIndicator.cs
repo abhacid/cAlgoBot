@@ -1935,15 +1935,15 @@ namespace cAlgo.Indicators
             _value = value;
         }
 
-		public override int GetHashCode()
-		{
-			return base.GetHashCode();
-		}
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
-		public override bool Equals(object obj)
-		{
-			return base.Equals(obj);
-		}
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
 
 
         public static implicit operator Mq4String(string value)
@@ -2517,15 +2517,15 @@ namespace cAlgo.Indicators
             _value = value;
         }
 
-		public override int GetHashCode()
-		{
-			return base.GetHashCode();
-		}
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
-		public override bool Equals(object obj)
-		{
-			return base.Equals(obj);
-		}
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
 
 
 

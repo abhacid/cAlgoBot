@@ -8,10 +8,10 @@ namespace cAlgo.Indicators
     {
         #region Input
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Price { get; set; }
 
-        private string _soundFile = @"C:\Windows\Media\notify.wav";
+        private string _soundFile = "C:\\Windows\\Media\\notify.wav";
 
         [Parameter("Length", DefaultValue = 60)]
         public int Length { get; set; }
@@ -115,7 +115,8 @@ namespace cAlgo.Indicators
                     _maBuffer[index] = _maBuffer[index - 1];
             }
 
-            if (ColorFront <= 0) return;
+            if (ColorFront <= 0)
+                return;
             trend[index] = trend[index - 1];
 
             if (_maBuffer[index] - _maBuffer[index - 1] > filterFactor)
@@ -143,21 +144,22 @@ namespace cAlgo.Indicators
                 }
             }
 
-            if(_lastIndex != index && IsRealTime)
+            if (_lastIndex != index && IsRealTime)
             {
                 _lastIndex = index;
-                var changedTrend = (int) trend[index - 1] != (int)trend[index - 2];            
+                var changedTrend = (int)trend[index - 1] != (int)trend[index - 2];
 
-                if (!changedTrend) return;
-                    Alert(index);
-                
+                if (!changedTrend)
+                    return;
+                Alert(index);
+
             }
         }
 
         private void Alert(int indexChanged)
-        {                        
+        {
             Notifications.PlaySound(_soundFile);
-            var text = string.Format("{0} {1:MM/dd/yyyy hh:mm:ss}", Symbol.Code, MarketSeries.OpenTime[indexChanged- 1]);
+            var text = string.Format("{0} {1:MM/dd/yyyy hh:mm:ss}", Symbol.Code, MarketSeries.OpenTime[indexChanged - 1]);
             ChartObjects.DrawText("obj", text, StaticPosition.TopLeft, Colors.Green);
 
         }

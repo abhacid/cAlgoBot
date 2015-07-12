@@ -9,7 +9,7 @@ namespace cAlgo.Indicators
         private MovingAverage _maofRoc;
         private PriceROC _rocLong, _rocShort;
         private IndicatorDataSeries _rocSum;
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter("Roc Period Long", DefaultValue = 14)]
@@ -17,7 +17,7 @@ namespace cAlgo.Indicators
 
         [Parameter("Roc Period Short", DefaultValue = 11)]
         public int RocPeriodShort { get; set; }
-        
+
         [Parameter("WMA Period", DefaultValue = 10)]
         public int WmaPeriod { get; set; }
 

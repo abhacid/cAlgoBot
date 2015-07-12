@@ -10,7 +10,7 @@ namespace cAlgo.Indicators
         private double _close;
         private double _higher;
         private double _lower;
-        
+
         #region Output
 
         [Output("Pivot", LineStyle = LineStyle.Lines)]
@@ -67,8 +67,7 @@ namespace cAlgo.Indicators
             }
 
             // Calculate High & Low of previous day
-            if ((currentOpenTime.Day == yesterday.Day && today.DayOfWeek != DayOfWeek.Monday) ||
-            (today.DayOfWeek == DayOfWeek.Monday && currentOpenTime.DayOfYear == today.AddDays(-3).Day))
+            if ((currentOpenTime.Day == yesterday.Day && today.DayOfWeek != DayOfWeek.Monday) || (today.DayOfWeek == DayOfWeek.Monday && currentOpenTime.DayOfYear == today.AddDays(-3).Day))
             {
                 if (MarketSeries.High[index] > _higher)
                 {
@@ -87,7 +86,8 @@ namespace cAlgo.Indicators
             }
 
             // Only show output in todays timeframe
-            if (currentOpenTime.Date != today.Date) return;
+            if (currentOpenTime.Date != today.Date)
+                return;
 
             // Calculate output
 
@@ -95,7 +95,7 @@ namespace cAlgo.Indicators
 
             R1[index] = _close + (_higher - _lower) * 0.0916;
             S1[index] = _close - (_higher - _lower) * 0.0916;
-                
+
             // Display additional pivots according to input
             if (NoPiv >= 2)
             {
@@ -107,8 +107,9 @@ namespace cAlgo.Indicators
                 R3[index] = _close + (_higher - _lower) * 0.275;
                 S3[index] = _close - (_higher - _lower) * 0.275;
             }
-            if (NoPiv < 4) return;
-            
+            if (NoPiv < 4)
+                return;
+
             R4[index] = _close + (_higher - _lower) * 0.55;
             S4[index] = _close - (_higher - _lower) * 0.55;
 

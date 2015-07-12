@@ -4,11 +4,11 @@ using cAlgo.API.Indicators;
 
 namespace cAlgo.Indicators
 {
-    [Levels(-7,7)]
+    [Levels(-7, 7)]
     [Indicator(AccessRights = AccessRights.None)]
-    public class RMO:Indicator
+    public class RMO : Indicator
     {
-        
+
         private SimpleMovingAverage _sma;
         private SimpleMovingAverage _sma2;
         private SimpleMovingAverage _sma3;
@@ -35,18 +35,18 @@ namespace cAlgo.Indicators
 
         [Output("ST3", Color = Colors.Black)]
         public IndicatorDataSeries ST3 { get; set; }
-        
-        
+
+
 
         [Parameter(DefaultValue = 2)]
         public int Len1 { get; set; }
 
         [Parameter(DefaultValue = 10)]
         public int Len2 { get; set; }
-        
+
         [Parameter(DefaultValue = 30)]
         public int Len3 { get; set; }
-        
+
         [Parameter(DefaultValue = 81)]
         public int Len4 { get; set; }
 
@@ -60,7 +60,7 @@ namespace cAlgo.Indicators
 
         protected override void Initialize()
         {
-            iSeries1 = CreateDataSeries();            
+            iSeries1 = CreateDataSeries();
             iSeries4 = CreateDataSeries();
 
             _sma = Indicators.SimpleMovingAverage(MarketSeries.Close, Len1);
@@ -79,7 +79,7 @@ namespace cAlgo.Indicators
 
             _ema3 = Indicators.ExponentialMovingAverage(ST2, Len3);
             _ema4 = Indicators.ExponentialMovingAverage(_ema3.Result, Len3);
-            
+
             _ema5 = Indicators.ExponentialMovingAverage(iSeries1, Len4);
             _ema6 = Indicators.ExponentialMovingAverage(_ema3.Result, Len4);
 
@@ -96,17 +96,13 @@ namespace cAlgo.Indicators
             if (Math.Abs(fix - 0) < double.Epsilon)
                 fix = 1;
 
-            iSeries1[index] = 100*(MarketSeries.Close[index] -
-                                   (_sma.Result[index] + _sma2.Result[index] + _sma3.Result[index]
-                                    + _sma4.Result[index] + _sma5.Result[index] + _sma6.Result[index]
-                                    + _sma7.Result[index] + _sma8.Result[index] + _sma9.Result[index]
-                                    + _sma10.Result[index])/10)/fix;
-            
-            ST2[index] = 2*_ema1.Result[index] - _ema2.Result[index];
+            iSeries1[index] = 100 * (MarketSeries.Close[index] - (_sma.Result[index] + _sma2.Result[index] + _sma3.Result[index] + _sma4.Result[index] + _sma5.Result[index] + _sma6.Result[index] + _sma7.Result[index] + _sma8.Result[index] + _sma9.Result[index] + _sma10.Result[index]) / 10) / fix;
 
-            ST3[index] = 2*_ema3.Result[index] - _ema4.Result[index];
+            ST2[index] = 2 * _ema1.Result[index] - _ema2.Result[index];
 
-            iSeries4[index] = 2*_ema5.Result[index] - _ema6.Result[index];
+            ST3[index] = 2 * _ema3.Result[index] - _ema4.Result[index];
+
+            iSeries4[index] = 2 * _ema5.Result[index] - _ema6.Result[index];
 
             if (iSeries4[index] > 0 && ST2[index] > 0 && ST3[index] > 0)
                 BullBuffer[index] = iSeries4[index];

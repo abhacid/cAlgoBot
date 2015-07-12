@@ -4,7 +4,7 @@ using cAlgo.API.Indicators;
 namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
-    public class GannHighLow:Indicator
+    public class GannHighLow : Indicator
     {
         private SimpleMovingAverage _smaHigh;
         private SimpleMovingAverage _smaLow;
@@ -24,7 +24,7 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-            if(index < Period) 
+            if (index < Period)
                 return;
 
             double close = MarketSeries.Close[index];

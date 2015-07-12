@@ -4,14 +4,14 @@ using cAlgo.API;
 namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
-    public class PriceChannels:Indicator 
+    public class PriceChannels : Indicator
     {
         [Output("HiChannel")]
         public IndicatorDataSeries HiChannel { get; set; }
 
         [Output("LowChannel")]
         public IndicatorDataSeries LowChannel { get; set; }
-        
+
         [Output("Center Line", LineStyle = LineStyle.Dots)]
         public IndicatorDataSeries CenterLine { get; set; }
 
@@ -20,7 +20,7 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-            if(index < Period)
+            if (index < Period)
                 return;
 
             double upper = double.MinValue;
@@ -35,7 +35,7 @@ namespace cAlgo.Indicators
             HiChannel[index] = upper;
             LowChannel[index] = lower;
             CenterLine[index] = (upper + lower) / 2;
-            
+
 
         }
     }

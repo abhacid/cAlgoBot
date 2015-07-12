@@ -10,16 +10,16 @@ namespace cAlgo.Indicators
         [Parameter(DefaultValue = 14)]
         public int interval { get; set; }
 
-        [Output("ADXR", Color= Colors.Turquoise)]
+        [Output("ADXR", Color = Colors.Turquoise)]
         public IndicatorDataSeries adxr { get; set; }
-		
-        [Output("DiMinus", Color= Colors.Red)]
+
+        [Output("DiMinus", Color = Colors.Red)]
         public IndicatorDataSeries diminus { get; set; }
-		
-		[Output("DiPlus", Color= Colors.Blue)]
+
+        [Output("DiPlus", Color = Colors.Blue)]
         public IndicatorDataSeries diplus { get; set; }
 
-		private DirectionalMovementSystem adx;
+        private DirectionalMovementSystem adx;
         protected override void Initialize()
         {
             adx = Indicators.DirectionalMovementSystem(interval);
@@ -27,9 +27,9 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-			adxr[index] = (adx.ADX[index] + adx.ADX[index-interval])/2;
-			diminus[index] = adx.DIMinus[index];
-			diplus[index] = adx.DIPlus[index];
+            adxr[index] = (adx.ADX[index] + adx.ADX[index - interval]) / 2;
+            diminus[index] = adx.DIMinus[index];
+            diplus[index] = adx.DIPlus[index];
         }
     }
 }

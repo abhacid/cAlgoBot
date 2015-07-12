@@ -21,7 +21,7 @@ namespace cAlgo.Indicators
         private int _startValue;
         private int _loopIndex;
         private int _loopCriteria;
-        
+
         private bool _initFlag;
         private double _phaseParam;
         private double _logParam;
@@ -40,7 +40,7 @@ namespace cAlgo.Indicators
 
         #region Input
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 10, MinValue = 1)]
@@ -75,14 +75,15 @@ namespace cAlgo.Indicators
 
             _initFlag = true;
 
-            double lengthParam = (Length <= 1) ? 0.0000000001 : (Length - 1) / 2.0;
+            double lengthParam = (Length <= 1) ? 1E-10 : (Length - 1) / 2.0;
 
             _phaseParam = Phase / 100.0 + 1.5;
 
             _logParam = Math.Log(Math.Sqrt(lengthParam)) / Math.Log(2.0);
             if (_logParam + 2.0 < 0)
                 _logParam = 0;
-            else _logParam += 2.0;
+            else
+                _logParam += 2.0;
 
             _sqrtParam = Math.Sqrt(lengthParam) * _logParam;
             lengthParam *= 0.9;
@@ -97,7 +98,7 @@ namespace cAlgo.Indicators
 
             if (index < 1)
             {
-                _jmaValue = Source[index];               
+                _jmaValue = Source[index];
                 _sourceSeries[index] = 0;
                 _series1[index] = 0;
                 _series2[index] = 0;
@@ -129,7 +130,7 @@ namespace cAlgo.Indicators
                             diffFlag = 1;
                             break;
                         }
-                        
+
                     }
 
                     _highLimit = diffFlag * 30;
@@ -149,32 +150,30 @@ namespace cAlgo.Indicators
 
                 for (int i = _highLimit; i >= 0; i--)
                 {
-                    double sValue = (i == 0) ? Source[index] : _buffer[ 31 + i];
-                    double absValue = (Math.Abs(sValue - paramA) > Math.Abs(sValue - paramB))
-                                          ? Math.Abs(sValue - paramA)
-                                          : Math.Abs(sValue - paramB);
+                    double sValue = (i == 0) ? Source[index] : _buffer[31 + i];
+                    double absValue = (Math.Abs(sValue - paramA) > Math.Abs(sValue - paramB)) ? Math.Abs(sValue - paramA) : Math.Abs(sValue - paramB);
 
-                    _dValue = absValue + 0.0000000001; 
-                                        
+                    _dValue = absValue + 1E-10;
+
                     if (_counterA <= 1)
                         _counterA = 127;
                     else
-                        _counterA--; 
+                        _counterA--;
 
                     if (_counterB <= 1)
                         _counterB = 10;
                     else
-                        _counterB--; 
-                    
-                    if (_cycleLimit < 128) 
+                        _counterB--;
+
+                    if (_cycleLimit < 128)
                         _cycleLimit++;
 
                     _cycleDelta += (_dValue - _ring2[_counterB]);
-                    
+
                     _ring2[_counterB] = _dValue;
 
                     double highDValue = (_cycleLimit > 10) ? _cycleDelta / 10.0 : _cycleDelta / _cycleLimit;
-                    
+
                     int s68;
                     int s58;
                     int s38 = 0;
@@ -182,9 +181,9 @@ namespace cAlgo.Indicators
 
                     if (_cycleLimit > 127)
                     {
-                        _dValue = _ring1[_counterA];                        
+                        _dValue = _ring1[_counterA];
                         _ring1[_counterA] = highDValue;
-                        
+
                         s68 = 64;
                         s58 = s68;
 
@@ -207,7 +206,7 @@ namespace cAlgo.Indicators
                     else
                     {
                         _ring1[_counterA] = highDValue;
-                        
+
                         if ((_limitValue + _startValue) > 127)
                         {
                             _startValue--;
@@ -221,7 +220,7 @@ namespace cAlgo.Indicators
                         s38 = (_limitValue > 96) ? 96 : _limitValue;
                         s40 = (_startValue < 32) ? 32 : _startValue;
                     }
-                    
+
                     s68 = 64;
                     int s60 = s68;
 
@@ -229,7 +228,7 @@ namespace cAlgo.Indicators
                     {
                         if (_list[s60] >= highDValue)
                         {
-                            if (_list[s60 - 1] <= highDValue) 
+                            if (_list[s60 - 1] <= highDValue)
                                 s68 = 1;
                             else
                             {
@@ -242,7 +241,7 @@ namespace cAlgo.Indicators
                             s68 /= 2;
                             s60 += s68;
                         }
-                        if ((s60 == 127) && (highDValue > _list[127])) 
+                        if ((s60 == 127) && (highDValue > _list[127]))
                             s60 = 128;
                     }
 
@@ -253,8 +252,8 @@ namespace cAlgo.Indicators
                             if (((s38 + 1) > s60) && ((s40 - 1) < s60))
                                 _lowDValue += highDValue;
                             else if ((s40 > s60) && ((s40 - 1) < s58))
-                                _lowDValue += _list[s40 - 1];                        
-                            
+                                _lowDValue += _list[s40 - 1];
+
                         }
                         else if (s40 >= s60)
                         {
@@ -265,9 +264,9 @@ namespace cAlgo.Indicators
                             _lowDValue += highDValue;
                         else if (((s38 + 1) < s60) && ((s38 + 1) > s58))
                             _lowDValue += _list[s38 + 1];
-                        
-                        
-                        
+
+
+
                         if (s58 > s60)
                         {
                             if (((s40 - 1) < s58) && ((s38 + 1) > s58))
@@ -286,35 +285,35 @@ namespace cAlgo.Indicators
 
                     if (s58 <= s60)
                     {
-                        if (s58 >= s60) 
+                        if (s58 >= s60)
                             _list[s60] = highDValue;
                         else
                         {
-                            for (int j = s58 + 1; j <= (s60 - 1); j++) 
+                            for (int j = s58 + 1; j <= (s60 - 1); j++)
                                 _list[j - 1] = _list[j];
-                            
+
                             _list[s60 - 1] = highDValue;
                         }
                     }
                     else
                     {
-                        for (int j = s58 - 1; j >= s60; j--) 
+                        for (int j = s58 - 1; j >= s60; j--)
                             _list[j + 1] = _list[j];
-                        
+
                         _list[s60] = highDValue;
                     }
 
                     if (_cycleLimit <= 127)
                     {
                         _lowDValue = 0;
-                        for (int j = s40; j <= s38; j++) 
+                        for (int j = s40; j <= s38; j++)
                             _lowDValue += _list[j];
                     }
 
 
-                    if ((_loopCriteria) > 31) 
+                    if ((_loopCriteria) > 31)
                         _loopCriteria = 31;
-                    else 
+                    else
                         _loopCriteria++;
 
                     double sqrtDivider = _sqrtParam / (_sqrtParam + 1.0);
@@ -333,32 +332,26 @@ namespace cAlgo.Indicators
                             intPart = (Math.Floor(_sqrtParam) >= 1.0) ? (int)Math.Floor(_sqrtParam) : 1;
                             int rightPart = intPart;
 
-                            _dValue = (leftInt == rightPart)
-                                          ? 1.0
-                                          : (_sqrtParam - rightPart) / (leftInt - rightPart);
+                            _dValue = (leftInt == rightPart) ? 1.0 : (_sqrtParam - rightPart) / (leftInt - rightPart);
                             int upShift = (rightPart <= 29) ? rightPart : 29;
                             int dnShift = (leftInt <= 29) ? leftInt : 29;
-                            _series1[index] = (Source[index] - _buffer[_loopIndex - upShift]) * (1 - _dValue) /
-                                              rightPart +
-                                              (Source[index] - _buffer[_loopIndex - dnShift]) * _dValue / leftInt;
-                            
+                            _series1[index] = (Source[index] - _buffer[_loopIndex - upShift]) * (1 - _dValue) / rightPart + (Source[index] - _buffer[_loopIndex - dnShift]) * _dValue / leftInt;
+
                         }
-                                                
+
                     }
                     else
                     {
                         _dValue = _lowDValue / (s38 - s40 + 1);
                         double powerValue = (0.5 <= _logParam - 2.0) ? _logParam - 2.0 : 0.5;
-                        _dValue = _logParam >= Math.Pow(absValue / _dValue, powerValue)
-                                      ? Math.Pow(absValue / _dValue, powerValue)
-                                      : _logParam;
+                        _dValue = _logParam >= Math.Pow(absValue / _dValue, powerValue) ? Math.Pow(absValue / _dValue, powerValue) : _logParam;
                         if (_dValue < 1)
                             _dValue = 1;
                         powerValue = Math.Pow(sqrtDivider, Math.Sqrt(_dValue));
                         paramA = (sValue - paramA > 0) ? sValue : sValue - (sValue - paramA) * powerValue;
                         paramB = (sValue - paramB < 0) ? sValue : sValue - (sValue - paramB) * powerValue;
                     }
-                    
+
                 }
 
                 if (_loopCriteria > 30)
@@ -366,30 +359,28 @@ namespace cAlgo.Indicators
                     double powerValue = Math.Pow(_lengthDivider, _dValue);
                     double squareValue = powerValue * powerValue;
 
-                    if(double.IsNaN(_series1[index-1]))
-                        _series1[index-1] = 0;
-                    if(double.IsNaN(_series2[index-1]))
-                        _series2[index-1] = 0;
+                    if (double.IsNaN(_series1[index - 1]))
+                        _series1[index - 1] = 0;
+                    if (double.IsNaN(_series2[index - 1]))
+                        _series2[index - 1] = 0;
 
                     _sourceSeries[index] = (1 - powerValue) * Source[index] + powerValue * _sourceSeries[index - 1];
-                    
-                    _series2[index] = (Source[index] - _sourceSeries[index]) * (1.0 - _lengthDivider) +
-                                      _lengthDivider * _series2[index - 1];
-                    
-                    _series1[index] = (_phaseParam * _series2[index] + _sourceSeries[index] - jmaTempValue) *
-                                      (powerValue * (-2.0) + squareValue + 1) + squareValue * _series1[index - 1];
+
+                    _series2[index] = (Source[index] - _sourceSeries[index]) * (1.0 - _lengthDivider) + _lengthDivider * _series2[index - 1];
+
+                    _series1[index] = (_phaseParam * _series2[index] + _sourceSeries[index] - jmaTempValue) * (powerValue * (-2.0) + squareValue + 1) + squareValue * _series1[index - 1];
                     jmaTempValue += _series1[index];
-                    
+
                 }
             }
 
-            _jmaValue = (_loopIndex < 30)? Source[index] : jmaTempValue; 
-            
+            _jmaValue = (_loopIndex < 30) ? Source[index] : jmaTempValue;
+
             _jmaSeries[index] = _jmaValue;
 
             Result[index] = _jmaValue;
 
-            
+
 
         }
     }

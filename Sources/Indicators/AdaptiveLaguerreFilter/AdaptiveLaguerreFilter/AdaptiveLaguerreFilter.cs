@@ -35,7 +35,7 @@ namespace cAlgo.Indicators
         public override void Calculate(int index)
         {
             _price[index] = (MarketSeries.High[index] + MarketSeries.Low[index]) / 2;
-            if(index == 0)
+            if (index == 0)
             {
                 _laguerre0[index] = 0.0;
                 _laguerre1[index] = 0.0;
@@ -47,7 +47,7 @@ namespace cAlgo.Indicators
             }
 
             _diff[index] = Math.Abs(_price[index] - Result[index - 1]);
-            
+
             double alpha = 0.0;
 
             if (index >= Period)
@@ -61,19 +61,19 @@ namespace cAlgo.Indicators
                         array[i] = _diff[index - i];
 
                     //Array.Sort(array);
-                    const int medianIndex = MedianArraySize/2;
-                    alpha = (array[medianIndex] - min)/(max - min);
+                    const int medianIndex = MedianArraySize / 2;
+                    alpha = (array[medianIndex] - min) / (max - min);
                 }
             }
 
-            _laguerre0[index] = alpha*_price[index] + (1 - alpha)*_laguerre0[index - 1];
+            _laguerre0[index] = alpha * _price[index] + (1 - alpha) * _laguerre0[index - 1];
 
-            _laguerre1[index] = -(1 - alpha)*_laguerre0[index] + _laguerre0[index - 1] + (1 - alpha)*_laguerre1[index - 1];
-            _laguerre2[index] =-(1 - alpha)*_laguerre1[index] + _laguerre1[index - 1] + (1 - alpha)*_laguerre2[index - 1];
-            _laguerre3[index] =-(1 - alpha)*_laguerre2[index] + _laguerre2[index - 1] + (1 - alpha)*_laguerre3[index - 1];
+            _laguerre1[index] = -(1 - alpha) * _laguerre0[index] + _laguerre0[index - 1] + (1 - alpha) * _laguerre1[index - 1];
+            _laguerre2[index] = -(1 - alpha) * _laguerre1[index] + _laguerre1[index - 1] + (1 - alpha) * _laguerre2[index - 1];
+            _laguerre3[index] = -(1 - alpha) * _laguerre2[index] + _laguerre2[index - 1] + (1 - alpha) * _laguerre3[index - 1];
 
-            Result[index] = (_laguerre0[index] + 2*_laguerre1[index] + 2*_laguerre2[index] + _laguerre3[index])/6;
-            
+            Result[index] = (_laguerre0[index] + 2 * _laguerre1[index] + 2 * _laguerre2[index] + _laguerre3[index]) / 6;
+
         }
     }
 }

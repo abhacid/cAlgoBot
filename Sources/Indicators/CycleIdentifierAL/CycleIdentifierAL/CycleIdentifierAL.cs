@@ -6,7 +6,7 @@ namespace cAlgo.Indicators
 {
     [Indicator(AccessRights = AccessRights.None)]
     internal class CycleIdentifierAL : Indicator
-    {        
+    {
         private const int RangeLength = 250;
 
         #region input parameters
@@ -16,7 +16,7 @@ namespace cAlgo.Indicators
 
         [Parameter("RSI/MA Filter", DefaultValue = 0, MinValue = 0, MaxValue = 1)]
         public int UseRsiFilter { get; set; }
-        
+
         [Parameter("MA Filter Strength", DefaultValue = 12)]
         public int SmaFilter { get; set; }
 
@@ -71,8 +71,7 @@ namespace cAlgo.Indicators
         private bool _flatMajorBuy, _flatMajorSell;
         private bool _flatMinorBuy, _flatMinorSell;
 
-        private int _indexDiffMajor,
-                    _indexDiffMinor;
+        private int _indexDiffMajor, _indexDiffMinor;
 
         //private int _isLong;
         //private int _isShort;
@@ -95,8 +94,7 @@ namespace cAlgo.Indicators
 
         private bool _runInit = true;
 
-        private int _switchMajor,
-                    _switchMinor;
+        private int _switchMajor, _switchMinor;
 
         private bool _useCycleFilter;
         private IndicatorDataSeries _zeroLag;
@@ -122,12 +120,10 @@ namespace cAlgo.Indicators
                 sRange += (MarketSeries.High[i] - MarketSeries.Low[i]);
 
 
-            double range = sRange/RangeLength*Length;
-            double sweep = range*MajorCycleStrength;
+            double range = sRange / RangeLength * Length;
+            double sweep = range * MajorCycleStrength;
 
-            _cyclePrice[index] = PriceActionFilter == 1
-                                     ? MarketSeries.Close[index]
-                                     : _ma.Result[index];            
+            _cyclePrice[index] = PriceActionFilter == 1 ? MarketSeries.Close[index] : _ma.Result[index];
 
             if (_runInit)
             {
@@ -143,9 +139,7 @@ namespace cAlgo.Indicators
                 _runInit = false;
             }
 
-            _zeroLag[index] = UseRsiFilter == 0
-                                              ? ZeroLag(_cyclePrice[index], SmaFilter, index)
-                                              : ZeroLag(_rsi.Result[index], RsiFilter, index);
+            _zeroLag[index] = UseRsiFilter == 0 ? ZeroLag(_cyclePrice[index], SmaFilter, index) : ZeroLag(_rsi.Result[index], RsiFilter, index);
 
 
             #region Minor Cycle
@@ -192,11 +186,11 @@ namespace cAlgo.Indicators
             if (length < 3)
                 return price;
 
-            double a = Math.Exp(-1.414*3.14159/length);
-            double b = 2*a*Math.Cos(1.414*180/length);
-            double c = 1 - b + a*a;
+            double a = Math.Exp(-1.414 * 3.14159 / length);
+            double b = 2 * a * Math.Cos(1.414 * 180 / length);
+            double c = 1 - b + a * a;
 
-            return c*price + b*_zeroLag[index - 1] - a*a*_zeroLag[index - 2];
+            return c * price + b * _zeroLag[index - 1] - a * a * _zeroLag[index - 2];
         }
 
         private void SetMinorBuy(int index, double range)
@@ -231,9 +225,7 @@ namespace cAlgo.Indicators
 
                 _flatMinorBuy = true;
 
-                double cyclePrice1 = UseRsiFilter == 0
-                                         ? _ma.Result[_previousIndexMinorBuy]
-                                         : _rsi.Result[_previousIndexMinorBuy];
+                double cyclePrice1 = UseRsiFilter == 0 ? _ma.Result[_previousIndexMinorBuy] : _rsi.Result[_previousIndexMinorBuy];
 
                 _indexDiffMinor = index - _previousIndexMinorBuy;
 
@@ -281,9 +273,7 @@ namespace cAlgo.Indicators
 
                 _indexDiffMinor = index - _previousIndexMinorSell;
 
-                double cyclePrice2 = UseRsiFilter == 0
-                                         ? _ma.Result[_previousIndexMinorSell]
-                                         : _rsi.Result[_previousIndexMinorSell];
+                double cyclePrice2 = UseRsiFilter == 0 ? _ma.Result[_previousIndexMinorSell] : _rsi.Result[_previousIndexMinorSell];
 
                 if (cyclePrice2 - _cyclePrice[index] >= range && _indexDiffMinor >= 1)
                 {
@@ -329,9 +319,7 @@ namespace cAlgo.Indicators
 
                 _indexDiffMajor = index - _previousIndexMajorBuy;
 
-                double cyclePrice3 = UseRsiFilter == 0
-                                         ? _ma.Result[_previousIndexMajorBuy]
-                                         : _rsi.Result[_previousIndexMajorBuy];
+                double cyclePrice3 = UseRsiFilter == 0 ? _ma.Result[_previousIndexMajorBuy] : _rsi.Result[_previousIndexMajorBuy];
 
                 if (_cyclePrice[index] - cyclePrice3 >= sweep && _indexDiffMajor >= 1)
                 {
@@ -376,9 +364,7 @@ namespace cAlgo.Indicators
                 _flatMajorSell = true;
                 _indexDiffMajor = index - _previousIndexMajorSell;
 
-                double cyclePrice4 = UseRsiFilter == 0
-                                         ? _ma.Result[_previousIndexMajorSell]
-                                         : _rsi.Result[_previousIndexMajorSell];
+                double cyclePrice4 = UseRsiFilter == 0 ? _ma.Result[_previousIndexMajorSell] : _rsi.Result[_previousIndexMajorSell];
 
                 if (cyclePrice4 - _cyclePrice[index] >= sweep && _indexDiffMajor >= 1)
                 {

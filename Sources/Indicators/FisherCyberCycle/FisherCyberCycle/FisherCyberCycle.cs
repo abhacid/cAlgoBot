@@ -45,19 +45,18 @@ namespace cAlgo.Indicators
                 return;
             }
 
-            _cycle[index] = (1 - 0.5 * Alpha) * (1 - 0.5 * Alpha) * (_smooth[index] - 2 * _smooth[index - 1] + _smooth[index - 2])
-                           + 2 * (1 - Alpha) * _cycle[index - 1] - (1 - Alpha) * (1 - Alpha) * (_cycle[index - 2]);
+            _cycle[index] = (1 - 0.5 * Alpha) * (1 - 0.5 * Alpha) * (_smooth[index] - 2 * _smooth[index - 1] + _smooth[index - 2]) + 2 * (1 - Alpha) * _cycle[index - 1] - (1 - Alpha) * (1 - Alpha) * (_cycle[index - 2]);
 
             double maxCycle = Functions.Maximum(_cycle, Length);
             double minCycle = Functions.Minimum(_cycle, Length);
 
-            double epsilon = Math.Pow(10,-10);
+            double epsilon = Math.Pow(10, -10);
             if (Math.Abs(maxCycle - minCycle) > epsilon)
                 _value1[index] = (_cycle[index] - minCycle) / (maxCycle - minCycle);
             else
                 _value1[index] = 0;
             _value2 = (4 * _value1[index] + 3 * _value1[index - 1] + 2 * _value1[index - 2] + _value1[index - 3]) / 10;
-            Cycle[index] = .5 * Math.Log((1 + 1.98 * (_value2 - .5)) / (1 - 1.98 * (_value2 - .5)));
+            Cycle[index] = 0.5 * Math.Log((1 + 1.98 * (_value2 - 0.5)) / (1 - 1.98 * (_value2 - 0.5)));
 
             Trigger[index] = Cycle[index - 1];
         }

@@ -5,10 +5,10 @@ namespace cAlgo.Indicators
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
     public class DrawObjects : Indicator
     {
-        private string upArrow = "\u25B2";
-        private string downArrow = "\u25BC";
-        private string diamond = "\u2666";
-        private string bullet = "\u25CF";
+        private string upArrow = "▲";
+        private string downArrow = "▼";
+        private string diamond = "♦";
+        private string bullet = "●";
         private string stop = "x";
 
         private const VerticalAlignment vAlign = VerticalAlignment.Top;
@@ -21,7 +21,7 @@ namespace cAlgo.Indicators
 
         protected override void Initialize()
         {
-            arrowOffset = Symbol.PipSize*5;         
+            arrowOffset = Symbol.PipSize * 5;
         }
         public override void Calculate(int index)
         {
@@ -39,31 +39,25 @@ namespace cAlgo.Indicators
             double close2 = MarketSeries.Close[index - 2];
             var currentHighMinusLow = high - low;
             var previousHighMinusLow = MarketSeries.High[index - 1] - MarketSeries.Low[index - 1];
-            
-            bool sellStop = close2 < close1 &&
-                            close1 < close &&
-                            volume2 < volume1 &&
-                            volume1 < volume;
-            bool buyStop = close2 > close1 &&
-                           close1 > close && 
-                           volume2 < volume1 &&
-                           volume1 < volume;
+
+            bool sellStop = close2 < close1 && close1 < close && volume2 < volume1 && volume1 < volume;
+            bool buyStop = close2 > close1 && close1 > close && volume2 < volume1 && volume1 < volume;
 
             if (sellStop)
             {
-                arrowName = string.Format("bulletSell {0}", index);                
-                y = high + arrowOffset;                
+                arrowName = string.Format("bulletSell {0}", index);
+                y = high + arrowOffset;
                 ChartObjects.DrawText(arrowName, bullet, x, y, vAlign, hAlign, Colors.Orange);
-                y = high + arrowOffset*2;
+                y = high + arrowOffset * 2;
                 arrowName = string.Format("diamondSell {0}", index);
                 ChartObjects.DrawText(arrowName, diamond, x, y, vAlign, hAlign, colorDown);
             }
             else if (buyStop)
-            {                
+            {
                 arrowName = string.Format("bulletBuy {0}", index);
                 y = low - arrowOffset;
                 ChartObjects.DrawText(arrowName, bullet, x, y, vAlign, hAlign, colorUp);
-                arrowName = string.Format("diamondBuy {0}", index); 
+                arrowName = string.Format("diamondBuy {0}", index);
                 y = low - arrowOffset * 2;
                 ChartObjects.DrawText(arrowName, diamond, x, y, vAlign, hAlign, colorUp);
             }
@@ -76,7 +70,7 @@ namespace cAlgo.Indicators
                 {
                     if (high - close < close - low)
                     {
-                        
+
                         y = low - arrowOffset;
                         ChartObjects.DrawText(arrowName, upArrow, x, y, vAlign, hAlign, colorUp);
                     }

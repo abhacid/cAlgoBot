@@ -84,7 +84,8 @@ namespace cAlgo.Indicators
             {
                 for (int i = 0; i < 4; ++i)
                 {
-                    pol[i] = ol[i]; // remember previous bar value
+                    pol[i] = ol[i];
+                    // remember previous bar value
                     phl[i] = hl[i];
                     pll[i] = ll[i];
                     pcl[i] = cl[i];
@@ -98,7 +99,7 @@ namespace cAlgo.Indicators
             hl[0] = (1 - Gamma) * MarketSeries.High[index] + Gamma * phl[0];
             ll[0] = (1 - Gamma) * MarketSeries.Low[index] + Gamma * pll[0];
             cl[0] = (1 - Gamma) * MarketSeries.Close[index] + Gamma * pcl[0];
-            
+
             for (int i = 1; i < 4; ++i)
             {
                 ol[i] = -Gamma * ol[i - 1] + pol[i - 1] + Gamma * pol[i];
@@ -119,21 +120,21 @@ namespace cAlgo.Indicators
 
             if (Math.Abs(value2 - 0.0) > double.Epsilon)
             {
-                unsmoothed[index] = (100.0 * value1 / value2);                
+                unsmoothed[index] = (100.0 * value1 / value2);
             }
             else
-            {               
-                if ((index > 1) && Array.IndexOf(unsmBuffer, 0.0) > 0 )
+            {
+                if ((index > 1) && Array.IndexOf(unsmBuffer, 0.0) > 0)
                 {
-                    unsmoothed[index] = unsmoothed[index -1];
+                    unsmoothed[index] = unsmoothed[index - 1];
                 }
                 else
                 {
-                    unsmoothed[index] =0;
+                    unsmoothed[index] = 0;
                 }
             }
 
-            Array.Resize(ref unsmBuffer, unsmBuffer.Length+1);
+            Array.Resize(ref unsmBuffer, unsmBuffer.Length + 1);
             unsmBuffer[index] = unsmoothed[index];
 
             ECO[index] = _wma.Result[index];

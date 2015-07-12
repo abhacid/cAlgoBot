@@ -47,76 +47,100 @@ namespace cAlgo
 
     [Indicator(IsOverlay = false, TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
     public class CandlestickTendencyII : Indicator
-	{
-		#region Indicator Parameters
-		[Parameter()]
+    {
+        #region Indicator Parameters
+        [Parameter()]
         public TimeFrame Global { get; set; }
+
+		[Parameter("Minimum Global Candle Ceil", DefaultValue = 0, MinValue = 0)]
+		public int MinimumGlobalCandleCeil { get; set; }
 
         [Output("GlobalTrendSignal", PlotType = PlotType.Line, Color = Colors.Red)]
         public IndicatorDataSeries GlobalTrendSignal { get; set; }
 
-        [Output("LocalTrendSignal", PlotType = PlotType.Line, Color = Colors.Green)]
+        [Output("LocalTrendSignal", PlotType =PlotType.Line, Color = Colors.Green)]
         public IndicatorDataSeries LocalTrendSignal { get; set; }
 
-        [Output("Signal", PlotType = PlotType.Line, Color = Colors.Blue)]
-		public IndicatorDataSeries Signal { get; set; }
-		#endregion
+        #endregion
 
-		#region Indicator Variables
+        #region Indicator Variables
 
-		MarketSeries marketSerieGlobal;
+        MarketSeries marketSerieGlobal;
+        double localTrendValue = 0;
+        double globalTrendValue = 0;
+        #endregion
 
-		#endregion
 
-
-		protected override void Initialize()
+        protected override void Initialize()
         {
             marketSerieGlobal = MarketData.GetSeries(Global);
+
         }
 
-		double signal = 0;
-		double localTrendValue = 0;
-		double globalTrendValue = 0;
+		private int GetIndexByDate(MarketSeries series, DateTime time)
+		{
+			for(int i = series.Open.Count - 1; i > 0; i--)
+			{
+				if(time >= series.OpenTime[i])
+					return i;
+			}
+			return -1;
+		}
 
-		public override void Calculate(int index)
+		/// <summary>
+		///  GetIndexByExactTime don't allway work by example if attached timeframe is 1T (One Tick)!		
+		///  
+		///	 The Close price looks only at the final price of a candle, while the Median 
+		///	 calculates in the wicks too.One can say that the wicks are only noise, so the CLOSE must be the better 
+		///	 one, but not always, sometimes the wicks can hint of the future direction, so it may be a mistake to 
+		///	 use the Close.It is a big dilemma nontheless...
+		/// </summary>
+		/// <param name="index"></param>
+        public override void Calculate(int index)
         {
-			// GetIndexByExactTime don't allway work by example if attached timeframe is 1T (One Tick)!			
-			int globalIndex = marketSerieGlobal.OpenTime.GetIndexByTime(MarketSeries.OpenTime[index]); 
+			int globalIndex = GetIndexByDate(marketSerieGlobal, MarketSeries.OpenTime[index]);
 
-			bool isLocalTrendRising = MarketSeries.Close[index] > MarketSeries.Open[index - 1]; 
+			int test = marketSerieGlobal.OpenTime.GetIndexByTime(MarketSeries.OpenTime[index]);
+
+            bool isGlobalTrendRising = marketSerieGlobal.Close[globalIndex] > marketSerieGlobal.Open[globalIndex];
+			bool isLocalTrendRising = MarketSeries.Close[index] > MarketSeries.Open[index - 1];
+
+			bool isGlobalTrendFalling = marketSerieGlobal.Close[globalIndex] < marketSerieGlobal.Open[globalIndex];
 			bool isLocalTrendFalling = MarketSeries.Close[index] < MarketSeries.Open[index - 1];
-			bool isGlobalTrendRising = marketSerieGlobal.Close[globalIndex] > marketSerieGlobal.Open[globalIndex - 1];
-			bool isGlobalTrendFalling = marketSerieGlobal.Close[globalIndex] < marketSerieGlobal.Open[index - 1]; 
 
-			bool IsLongSignal =  isGlobalTrendRising && isLocalTrendRising; 
-			bool IsShortSignal = isGlobalTrendFalling && isLocalTrendFalling; 
+            bool IsLongSignal = isGlobalTrendRising && isLocalTrendRising;
+            bool IsShortSignal = isGlobalTrendFalling && isLocalTrendFalling;
+
+			bool isGlobalCandleAboveCeil = Math.Abs(marketSerieGlobal.Close[globalIndex] - marketSerieGlobal.Open[globalIndex]) > MinimumGlobalCandleCeil*Symbol.PipSize;
 
 
 			if(isLocalTrendFalling)
 				localTrendValue = -1;
-			else if(isLocalTrendRising)
-				localTrendValue = 1;
 			else
-				localTrendValue = 0;
+			{
+				if(isLocalTrendRising)
+					localTrendValue = 1;
+				else
+					localTrendValue = 0;
+			}
 
-			if(isGlobalTrendFalling)
-				globalTrendValue = -2;
-			else if(isGlobalTrendRising)
-				globalTrendValue = 2;
+			if (isGlobalCandleAboveCeil)
+			{
+				if(isGlobalTrendFalling)
+					globalTrendValue = -2;
+				else
+				{
+					if(isGlobalTrendRising)
+						globalTrendValue = 2;
+					else
+						globalTrendValue = 0;
+				}
+			}
 			else
 				globalTrendValue = 0;
 
-
-			if(IsLongSignal)
-				signal = 3;
-			else if(IsShortSignal)
-				signal = -3;
-			else
-				signal = 0;
-
-            LocalTrendSignal[index] = localTrendValue;
-            GlobalTrendSignal[index] = globalTrendValue;
-			Signal[index] = signal;
+			LocalTrendSignal[index] = localTrendValue;
+			GlobalTrendSignal[index] = globalTrendValue;
         }
     }
 }

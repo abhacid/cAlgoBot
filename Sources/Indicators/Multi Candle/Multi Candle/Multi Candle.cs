@@ -23,6 +23,8 @@
 #region Description
 // Détecte n bougie de même type haussières ou baissière en tenant compte d'une taille minimale 
 // pour la détection. Si n = 0, ou n trop grand, alors le signal est toujours neutre.
+//
+// Creates a buy or sell signal soon as bullish candles are N bullish or bearish candle whose size exceeds a given threshold.
 #endregion
 
 

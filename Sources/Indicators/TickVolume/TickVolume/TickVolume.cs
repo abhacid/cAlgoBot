@@ -14,13 +14,13 @@ namespace cAlgo.Indicators
     [Indicator(IsOverlay = false, AccessRights = AccessRights.None)]
     public class TickVolume : Indicator
     {
-    
-    	[Output("UpVolume", Color = Colors.Green, PlotType = PlotType.Histogram, Thickness = 1)]
-        public IndicatorDataSeries UpVolume { get; set; }              
 
-    	[Output("DownVolume", Color = Colors.Red, PlotType = PlotType.Histogram, Thickness = 1)]
-        public IndicatorDataSeries DownVolume { get; set; }  
-        
+        [Output("UpVolume", Color = Colors.Green, PlotType = PlotType.Histogram, Thickness = 1)]
+        public IndicatorDataSeries UpVolume { get; set; }
+
+        [Output("DownVolume", Color = Colors.Red, PlotType = PlotType.Histogram, Thickness = 1)]
+        public IndicatorDataSeries DownVolume { get; set; }
+
         protected override void Initialize()
         {
             // Initialize and create nested indicators
@@ -28,10 +28,12 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-        	 UpVolume[index] = MarketSeries.TickVolume[index];
-        	 if(UpVolume[index] < UpVolume[index-1]) DownVolume[index]= UpVolume[index];
-        	 else DownVolume[index]= 0;
-        	
-       }
+            UpVolume[index] = MarketSeries.TickVolume[index];
+            if (UpVolume[index] < UpVolume[index - 1])
+                DownVolume[index] = UpVolume[index];
+            else
+                DownVolume[index] = 0;
+
+        }
     }
 }

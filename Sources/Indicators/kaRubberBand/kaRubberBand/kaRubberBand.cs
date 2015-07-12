@@ -50,7 +50,7 @@ namespace cAlgo.Indicators
             _shortWeight = 2.0 / (ShortLeg + 1);
             _longWeight = 2.0 / (LongLeg + 1);
             _multiWeight = 2.0 / (MultiLeg + 1);
-            
+
         }
         public override void Calculate(int index)
         {
@@ -63,7 +63,7 @@ namespace cAlgo.Indicators
             else
             {
                 _syncShort = _syncShort * (1 - _shortWeight) + _shortWeight * MarketSeries.Close[index];
-                _syncLong = _syncLong * (1 - _longWeight) + _longWeight * MarketSeries.Close[index];                
+                _syncLong = _syncLong * (1 - _longWeight) + _longWeight * MarketSeries.Close[index];
             }
 
             double multiOsc = 100 * ((_syncShort / _syncLong) - 1);

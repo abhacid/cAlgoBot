@@ -20,17 +20,17 @@ namespace cAlgo
 
         [Parameter("Visual", DefaultValue = true)]
         public bool Visual { get; set; }
-        
+
         [Parameter("Alert diapasone", DefaultValue = 10, MinValue = 0)]
         public int AlertDiapasone { get; set; }
-        
+
         [Parameter("Contignous type", DefaultValue = 0, MinValue = 0, MaxValue = 1)]
         public int ContignousType { get; set; }
-        
+
         [Parameter("Thickness", DefaultValue = 1, MinValue = 1)]
         public int Thickness { get; set; }
-       
-        
+
+
         private class Alert
         {
             public DateTime setup;
@@ -75,7 +75,7 @@ namespace cAlgo
                 while (!rd.EndOfStream)
                 {
                     string line = rd.ReadLine();
-                    string []arr = line.Split(';');
+                    string[] arr = line.Split(';');
 
                     if (arr.Length != 2)
                     {
@@ -89,8 +89,7 @@ namespace cAlgo
                     try
                     {
                         alert = new Alert(DateTime.ParseExact(arr[1], "yyyyMMdd-HHmm", CultureInfo.InvariantCulture), Double.Parse(arr[0]), false);
-                    }
-                    catch(Exception e)
+                    } catch (Exception e)
                     {
                         lastError = string.Format("Read {0} error : invalid alert format - {1}", fname, line, e.Message);
                         Print(lastError);
@@ -99,14 +98,12 @@ namespace cAlgo
 
                     alerts.Add(alert);
                 }
-            }
-            catch (IOException e)
+            } catch (IOException e)
             {
                 lastError = string.Format("Read {0} error : {1}", fname, e.Message);
                 Print(lastError);
                 return false;
-            }
-            finally
+            } finally
             {
                 rd.Close();
             }
@@ -130,12 +127,10 @@ namespace cAlgo
                 {
                     wr.WriteLine(string.Format("{0};{1}", alert.price, alert.setup.ToString("yyyyMMdd-HHmm")));
                 }
-            }
-            catch(IOException e)
+            } catch (IOException e)
             {
                 Print("Write {0} error : {1}", fname, e.Message);
-            }
-            finally
+            } finally
             {
                 wr.Close();
             }
@@ -160,7 +155,7 @@ namespace cAlgo
                 return true;
             }
 
-            string []prices = Prices.Split(';');
+            string[] prices = Prices.Split(';');
 
             try
             {
@@ -177,8 +172,7 @@ namespace cAlgo
                         exists.inArgs = true;
                     }
                 }
-            }
-            catch (Exception e)
+            } catch (Exception e)
             {
                 lastError = string.Format("Prices parsing error : {0}", e.Message);
                 Print(lastError);
@@ -260,10 +254,10 @@ namespace cAlgo
 
                 Colors color;
                 int periods = MarketSeries.OpenTime.Count - MarketSeries.OpenTime.GetIndexByTime(alert.setup);
-                
+
                 bool crossed = MarketSeries.Close.HasCrossedAbove(alert.price, periods) || MarketSeries.Close.HasCrossedBelow(alert.price, periods);
                 bool near = Math.Abs(MarketSeries.Close.LastValue - alert.price) <= AlertDiapasone * Symbol.PipSize;
-                
+
                 if (near && Sound && alert.played > 0 && (alert.lastPlayed == null || DateTime.UtcNow.AddMinutes(-1) >= alert.lastPlayed))
                 {
                     Notifications.PlaySound(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Ring.wav"));
@@ -280,13 +274,7 @@ namespace cAlgo
                     color = Colors.CornflowerBlue;
                 }
 
-                ChartObjects.DrawText(string.Format("alert_{0}", alert.price),
-                                      string.Format("| {0}{1}", alert.price, near ? string.Format(" ({0})", Math.Round(Math.Abs(MarketSeries.Close.LastValue - alert.price) / Symbol.PipSize), 1) : ""),
-                                      MarketSeries.OpenTime.Count + 1,
-                                      alert.price,
-                                      VerticalAlignment.Center,
-                                      HorizontalAlignment.Right,
-                                      color);
+                ChartObjects.DrawText(string.Format("alert_{0}", alert.price), string.Format("| {0}{1}", alert.price, near ? string.Format(" ({0})", Math.Round(Math.Abs(MarketSeries.Close.LastValue - alert.price) / Symbol.PipSize), 1) : ""), MarketSeries.OpenTime.Count + 1, alert.price, VerticalAlignment.Center, HorizontalAlignment.Right, color);
 
                 if (ContignousType == 0)
                 {
@@ -305,14 +293,7 @@ namespace cAlgo
 
                 if (alert.index != 0)
                 {
-                    ChartObjects.DrawLine(string.Format("alert_{0}_l", alert.price),
-                                          alert.index,
-                                          alert.price,
-                                          MarketSeries.OpenTime.Count + 1,
-                                          alert.price,
-                                          color,
-                                          Thickness,
-                                          LineStyle.Dots);
+                    ChartObjects.DrawLine(string.Format("alert_{0}_l", alert.price), alert.index, alert.price, MarketSeries.OpenTime.Count + 1, alert.price, color, Thickness, LineStyle.Dots);
                 }
             }
         }
@@ -357,7 +338,7 @@ namespace cAlgo
             alerts = new List<Alert>();
             check();
         }
-        
+
         private int ticks = 10;
         private double last = 0;
 

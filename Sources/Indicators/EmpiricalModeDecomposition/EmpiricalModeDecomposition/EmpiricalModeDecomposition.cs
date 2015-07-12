@@ -8,7 +8,7 @@ namespace cAlgo.Indicators
     public class EmpiricalModeDecomposition : Indicator
     {
         #region Variables
-        
+
         private double _alpha;
         private double _beta;
         private double _gamma;
@@ -23,14 +23,14 @@ namespace cAlgo.Indicators
 
         #endregion
 
-        #region  Parameters
-        
+        #region Parameters
+
         [Parameter("Period", DefaultValue = 20)]
         public int Period { get; set; }
-        
+
         [Parameter("Delta", DefaultValue = 0.5)]
         public double Delta { get; set; }
-        
+
         [Parameter("Fraction", DefaultValue = 0.1)]
         public double Fraction { get; set; }
 
@@ -55,7 +55,7 @@ namespace cAlgo.Indicators
             _peak = CreateDataSeries();
             _valley = CreateDataSeries();
 
-            _smaBp = Indicators.SimpleMovingAverage(_bp, 2*Period);
+            _smaBp = Indicators.SimpleMovingAverage(_bp, 2 * Period);
             _smaPeak = Indicators.SimpleMovingAverage(_peak, 50);
             _smaValley = Indicators.SimpleMovingAverage(_valley, 50);
 
@@ -78,10 +78,7 @@ namespace cAlgo.Indicators
             }
 
 
-            _bp[index] = (0.5*(1 - _alpha)*
-                          (((MarketSeries.High[index] + MarketSeries.Low[index])/2) -
-                           ((MarketSeries.High[index - 2] + MarketSeries.Low[index - 2])/2))
-                           + _beta * (1 + _alpha) * _bp[index - 1] - _alpha * _bp[index - 2]);
+            _bp[index] = (0.5 * (1 - _alpha) * (((MarketSeries.High[index] + MarketSeries.Low[index]) / 2) - ((MarketSeries.High[index - 2] + MarketSeries.Low[index - 2]) / 2)) + _beta * (1 + _alpha) * _bp[index - 1] - _alpha * _bp[index - 2]);
 
             _mean = _smaBp.Result[index];
 
@@ -90,7 +87,7 @@ namespace cAlgo.Indicators
 
 
             if (_bp[index - 1] > _bp[index] && _bp[index - 1] > _bp[index - 2])
-                _peak[index] = _bp[index - 1]; 
+                _peak[index] = _bp[index - 1];
 
             else if (_bp[index - 1] < _bp[index] && _bp[index - 1] < _bp[index - 2])
                 _valley[index] = _bp[index - 1];

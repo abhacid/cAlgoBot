@@ -11,7 +11,7 @@ namespace cAlgo.Indicators
             DateTime today = MarketSeries.OpenTime[index].Date;
             DateTime yesterday = today.AddDays(-1);
             DateTime tomorrow = today.AddDays(1);
-            
+
             // Adjust for Monday
             if (today.DayOfWeek == DayOfWeek.Monday)
             {
@@ -25,10 +25,10 @@ namespace cAlgo.Indicators
 
             // previous days high, low & close
             for (int i = index; i > 2; i--)
-            {               
+            {
                 if (MarketSeries.OpenTime[i].Date < yesterday)
                     break;
-                
+
                 if (MarketSeries.OpenTime[i].Date == today && MarketSeries.OpenTime[i - 1].Date == yesterday)
                 {
                     high = MarketSeries.High[i - 1];
@@ -54,17 +54,17 @@ namespace cAlgo.Indicators
             // Calculate output
             double x;
             if (close < open)
-                x = high + 2*low + close;
+                x = high + 2 * low + close;
             else if (close > open)
-                x = 2*high + low + close;
+                x = 2 * high + low + close;
             else
-                x = high + low + 2*close;
+                x = high + low + 2 * close;
 
-            double pivot = x/4;
+            double pivot = x / 4;
             double r1 = x / 2 - low;
             double s1 = x / 2 - high;
-            double r2 = pivot + (.618 * (high - low));
-            double s2 = pivot - (.618 * (high - low));
+            double r2 = pivot + (0.618 * (high - low));
+            double s2 = pivot - (0.618 * (high - low));
             double r3 = pivot + (high - low);
             double s3 = pivot - (high - low);
 

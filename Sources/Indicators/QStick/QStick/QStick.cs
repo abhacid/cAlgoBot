@@ -17,7 +17,7 @@ namespace cAlgo.Indicators
         private MovingAverage _ma;
         private IndicatorDataSeries _price;
 
-        [Parameter( DefaultValue = 14)]
+        [Parameter(DefaultValue = 14)]
         public int Period { get; set; }
 
         [Parameter("MA Type", DefaultValue = MovingAverageType.Simple)]

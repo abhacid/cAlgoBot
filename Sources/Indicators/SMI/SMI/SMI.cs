@@ -36,7 +36,7 @@ namespace cAlgo.Indicators
         [Output("SMI")]
         public IndicatorDataSeries Result { get; set; }
 
-        [Output("Moving Average", Color = Colors.Blue, LineStyle=LineStyle.Dots)]
+        [Output("Moving Average", Color = Colors.Blue, LineStyle = LineStyle.Dots)]
         public IndicatorDataSeries MaResult { get; set; }
 
 
@@ -55,14 +55,14 @@ namespace cAlgo.Indicators
             _iDataSeriesHighLow = CreateDataSeries();
             _emaDiffHighLow = Indicators.ExponentialMovingAverage(_iDataSeriesHighLow, 3);
             _emaDiffHighLow2 = Indicators.ExponentialMovingAverage(_emaDiffHighLow.Result, 3);
-            
+
             _smi = CreateDataSeries();
             _maSmi = Indicators.MovingAverage(_smi, Period, MaType);
         }
 
         public override void Calculate(int index)
         {
-            double center = (High(index) + Low(index))/2;
+            double center = (High(index) + Low(index)) / 2;
             _iDataSeries[index] = MarketSeries.Close[index] - center;
 
             _iDataSeriesHighLow[index] = (High(index) - Low(index));
@@ -71,7 +71,7 @@ namespace cAlgo.Indicators
             _smi[index] = 100 * (_emaSmoothed.Result[index] / _emaDiffHighLow2.Result[index]);
             Result[index] = _smi[index];
             MaResult[index] = _maSmi.Result[index];
-            
+
             SellLine[index] = 40;
             BuyLine[index] = -40;
         }

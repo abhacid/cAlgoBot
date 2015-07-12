@@ -40,12 +40,12 @@ namespace cAlgo.Indicators
             double maxH = MarketSeries.High.Maximum(Period);
             double minL = MarketSeries.Low.Minimum(Period);
 
-            double price = (MarketSeries.High[index] + MarketSeries.Low[index])/2;
+            double price = (MarketSeries.High[index] + MarketSeries.Low[index]) / 2;
 
-            double value = 0.33*2*((price - minL)/(maxH - minL) - 0.5) + 0.67*_value1[index - 1];
+            double value = 0.33 * 2 * ((price - minL) / (maxH - minL) - 0.5) + 0.67 * _value1[index - 1];
             value = Math.Min(Math.Max(value, -0.999), 0.999);
 
-            _buffer0[index] = 0.5*Math.Log((1 + value)/(1 - value)) + 0.5*_fisher1[index - 1];
+            _buffer0[index] = 0.5 * Math.Log((1 + value) / (1 - value)) + 0.5 * _fisher1[index - 1];
 
             _value1[index] = value;
             _fisher1[index] = _buffer0[index];

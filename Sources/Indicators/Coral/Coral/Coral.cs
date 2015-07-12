@@ -40,7 +40,7 @@ namespace cAlgo.Indicators
             _iSeries4 = CreateDataSeries();
             _iSeries5 = CreateDataSeries();
             _iSeries6 = CreateDataSeries();
-            
+
 
             DI = (DI - 1.0) / 2.0 + 1.0;
             _coeff1 = 2 / (DI + 1.0);
@@ -70,17 +70,14 @@ namespace cAlgo.Indicators
             }
 
 
-            _iSeries1[index] = _coeff1*MarketSeries.Close[index] + _coeff2*_iSeries1[index - 1];
-            _iSeries2[index] = _coeff1*_iSeries1[index] + _coeff2*_iSeries2[index - 1];
-            _iSeries3[index] = _coeff1*_iSeries2[index] + _coeff2*_iSeries3[index - 1];
-            _iSeries4[index] = _coeff1*_iSeries3[index] + _coeff2*_iSeries4[index - 1];
-            _iSeries5[index] = _coeff1*_iSeries4[index] + _coeff2*_iSeries5[index - 1];
-            _iSeries6[index] = _coeff1*_iSeries5[index] + _coeff2*_iSeries6[index - 1];
+            _iSeries1[index] = _coeff1 * MarketSeries.Close[index] + _coeff2 * _iSeries1[index - 1];
+            _iSeries2[index] = _coeff1 * _iSeries1[index] + _coeff2 * _iSeries2[index - 1];
+            _iSeries3[index] = _coeff1 * _iSeries2[index] + _coeff2 * _iSeries3[index - 1];
+            _iSeries4[index] = _coeff1 * _iSeries3[index] + _coeff2 * _iSeries4[index - 1];
+            _iSeries5[index] = _coeff1 * _iSeries4[index] + _coeff2 * _iSeries5[index - 1];
+            _iSeries6[index] = _coeff1 * _iSeries5[index] + _coeff2 * _iSeries6[index - 1];
 
-            _buffer[index] = -D*D*D*_iSeries6[index]
-                             + _coeff3*(_iSeries5[index])
-                             + _coeff4*(_iSeries4[index])
-                             + _coeff5*(_iSeries3[index]);
+            _buffer[index] = -D * D * D * _iSeries6[index] + _coeff3 * (_iSeries5[index]) + _coeff4 * (_iSeries4[index]) + _coeff5 * (_iSeries3[index]);
 
 
             UpBuffer[index] = _buffer[index];
@@ -91,7 +88,7 @@ namespace cAlgo.Indicators
             // UpTrend
             if ((_buffer[index] - _buffer[index - 1]) > Symbol.PointSize)
             {
-                
+
                 if (upTrend)
                 {
                     DownBuffer[index] = double.NaN;
@@ -126,7 +123,7 @@ namespace cAlgo.Indicators
             }
 
         }
-        
+
 
     }
 }

@@ -35,7 +35,7 @@ namespace cAlgo.Indicators
             medianprice[index] = (MarketSeries.High[index] + MarketSeries.Low[index]) / 2;
             double previousAO = smaFast.Result[index - 1] - smaSlow.Result[index - 1];
             double currentAO = smaFast.Result[index] - smaSlow.Result[index];
-            
+
             if (previousAO >= currentAO)
             {
                 AwesomeRed[index] = smaFast.Result[index] - smaSlow.Result[index];

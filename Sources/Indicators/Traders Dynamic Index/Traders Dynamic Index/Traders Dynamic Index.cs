@@ -4,7 +4,7 @@ using cAlgo.API.Indicators;
 
 namespace cAlgo.Indicators
 {
-    [Levels(32,50,68)]
+    [Levels(32, 50, 68)]
     [Indicator(AccessRights = AccessRights.None)]
     public class TradersDynamicIndex : Indicator
     {
@@ -13,12 +13,12 @@ namespace cAlgo.Indicators
         private MovingAverage _signal;
         private BollingerBands _bollingerBands;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter("RSI Period", DefaultValue = 13)]
         public int RsiPeriod { get; set; }
-            
+
         [Parameter("Price Period", DefaultValue = 2)]
         public int PricePeriod { get; set; }
 
@@ -39,7 +39,7 @@ namespace cAlgo.Indicators
 
         [Output("Upper Band", Color = Colors.Blue)]
         public IndicatorDataSeries Up { get; set; }
-        
+
         [Output("Lower Band", Color = Colors.Blue)]
         public IndicatorDataSeries Down { get; set; }
 
@@ -60,7 +60,7 @@ namespace cAlgo.Indicators
             _signal = Indicators.MovingAverage(_rsi.Result, SignalPeriod, SignalMaType);
         }
 
-        
+
 
         public override void Calculate(int index)
         {
@@ -73,6 +73,6 @@ namespace cAlgo.Indicators
 
         }
 
-        
+
     }
 }

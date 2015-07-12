@@ -8,7 +8,7 @@ namespace cAlgo.Indicators
     {
         private ExponentialMovingAverage _ema;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Parameter("Period", DefaultValue = 13)]

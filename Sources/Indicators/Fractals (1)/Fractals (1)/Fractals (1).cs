@@ -4,7 +4,7 @@
 namespace cAlgo.Indicators
 {
     [Indicator(IsOverlay = true, AccessRights = AccessRights.None)]
-    public class Fractals:Indicator
+    public class Fractals : Indicator
     {
         [Parameter(DefaultValue = 5, MinValue = 5)]
         public int Period { get; set; }
@@ -15,9 +15,9 @@ namespace cAlgo.Indicators
         [Output("Down Fractal", Color = Colors.Blue, PlotType = PlotType.Points, Thickness = 5)]
         public IndicatorDataSeries DownFractal { get; set; }
 
-        
-        
-        
+
+
+
         public override void Calculate(int index)
         {
             if (index < Period)

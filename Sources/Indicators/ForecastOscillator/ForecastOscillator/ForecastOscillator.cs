@@ -8,7 +8,7 @@ namespace cAlgo.Indicators
     {
         private MovingAverage _ma;
 
-        [Parameter]
+        [Parameter()]
         public DataSeries Price { get; set; }
 
         [Parameter("MA Period", DefaultValue = 1)]
@@ -37,19 +37,19 @@ namespace cAlgo.Indicators
 
             for (int i = index - RegrPeriod; i < index; i++)
             {
-                sumXY += _ma.Result[i]*i; // if MaPeriod = 1 => ma.Result[i] = Price[i]  
+                sumXY += _ma.Result[i] * i;
+                // if MaPeriod = 1 => ma.Result[i] = Price[i]  
                 sumX += i;
-                sumX2 += i*i;
+                sumX2 += i * i;
                 sumY += _ma.Result[i];
             }
             // slope
-            double m = (RegrPeriod*sumXY - sumX*sumY)/
-                       (RegrPeriod*sumX2 - sumX*sumX);
+            double m = (RegrPeriod * sumXY - sumX * sumY) / (RegrPeriod * sumX2 - sumX * sumX);
             //y Intercept 
-            double b = (sumY - m*sumX)/RegrPeriod;
+            double b = (sumY - m * sumX) / RegrPeriod;
             // linear regression 
-            double regression = m*index + b;
-            Result[index] = ((MarketSeries.Close[index] - regression)*100)/MarketSeries.Close[index];
+            double regression = m * index + b;
+            Result[index] = ((MarketSeries.Close[index] - regression) * 100) / MarketSeries.Close[index];
 
         }
     }

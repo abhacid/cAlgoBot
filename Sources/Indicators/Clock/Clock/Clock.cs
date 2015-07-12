@@ -19,14 +19,14 @@ namespace cAlgo.Indicators
         protected override void Initialize()
         {
             // Initialize and create nested indicators
-          
+
         }
 
         public override void Calculate(int index)
-        {                        
-             			
-	   	 	ChartObjects.DrawText("Clock", "Broker Time: " + MarketSeries.OpenTime[0].ToShortTimeString() +":"+ DateTime.Now.Second + "  Local Time: " + DateTime.Now.ToLongTimeString() , StaticPosition.TopCenter, Colors.Green);
-			
+        {
+
+            ChartObjects.DrawText("Clock", "Broker Time: " + MarketSeries.OpenTime[0].ToShortTimeString() + ":" + DateTime.Now.Second + "  Local Time: " + DateTime.Now.ToLongTimeString(), StaticPosition.TopCenter, Colors.Green);
+
         }
     }
 }

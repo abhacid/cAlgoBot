@@ -61,13 +61,13 @@ namespace cAlgo
         [Output("Main", Color = Colors.CornflowerBlue)]
         public IndicatorDataSeries Result { get; set; }
 
-		[Output("Histogram", Color = Colors.Green)]
+        [Output("Histogram", Color = Colors.Green)]
         public IndicatorDataSeries Histogram { get; set; }
 
-		[Output("Signal", Color = Colors.Red)]
+        [Output("Signal", Color = Colors.Red)]
         public IndicatorDataSeries Signal { get; set; }
 
-		[Output("ParabolicSAR", Color = Colors.Pink)]
+        [Output("ParabolicSAR", Color = Colors.Pink)]
         public IndicatorDataSeries ParabolicSAR { get; set; }
         #endregion
 

@@ -22,7 +22,7 @@ namespace cAlgo.Indicators
 
 
         private MovingAverage ma;
-		double multiplier;
+        double multiplier;
 
         protected override void Initialize()
         {
@@ -33,7 +33,7 @@ namespace cAlgo.Indicators
                 series2 = MarketData.GetSeries(symbol2, TimeFrame);
             }
 
-			multiplier = Symbol.Ask / symbol2.Ask;
+            multiplier = Symbol.Ask / symbol2.Ask;
 
         }
 
@@ -44,12 +44,12 @@ namespace cAlgo.Indicators
 
         public void DrawSeries(MarketSeries serie, int index, IndicatorDataSeries indicator, double offset)
         {
-			int index2 = serie.OpenTime.GetIndexByExactTime(MarketSeries.OpenTime[index]);
+            int index2 = serie.OpenTime.GetIndexByExactTime(MarketSeries.OpenTime[index]);
 
-			Print("{0} - {1}", MarketSeries.OpenTime[index], serie.OpenTime[index2]);
+            Print("{0} - {1}", MarketSeries.OpenTime[index], serie.OpenTime[index2]);
 
             if (serie != null)
-				indicator[index2] = (serie.Close[index2 + (int)Symbol2SerieOffset])*multiplier;
+                indicator[index2] = (serie.Close[index2 + (int)Symbol2SerieOffset]) * multiplier;
         }
     }
 }

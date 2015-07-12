@@ -52,7 +52,7 @@ namespace cAlgo.Indicators
                 _lowSeries[index] = MarketSeries.Low[index];
                 _highSeries[index] = MarketSeries.High[index];
             }
-            else if(_DIminus < _DIplus)
+            else if (_DIminus < _DIplus)
             {
                 _lowSeries[index] = MarketSeries.High[index];
                 _highSeries[index] = MarketSeries.Low[index];

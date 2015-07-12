@@ -16,7 +16,7 @@ namespace cAlgo.Indicators
     [Indicator("AC", IsOverlay = false, AccessRights = AccessRights.None)]
     public class AccelerationDecelerationOscillator : Indicator
     {
-        [Parameter]
+        [Parameter()]
         public DataSeries Source { get; set; }
 
         [Output("Buy", Color = Colors.Green, PlotType = PlotType.Histogram)]
@@ -28,7 +28,7 @@ namespace cAlgo.Indicators
 
         private SimpleMovingAverage _movingAverage5;
         private SimpleMovingAverage _movingAverage34;
-        private IndicatorDataSeries _awesomeOsc;			
+        private IndicatorDataSeries _awesomeOsc;
         private SimpleMovingAverage _movingAverage;
         private IndicatorDataSeries _extBuffer0;
 
@@ -37,7 +37,7 @@ namespace cAlgo.Indicators
             _movingAverage5 = Indicators.SimpleMovingAverage(Source, 5);
             _movingAverage34 = Indicators.SimpleMovingAverage(Source, 34);
             _awesomeOsc = CreateDataSeries();
-            _movingAverage = Indicators.SimpleMovingAverage(_awesomeOsc, 5); 
+            _movingAverage = Indicators.SimpleMovingAverage(_awesomeOsc, 5);
             _extBuffer0 = CreateDataSeries();
         }
 
@@ -49,23 +49,23 @@ namespace cAlgo.Indicators
                 return;
 
             bool up = true;
-            
+
             double prev = _awesomeOsc[index] - _movingAverage.Result[index];
             double current = _awesomeOsc[index - 1] - _movingAverage.Result[index - 1];
 
-            if (current < prev) 
+            if (current < prev)
             {
                 up = false;
             }
-            if (!up) 
+            if (!up)
             {
-                ExtBuffer2[index] = current; 	
-                ExtBuffer1[index] = 0.0;	 	
+                ExtBuffer2[index] = current;
+                ExtBuffer1[index] = 0.0;
             }
             else
             {
-                ExtBuffer1[index] = current;	
-                ExtBuffer2[index] = 0.0;		
+                ExtBuffer1[index] = current;
+                ExtBuffer2[index] = 0.0;
             }
 
             _extBuffer0[index] = current;

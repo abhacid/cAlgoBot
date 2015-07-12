@@ -46,24 +46,33 @@ namespace cAlgo.Indicators
             g_ibuf_172[index] = 0;
             g_ibuf_176[index] = 0;
 
-            if ((g_icci_148 >= 0.0 && g_icci_140 < 0.0) || (g_icci_148 <= 0.0 && g_icci_140 > 0.0)) gd_156 = 0;
-            if (Math.Abs(g_icci_148) > Math.Abs(gd_156)) gd_156 = g_icci_148;
+            if ((g_icci_148 >= 0.0 && g_icci_140 < 0.0) || (g_icci_148 <= 0.0 && g_icci_140 > 0.0))
+                gd_156 = 0;
+            if (Math.Abs(g_icci_148) > Math.Abs(gd_156))
+                gd_156 = g_icci_148;
 
             if (g_icci_140 >= Momentum)
             {
-                if (g_icci_140 > g_icci_148 && g_icci_140 >= gd_156) g_ibuf_176[index] = g_icci_140;
-                if (g_icci_140 > g_icci_148 && g_icci_140 < gd_156) g_ibuf_168[index] = g_icci_140;
-                if (g_icci_140 < g_icci_148) g_ibuf_172[index] = g_icci_140;
+                if (g_icci_140 > g_icci_148 && g_icci_140 >= gd_156)
+                    g_ibuf_176[index] = g_icci_140;
+                if (g_icci_140 > g_icci_148 && g_icci_140 < gd_156)
+                    g_ibuf_168[index] = g_icci_140;
+                if (g_icci_140 < g_icci_148)
+                    g_ibuf_172[index] = g_icci_140;
             }
 
             if (g_icci_140 <= -Momentum)
             {
-                if (g_icci_140 < g_icci_148 && g_icci_140 <= gd_156) g_ibuf_176[index] = g_icci_140;
-                if (g_icci_140 < g_icci_148 && g_icci_140 > gd_156) g_ibuf_168[index] = g_icci_140;
-                if (g_icci_140 > g_icci_148) g_ibuf_172[index] = g_icci_140;
+                if (g_icci_140 < g_icci_148 && g_icci_140 <= gd_156)
+                    g_ibuf_176[index] = g_icci_140;
+                if (g_icci_140 < g_icci_148 && g_icci_140 > gd_156)
+                    g_ibuf_168[index] = g_icci_140;
+                if (g_icci_140 > g_icci_148)
+                    g_ibuf_172[index] = g_icci_140;
             }
 
-            if (g_icci_140 > (-Momentum) && g_icci_140 < Momentum) g_ibuf_164[index] = g_icci_140;
+            if (g_icci_140 > (-Momentum) && g_icci_140 < Momentum)
+                g_ibuf_164[index] = g_icci_140;
         }
     }
 }

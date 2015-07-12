@@ -29,8 +29,7 @@ namespace cAlgo.Indicators
 
             _smooth[index] = (_price[index] + 2 * _price[index - 1] + 2 * _price[index - 2] + _price[index - 3]) / 6;
 
-            Cycle[index] = (1 - 0.5 * Alpha) * (1 - 0.5 * Alpha) * (_smooth[index] - 2 * _smooth[index - 1] + _smooth[index - 2])
-            + 2 * (1 - Alpha) * Cycle[index - 1] - (1 - Alpha) * (1 - Alpha) * (Cycle[index - 2]);
+            Cycle[index] = (1 - 0.5 * Alpha) * (1 - 0.5 * Alpha) * (_smooth[index] - 2 * _smooth[index - 1] + _smooth[index - 2]) + 2 * (1 - Alpha) * Cycle[index - 1] - (1 - Alpha) * (1 - Alpha) * (Cycle[index - 2]);
 
             if (index < 7)
             {

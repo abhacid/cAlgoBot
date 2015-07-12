@@ -16,10 +16,10 @@ namespace cAlgo.Indicators
 
         [Parameter(DefaultValue = 7)]
         public int DPeriod { get; set; }
-        
+
         [Parameter(DefaultValue = 14)]
         public int KPeriod { get; set; }
-        
+
         [Parameter(DefaultValue = 3)]
         public int Smooth { get; set; }
 
@@ -28,10 +28,10 @@ namespace cAlgo.Indicators
 
         [Output("%K")]
         public IndicatorDataSeries KSeries { get; set; }
-        
+
         [Output("%D", Color = Colors.Red, LineStyle = LineStyle.Lines)]
         public IndicatorDataSeries DSeries { get; set; }
-        
+
         [Output("%J", Color = Colors.Blue)]
         public IndicatorDataSeries JSeries { get; set; }
 
@@ -60,19 +60,19 @@ namespace cAlgo.Indicators
             _nominator[index] = MarketSeries.Close[index] - min;
             _denominator[index] = max - min;
 
-            if(Math.Abs(_denominator[index] - 0) < double.Epsilon)
+            if (Math.Abs(_denominator[index] - 0) < double.Epsilon)
             {
                 _fastK[index] = index == 0 ? 50 : _fastK[index - 1];
             }
             else
             {
-                double percent = 100*_nominator[index]/_denominator[index];
+                double percent = 100 * _nominator[index] / _denominator[index];
                 _fastK[index] = Math.Min(100, Math.Max(0, percent));
             }
 
             KSeries[index] = _mak.Result[index];
             DSeries[index] = _mad.Result[index];
-            JSeries[index] = 3*_mak.Result[index] - 2*_mad.Result[index];
+            JSeries[index] = 3 * _mak.Result[index] - 2 * _mad.Result[index];
 
             Line0[index] = 0.0;
             Line100[index] = 0.0;
