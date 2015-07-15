@@ -33,14 +33,14 @@ namespace cAlgo.Lib
 		/// <summary>
 		/// transforme une chaine de caractère contenant une couleur "white" par exemple en type cAlgo.API.colors
 		/// </summary>
-		/// <param name="color">la chaine de caractère contenant le nom de la couleur</param>
+		/// <param name="colorString">la chaine de caractère contenant le nom de la couleur</param>
 		/// <returns>cAlgo.API.colors</returns>
-		public static Colors? parseColor(this string color)
+		public static Colors? parseColor(this string colorString)
 		{
-			Colors _color;
+			Colors color;
 
-			if (!Enum.TryParse<Colors>(color, out _color))
-				return _color;
+			if (!Enum.TryParse<Colors>(colorString, out color))
+				return color;
 			else
 				return null;
 		}

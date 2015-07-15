@@ -26,6 +26,18 @@ Les robots sont implémentés sur la plateforme [cAlgo](http://www.spotware.com)
 
 Dans la rubrique Discussion je présente des idées de robot à écrire, puis je les implémente. Si vous avez une idée de robot originale, proposez la, je l'implémenterai surement.
 
+## Vidéos Youtube
+Différentes vidéos sur Youtube sont disponible et expliquent le fonctionnement de l'environnement de développement
+Visual Studio, Github et cAlgo ainsi que le fonctionnement de robots particuliers.
+
+[cAlgo, Visual studio et Github : Créer des robots de trading en CSharp](https://www.youtube.com/watch?v=URzqJAJxrQs)
+
+[Séance de trading du robot Martingale_Forex](https://www.youtube.com/watch?v=2KzilwPgxgo)
+
+[Robot Martingale_Forex (cTdn)](https://www.youtube.com/watch?v=P6jeiBXK1Rg)
+
+[Déboguage d'un robot en csharp avec visual studio](https://www.youtube.com/watch?v=M3_Mq7G31BA&feature=youtu.be)
+
 ## Liens
 
 [ma page Facebook](https://www.facebook.com/ab.hacid)
