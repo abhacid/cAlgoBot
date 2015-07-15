@@ -702,3 +702,12 @@
 2015.07.11 17:21:23.528 | cAlgo started
 2015.07.11 17:21:30.744 | Logged in. Account: 3104534 (demo). Proxy: France-4
 2015.07.11 17:22:33.718 | Disconnected (Manually)
+2015.07.14 08:40:37.633 | cAlgo started
+2015.07.14 08:40:45.277 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.14 08:40:52.080 | Disconnected (Manually)
+2015.07.14 14:19:37.128 | cAlgo started
+2015.07.14 14:19:44.375 | Logged in. Account: 3104534 (demo). Proxy: France-4
+2015.07.14 16:18:04.326 | Request to Buy EUR 1k EURUSD is sent to server
+2015.07.14 16:18:04.638 | → Request to Buy EUR 1k EURUSD is ACCEPTED, order OID7025570 created (14/07/2015 16:18:04.360 UTC+0)
+2015.07.14 16:18:05.029 | → Order OID7025570 is FILLED at 1.10088, position PID4707942 (14/07/2015 16:18:04.645 UTC+0)
+2015.07.14 22:22:54.908 | Disconnected (Manually)

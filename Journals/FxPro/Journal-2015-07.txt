@@ -1,0 +1,566 @@
+2015.07.10 17:31:32.920 | cAlgo started
+2015.07.10 17:31:45.084 | Demo account 9748526 successfully created
+2015.07.10 17:31:50.489 | Logged in. Account: 9748526 (demo). Proxy: Lille-1
+2015.07.10 17:32:54.216 | Disconnected (Connection failed)
+2015.07.10 17:32:56.893 | Logged in. Account: 9748526 (demo). Proxy: Cologne-3
+2015.07.10 17:41:48.762 | Disconnected (Manually)
+2015.07.10 17:41:53.289 | cAlgo started
+2015.07.10 17:42:00.240 | Connecté. Compte : 9748526 (demo). Proxy: London-9
+2015.07.10 17:50:36.901 | Demo account 9748530 successfully created
+2015.07.10 17:50:46.147 | Déconnecté (Manuellement)
+2015.07.10 17:50:46.868 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.10 17:51:10.555 | Request to Buy 273k EURUSD (Price: 1.11316, SL: 37, MR: 10) is sent to server
+2015.07.10 17:51:10.852 | → Request to Buy 273k EURUSD (Price: 1.11316, SL: 37, MR: 10) is ACCEPTED, order OID52144301 created (10/07/2015 17:51:10.596 UTC+0)
+2015.07.10 17:51:11.430 | → Order OID52144301 is FILLED at 1.11316, position PID35179038 (10/07/2015 17:51:10.891 UTC+0)
+2015.07.10 17:51:11.883 | Request to amend position PID35179038 (SL: 1.10999) is sent to server
+2015.07.10 17:51:12.008 | → Request to amend position PID35179038 (SL: 1.10999) is ACCEPTED
+2015.07.10 18:06:05.068 | Déconnecté (Manuellement)
+2015.07.10 18:14:52.058 | cAlgo started
+2015.07.10 18:14:59.026 | Connecté. Compte : 9748530 (demo). Proxy: Cologne-3
+2015.07.10 18:15:30.328 | Déconnecté (Manuellement)
+2015.07.10 18:25:37.993 | cAlgo started
+2015.07.10 18:25:44.652 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.10 18:37:37.434 | Request to close position PID35179038 is sent to server
+2015.07.10 18:37:38.059 | → Request to close position PID35179038 is ACCEPTED, order OID52145168 created (10/07/2015 18:37:37.461 UTC+0)
+2015.07.10 18:37:38.090 | → Order OID52145168 is FILLED at 1.11307, position PID35179038 closed (10/07/2015 18:37:37.727 UTC+0)
+2015.07.10 18:39:00.196 | Request to Buy 6.017m EURUSD (Price: 1.11329, SL: 37, MR: 10) is sent to server
+2015.07.10 18:39:00.556 | → Request to Buy 6.017m EURUSD (Price: 1.11329, SL: 37, MR: 10) is ACCEPTED, order OID52145225 created (10/07/2015 18:39:00.229 UTC+0)
+2015.07.10 18:39:00.759 | → Order OID52145225 is FILLED at 1.11329, position PID35179569 (10/07/2015 18:39:00.527 UTC+0)
+2015.07.10 18:39:00.868 | Request to amend position PID35179569 (SL: 1.11012) is sent to server
+2015.07.10 18:39:01.071 | → Request to amend position PID35179569 (SL: 1.11012) is ACCEPTED
+2015.07.10 18:42:06.636 | Request to Buy 1.121m EURUSD (Price: 1.11363, SL: 37, MR: 10) is sent to server
+2015.07.10 18:42:06.683 | → Request to Buy 1.121m EURUSD (Price: 1.11363, SL: 37, MR: 10) is ACCEPTED, order OID52145327 created (10/07/2015 18:42:06.663 UTC+0)
+2015.07.10 18:42:06.824 | → Order OID52145327 is FILLED at 1.11362, position PID35179633 (10/07/2015 18:42:06.920 UTC+0)
+2015.07.10 18:42:06.918 | Request to amend position PID35179569 (SL: 1.11070) is sent to server
+2015.07.10 18:42:07.230 | → Request to amend position PID35179569 (SL: 1.11070) is ACCEPTED
+2015.07.10 18:42:07.246 | Request to amend position PID35179633 (SL: 1.11070) is sent to server
+2015.07.10 18:42:07.324 | → Request to amend position PID35179633 (SL: 1.11070) is ACCEPTED
+2015.07.10 19:07:54.457 | Request to amend position PID35179569 (SL: 1.11339) is sent to server
+2015.07.10 19:07:54.504 | → Request to amend position PID35179569 (SL: 1.11339) is ACCEPTED
+2015.07.10 19:08:47.360 | Request to amend position PID35179569 (SL: 1.11342) is sent to server
+2015.07.10 19:08:47.406 | → Request to amend position PID35179569 (SL: 1.11342) is ACCEPTED
+2015.07.10 19:08:53.656 | Request to amend position PID35179569 (SL: 1.11343) is sent to server
+2015.07.10 19:08:53.719 | → Request to amend position PID35179569 (SL: 1.11343) is ACCEPTED
+2015.07.10 19:09:50.013 | → Order OID52145226 is FILLED at 1.11341, position PID35179569 closed (10/07/2015 19:09:49.943 UTC+0)
+2015.07.10 19:19:41.485 | Request to Buy 1.478m EURUSD (Price: 1.11392, SL: 37, MR: 10) is sent to server
+2015.07.10 19:19:41.547 | → Request to Buy 1.478m EURUSD (Price: 1.11392, SL: 37, MR: 10) is ACCEPTED, order OID52146155 created (10/07/2015 19:19:41.505 UTC+0)
+2015.07.10 19:19:41.657 | → Order OID52146155 is FILLED at 1.11393, position PID35180067 (10/07/2015 19:19:41.785 UTC+0)
+2015.07.10 19:19:41.954 | Request to amend position PID35179633 (SL: 1.11115) is sent to server
+2015.07.10 19:19:42.016 | → Request to amend position PID35179633 (SL: 1.11115) is ACCEPTED
+2015.07.10 19:19:42.016 | Request to amend position PID35180067 (SL: 1.11115) is sent to server
+2015.07.10 19:19:42.188 | → Request to amend position PID35180067 (SL: 1.11115) is ACCEPTED
+2015.07.10 19:20:23.547 | Request to amend position PID35179633 (SL: 1.11373) is sent to server
+2015.07.10 19:20:23.610 | → Request to amend position PID35179633 (SL: 1.11373) is ACCEPTED
+2015.07.10 19:20:23.860 | Request to amend position PID35179633 (SL: 1.11381) is sent to server
+2015.07.10 19:20:24.047 | → Request to amend position PID35179633 (SL: 1.11381) is ACCEPTED
+2015.07.10 19:20:33.391 | → Order OID52145328 is FILLED at 1.11376, position PID35179633 closed (10/07/2015 19:20:33.336 UTC+0)
+2015.07.10 19:45:37.592 | Request to Buy 1.414m EURUSD (Price: 1.11423, SL: 37, MR: 10) is sent to server
+2015.07.10 19:45:37.685 | → Request to Buy 1.414m EURUSD (Price: 1.11423, SL: 37, MR: 10) is ACCEPTED, order OID52146578 created (10/07/2015 19:45:37.612 UTC+0)
+2015.07.10 19:45:38.170 | → Order OID52146578 is FILLED at 1.11423, position PID35180353 (10/07/2015 19:45:37.921 UTC+0)
+2015.07.10 19:45:38.248 | Request to amend position PID35180067 (SL: 1.11143) is sent to server
+2015.07.10 19:45:38.342 | → Request to amend position PID35180067 (SL: 1.11143) is ACCEPTED
+2015.07.10 19:45:38.498 | Request to amend position PID35180353 (SL: 1.11143) is sent to server
+2015.07.10 19:45:38.560 | → Request to amend position PID35180353 (SL: 1.11143) is ACCEPTED
+2015.07.10 19:59:07.298 | Request to amend position PID35180067 (SL: 1.11407) is sent to server
+2015.07.10 19:59:07.361 | → Request to amend position PID35180067 (SL: 1.11407) is ACCEPTED
+2015.07.10 19:59:08.142 | Request to amend position PID35180067 (SL: 1.11408) is sent to server
+2015.07.10 19:59:08.204 | → Request to amend position PID35180067 (SL: 1.11408) is ACCEPTED
+2015.07.10 19:59:08.454 | Request to amend position PID35180067 (SL: 1.11409) is sent to server
+2015.07.10 19:59:08.501 | → Request to amend position PID35180067 (SL: 1.11409) is ACCEPTED
+2015.07.10 19:59:08.564 | Request to amend position PID35180067 (SL: 1.11410) is sent to server
+2015.07.10 19:59:08.689 | → Request to amend position PID35180067 (SL: 1.11410) is ACCEPTED
+2015.07.10 19:59:11.407 | Request to amend position PID35180067 (SL: 1.11411) is sent to server
+2015.07.10 19:59:11.470 | → Request to amend position PID35180067 (SL: 1.11411) is ACCEPTED
+2015.07.10 19:59:25.298 | Request to amend position PID35180067 (SL: 1.11412) is sent to server
+2015.07.10 19:59:25.361 | → Request to amend position PID35180067 (SL: 1.11412) is ACCEPTED
+2015.07.10 19:59:26.329 | Request to amend position PID35180067 (SL: 1.11413) is sent to server
+2015.07.10 19:59:26.376 | → Request to amend position PID35180067 (SL: 1.11413) is ACCEPTED
+2015.07.10 19:59:28.767 | Request to amend position PID35180067 (SL: 1.11414) is sent to server
+2015.07.10 19:59:28.829 | → Request to amend position PID35180067 (SL: 1.11414) is ACCEPTED
+2015.07.10 19:59:30.251 | Request to amend position PID35180067 (SL: 1.11415) is sent to server
+2015.07.10 19:59:30.329 | → Request to amend position PID35180067 (SL: 1.11415) is ACCEPTED
+2015.07.10 19:59:43.411 | Request to amend position PID35180067 (SL: 1.11416) is sent to server
+2015.07.10 19:59:43.474 | → Request to amend position PID35180067 (SL: 1.11416) is ACCEPTED
+2015.07.10 19:59:43.583 | Request to amend position PID35180067 (SL: 1.11417) is sent to server
+2015.07.10 19:59:43.786 | → Request to amend position PID35180067 (SL: 1.11417) is ACCEPTED
+2015.07.10 19:59:43.786 | Request to amend position PID35180067 (SL: 1.11422) is sent to server
+2015.07.10 19:59:43.849 | → Request to amend position PID35180067 (SL: 1.11422) is ACCEPTED
+2015.07.10 19:59:44.005 | Request to amend position PID35180067 (SL: 1.11423) is sent to server
+2015.07.10 19:59:44.067 | → Request to amend position PID35180067 (SL: 1.11423) is ACCEPTED
+2015.07.10 19:59:45.161 | Request to amend position PID35180067 (SL: 1.11424) is sent to server
+2015.07.10 19:59:45.239 | → Request to amend position PID35180067 (SL: 1.11424) is ACCEPTED
+2015.07.10 19:59:45.474 | Request to Buy 3.44m EURUSD (Price: 1.11455, SL: 37, MR: 10) is sent to server
+2015.07.10 19:59:45.817 | → Request to Buy 3.44m EURUSD (Price: 1.11455, SL: 37, MR: 10) is ACCEPTED, order OID52146924 created (10/07/2015 19:59:45.508 UTC+0)
+2015.07.10 19:59:45.833 | → Order OID52146924 is FILLED at 1.11458, position PID35180587 (10/07/2015 19:59:45.785 UTC+0)
+2015.07.10 19:59:45.849 | Request to amend position PID35180067 (SL: 1.11428) is sent to server
+2015.07.10 19:59:45.911 | → Request to amend position PID35180067 (SL: 1.11428) is ACCEPTED
+2015.07.10 19:59:45.911 | Request to amend position PID35180353 (SL: 1.11224) is sent to server
+2015.07.10 19:59:45.989 | → Request to amend position PID35180353 (SL: 1.11224) is ACCEPTED
+2015.07.10 19:59:46.052 | Request to amend position PID35180587 (SL: 1.11224) is sent to server
+2015.07.10 19:59:46.145 | → Request to amend position PID35180587 (SL: 1.11224) is ACCEPTED
+2015.07.10 19:59:46.161 | Request to amend position PID35180067 (SL: 1.11430) is sent to server
+2015.07.10 19:59:46.349 | → Request to amend position PID35180067 (SL: 1.11430) is ACCEPTED
+2015.07.10 19:59:50.224 | Request to amend position PID35180067 (SL: 1.11431) is sent to server
+2015.07.10 19:59:50.270 | → Request to amend position PID35180067 (SL: 1.11431) is ACCEPTED
+2015.07.10 19:59:52.239 | Request to amend position PID35180067 (SL: 1.11433) is sent to server
+2015.07.10 19:59:52.302 | → Request to amend position PID35180067 (SL: 1.11433) is ACCEPTED
+2015.07.10 19:59:52.989 | Request to amend position PID35180067 (SL: 1.11434) is sent to server
+2015.07.10 19:59:53.052 | → Request to amend position PID35180067 (SL: 1.11434) is ACCEPTED
+2015.07.10 19:59:53.052 | Request to amend position PID35180353 (SL: 1.11434) is sent to server
+2015.07.10 19:59:53.099 | → Request to amend position PID35180353 (SL: 1.11434) is ACCEPTED
+2015.07.10 19:59:55.208 | Request to amend position PID35180067 (SL: 1.11435) is sent to server
+2015.07.10 19:59:55.270 | → Request to amend position PID35180067 (SL: 1.11435) is ACCEPTED
+2015.07.10 19:59:55.270 | Request to amend position PID35180353 (SL: 1.11435) is sent to server
+2015.07.10 19:59:55.333 | → Request to amend position PID35180353 (SL: 1.11435) is ACCEPTED
+2015.07.10 19:59:55.427 | Request to amend position PID35180067 (SL: 1.11436) is sent to server
+2015.07.10 19:59:55.770 | → Request to amend position PID35180067 (SL: 1.11436) is ACCEPTED
+2015.07.10 20:00:01.129 | → Order OID52146156 is FILLED at 1.11433, position PID35180067 closed (10/07/2015 20:00:01.067 UTC+0)
+2015.07.10 20:00:01.394 | → Order OID52146580 is FILLED at 1.11433, position PID35180353 closed (10/07/2015 20:00:01.133 UTC+0)
+2015.07.10 20:01:45.098 | Request to Buy 1.109m EURUSD (Price: 1.11488, SL: 37, MR: 10) is sent to server
+2015.07.10 20:01:45.285 | → Request to Buy 1.109m EURUSD (Price: 1.11488, SL: 37, MR: 10) is ACCEPTED, order OID52146987 created (10/07/2015 20:01:45.112 UTC+0)
+2015.07.10 20:01:45.551 | → Order OID52146987 is FILLED at 1.11489, position PID35180622 (10/07/2015 20:01:45.361 UTC+0)
+2015.07.10 20:01:45.660 | Request to amend position PID35180622 (SL: 1.11201) is sent to server
+2015.07.10 20:01:45.801 | → Request to amend position PID35180622 (SL: 1.11201) is ACCEPTED
+2015.07.10 20:01:46.363 | Request to amend position PID35180587 (SL: 1.11468) is sent to server
+2015.07.10 20:01:46.410 | → Request to amend position PID35180587 (SL: 1.11468) is ACCEPTED
+2015.07.10 20:01:46.598 | Request to amend position PID35180587 (SL: 1.11470) is sent to server
+2015.07.10 20:01:46.707 | → Request to amend position PID35180587 (SL: 1.11470) is ACCEPTED
+2015.07.10 20:01:46.910 | Request to amend position PID35180587 (SL: 1.11471) is sent to server
+2015.07.10 20:01:47.019 | → Request to amend position PID35180587 (SL: 1.11471) is ACCEPTED
+2015.07.10 20:01:47.035 | Request to amend position PID35180587 (SL: 1.11472) is sent to server
+2015.07.10 20:01:47.269 | → Request to amend position PID35180587 (SL: 1.11472) is ACCEPTED
+2015.07.10 20:01:52.690 | Request to amend position PID35180587 (SL: 1.11475) is sent to server
+2015.07.10 20:01:52.737 | → Request to amend position PID35180587 (SL: 1.11475) is ACCEPTED
+2015.07.10 20:01:52.940 | Request to amend position PID35180587 (SL: 1.11480) is sent to server
+2015.07.10 20:01:53.050 | → Request to amend position PID35180587 (SL: 1.11480) is ACCEPTED
+2015.07.10 20:02:08.003 | → Order OID52146925 is FILLED at 1.11475, position PID35180587 closed (10/07/2015 20:02:07.694 UTC+0)
+2015.07.10 20:26:43.005 | Déconnecté (Manuellement)
+2015.07.10 20:26:48.409 | cAlgo started
+2015.07.10 20:26:54.520 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.10 21:17:17.793 | Déconnecté (Manuellement)
+2015.07.10 21:17:25.777 | cAlgo started
+2015.07.10 21:17:32.035 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.10 22:08:04.116 | Déconnecté (Manuellement)
+2015.07.11 12:04:11.121 | cAlgo started
+2015.07.11 12:04:20.592 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.11 12:24:50.044 | Déconnecté (Manuellement)
+2015.07.11 12:24:59.809 | cAlgo started
+2015.07.11 12:25:09.572 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 13:05:26.021 | Déconnecté (Manuellement)
+2015.07.11 13:12:30.654 | cAlgo started
+2015.07.11 13:12:39.528 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.11 13:31:16.257 | Déconnecté (Manuellement)
+2015.07.11 13:41:35.208 | cAlgo started
+2015.07.11 13:41:42.867 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.11 13:47:22.862 | Déconnecté (Connextion lente)
+2015.07.11 13:48:10.635 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 13:49:33.300 | Déconnecté (La connexion a échoué)
+2015.07.11 13:49:37.962 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 14:29:10.561 | Déconnecté (Manuellement)
+2015.07.11 14:29:17.260 | cAlgo started
+2015.07.11 14:29:25.477 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 15:56:24.709 | Déconnecté (Manuellement)
+2015.07.11 15:56:31.369 | cAlgo started
+2015.07.11 15:56:40.980 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.11 16:24:54.153 | Déconnecté (Manuellement)
+2015.07.11 16:40:48.212 | cAlgo started
+2015.07.11 16:40:54.890 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.11 17:21:16.995 | Déconnecté (Manuellement)
+2015.07.11 17:22:39.721 | cAlgo started
+2015.07.11 17:22:45.640 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.11 18:30:10.412 | Déconnecté (Manuellement)
+2015.07.11 18:30:17.631 | cAlgo started
+2015.07.11 18:30:24.253 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 18:36:30.516 | Déconnecté (Manuellement)
+2015.07.11 18:36:37.340 | cAlgo started
+2015.07.11 18:36:46.105 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.11 18:43:37.451 | Déconnecté (La connexion a échoué)
+2015.07.11 18:43:38.821 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 18:50:16.683 | Déconnecté (La connexion a échoué)
+2015.07.11 18:50:18.435 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 19:12:30.737 | cAlgo started
+2015.07.11 19:12:37.185 | Connecté. Compte : 9748530 (demo). Proxy: Cologne-3
+2015.07.11 20:04:30.890 | Déconnecté (La connexion a échoué)
+2015.07.11 20:04:33.143 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.11 20:44:00.320 | Déconnecté (La connexion a échoué)
+2015.07.11 20:44:04.396 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.11 20:53:31.252 | Déconnecté (La connexion a échoué)
+2015.07.11 20:59:41.640 | cAlgo started
+2015.07.11 20:59:49.664 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.11 21:34:02.199 | Déconnecté (La connexion a échoué)
+2015.07.11 21:34:04.232 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 21:42:51.401 | Déconnecté (La connexion a échoué)
+2015.07.11 21:42:54.298 | Connecté. Compte : 9748530 (demo). Proxy: Cologne-3
+2015.07.11 21:57:08.138 | Déconnecté (Connextion lente)
+2015.07.11 21:57:58.591 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 22:00:10.236 | Déconnecté (Manuellement)
+2015.07.11 22:08:51.639 | cAlgo started
+2015.07.11 22:08:59.205 | Connecté. Compte : 9748530 (demo). Proxy: Cologne-3
+2015.07.11 22:11:56.125 | Déconnecté (La connexion a échoué)
+2015.07.11 22:11:58.295 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.11 22:17:34.817 | Déconnecté (La connexion a échoué)
+2015.07.11 22:17:36.372 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.11 22:19:19.918 | Déconnecté (Manuellement)
+2015.07.12 05:51:01.264 | cAlgo started
+2015.07.12 05:51:10.121 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.12 06:34:53.603 | Déconnecté (La connexion a échoué)
+2015.07.12 06:35:16.212 | Connecté. Compte : 9748530 (demo). Proxy: NewJersey-1
+2015.07.12 06:42:58.455 | cAlgo started
+2015.07.12 06:43:06.322 | Connecté. Compte : 9748530 (demo). Proxy: Cologne-3
+2015.07.12 06:44:18.156 | Déconnecté (La connexion a échoué)
+2015.07.12 06:44:20.861 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.12 06:47:14.590 | Déconnecté (La connexion a échoué)
+2015.07.12 06:47:16.680 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.12 06:55:50.678 | Déconnecté (Manuellement)
+2015.07.12 06:55:57.078 | Déconnecté (Manuellement)
+2015.07.12 06:56:02.863 | cAlgo started
+2015.07.12 06:56:10.169 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.12 07:01:10.067 | Déconnecté (La connexion a échoué)
+2015.07.12 07:01:12.432 | Connecté. Compte : 9748530 (demo). Proxy: Moscow-1
+2015.07.12 07:05:09.399 | Déconnecté (La connexion a échoué)
+2015.07.12 07:05:12.825 | Connecté. Compte : 9748530 (demo). Proxy: Moscow-1
+2015.07.12 07:07:14.474 | Déconnecté (La connexion a échoué)
+2015.07.12 07:07:17.239 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.12 07:12:24.291 | Déconnecté (La connexion a échoué)
+2015.07.12 07:12:26.233 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.12 07:18:35.402 | Déconnecté (Manuellement)
+2015.07.12 07:18:42.483 | cAlgo started
+2015.07.12 07:18:50.026 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.12 07:23:20.521 | cAlgo started
+2015.07.12 07:23:28.783 | Connecté. Compte : 9748530 (demo). Proxy: NewYork-1
+2015.07.12 07:31:12.441 | Déconnecté (La connexion a échoué)
+2015.07.12 07:31:16.192 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.12 07:33:02.786 | Déconnecté (La connexion a échoué)
+2015.07.12 07:33:32.665 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.12 07:39:13.462 | Déconnecté (La connexion a échoué)
+2015.07.12 07:39:31.603 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.12 07:42:19.257 | Déconnecté (La connexion a échoué)
+2015.07.12 07:42:22.823 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.12 07:45:13.764 | cAlgo started
+2015.07.12 07:45:21.902 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.12 08:19:26.392 | Déconnecté (La connexion a échoué)
+2015.07.12 08:19:29.125 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.12 08:20:42.990 | Déconnecté (La connexion a échoué)
+2015.07.12 08:21:00.191 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.12 08:22:27.237 | Déconnecté (La connexion a échoué)
+2015.07.12 08:22:29.963 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.12 08:25:51.026 | Déconnecté (La connexion a échoué)
+2015.07.12 08:25:54.036 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.12 10:40:54.302 | Déconnecté (Manuellement)
+2015.07.12 16:08:53.494 | cAlgo started
+2015.07.12 16:09:44.082 | cAlgo started
+2015.07.12 16:09:51.954 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.12 16:32:20.164 | Déconnecté (Manuellement)
+2015.07.13 08:00:43.555 | cAlgo started
+2015.07.13 08:00:50.632 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.13 10:21:27.457 | Déconnecté (Manuellement)
+2015.07.13 10:21:35.807 | cAlgo started
+2015.07.13 10:21:44.270 | Connecté. Compte : 9748530 (demo). Proxy: London-9
+2015.07.13 11:14:58.665 | Déconnecté (La connexion a échoué)
+2015.07.13 11:15:37.180 | Connecté. Compte : 9748530 (demo). Proxy: Cologne-3
+2015.07.13 11:20:58.298 | Déconnecté (La connexion a échoué)
+2015.07.13 11:25:13.676 | Connecté. Compte : 9748530 (demo). Proxy: Cologne-3
+2015.07.13 12:25:07.898 | Déconnecté (Manuellement)
+2015.07.13 21:31:29.783 | cAlgo started
+2015.07.13 21:31:40.330 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.13 21:42:28.559 | Déconnecté (Manuellement)
+2015.07.14 09:38:53.368 | cAlgo started
+2015.07.14 09:39:02.323 | Connecté. Compte : 9748530 (demo). Proxy: Cologne-3
+2015.07.14 09:53:30.069 | Request to Buy 1.288m EURUSD (Price: 1.10306, SL: 38, MR: 10) is sent to server
+2015.07.14 09:53:30.178 | → Request to Buy 1.288m EURUSD (Price: 1.10306, SL: 38, MR: 10) is ACCEPTED, order OID52216833 created (14/07/2015 09:53:30.102 UTC+0)
+2015.07.14 09:53:30.569 | → Order OID52216833 is FILLED at 1.10306, position PID35214792 (14/07/2015 09:53:30.364 UTC+0)
+2015.07.14 09:56:03.045 | Request to close position PID35214792 is sent to server
+2015.07.14 09:56:03.107 | → Request to close position PID35214792 is ACCEPTED, order OID52217131 created (14/07/2015 09:56:03.081 UTC+0)
+2015.07.14 09:56:03.498 | → Order OID52217131 is FILLED at 1.10383, position PID35214792 closed (14/07/2015 09:56:03.377 UTC+0)
+2015.07.14 09:56:04.498 | Request to Buy 1.29m EURUSD (Price: 1.10395, SL: 38, MR: 10) is sent to server
+2015.07.14 09:56:04.561 | → Request to Buy 1.29m EURUSD (Price: 1.10395, SL: 38, MR: 10) is ACCEPTED, order OID52217136 created (14/07/2015 09:56:04.536 UTC+0)
+2015.07.14 09:56:04.873 | → Order OID52217136 is FILLED at 1.10395, position PID35214884 (14/07/2015 09:56:04.827 UTC+0)
+2015.07.14 09:56:07.920 | Request to close position PID35214884 is sent to server
+2015.07.14 09:56:07.982 | → Request to close position PID35214884 is ACCEPTED, order OID52217143 created (14/07/2015 09:56:07.956 UTC+0)
+2015.07.14 09:56:08.295 | → Order OID52217143 is FILLED at 1.10381, position PID35214884 closed (14/07/2015 09:56:08.220 UTC+0)
+2015.07.14 09:56:48.431 | Request to Buy 3.269m EURUSD (Price: 1.10426, SL: 15, MR: 10) is sent to server
+2015.07.14 09:56:48.493 | → Request to Buy 3.269m EURUSD (Price: 1.10426, SL: 15, MR: 10) is ACCEPTED, order OID52217226 created (14/07/2015 09:56:48.449 UTC+0)
+2015.07.14 09:56:48.790 | → Order OID52217226 is FILLED at 1.10427, position PID35214917 (14/07/2015 09:56:48.732 UTC+0)
+2015.07.14 09:56:50.384 | Request to close position PID35214917 is sent to server
+2015.07.14 09:56:50.447 | → Request to close position PID35214917 is ACCEPTED, order OID52217229 created (14/07/2015 09:56:50.410 UTC+0)
+2015.07.14 09:56:50.759 | → Order OID52217229 is FILLED at 1.1041, position PID35214917 closed (14/07/2015 09:56:50.666 UTC+0)
+2015.07.14 09:57:05.665 | Request to Buy 3.265m EURUSD (Price: 1.10393, SL: 15, MR: 10) is sent to server
+2015.07.14 09:57:05.728 | → Request to Buy 3.265m EURUSD (Price: 1.10393, SL: 15, MR: 10) is ACCEPTED, order OID52217276 created (14/07/2015 09:57:05.690 UTC+0)
+2015.07.14 09:57:05.978 | → Order OID52217276 is FILLED at 1.10398, position PID35214930 (14/07/2015 09:57:05.925 UTC+0)
+2015.07.14 09:57:07.509 | Request to close position PID35214930 is sent to server
+2015.07.14 09:57:07.572 | → Request to close position PID35214930 is ACCEPTED, order OID52217279 created (14/07/2015 09:57:07.523 UTC+0)
+2015.07.14 09:57:07.853 | → Order OID52217279 is FILLED at 1.10372, position PID35214930 closed (14/07/2015 09:57:07.757 UTC+0)
+2015.07.14 09:57:11.759 | Request to Buy 3.262m EURUSD (Price: 1.10382, SL: 15, MR: 10) is sent to server
+2015.07.14 09:57:11.822 | → Request to Buy 3.262m EURUSD (Price: 1.10382, SL: 15, MR: 10) is ACCEPTED, order OID52217284 created (14/07/2015 09:57:11.781 UTC+0)
+2015.07.14 09:57:12.368 | → Order OID52217284 is FILLED at 1.10384, position PID35214932 (14/07/2015 09:57:12.069 UTC+0)
+2015.07.14 09:57:14.962 | Request to close position PID35214932 is sent to server
+2015.07.14 09:57:15.040 | → Request to close position PID35214932 is ACCEPTED, order OID52217289 created (14/07/2015 09:57:14.980 UTC+0)
+2015.07.14 09:57:15.275 | → Order OID52217289 is FILLED at 1.1037, position PID35214932 closed (14/07/2015 09:57:15.205 UTC+0)
+2015.07.14 09:57:17.790 | Request to Buy 3.259m EURUSD (Price: 1.10388, SL: 15, MR: 10) is sent to server
+2015.07.14 09:57:17.853 | → Request to Buy 3.259m EURUSD (Price: 1.10388, SL: 15, MR: 10) is ACCEPTED, order OID52217292 created (14/07/2015 09:57:17.807 UTC+0)
+2015.07.14 09:57:18.337 | → Order OID52217292 is FILLED at 1.10381, position PID35214935 (14/07/2015 09:57:18.087 UTC+0)
+2015.07.14 09:57:18.431 | Request to close position PID35214935 is sent to server
+2015.07.14 09:57:18.493 | → Request to close position PID35214935 is ACCEPTED, order OID52217294 created (14/07/2015 09:57:18.454 UTC+0)
+2015.07.14 09:57:18.759 | → Order OID52217294 is FILLED at 1.10375, position PID35214935 closed (14/07/2015 09:57:18.698 UTC+0)
+2015.07.14 09:57:21.525 | Request to Buy 3.258m EURUSD (Price: 1.10385, SL: 15, MR: 10) is sent to server
+2015.07.14 09:57:21.587 | → Request to Buy 3.258m EURUSD (Price: 1.10385, SL: 15, MR: 10) is ACCEPTED, order OID52217296 created (14/07/2015 09:57:21.542 UTC+0)
+2015.07.14 09:57:21.853 | → Order OID52217296 is FILLED at 1.10385, position PID35214936 (14/07/2015 09:57:21.797 UTC+0)
+2015.07.14 09:57:25.415 | Request to close position PID35214936 is sent to server
+2015.07.14 09:57:25.478 | → Request to close position PID35214936 is ACCEPTED, order OID52217300 created (14/07/2015 09:57:25.438 UTC+0)
+2015.07.14 09:57:25.775 | → Order OID52217300 is FILLED at 1.10375, position PID35214936 closed (14/07/2015 09:57:25.711 UTC+0)
+2015.07.14 09:57:26.993 | Request to Buy 3.256m EURUSD (Price: 1.10392, SL: 15, MR: 10) is sent to server
+2015.07.14 09:57:27.056 | → Request to Buy 3.256m EURUSD (Price: 1.10392, SL: 15, MR: 10) is ACCEPTED, order OID52217301 created (14/07/2015 09:57:27.010 UTC+0)
+2015.07.14 09:57:27.290 | → Order OID52217301 is FILLED at 1.10395, position PID35214938 (14/07/2015 09:57:27.237 UTC+0)
+2015.07.14 09:57:40.665 | Request to close position PID35214938 is sent to server
+2015.07.14 09:57:40.743 | → Request to close position PID35214938 is ACCEPTED, order OID52217312 created (14/07/2015 09:57:40.678 UTC+0)
+2015.07.14 09:57:40.978 | → Order OID52217312 is FILLED at 1.10362, position PID35214938 closed (14/07/2015 09:57:40.909 UTC+0)
+2015.07.14 09:57:43.462 | Request to Buy 3.251m EURUSD (Price: 1.10374, SL: 15, MR: 10) is sent to server
+2015.07.14 09:57:43.509 | → Request to Buy 3.251m EURUSD (Price: 1.10374, SL: 15, MR: 10) is ACCEPTED, order OID52217314 created (14/07/2015 09:57:43.471 UTC+0)
+2015.07.14 09:57:43.775 | → Order OID52217314 is FILLED at 1.10372, position PID35214943 (14/07/2015 09:57:43.726 UTC+0)
+2015.07.14 09:57:46.462 | Request to close position PID35214943 is sent to server
+2015.07.14 09:57:46.525 | → Request to close position PID35214943 is ACCEPTED, order OID52217317 created (14/07/2015 09:57:46.486 UTC+0)
+2015.07.14 09:57:46.806 | → Order OID52217317 is FILLED at 1.10362, position PID35214943 closed (14/07/2015 09:57:46.735 UTC+0)
+2015.07.14 09:57:48.509 | Request to Buy 3.249m EURUSD (Price: 1.10372, SL: 15, MR: 10) is sent to server
+2015.07.14 09:57:48.572 | → Request to Buy 3.249m EURUSD (Price: 1.10372, SL: 15, MR: 10) is ACCEPTED, order OID52217320 created (14/07/2015 09:57:48.523 UTC+0)
+2015.07.14 09:57:48.822 | → Order OID52217320 is FILLED at 1.10374, position PID35214945 (14/07/2015 09:57:48.775 UTC+0)
+2015.07.14 09:57:53.759 | Request to close position PID35214945 is sent to server
+2015.07.14 09:57:53.822 | → Request to close position PID35214945 is ACCEPTED, order OID52217323 created (14/07/2015 09:57:53.773 UTC+0)
+2015.07.14 09:57:54.103 | → Order OID52217323 is FILLED at 1.10356, position PID35214945 closed (14/07/2015 09:57:54.040 UTC+0)
+2015.07.14 09:57:55.103 | Request to Buy 3.247m EURUSD (Price: 1.10368, SL: 15, MR: 10) is sent to server
+2015.07.14 09:57:55.150 | → Request to Buy 3.247m EURUSD (Price: 1.10368, SL: 15, MR: 10) is ACCEPTED, order OID52217324 created (14/07/2015 09:57:55.111 UTC+0)
+2015.07.14 09:57:55.384 | → Order OID52217324 is FILLED at 1.10370, position PID35214946 (14/07/2015 09:57:55.328 UTC+0)
+2015.07.14 09:58:02.478 | Request to close position PID35214946 is sent to server
+2015.07.14 09:58:02.540 | → Request to close position PID35214946 is ACCEPTED, order OID52217335 created (14/07/2015 09:58:02.486 UTC+0)
+2015.07.14 09:58:02.775 | → Order OID52217335 is FILLED at 1.10352, position PID35214946 closed (14/07/2015 09:58:02.709 UTC+0)
+2015.07.14 09:58:04.822 | Request to Buy 3.244m EURUSD (Price: 1.10363, SL: 15, MR: 10) is sent to server
+2015.07.14 09:58:04.884 | → Request to Buy 3.244m EURUSD (Price: 1.10363, SL: 15, MR: 10) is ACCEPTED, order OID52217337 created (14/07/2015 09:58:04.846 UTC+0)
+2015.07.14 09:58:05.197 | → Order OID52217337 is FILLED at 1.10365, position PID35214952 (14/07/2015 09:58:05.139 UTC+0)
+2015.07.14 09:58:07.962 | Request to close position PID35214952 is sent to server
+2015.07.14 09:58:08.025 | → Request to close position PID35214952 is ACCEPTED, order OID52217343 created (14/07/2015 09:58:07.982 UTC+0)
+2015.07.14 09:58:08.259 | → Order OID52217343 is FILLED at 1.10347, position PID35214952 closed (14/07/2015 09:58:08.195 UTC+0)
+2015.07.14 09:58:15.194 | Request to Buy 3.241m EURUSD (Price: 1.10349, SL: 15, MR: 10) is sent to server
+2015.07.14 09:58:15.240 | → Request to Buy 3.241m EURUSD (Price: 1.10349, SL: 15, MR: 10) is ACCEPTED, order OID52217355 created (14/07/2015 09:58:15.204 UTC+0)
+2015.07.14 09:58:15.506 | → Order OID52217355 is FILLED at 1.10358, position PID35214962 (14/07/2015 09:58:15.458 UTC+0)
+2015.07.14 09:58:37.443 | Request to close position PID35214962 is sent to server
+2015.07.14 09:58:37.490 | → Request to close position PID35214962 is ACCEPTED, order OID52217363 created (14/07/2015 09:58:37.469 UTC+0)
+2015.07.14 09:58:37.740 | → Order OID52217363 is FILLED at 1.10365, position PID35214962 closed (14/07/2015 09:58:37.693 UTC+0)
+2015.07.14 09:58:47.222 | Request to Buy 3.241m EURUSD (Price: 1.10359, SL: 15, MR: 10) is sent to server
+2015.07.14 09:58:47.300 | → Request to Buy 3.241m EURUSD (Price: 1.10359, SL: 15, MR: 10) is ACCEPTED, order OID52217370 created (14/07/2015 09:58:47.249 UTC+0)
+2015.07.14 09:58:47.566 | → Order OID52217370 is FILLED at 1.10360, position PID35214968 (14/07/2015 09:58:47.501 UTC+0)
+2015.07.14 09:58:56.894 | Request to close position PID35214968 is sent to server
+2015.07.14 09:58:56.956 | → Request to close position PID35214968 is ACCEPTED, order OID52217377 created (14/07/2015 09:58:56.911 UTC+0)
+2015.07.14 09:58:57.253 | → Order OID52217377 is FILLED at 1.10354, position PID35214968 closed (14/07/2015 09:58:57.187 UTC+0)
+2015.07.14 09:59:01.316 | Request to Buy 3.239m EURUSD (Price: 1.10357, SL: 15, MR: 10) is sent to server
+2015.07.14 09:59:01.378 | → Request to Buy 3.239m EURUSD (Price: 1.10357, SL: 15, MR: 10) is ACCEPTED, order OID52217382 created (14/07/2015 09:59:01.332 UTC+0)
+2015.07.14 09:59:01.612 | → Order OID52217382 is FILLED at 1.10360, position PID35214974 (14/07/2015 09:59:01.558 UTC+0)
+2015.07.14 09:59:04.691 | Request to close position PID35214974 is sent to server
+2015.07.14 09:59:04.753 | → Request to close position PID35214974 is ACCEPTED, order OID52217387 created (14/07/2015 09:59:04.712 UTC+0)
+2015.07.14 09:59:04.987 | → Order OID52217387 is FILLED at 1.10342, position PID35214974 closed (14/07/2015 09:59:04.924 UTC+0)
+2015.07.14 09:59:05.987 | Request to Buy 3.236m EURUSD (Price: 1.10357, SL: 15, MR: 10) is sent to server
+2015.07.14 09:59:06.050 | → Request to Buy 3.236m EURUSD (Price: 1.10357, SL: 15, MR: 10) is ACCEPTED, order OID52217408 created (14/07/2015 09:59:06.014 UTC+0)
+2015.07.14 09:59:06.362 | → Order OID52217408 is FILLED at 1.10357, position PID35214977 (14/07/2015 09:59:06.294 UTC+0)
+2015.07.14 09:59:07.050 | Request to close position PID35214977 is sent to server
+2015.07.14 09:59:07.112 | → Request to close position PID35214977 is ACCEPTED, order OID52217411 created (14/07/2015 09:59:07.067 UTC+0)
+2015.07.14 09:59:07.425 | → Order OID52217411 is FILLED at 1.10342, position PID35214977 closed (14/07/2015 09:59:07.354 UTC+0)
+2015.07.14 09:59:08.862 | Request to Buy 3.234m EURUSD (Price: 1.10353, SL: 15, MR: 10) is sent to server
+2015.07.14 09:59:08.941 | → Request to Buy 3.234m EURUSD (Price: 1.10353, SL: 15, MR: 10) is ACCEPTED, order OID52217412 created (14/07/2015 09:59:08.891 UTC+0)
+2015.07.14 09:59:09.206 | → Order OID52217412 is FILLED at 1.10355, position PID35214979 (14/07/2015 09:59:09.144 UTC+0)
+2015.07.14 09:59:09.956 | Request to close position PID35214979 is sent to server
+2015.07.14 09:59:10.019 | → Request to close position PID35214979 is ACCEPTED, order OID52217415 created (14/07/2015 09:59:09.970 UTC+0)
+2015.07.14 09:59:10.253 | → Order OID52217415 is FILLED at 1.10336, position PID35214979 closed (14/07/2015 09:59:10.194 UTC+0)
+2015.07.14 09:59:21.019 | Request to Buy 3.231m EURUSD (Price: 1.10342, SL: 15, MR: 10) is sent to server
+2015.07.14 09:59:21.081 | → Request to Buy 3.231m EURUSD (Price: 1.10342, SL: 15, MR: 10) is ACCEPTED, order OID52217428 created (14/07/2015 09:59:21.039 UTC+0)
+2015.07.14 09:59:21.347 | → Order OID52217428 is FILLED at 1.10343, position PID35214983 (14/07/2015 09:59:21.287 UTC+0)
+2015.07.14 09:59:33.191 | Request to close position PID35214983 is sent to server
+2015.07.14 09:59:33.237 | → Request to close position PID35214983 is ACCEPTED, order OID52217437 created (14/07/2015 09:59:33.202 UTC+0)
+2015.07.14 09:59:33.550 | → Order OID52217437 is FILLED at 1.10344, position PID35214983 closed (14/07/2015 09:59:33.479 UTC+0)
+2015.07.14 09:59:34.800 | Request to Buy 3.23m EURUSD (Price: 1.10356, SL: 15, MR: 10) is sent to server
+2015.07.14 09:59:34.862 | → Request to Buy 3.23m EURUSD (Price: 1.10356, SL: 15, MR: 10) is ACCEPTED, order OID52217440 created (14/07/2015 09:59:34.821 UTC+0)
+2015.07.14 09:59:35.144 | → Order OID52217440 is FILLED at 1.10359, position PID35214988 (14/07/2015 09:59:35.092 UTC+0)
+2015.07.14 09:59:48.362 | Request to close position PID35214988 is sent to server
+2015.07.14 09:59:48.441 | → Request to close position PID35214988 is ACCEPTED, order OID52217449 created (14/07/2015 09:59:48.377 UTC+0)
+2015.07.14 09:59:48.706 | → Order OID52217449 is FILLED at 1.10342, position PID35214988 closed (14/07/2015 09:59:48.633 UTC+0)
+2015.07.14 09:59:51.691 | Request to Buy 3.228m EURUSD (Price: 1.10358, SL: 15, MR: 10) is sent to server
+2015.07.14 09:59:51.753 | → Request to Buy 3.228m EURUSD (Price: 1.10358, SL: 15, MR: 10) is ACCEPTED, order OID52217450 created (14/07/2015 09:59:51.714 UTC+0)
+2015.07.14 09:59:52.050 | → Order OID52217450 is FILLED at 1.10357, position PID35214992 (14/07/2015 09:59:51.987 UTC+0)
+2015.07.14 09:59:54.909 | Request to close position PID35214992 is sent to server
+2015.07.14 09:59:54.972 | → Request to close position PID35214992 is ACCEPTED, order OID52217454 created (14/07/2015 09:59:54.930 UTC+0)
+2015.07.14 09:59:55.269 | → Order OID52217454 is FILLED at 1.10342, position PID35214992 closed (14/07/2015 09:59:55.211 UTC+0)
+2015.07.14 10:00:28.467 | Request to Buy 3.226m EURUSD (Price: 1.10393, SL: 15, MR: 10) is sent to server
+2015.07.14 10:00:28.545 | → Request to Buy 3.226m EURUSD (Price: 1.10393, SL: 15, MR: 10) is ACCEPTED, order OID52217490 created (14/07/2015 10:00:28.493 UTC+0)
+2015.07.14 10:00:28.826 | → Order OID52217490 is FILLED at 1.10394, position PID35215011 (14/07/2015 10:00:28.771 UTC+0)
+2015.07.14 10:00:50.795 | Request to close position PID35215011 is sent to server
+2015.07.14 10:00:50.857 | → Request to close position PID35215011 is ACCEPTED, order OID52217499 created (14/07/2015 10:00:50.822 UTC+0)
+2015.07.14 10:00:51.123 | → Order OID52217499 is FILLED at 1.10354, position PID35215011 closed (14/07/2015 10:00:51.058 UTC+0)
+2015.07.14 10:01:18.951 | Request to Buy 3.221m EURUSD (Price: 1.10384, SL: 15, MR: 10) is sent to server
+2015.07.14 10:01:19.014 | → Request to Buy 3.221m EURUSD (Price: 1.10384, SL: 15, MR: 10) is ACCEPTED, order OID52217509 created (14/07/2015 10:01:18.965 UTC+0)
+2015.07.14 10:01:19.311 | → Order OID52217509 is FILLED at 1.10384, position PID35215022 (14/07/2015 10:01:19.248 UTC+0)
+2015.07.14 10:01:40.951 | Request to close position PID35215022 is sent to server
+2015.07.14 10:01:41.014 | → Request to close position PID35215022 is ACCEPTED, order OID52217526 created (14/07/2015 10:01:40.962 UTC+0)
+2015.07.14 10:01:41.264 | → Order OID52217526 is FILLED at 1.10363, position PID35215022 closed (14/07/2015 10:01:41.194 UTC+0)
+2015.07.14 10:08:58.461 | Request to Sell 3.217m EURUSD (Price: 1.10324, SL: 15, MR: 10) is sent to server
+2015.07.14 10:08:58.508 | → Request to Sell 3.217m EURUSD (Price: 1.10324, SL: 15, MR: 10) is ACCEPTED, order OID52217797 created (14/07/2015 10:08:58.473 UTC+0)
+2015.07.14 10:08:58.821 | → Order OID52217797 is FILLED at 1.10323, position PID35215161 (14/07/2015 10:08:58.766 UTC+0)
+2015.07.14 10:09:40.102 | Request to close position PID35215161 is sent to server
+2015.07.14 10:09:40.165 | → Request to close position PID35215161 is ACCEPTED, order OID52217816 created (14/07/2015 10:09:40.125 UTC+0)
+2015.07.14 10:09:40.430 | → Order OID52217816 is FILLED at 1.10338, position PID35215161 closed (14/07/2015 10:09:40.345 UTC+0)
+2015.07.14 10:10:15.057 | Request to Sell 3.214m EURUSD (Price: 1.10318, SL: 15, MR: 10) is sent to server
+2015.07.14 10:10:15.104 | → Request to Sell 3.214m EURUSD (Price: 1.10318, SL: 15, MR: 10) is ACCEPTED, order OID52217835 created (14/07/2015 10:10:15.080 UTC+0)
+2015.07.14 10:10:15.416 | → Order OID52217835 is FILLED at 1.10317, position PID35215180 (14/07/2015 10:10:15.375 UTC+0)
+2015.07.14 10:11:10.537 | Request to close position PID35215180 is sent to server
+2015.07.14 10:11:10.599 | → Request to close position PID35215180 is ACCEPTED, order OID52217854 created (14/07/2015 10:11:10.561 UTC+0)
+2015.07.14 10:11:10.865 | → Order OID52217854 is FILLED at 1.10331, position PID35215180 closed (14/07/2015 10:11:10.786 UTC+0)
+2015.07.14 10:11:52.599 | Request to Sell 3.212m EURUSD (Price: 1.10317, SL: 15, MR: 10) is sent to server
+2015.07.14 10:11:52.662 | → Request to Sell 3.212m EURUSD (Price: 1.10317, SL: 15, MR: 10) is ACCEPTED, order OID52217872 created (14/07/2015 10:11:52.616 UTC+0)
+2015.07.14 10:11:52.912 | → Order OID52217872 is FILLED at 1.10316, position PID35215202 (14/07/2015 10:11:52.849 UTC+0)
+2015.07.14 10:12:46.359 | Request to close position PID35215202 is sent to server
+2015.07.14 10:12:46.406 | → Request to close position PID35215202 is ACCEPTED, order OID52217901 created (14/07/2015 10:12:46.370 UTC+0)
+2015.07.14 10:12:46.718 | → Order OID52217901 is FILLED at 1.10353, position PID35215202 closed (14/07/2015 10:12:46.644 UTC+0)
+2015.07.14 10:18:12.914 | Request to Sell 3.207m EURUSD (Price: 1.10276, SL: 15, MR: 10) is sent to server
+2015.07.14 10:18:12.971 | Déconnecté (La connexion a échoué)
+2015.07.14 10:19:23.020 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.14 10:20:41.682 | Request to Sell 3.206m EURUSD (Price: 1.10288, SL: 15, MR: 10) is sent to server
+2015.07.14 10:20:41.745 | → Request to Sell 3.206m EURUSD (Price: 1.10288, SL: 15, MR: 10) is ACCEPTED, order OID52218154 created (14/07/2015 10:20:41.712 UTC+0)
+2015.07.14 10:20:42.057 | → Order OID52218154 is FILLED at 1.10305, position PID35215340 (14/07/2015 10:20:42.017 UTC+0)
+2015.07.14 10:22:07.620 | Request to close position PID35215340 is sent to server
+2015.07.14 10:22:07.663 | Déconnecté (La connexion a échoué)
+2015.07.14 10:22:07.666 | → Failed to close position PID35215340 with error "DÉCONNECTÉ"
+2015.07.14 10:22:07.667 | → Failed to close position PID35215340
+2015.07.14 10:22:09.045 | Connecté. Compte : 9748530 (demo). Proxy: Lille-3
+2015.07.14 10:23:39.197 | Request to close position PID35215340 is sent to server
+2015.07.14 10:23:39.259 | → Request to close position PID35215340 is ACCEPTED, order OID52218224 created (14/07/2015 10:23:39.228 UTC+0)
+2015.07.14 10:23:39.494 | → Order OID52218224 is FILLED at 1.10326, position PID35215340 closed (14/07/2015 10:23:39.447 UTC+0)
+2015.07.14 10:24:42.053 | Request to Sell 3.204m EURUSD (Price: 1.10294, SL: 15, MR: 10) is sent to server
+2015.07.14 10:24:42.116 | → Request to Sell 3.204m EURUSD (Price: 1.10294, SL: 15, MR: 10) is ACCEPTED, order OID52218247 created (14/07/2015 10:24:42.079 UTC+0)
+2015.07.14 10:24:42.366 | → Order OID52218247 is FILLED at 1.10293, position PID35215385 (14/07/2015 10:24:42.314 UTC+0)
+2015.07.14 10:25:36.444 | Request to close position PID35215385 is sent to server
+2015.07.14 10:25:36.506 | → Request to close position PID35215385 is ACCEPTED, order OID52218271 created (14/07/2015 10:25:36.471 UTC+0)
+2015.07.14 10:25:36.787 | → Order OID52218271 is FILLED at 1.10319, position PID35215385 closed (14/07/2015 10:25:36.729 UTC+0)
+2015.07.14 10:26:34.655 | Request to Sell 3.201m EURUSD (Price: 1.10303, SL: 15, MR: 10) is sent to server
+2015.07.14 10:26:34.734 | → Request to Sell 3.201m EURUSD (Price: 1.10303, SL: 15, MR: 10) is ACCEPTED, order OID52218289 created (14/07/2015 10:26:34.694 UTC+0)
+2015.07.14 10:26:35.015 | → Order OID52218289 is FILLED at 1.10302, position PID35215407 (14/07/2015 10:26:34.971 UTC+0)
+2015.07.14 10:27:32.015 | Request to Sell 3.733m EURUSD (Price: 1.10270, SL: 15, MR: 10) is sent to server
+2015.07.14 10:27:32.077 | → Request to Sell 3.733m EURUSD (Price: 1.10270, SL: 15, MR: 10) is ACCEPTED, order OID52218318 created (14/07/2015 10:27:32.040 UTC+0)
+2015.07.14 10:27:32.374 | → Order OID52218318 is FILLED at 1.10268, position PID35215422 (14/07/2015 10:27:32.324 UTC+0)
+2015.07.14 10:29:58.121 | Request to close position PID35215407 is sent to server
+2015.07.14 10:29:58.121 | Request to close position PID35215422 is sent to server
+2015.07.14 10:29:58.184 | → Request to close position PID35215407 is ACCEPTED, order OID52218366 created (14/07/2015 10:29:58.154 UTC+0)
+2015.07.14 10:29:58.246 | → Request to close position PID35215422 is ACCEPTED, order OID52218367 created (14/07/2015 10:29:58.213 UTC+0)
+2015.07.14 10:29:58.465 | → Order OID52218366 is FILLED at 1.10329, position PID35215407 closed (14/07/2015 10:29:58.368 UTC+0)
+2015.07.14 10:29:58.606 | → Order OID52218367 is FILLED at 1.10328, position PID35215422 closed (14/07/2015 10:29:58.511 UTC+0)
+2015.07.14 10:30:10.043 | Request to Buy 3.191m EURUSD (Price: 1.10343, SL: 15, MR: 10) is sent to server
+2015.07.14 10:30:10.106 | → Request to Buy 3.191m EURUSD (Price: 1.10343, SL: 15, MR: 10) is ACCEPTED, order OID52218371 created (14/07/2015 10:30:10.077 UTC+0)
+2015.07.14 10:30:10.418 | → Order OID52218371 is FILLED at 1.10342, position PID35215443 (14/07/2015 10:30:10.376 UTC+0)
+2015.07.14 10:32:33.046 | Request to Buy 3.724m EURUSD (Price: 1.10377, SL: 15, MR: 10) is sent to server
+2015.07.14 10:32:33.108 | → Request to Buy 3.724m EURUSD (Price: 1.10377, SL: 15, MR: 10) is ACCEPTED, order OID52218496 created (14/07/2015 10:32:33.075 UTC+0)
+2015.07.14 10:32:33.421 | → Order OID52218496 is FILLED at 1.10379, position PID35215487 (14/07/2015 10:32:33.372 UTC+0)
+2015.07.14 10:35:23.682 | Request to amend position PID35215443 (SL: 1.10344) is sent to server
+2015.07.14 10:35:23.760 | → Request to amend position PID35215443 (SL: 1.10344) is ACCEPTED
+2015.07.14 10:37:15.472 | → Order OID52218372 is FILLED at 1.10342, position PID35215443 closed (14/07/2015 10:37:15.388 UTC+0)
+2015.07.14 10:38:28.288 | Request to close position PID35215487 is sent to server
+2015.07.14 10:38:28.366 | → Request to close position PID35215487 is ACCEPTED, order OID52218671 created (14/07/2015 10:38:28.323 UTC+0)
+2015.07.14 10:38:28.694 | → Order OID52218671 is FILLED at 1.10326, position PID35215487 closed (14/07/2015 10:38:28.608 UTC+0)
+2015.07.14 10:39:18.393 | Request to Buy 3.183m EURUSD (Price: 1.10355, SL: 15, MR: 10) is sent to server
+2015.07.14 10:39:18.456 | → Request to Buy 3.183m EURUSD (Price: 1.10355, SL: 15, MR: 10) is ACCEPTED, order OID52218681 created (14/07/2015 10:39:18.422 UTC+0)
+2015.07.14 10:39:18.721 | → Order OID52218681 is FILLED at 1.10357, position PID35215584 (14/07/2015 10:39:18.663 UTC+0)
+2015.07.14 10:43:37.256 | Request to close position PID35215584 is sent to server
+2015.07.14 10:43:37.319 | → Request to close position PID35215584 is ACCEPTED, order OID52218774 created (14/07/2015 10:43:37.293 UTC+0)
+2015.07.14 10:43:37.647 | → Order OID52218774 is FILLED at 1.10264, position PID35215584 closed (14/07/2015 10:43:37.575 UTC+0)
+2015.07.14 10:43:44.084 | Request to Sell 3.171m EURUSD (Price: 1.10264, SL: 15, MR: 10) is sent to server
+2015.07.14 10:43:44.162 | → Request to Sell 3.171m EURUSD (Price: 1.10264, SL: 15, MR: 10) is ACCEPTED, order OID52218780 created (14/07/2015 10:43:44.137 UTC+0)
+2015.07.14 10:43:44.397 | → Order OID52218780 is FILLED at 1.10262, position PID35215626 (14/07/2015 10:43:44.362 UTC+0)
+2015.07.14 10:44:55.314 | Request to Sell 3.698m EURUSD (Price: 1.10240, SL: 15, MR: 10) is sent to server
+2015.07.14 10:44:55.376 | → Request to Sell 3.698m EURUSD (Price: 1.10240, SL: 15, MR: 10) is ACCEPTED, order OID52218827 created (14/07/2015 10:44:55.353 UTC+0)
+2015.07.14 10:44:55.673 | → Order OID52218827 is FILLED at 1.10239, position PID35215654 (14/07/2015 10:44:55.629 UTC+0)
+2015.07.14 10:45:07.642 | Request to close position PID35215626 is sent to server
+2015.07.14 10:45:07.720 | → Request to close position PID35215626 is ACCEPTED, order OID52218838 created (14/07/2015 10:45:07.689 UTC+0)
+2015.07.14 10:45:08.064 | → Order OID52218838 is FILLED at 1.10251, position PID35215626 closed (14/07/2015 10:45:07.993 UTC+0)
+2015.07.14 10:45:08.079 | Request to close position PID35215654 is sent to server
+2015.07.14 10:45:08.142 | → Request to close position PID35215654 is ACCEPTED, order OID52218839 created (14/07/2015 10:45:08.116 UTC+0)
+2015.07.14 10:45:08.423 | → Order OID52218839 is FILLED at 1.10252, position PID35215654 closed (14/07/2015 10:45:08.334 UTC+0)
+2015.07.14 10:45:47.243 | Request to Sell 3.168m EURUSD (Price: 1.10238, SL: 15, MR: 10) is sent to server
+2015.07.14 10:45:47.306 | → Request to Sell 3.168m EURUSD (Price: 1.10238, SL: 15, MR: 10) is ACCEPTED, order OID52218855 created (14/07/2015 10:45:47.269 UTC+0)
+2015.07.14 10:45:47.556 | → Order OID52218855 is FILLED at 1.10240, position PID35215670 (14/07/2015 10:45:47.494 UTC+0)
+2015.07.14 10:47:23.298 | Request to Sell 3.695m EURUSD (Price: 1.10213, SL: 15, MR: 10) is sent to server
+2015.07.14 10:47:23.360 | → Request to Sell 3.695m EURUSD (Price: 1.10213, SL: 15, MR: 10) is ACCEPTED, order OID52218908 created (14/07/2015 10:47:23.332 UTC+0)
+2015.07.14 10:47:23.610 | → Order OID52218908 is FILLED at 1.10211, position PID35215698 (14/07/2015 10:47:23.553 UTC+0)
+2015.07.14 10:55:00.616 | Request to amend position PID35215670 (SL: 1.10239) is sent to server
+2015.07.14 10:55:00.678 | → Request to amend position PID35215670 (SL: 1.10239) is ACCEPTED
+2015.07.14 10:55:39.687 | Request to amend position PID35215670 (SL: 1.10237) is sent to server
+2015.07.14 10:55:39.765 | → Request to amend position PID35215670 (SL: 1.10237) is ACCEPTED
+2015.07.14 10:55:39.875 | Request to amend position PID35215670 (SL: 1.10236) is sent to server
+2015.07.14 10:55:40.281 | → Request to amend position PID35215670 (SL: 1.10236) is ACCEPTED
+2015.07.14 10:57:55.434 | Request to amend position PID35215670 (SL: 1.10235) is sent to server
+2015.07.14 10:57:55.497 | → Request to amend position PID35215670 (SL: 1.10235) is ACCEPTED
+2015.07.14 11:00:06.865 | Request to close position PID35215670 is sent to server
+2015.07.14 11:00:07.396 | → Request to close position PID35215670 is ACCEPTED, order OID52219192 created (14/07/2015 11:00:06.885 UTC+0)
+2015.07.14 11:00:07.443 | → Order OID52219192 is FILLED at 1.10245, position PID35215670 closed (14/07/2015 11:00:07.166 UTC+0)
+2015.07.14 11:00:07.443 | Request to close position PID35215698 is sent to server
+2015.07.14 11:00:07.521 | → Request to close position PID35215698 is ACCEPTED, order OID52219194 created (14/07/2015 11:00:07.471 UTC+0)
+2015.07.14 11:00:07.787 | → Order OID52219194 is FILLED at 1.10244, position PID35215698 closed (14/07/2015 11:00:07.700 UTC+0)
+2015.07.14 11:00:31.412 | Request to Buy 3.162m EURUSD (Price: 1.10244, SL: 15, MR: 10) is sent to server
+2015.07.14 11:00:31.474 | → Request to Buy 3.162m EURUSD (Price: 1.10244, SL: 15, MR: 10) is ACCEPTED, order OID52219208 created (14/07/2015 11:00:31.433 UTC+0)
+2015.07.14 11:00:31.708 | → Order OID52219208 is FILLED at 1.10244, position PID35215849 (14/07/2015 11:00:31.642 UTC+0)
+2015.07.14 11:01:32.394 | Request to Buy 3.69m EURUSD (Price: 1.10276, SL: 15, MR: 10) is sent to server
+2015.07.14 11:01:32.519 | → Request to Buy 3.69m EURUSD (Price: 1.10276, SL: 15, MR: 10) is ACCEPTED, order OID52219247 created (14/07/2015 11:01:32.410 UTC+0)
+2015.07.14 11:01:32.910 | → Order OID52219247 is FILLED at 1.10278, position PID35215869 (14/07/2015 11:01:32.644 UTC+0)
+2015.07.14 11:03:21.734 | Request to amend position PID35215849 (SL: 1.10245) is sent to server
+2015.07.14 11:03:21.796 | → Request to amend position PID35215849 (SL: 1.10245) is ACCEPTED
+2015.07.14 11:03:21.921 | Request to amend position PID35215849 (SL: 1.10248) is sent to server
+2015.07.14 11:03:22.343 | → Request to amend position PID35215849 (SL: 1.10248) is ACCEPTED
+2015.07.14 11:03:24.577 | Request to amend position PID35215849 (SL: 1.10249) is sent to server
+2015.07.14 11:03:24.640 | → Request to amend position PID35215849 (SL: 1.10249) is ACCEPTED
+2015.07.14 11:03:46.156 | Request to amend position PID35215849 (SL: 1.10250) is sent to server
+2015.07.14 11:03:46.218 | → Request to amend position PID35215849 (SL: 1.10250) is ACCEPTED
+2015.07.14 11:03:48.749 | Request to amend position PID35215849 (SL: 1.10252) is sent to server
+2015.07.14 11:03:48.827 | → Request to amend position PID35215849 (SL: 1.10252) is ACCEPTED
+2015.07.14 11:03:49.077 | Request to amend position PID35215849 (SL: 1.10253) is sent to server
+2015.07.14 11:03:49.140 | → Request to amend position PID35215849 (SL: 1.10253) is ACCEPTED
+2015.07.14 11:03:49.202 | Request to amend position PID35215849 (SL: 1.10255) is sent to server
+2015.07.14 11:03:49.296 | → Request to amend position PID35215849 (SL: 1.10255) is ACCEPTED
+2015.07.14 11:04:08.265 | Request to amend position PID35215849 (SL: 1.10258) is sent to server
+2015.07.14 11:04:08.343 | → Request to amend position PID35215849 (SL: 1.10258) is ACCEPTED
+2015.07.14 11:06:01.055 | Request to amend position PID35215849 (SL: 1.10263) is sent to server
+2015.07.14 11:06:01.133 | → Request to amend position PID35215849 (SL: 1.10263) is ACCEPTED
+2015.07.14 11:06:01.680 | Request to amend position PID35215849 (SL: 1.10264) is sent to server
+2015.07.14 11:06:01.758 | → Request to amend position PID35215849 (SL: 1.10264) is ACCEPTED
+2015.07.14 11:06:25.961 | → Order OID52219209 is FILLED at 1.10261, position PID35215849 closed (14/07/2015 11:06:25.880 UTC+0)
+2015.07.14 11:07:39.926 | Request to Buy 3.516m EURUSD (Price: 1.10298, SL: 15, MR: 10) is sent to server
+2015.07.14 11:07:40.004 | → Request to Buy 3.516m EURUSD (Price: 1.10298, SL: 15, MR: 10) is ACCEPTED, order OID52219423 created (14/07/2015 11:07:39.948 UTC+0)
+2015.07.14 11:07:40.082 | → Order OID52219423 is FILLED at 1.10300, position PID35215959 (14/07/2015 11:07:40.182 UTC+0)
+2015.07.14 11:11:59.148 | Request to close position PID35215869 is sent to server
+2015.07.14 11:11:59.304 | → Request to close position PID35215869 is ACCEPTED, order OID52219510 created (14/07/2015 11:11:59.165 UTC+0)
+2015.07.14 11:11:59.304 | → Order OID52219510 is FILLED at 1.10212, position PID35215869 closed (14/07/2015 11:11:59.465 UTC+0)
+2015.07.14 11:11:59.304 | Request to close position PID35215959 is sent to server
+2015.07.14 11:11:59.742 | → Request to close position PID35215959 is ACCEPTED, order OID52219511 created (14/07/2015 11:11:59.693 UTC+0)
+2015.07.14 11:12:00.179 | → Order OID52219511 is FILLED at 1.10204, position PID35215959 closed (14/07/2015 11:11:59.995 UTC+0)
+2015.07.14 11:12:50.239 | Request to Sell 3.142m EURUSD (Price: 1.10209, SL: 15, MR: 10) is sent to server
+2015.07.14 11:12:50.317 | → Request to Sell 3.142m EURUSD (Price: 1.10209, SL: 15, MR: 10) is ACCEPTED, order OID52219541 created (14/07/2015 11:12:50.262 UTC+0)
+2015.07.14 11:12:50.598 | → Order OID52219541 is FILLED at 1.10208, position PID35216024 (14/07/2015 11:12:50.546 UTC+0)
+2015.07.14 11:13:52.755 | Request to close position PID35216024 is sent to server
+2015.07.14 11:13:52.911 | → Request to close position PID35216024 is ACCEPTED, order OID52219555 created (14/07/2015 11:13:52.784 UTC+0)
+2015.07.14 11:13:52.911 | → Order OID52219555 is FILLED at 1.10242, position PID35216024 closed (14/07/2015 11:13:53.008 UTC+0)
+2015.07.14 11:14:21.114 | Request to Buy 3.14m EURUSD (Price: 1.10269, SL: 15, MR: 10) is sent to server
+2015.07.14 11:14:21.176 | → Request to Buy 3.14m EURUSD (Price: 1.10269, SL: 15, MR: 10) is ACCEPTED, order OID52219575 created (14/07/2015 11:14:21.135 UTC+0)
+2015.07.14 11:14:21.473 | → Order OID52219575 is FILLED at 1.10275, position PID35216039 (14/07/2015 11:14:21.409 UTC+0)
+2015.07.14 11:15:58.519 | Request to close position PID35216039 is sent to server
+2015.07.14 11:15:59.066 | → Request to close position PID35216039 is ACCEPTED, order OID52219637 created (14/07/2015 11:15:58.545 UTC+0)
+2015.07.14 11:15:59.097 | → Order OID52219637 is FILLED at 1.10298, position PID35216039 closed (14/07/2015 11:15:58.828 UTC+0)
+2015.07.14 11:20:04.511 | Request to Buy 3.141m EURUSD (Price: 1.10283, SL: 15, MR: 10) is sent to server
+2015.07.14 11:20:04.573 | → Request to Buy 3.141m EURUSD (Price: 1.10283, SL: 15, MR: 10) is ACCEPTED, order OID52219929 created (14/07/2015 11:20:04.548 UTC+0)
+2015.07.14 11:20:04.901 | → Order OID52219929 is FILLED at 1.10284, position PID35216334 (14/07/2015 11:20:04.833 UTC+0)
+2015.07.14 11:25:00.109 | Request to close position PID35216334 is sent to server
+2015.07.14 11:25:00.187 | → Request to close position PID35216334 is ACCEPTED, order OID52220083 created (14/07/2015 11:25:00.135 UTC+0)
+2015.07.14 11:25:00.672 | → Order OID52220083 is FILLED at 1.10211, position PID35216334 closed (14/07/2015 11:25:00.436 UTC+0)
+2015.07.14 11:30:00.453 | Request to Buy 3.133m EURUSD (Price: 1.10263, SL: 15, MR: 10) is sent to server
+2015.07.14 11:30:00.531 | → Request to Buy 3.133m EURUSD (Price: 1.10263, SL: 15, MR: 10) is ACCEPTED, order OID52220158 created (14/07/2015 11:30:00.487 UTC+0)
+2015.07.14 11:30:00.984 | → Order OID52220158 is FILLED at 1.10263, position PID35216453 (14/07/2015 11:30:00.742 UTC+0)
+2015.07.14 11:50:01.407 | Request to Buy 3.656m EURUSD (Price: 1.10286, SL: 15, MR: 10) is sent to server
+2015.07.14 11:50:01.485 | → Request to Buy 3.656m EURUSD (Price: 1.10286, SL: 15, MR: 10) is ACCEPTED, order OID52220536 created (14/07/2015 11:50:01.437 UTC+0)
+2015.07.14 11:50:01.578 | → Order OID52220536 is FILLED at 1.10287, position PID35216633 (14/07/2015 11:50:01.668 UTC+0)
+2015.07.14 11:58:48.285 | → Order OID52220633 is FILLED at 1.10281, position PID35216453 closed (14/07/2015 11:58:48.193 UTC+0)
+2015.07.14 11:59:17.083 | → Order OID52220639 is FILLED at 1.10282, position PID35216633 closed (14/07/2015 11:59:16.972 UTC+0)
+2015.07.14 12:06:33.520 | Déconnecté (Connextion lente)
+2015.07.14 12:06:35.017 | Connecté. Compte : 9748530 (demo). Proxy: Lille-1
+2015.07.14 13:20:00.524 | → Order OID52224917 is FILLED at 1.10614, position PID35218481 closed (14/07/2015 13:20:00.425 UTC+0)
+2015.07.14 13:40:51.696 | Déconnecté (Manuellement)

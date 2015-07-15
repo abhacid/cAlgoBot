@@ -41,11 +41,13 @@ using cAlgo.API;
 using cAlgo.API.Internals;
 using cAlgo.API.Indicators;
 using cAlgo.Indicators;
+using cAlgo.Lib;
 
 namespace cAlgo
 {
 
     [Indicator(IsOverlay = false, TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
+	[Levels (-0.67, 0, 0.67)]
     public class CandlestickTendencyII : Indicator
     {
         #region Indicator Parameters
@@ -61,6 +63,9 @@ namespace cAlgo
         [Output("LocalTrendSignal", PlotType =PlotType.Line, Color = Colors.Green)]
         public IndicatorDataSeries LocalTrendSignal { get; set; }
 
+        [Output("LocalMA", PlotType =PlotType.Line, Color = Colors.Blue, Thickness=2)]
+        public IndicatorDataSeries LocalMA { get; set; }
+
         #endregion
 
         #region Indicator Variables
@@ -68,12 +73,16 @@ namespace cAlgo
         MarketSeries marketSerieGlobal;
         double localTrendValue = 0;
         double globalTrendValue = 0;
+		MovingAverage _localMA;
         #endregion
-
 
         protected override void Initialize()
         {
             marketSerieGlobal = MarketData.GetSeries(Global);
+			
+			int period = 2 * (int) (Global.ToTimeSpan().Ticks / MarketSeries.TimeFrame.ToTimeSpan().Ticks);
+
+			_localMA = Indicators.MovingAverage(LocalTrendSignal, period, MovingAverageType.Exponential);
 
         }
 
@@ -99,8 +108,6 @@ namespace cAlgo
         public override void Calculate(int index)
         {
 			int globalIndex = GetIndexByDate(marketSerieGlobal, MarketSeries.OpenTime[index]);
-
-			int test = marketSerieGlobal.OpenTime.GetIndexByTime(MarketSeries.OpenTime[index]);
 
             bool isGlobalTrendRising = marketSerieGlobal.Close[globalIndex] > marketSerieGlobal.Open[globalIndex];
 			bool isLocalTrendRising = MarketSeries.Close[index] > MarketSeries.Open[index - 1];
@@ -141,6 +148,7 @@ namespace cAlgo
 
 			LocalTrendSignal[index] = localTrendValue;
 			GlobalTrendSignal[index] = globalTrendValue;
+			LocalMA[index] = 5 * _localMA.Result[index];
         }
     }
 }
