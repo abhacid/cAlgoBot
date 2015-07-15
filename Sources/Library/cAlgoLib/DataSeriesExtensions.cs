@@ -22,6 +22,7 @@
 
 
 using System;
+using cAlgo.API.Internals;
 using cAlgo.API;
 
 namespace cAlgo.Lib
@@ -217,6 +218,25 @@ namespace cAlgo.Lib
 		{
 			return ((from >= 0) && (from <= to) &&  (to < dataseries.Count));
 
+		}
+
+		public static double volatility(this DataSeries dataseries, int period)
+		{
+			double maximum = dataseries.Maximum(period);
+			double minimum = dataseries.Minimum(period);
+
+			return (maximum - minimum);
+		}
+		/// <summary>
+		/// dispersion of a DataSeries in Pips
+		/// </summary>
+		/// <param name="marketSeries"></param>
+		/// <param name="period"></param>
+		/// <param name="symbol"></param>
+		/// <returns></returns>
+		public static double volatilityInPips(this DataSeries dataseries, int period, Symbol symbol)
+		{
+			return dataseries.volatility(period) / symbol.PipSize;
 		}
 
 	}

@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERIndicator", "Sources\Indi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cAlgo.Lib", "Sources\Library\cAlgoLib\cAlgo.Lib.csproj", "{D3E50B06-5578-42A2-ADDD-42F25D5A1F4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQ4Lib", "Sources\Library\MQ4Lib\MQ4Lib.csproj", "{747044E7-4E4B-458B-94C3-3B8A9797B1A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cAlgo.MQ4", "Sources\Library\MQ4Lib\cAlgo.MQ4.csproj", "{747044E7-4E4B-458B-94C3-3B8A9797B1A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Argunes", "Sources\Robots\Argunes\Argunes\Argunes.csproj", "{4A7CA5EC-66E1-4CB5-860B-05DACAEF9DBB}"
 EndProject
