@@ -52,11 +52,11 @@ namespace cAlgo.Lib
 		/// </summary>
 		/// <param name="robot">instance of the current robot</param>
 		/// <param name="risk">le pourcentage de risque (perte) maximun accepté</param>
-		/// <param name="stopLossPips">Le stop Loss en PIPS nécessaire à la position à prendre</param>
+		/// <param name="stopLoss">Le stop Loss en PIPS nécessaire à la position à prendre</param>
 		/// <returns></returns>
-		public static double moneyManagement(this Robot robot, double risk, double stopLossPips)
+		public static double moneyManagement(this Robot robot, double risk, double? stopLoss, bool isPips)
 		{
-			if (stopLossPips <=0)
+			if (!(stopLoss.HasValue) || stopLoss.Value <=0)
 				return 0;
 			else
 			{
@@ -64,7 +64,7 @@ namespace cAlgo.Lib
 				double moneyToInvestInDepositCurrency = (robot.Account.Balance * risk / 100.0);
 
 				double moneyToInvestInQuoteCurrency = (moneyToInvestInDepositCurrency * robot.Symbol.Mid()) - actualMaximumLossInQuoteCurrency;
-				double volumeToInvestInQuoteCurrency = moneyToInvestInQuoteCurrency / (stopLossPips * robot.Symbol.PipSize);
+				double volumeToInvestInQuoteCurrency = moneyToInvestInQuoteCurrency / (stopLoss.Value * (isPips ? robot.Symbol.PipSize : 1));
 
 				return Math.Max(0,volumeToInvestInQuoteCurrency);
 			}

@@ -248,6 +248,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Articles", "Articles", "{15E872E3-EF4B-44E2-A0C8-11700D2BF01D}"
+	ProjectSection(SolutionItems) = preProject
+		Articles\1_VDP1.jpg = Articles\1_VDP1.jpg
+		Articles\1_VDP2.jpg = Articles\1_VDP2.jpg
+		Articles\Les arnaques, fraudes ou escroqueries les plus fréquentes.txt = Articles\Les arnaques, fraudes ou escroqueries les plus fréquentes.txt
+		Articles\the indelicate broker.txt = Articles\the indelicate broker.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositionManager", "Sources\Robots\PositionManager\PositionManager\PositionManager.csproj", "{165C21CA-DBEA-426A-B635-5F9B4C5842FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTimeFrameZigZag", "Sources\Indicators\MultiTimeFrameZigZag\MultiTimeFrameZigZag\MultiTimeFrameZigZag.csproj", "{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1704,6 +1716,34 @@ Global
 		{FD079579-91CB-4E79-88D7-B4916B1796D9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FD079579-91CB-4E79-88D7-B4916B1796D9}.Release|Win32.ActiveCfg = Release|Any CPU
 		{FD079579-91CB-4E79-88D7-B4916B1796D9}.Release|x64.ActiveCfg = Release|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Release|ARM.ActiveCfg = Release|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Release|Win32.ActiveCfg = Release|Any CPU
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF}.Release|x64.ActiveCfg = Release|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Release|ARM.ActiveCfg = Release|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Release|Win32.ActiveCfg = Release|Any CPU
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1824,5 +1864,7 @@ Global
 		{DA5F76DF-DC26-4146-8FB0-4E6AF3C12BA6} = {38B7503B-832C-4940-9D54-126BF6A372A3}
 		{77280A96-1D78-496A-A966-3C9893C6E4AC} = {03A3DCEA-BFB9-4A9F-95C2-DB7DE6A3140D}
 		{FD079579-91CB-4E79-88D7-B4916B1796D9} = {78A6C10E-CA96-400B-8A99-D1691EF6473C}
+		{165C21CA-DBEA-426A-B635-5F9B4C5842FF} = {A56ACC89-1087-4515-A274-3FCC3529CD5C}
+		{EB9E4A67-659B-4DB8-89AD-0703ABD2E494} = {03A3DCEA-BFB9-4A9F-95C2-DB7DE6A3140D}
 	EndGlobalSection
 EndGlobal

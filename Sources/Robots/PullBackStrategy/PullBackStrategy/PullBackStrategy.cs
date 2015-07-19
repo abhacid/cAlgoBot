@@ -17,27 +17,27 @@ namespace cAlgo.Robots
     public class PullBackStrategy : Robot
     {
 
-        [Parameter("StopLoss", DefaultValue = 50)]
+        [Parameter("StopLoss", DefaultValue = 0)]
         public double _StopLoss { get; set; }
-        [Parameter("Max_Open_Trade", DefaultValue = 1)]
-        public double _Max_Open_Trade { get; set; }
-        [Parameter("Slow_SMA", DefaultValue = 200)]
-        public double _Slow_SMA { get; set; }
-        [Parameter("Max_freq_Mins", DefaultValue = 0)]
-        public double _Max_freq_Mins { get; set; }
-        [Parameter("Open_Lot", DefaultValue = 0.2)]
-        public double _Open_Lot { get; set; }
-        [Parameter("RSI_Period", DefaultValue = 3)]
-        public double _RSI_Period { get; set; }
         [Parameter("Fast_SMA", DefaultValue = 5)]
         public double _Fast_SMA { get; set; }
+        [Parameter("Slow_SMA", DefaultValue = 200)]
+        public double _Slow_SMA { get; set; }
+        [Parameter("Max_Open_Trade", DefaultValue = 1)]
+        public double _Max_Open_Trade { get; set; }
+        [Parameter("Open_Lot", DefaultValue = 0.1)]
+        public double _Open_Lot { get; set; }
+        [Parameter("RSI_Period", DefaultValue = 2)]
+        public double _RSI_Period { get; set; }
+        [Parameter("Max_freq_Mins", DefaultValue = 0)]
+        public double _Max_freq_Mins { get; set; }
 
         //Global declaration
-        private RelativeStrengthIndex i_Relative_Strength_Index;
         private SimpleMovingAverage i_Moving_Average_200MA;
+        private RelativeStrengthIndex i_Relative_Strength_Index;
         private SimpleMovingAverage i_Moving_Average_5MA;
-        double _Relative_Strength_Index;
         double _Moving_Average_200MA;
+        double _Relative_Strength_Index;
         double _Moving_Average_5MA;
         bool _Compare_7;
         bool _Compare_4;
@@ -48,8 +48,8 @@ namespace cAlgo.Robots
 
         protected override void OnStart()
         {
-            i_Relative_Strength_Index = Indicators.RelativeStrengthIndex(MarketSeries.Close, (int)_RSI_Period);
             i_Moving_Average_200MA = Indicators.SimpleMovingAverage(MarketSeries.Close, (int)_Slow_SMA);
+            i_Relative_Strength_Index = Indicators.RelativeStrengthIndex(MarketSeries.Close, (int)_RSI_Period);
             i_Moving_Average_5MA = Indicators.SimpleMovingAverage(MarketSeries.Close, (int)_Fast_SMA);
 
         }
@@ -62,12 +62,12 @@ namespace cAlgo.Robots
             //Local declaration
             TriState _Close_Position = new TriState();
             TriState _Close_Position_2 = new TriState();
-            TriState _Buy = new TriState();
             TriState _Sell = new TriState();
+            TriState _Buy = new TriState();
 
             //Step 1
-            _Relative_Strength_Index = i_Relative_Strength_Index.Result.Last(0);
             _Moving_Average_200MA = i_Moving_Average_200MA.Result.Last(0);
+            _Relative_Strength_Index = i_Relative_Strength_Index.Result.Last(0);
             _Moving_Average_5MA = i_Moving_Average_5MA.Result.Last(0);
 
             //Step 2
@@ -83,10 +83,10 @@ namespace cAlgo.Robots
                 _Close_Position_2 = _ClosePosition(2, Symbol.Code, 0);
 
             //Step 4
-            if (_AND_2)
-                _Buy = Buy(1, _Open_Lot, 1, _StopLoss, 1, 0, 0, _Max_Open_Trade, _Max_freq_Mins, "");
             if (_AND)
                 _Sell = Sell(2, _Open_Lot, 1, _StopLoss, 1, 0, 0, _Max_Open_Trade, _Max_freq_Mins, "");
+            if (_AND_2)
+                _Buy = Buy(1, _Open_Lot, 1, _StopLoss, 1, 0, 0, _Max_Open_Trade, _Max_freq_Mins, "");
 
         }
 
@@ -475,71 +475,6 @@ namespace cAlgo.Robots
             return 1;
         }
 
-        TriState Buy(double magicIndex, double Lots, int StopLossMethod, double stopLossValue, int TakeProfitMethod, double takeProfitValue, double Slippage, double MaxOpenTrades, double MaxFrequencyMins, string TradeComment)
-        {
-            double? stopLossPips, takeProfitPips;
-            int numberOfOpenTrades = 0;
-            var res = new TriState();
-
-            foreach (Position pos in Positions.FindAll("FxProQuant_" + magicIndex.ToString("F0"), Symbol))
-            {
-                numberOfOpenTrades++;
-            }
-
-            if (MaxOpenTrades > 0 && numberOfOpenTrades >= MaxOpenTrades)
-                return res;
-
-            if (MaxFrequencyMins > 0)
-            {
-                if (((TimeSpan)(Server.Time - LastTradeExecution)).TotalMinutes < MaxFrequencyMins)
-                    return res;
-
-                foreach (Position pos in Positions.FindAll("FxProQuant_" + magicIndex.ToString("F0"), Symbol))
-                {
-                    if (((TimeSpan)(Server.Time - pos.EntryTime)).TotalMinutes < MaxFrequencyMins)
-                        return res;
-                }
-            }
-
-            int pipAdjustment = (int)(Symbol.PipSize / Symbol.TickSize);
-
-            if (stopLossValue > 0)
-            {
-                if (StopLossMethod == 0)
-                    stopLossPips = stopLossValue / pipAdjustment;
-                else if (StopLossMethod == 1)
-                    stopLossPips = stopLossValue;
-                else
-                    stopLossPips = (Symbol.Ask - stopLossValue) / Symbol.PipSize;
-            }
-            else
-                stopLossPips = null;
-
-            if (takeProfitValue > 0)
-            {
-                if (TakeProfitMethod == 0)
-                    takeProfitPips = takeProfitValue / pipAdjustment;
-                else if (TakeProfitMethod == 1)
-                    takeProfitPips = takeProfitValue;
-                else
-                    takeProfitPips = (takeProfitValue - Symbol.Ask) / Symbol.PipSize;
-            }
-            else
-                takeProfitPips = null;
-
-            Slippage /= pipAdjustment;
-            long volume = Symbol.NormalizeVolume(Lots * 100000, RoundingMode.ToNearest);
-
-            if (!ExecuteMarketOrder(TradeType.Buy, Symbol, volume, "FxProQuant_" + magicIndex.ToString("F0"), stopLossPips, takeProfitPips, Slippage, TradeComment).IsSuccessful)
-            {
-                Thread.Sleep(400);
-                return false;
-            }
-            LastTradeExecution = Server.Time;
-            return true;
-        }
-
-
         TriState Sell(double magicIndex, double Lots, int StopLossMethod, double stopLossValue, int TakeProfitMethod, double takeProfitValue, double Slippage, double MaxOpenTrades, double MaxFrequencyMins, string TradeComment)
         {
             double? stopLossPips, takeProfitPips;
@@ -602,6 +537,71 @@ namespace cAlgo.Robots
                 return false;
             }
 
+            LastTradeExecution = Server.Time;
+            return true;
+        }
+
+
+        TriState Buy(double magicIndex, double Lots, int StopLossMethod, double stopLossValue, int TakeProfitMethod, double takeProfitValue, double Slippage, double MaxOpenTrades, double MaxFrequencyMins, string TradeComment)
+        {
+            double? stopLossPips, takeProfitPips;
+            int numberOfOpenTrades = 0;
+            var res = new TriState();
+
+            foreach (Position pos in Positions.FindAll("FxProQuant_" + magicIndex.ToString("F0"), Symbol))
+            {
+                numberOfOpenTrades++;
+            }
+
+            if (MaxOpenTrades > 0 && numberOfOpenTrades >= MaxOpenTrades)
+                return res;
+
+            if (MaxFrequencyMins > 0)
+            {
+                if (((TimeSpan)(Server.Time - LastTradeExecution)).TotalMinutes < MaxFrequencyMins)
+                    return res;
+
+                foreach (Position pos in Positions.FindAll("FxProQuant_" + magicIndex.ToString("F0"), Symbol))
+                {
+                    if (((TimeSpan)(Server.Time - pos.EntryTime)).TotalMinutes < MaxFrequencyMins)
+                        return res;
+                }
+            }
+
+            int pipAdjustment = (int)(Symbol.PipSize / Symbol.TickSize);
+
+            if (stopLossValue > 0)
+            {
+                if (StopLossMethod == 0)
+                    stopLossPips = stopLossValue / pipAdjustment;
+                else if (StopLossMethod == 1)
+                    stopLossPips = stopLossValue;
+                else
+                    stopLossPips = (Symbol.Ask - stopLossValue) / Symbol.PipSize;
+            }
+            else
+                stopLossPips = null;
+
+            if (takeProfitValue > 0)
+            {
+                if (TakeProfitMethod == 0)
+                    takeProfitPips = takeProfitValue / pipAdjustment;
+                else if (TakeProfitMethod == 1)
+                    takeProfitPips = takeProfitValue;
+                else
+                    takeProfitPips = (takeProfitValue - Symbol.Ask) / Symbol.PipSize;
+            }
+            else
+                takeProfitPips = null;
+
+            Slippage /= pipAdjustment;
+            long volume = Symbol.NormalizeVolume(Lots * 100000, RoundingMode.ToNearest);
+
+            if (!ExecuteMarketOrder(TradeType.Buy, Symbol, volume, "FxProQuant_" + magicIndex.ToString("F0"), stopLossPips, takeProfitPips, Slippage, TradeComment).IsSuccessful)
+            {
+                Thread.Sleep(400);
+                return false;
+            }
             LastTradeExecution = Server.Time;
             return true;
         }

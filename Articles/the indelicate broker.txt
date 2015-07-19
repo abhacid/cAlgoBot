@@ -1,0 +1,34 @@
+so to hide your EA from your Broker you must to know how the broker truck ur EA .
+
+The Ea is turned on with the platform on your computer , so How traced by the company, dealing with thousands or tens of thousands of EA at the same time .
+
+The Broker do not know what inside the Expert Adviso you use or what is the code inside it , (This is scientifically impossible because the Expert Advisor works only through the Client Terminal) .
+
+The fact is that Expert Advisor is not only related to Broker only through the three orders ( It orders for opening or closing transactions or change any open order ) 
+
+Other than these three types of commands are run on a platform of the trader and the broker not know any thing about them . ( like line , print on chart , alarets ) .
+
+So the broker only knows the Expert Advisor by this these commands . 
+
+Certainly, the successful Expert Advisor opens many successful deals and also closed them in a successful way . 
+
+When an observer noted the huge success of this EA he well start to monitor such deals to start or stop them or disable them .
+and This is done through monitoring a comment (Comment) folded in such order , ( and it is the comment when the EA send new Deals ) .
+
+This process is called (Comment Tracing)
+
+This means that each deal comes to the server by this comment they will play in it immediately ..
+
+some One may say there is an easier solution is to be canceled informed comment in the property development deals in the Expert Advisor .
+Unfortunately, this solution is useless because the deal will have a default value is Empty-Value , Though the monitoring of transactions in this highly successful value .. Will be rejected and disable all transactions with this value of the Empty-Value from your EA in your account with them .
+
+So what is the solution to this dilemma .. Indeed, the solution is fairly simple idea .. The problem I had already guided to the solution and has already succeeded with me and jumped on this issue
+
+simple i add code to my ea to generation of new random value of informed comment for each new deal is Expert Advisor opened .. Masibtal a tracking process for EA on the broker .. And the broker will stand idly . 
+
+has provided my own Expert Advisor a wardrobe from the letters and words that generates a random combination of them with each new deal by the EA .
+and i call this way the maze .. It succeeded with me already overcome this problem . 
+
+Next I well give you the code you have to but it inside your EA to hide it from your broker succeefully .
+
+Best Regards

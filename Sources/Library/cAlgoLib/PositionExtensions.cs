@@ -301,11 +301,11 @@ namespace cAlgo.Lib
 		/// <param name="position">Used position</param>
 		/// <param name="robot">instance of the current robot</param>
 		/// <param name="trailStart">start of the stoploss movement</param>
-		/// <param name="trailStep">steps stoploss</param>
+		/// <param name="trailStop">steps stoploss</param>
 		/// <param name="trailStopMin">Minimal StopLoss</param>
 		/// <param name="isModifyPosition">change the stoploss position or not ?</param>
 		/// <returns>The new stoploss</returns>
-		public static double? trailStop(this  Position position, Robot robot, double trailStart, double trailStep, bool isModifyPosition=true)
+		public static double? trailStop(this  Position position, Robot robot, double trailStart, double trailStop, bool isModifyPosition=true)
 		{
 			double? newStopLoss = position.StopLoss;	
 			
@@ -314,9 +314,9 @@ namespace cAlgo.Lib
 				double actualPrice = position.isBuy() ? robot.Symbol.Bid : robot.Symbol.Ask;
 				int factor = position.factor();
 
-				if((actualPrice - newStopLoss) * factor > trailStep * robot.Symbol.PipSize)
+				if((actualPrice - newStopLoss) * factor > trailStop * robot.Symbol.PipSize)
 				{
-					newStopLoss += factor * trailStep * robot.Symbol.PipSize;
+					newStopLoss += factor * trailStop * robot.Symbol.PipSize;
 
 					if (isModifyPosition && newStopLoss != position.StopLoss)
 						robot.ModifyPosition(position, newStopLoss, position.TakeProfit.Value);

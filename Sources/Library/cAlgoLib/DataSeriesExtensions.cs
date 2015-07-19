@@ -36,17 +36,17 @@ namespace cAlgo.Lib
 		/// Recherche la valeur d'un élément de dataSeries de valeur différente de NaN
 		/// </summary>
 		/// <param name="dataSeries">La série de donnée utilisée</param>
-		/// <param name="iPos">le nombre-1 de valeurs différentes de NaN se trouvant après la valeur retournée</param>
+		/// <param name="shift">le nombre-1 de valeurs différentes de NaN se trouvant après la valeur retournée</param>
 		/// <returns>La valeur correspondante au iPos élément de dataSeries différent de NaN</returns>
-		public static double lastRealValue(this DataSeries dataSeries, int iPos)
+		public static double lastRealValue(this DataSeries dataSeries, int shift)
 		{
 			for (var i = dataSeries.Count - 1; i >= 0; i--)
 			{
 				if (!double.IsNaN(dataSeries[i]))
 				{
-					if (iPos == 0)
+					if (shift == 0)
 						return dataSeries[i];
-					iPos--;
+					shift--;
 				}
 			}
 			return double.NaN;
