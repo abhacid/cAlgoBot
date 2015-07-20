@@ -98,18 +98,21 @@ namespace cAlgo
 		/// <param name="index"></param>
         public override void Calculate(int index)
         {
-			int globalIndex = _marketSerieGlobal.GetIndexByDate(MarketSeries.OpenTime[index]);
+			int globalIndex = _marketSerieGlobal.OpenTime.GetIndexByTime(MarketSeries.OpenTime[index]);
 
-            bool isGlobalTrendRising = _marketSerieGlobal.Close[globalIndex] > _marketSerieGlobal.Open[globalIndex];
+			double dynamicGlobalPrice;
+			if(double.IsNaN(_marketSerieGlobal.Close[globalIndex]))
+				dynamicGlobalPrice = (_marketSerieGlobal.Low[globalIndex] + _marketSerieGlobal.High[globalIndex] + _marketSerieGlobal.Open[globalIndex]) / 3;
+			else
+				dynamicGlobalPrice = _marketSerieGlobal.Close[globalIndex];
+
+			bool isGlobalTrendRising = dynamicGlobalPrice > _marketSerieGlobal.Open[globalIndex];
 			bool isLocalTrendRising = MarketSeries.Close[index] > MarketSeries.Open[index - 1];
 
-			bool isGlobalTrendFalling = _marketSerieGlobal.Close[globalIndex] < _marketSerieGlobal.Open[globalIndex];
+			bool isGlobalTrendFalling = dynamicGlobalPrice < _marketSerieGlobal.Open[globalIndex];
 			bool isLocalTrendFalling = MarketSeries.Close[index] < MarketSeries.Open[index - 1];
 
-            bool IsLongSignal = isGlobalTrendRising && isLocalTrendRising;
-            bool IsShortSignal = isGlobalTrendFalling && isLocalTrendFalling;
-
-			bool isGlobalCandleAboveCeil = Math.Abs(_marketSerieGlobal.Close[globalIndex] - _marketSerieGlobal.Open[globalIndex]) > MinimumGlobalCandleSize*Symbol.PipSize;
+			bool isGlobalCandleAboveSize = Math.Abs(_marketSerieGlobal.Close[globalIndex] - _marketSerieGlobal.Open[globalIndex]) >= MinimumGlobalCandleSize*Symbol.PipSize;
 
 
 			if(isLocalTrendFalling)
@@ -122,7 +125,7 @@ namespace cAlgo
 					_localTrendValue = 0;
 			}
 
-			if (isGlobalCandleAboveCeil)
+			if (isGlobalCandleAboveSize)
 			{
 				if(isGlobalTrendFalling)
 					_globalTrendValue = -2;

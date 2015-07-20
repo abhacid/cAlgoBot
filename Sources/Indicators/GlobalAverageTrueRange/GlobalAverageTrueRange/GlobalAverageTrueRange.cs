@@ -42,8 +42,8 @@ namespace cAlgo.Indicators
         [Output("Global ATR", PlotType = PlotType.Line, Thickness = 2, Color = Colors.Blue)]
         public IndicatorDataSeries GlobalAtr { get; set; }
 
-        [Output("Global TR", PlotType = PlotType.Line, Thickness = 1, Color = Colors.Azure)]
-        public IndicatorDataSeries GlobalTr { get; set; }
+		[Output("Global TR", PlotType = PlotType.Line, Thickness = 1, Color = Colors.Red)]
+		public IndicatorDataSeries GlobalTr { get; set; }
 
         private MarketSeries _globalSeries;
         private TrueRange _globalTr;
@@ -51,7 +51,7 @@ namespace cAlgo.Indicators
 
         protected override void Initialize()
         {
-            _globalSeries = MarketData.GetSeries(Symbol, TimeFrame.Daily);
+            _globalSeries = MarketData.GetSeries(Symbol, GlobalTimeFrame);
             _globalTr = Indicators.TrueRange(_globalSeries);
             _globalAtr = Indicators.AverageTrueRange(_globalSeries, AtrPeriod, AtrMovingAverageType);
         }
@@ -59,8 +59,7 @@ namespace cAlgo.Indicators
 
         public override void Calculate(int index)
         {
-
-            int globalIndex = _globalSeries.GetIndexByDate(MarketSeries.OpenTime[index]);
+            int globalIndex = _globalSeries.OpenTime.GetIndexByTime(MarketSeries.OpenTime[index]);
 
             GlobalAtr[index] = _globalAtr.Result[globalIndex];
             GlobalTr[index] = _globalTr.Result[globalIndex];
