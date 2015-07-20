@@ -53,7 +53,6 @@ namespace cAlgo.Indicators
         private int ip;
         private int p;
         private int n;
-        private int f;
         private double qq;
         private double mm;
         private double tt;

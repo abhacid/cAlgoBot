@@ -8,7 +8,6 @@ namespace cAlgo.Indicators
     {
         private SimpleMovingAverage _smaHigh;
         private SimpleMovingAverage _smaLow;
-        private double _d;
 
         [Parameter("Period", DefaultValue = 10)]
         public int Period { get; set; }

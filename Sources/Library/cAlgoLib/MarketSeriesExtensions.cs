@@ -209,5 +209,21 @@ namespace cAlgo.Lib
 			}
 			return -1;
 		}
+
+		/// <summary>
+		/// Determine the global candle interval time that contain this instant time
+		/// </summary>
+		/// <param name="series"></param>
+		/// <param name="time"></param>
+		/// <returns></returns>
+		public static int GetIndexByDate(this MarketSeries series, DateTime time)
+		{
+			for(int i = series.Open.Count - 1; i > 0; i--)
+			{
+				if(time >= series.OpenTime[i])
+					return i;
+			}
+			return -1;
+		}
 	}
 }

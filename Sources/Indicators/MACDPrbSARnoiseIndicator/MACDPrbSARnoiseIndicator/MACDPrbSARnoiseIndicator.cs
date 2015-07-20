@@ -103,7 +103,6 @@ namespace cAlgo
 
         #endregion
 
-        MovingAverage ma;
         protected override void Initialize()
         {
 

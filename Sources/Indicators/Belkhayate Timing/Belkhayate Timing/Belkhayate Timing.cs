@@ -10,9 +10,6 @@ namespace cAlgo.Indicators
     [Indicator(IsOverlay = false, TimeZone = TimeZones.UTC, AccessRights = AccessRights.None)]
     public class BelkhayateTiming : Indicator
     {
-
-        private int LastAlertBar;
-
         [Output("High", Color = Colors.Gray, PlotType = PlotType.Points)]
         public IndicatorDataSeries High { get; set; }
         [Output("Low", Color = Colors.Gray, PlotType = PlotType.Points)]

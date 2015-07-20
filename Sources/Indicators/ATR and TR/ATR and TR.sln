@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Average True Range", "Average True Range\Average True Range.csproj", "{3F395DCA-8851-4314-8AB6-E7E0CF90F91D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATR and TR", "ATR and TR\ATR and TR.csproj", "{3F395DCA-8851-4314-8AB6-E7E0CF90F91D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

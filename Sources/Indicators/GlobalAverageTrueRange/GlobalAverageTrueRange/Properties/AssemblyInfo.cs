@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("ADXR (1)")]
+[assembly: AssemblyTitle("GlobalAverageTrueRange")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("ADXR (1)")]
+[assembly: AssemblyProduct("GlobalAverageTrueRange")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

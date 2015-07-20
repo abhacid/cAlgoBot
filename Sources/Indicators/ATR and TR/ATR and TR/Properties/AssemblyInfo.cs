@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Average True Range")]
+[assembly: AssemblyTitle("ATR and TR")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Average True Range")]
+[assembly: AssemblyProduct("ATR and TR")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

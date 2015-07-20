@@ -9,7 +9,7 @@ using cAlgo.API.Indicators;
 namespace cAlgo.Indicators
 {
     [Indicator("Average True Range", IsOverlay = false, ScalePrecision = 5, AccessRights = AccessRights.None)]
-    public class AverageTrueRange : Indicator
+    public class ATRandTR : Indicator
     {
 
         [Parameter(DefaultValue = 14)]
@@ -18,23 +18,26 @@ namespace cAlgo.Indicators
         [Output("Average True Range", Color = Colors.Blue)]
         public IndicatorDataSeries Result { get; set; }
 
-        private IndicatorDataSeries tr;
+        [Output("True Range", Color = Colors.White)]
+        public IndicatorDataSeries TrResult { get; set; }
+
+        //private IndicatorDataSeries tr;
         private TrueRange tri;
         private MovingAverage TRMA;
 
         protected override void Initialize()
         {
             // Initialize and create nested indicators
-            tr = CreateDataSeries();
+            // tr = CreateDataSeries();
             tri = Indicators.TrueRange();
-            TRMA = Indicators.MovingAverage(tr, Periods, MovingAverageType.Simple);
+            TRMA = Indicators.MovingAverage(TrResult, Periods, MovingAverageType.Simple);
 
         }
 
         public override void Calculate(int index)
         {
             // Calculate value at specified index            
-            tr[index] = tri.Result[index];
+            TrResult[index] = tri.Result[index];
             Result[index] = TRMA.Result[index];
 
         }

@@ -51,11 +51,11 @@ namespace cAlgo
     public class CandlestickTendencyII : Indicator
     {
         #region Indicator Parameters
-        [Parameter()]
-        public TimeFrame Global { get; set; }
+		[Parameter("Global Timeframe")]
+        public TimeFrame GlobalTimeFrame { get; set; }
 
-		[Parameter("Minimum Global Candle Ceil", DefaultValue = 0, MinValue = 0)]
-		public int MinimumGlobalCandleCeil { get; set; }
+		[Parameter("Minimum Global Candle Size", DefaultValue = 0, MinValue = 0)]
+		public int MinimumGlobalCandleSize { get; set; }
 
         [Output("GlobalTrendSignal", PlotType = PlotType.Line, Color = Colors.Red)]
         public IndicatorDataSeries GlobalTrendSignal { get; set; }
@@ -70,31 +70,22 @@ namespace cAlgo
 
         #region Indicator Variables
 
-        MarketSeries marketSerieGlobal;
-        double localTrendValue = 0;
-        double globalTrendValue = 0;
+        MarketSeries _marketSerieGlobal;
+        double _localTrendValue = 0;
+        double _globalTrendValue = 0;
 		MovingAverage _localMA;
         #endregion
 
         protected override void Initialize()
         {
-            marketSerieGlobal = MarketData.GetSeries(Global);
+            _marketSerieGlobal = MarketData.GetSeries(GlobalTimeFrame);
 			
-			int period = 2 * (int) (Global.ToTimeSpan().Ticks / MarketSeries.TimeFrame.ToTimeSpan().Ticks);
+			int period = 2 * (int) (GlobalTimeFrame.ToTimeSpan().Ticks / MarketSeries.TimeFrame.ToTimeSpan().Ticks);
 
 			_localMA = Indicators.MovingAverage(LocalTrendSignal, period, MovingAverageType.Exponential);
 
         }
 
-		private int GetIndexByDate(MarketSeries series, DateTime time)
-		{
-			for(int i = series.Open.Count - 1; i > 0; i--)
-			{
-				if(time >= series.OpenTime[i])
-					return i;
-			}
-			return -1;
-		}
 
 		/// <summary>
 		///  GetIndexByExactTime don't allway work by example if attached timeframe is 1T (One Tick)!		
@@ -107,47 +98,47 @@ namespace cAlgo
 		/// <param name="index"></param>
         public override void Calculate(int index)
         {
-			int globalIndex = GetIndexByDate(marketSerieGlobal, MarketSeries.OpenTime[index]);
+			int globalIndex = _marketSerieGlobal.GetIndexByDate(MarketSeries.OpenTime[index]);
 
-            bool isGlobalTrendRising = marketSerieGlobal.Close[globalIndex] > marketSerieGlobal.Open[globalIndex];
+            bool isGlobalTrendRising = _marketSerieGlobal.Close[globalIndex] > _marketSerieGlobal.Open[globalIndex];
 			bool isLocalTrendRising = MarketSeries.Close[index] > MarketSeries.Open[index - 1];
 
-			bool isGlobalTrendFalling = marketSerieGlobal.Close[globalIndex] < marketSerieGlobal.Open[globalIndex];
+			bool isGlobalTrendFalling = _marketSerieGlobal.Close[globalIndex] < _marketSerieGlobal.Open[globalIndex];
 			bool isLocalTrendFalling = MarketSeries.Close[index] < MarketSeries.Open[index - 1];
 
             bool IsLongSignal = isGlobalTrendRising && isLocalTrendRising;
             bool IsShortSignal = isGlobalTrendFalling && isLocalTrendFalling;
 
-			bool isGlobalCandleAboveCeil = Math.Abs(marketSerieGlobal.Close[globalIndex] - marketSerieGlobal.Open[globalIndex]) > MinimumGlobalCandleCeil*Symbol.PipSize;
+			bool isGlobalCandleAboveCeil = Math.Abs(_marketSerieGlobal.Close[globalIndex] - _marketSerieGlobal.Open[globalIndex]) > MinimumGlobalCandleSize*Symbol.PipSize;
 
 
 			if(isLocalTrendFalling)
-				localTrendValue = -1;
+				_localTrendValue = -1;
 			else
 			{
 				if(isLocalTrendRising)
-					localTrendValue = 1;
+					_localTrendValue = 1;
 				else
-					localTrendValue = 0;
+					_localTrendValue = 0;
 			}
 
 			if (isGlobalCandleAboveCeil)
 			{
 				if(isGlobalTrendFalling)
-					globalTrendValue = -2;
+					_globalTrendValue = -2;
 				else
 				{
 					if(isGlobalTrendRising)
-						globalTrendValue = 2;
+						_globalTrendValue = 2;
 					else
-						globalTrendValue = 0;
+						_globalTrendValue = 0;
 				}
 			}
 			else
-				globalTrendValue = 0;
+				_globalTrendValue = 0;
 
-			LocalTrendSignal[index] = localTrendValue;
-			GlobalTrendSignal[index] = globalTrendValue;
+			LocalTrendSignal[index] = _localTrendValue;
+			GlobalTrendSignal[index] = _globalTrendValue;
 			LocalMA[index] = 5 * _localMA.Result[index];
         }
     }
