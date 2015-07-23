@@ -239,5 +239,33 @@ namespace cAlgo.Lib
 			return dataseries.volatility(period) / symbol.PipSize;
 		}
 
+		/// <summary>
+		/// Verify is a serie of value is above a given value.
+		/// </summary>
+		/// <param name="dataseries"></param>
+		/// <param name="period"></param>
+		/// <param name="value"></param>
+		/// <param name="isStrict"></param>
+		/// <returns></returns>
+		public static bool isAbove(this DataSeries dataseries, int period, double value, bool isStrict=false)
+		{
+			int count = dataseries.Count;
+			return dataseries.andFilter(_ => _ > value || (!isStrict && _ == value), count - 1 - period, count - 1);
+		}
+		public static bool isBelow(this DataSeries dataseries, int period, double value, bool isStrict=false)
+		{
+			return dataseries.isAbove(period, -value, isStrict);
+		}
+
+		public static double support(this DataSeries dataseries, int period)
+		{
+			return dataseries.Minimum(period);
+		}
+		public static double resistance(this DataSeries dataseries, int period)
+		{
+			return dataseries.Maximum(period);
+		}
+
+
 	}
 }

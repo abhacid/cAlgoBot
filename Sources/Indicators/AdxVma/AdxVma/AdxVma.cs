@@ -1,4 +1,11 @@
-﻿using System;
+﻿
+#region description
+// The ADXVMA by mmQuant is a Moving Average Indicator based on Volatility where the Volatility is measured by the value of the ADX.  
+// The ADXVMA provides levels of support during uptrends and resistance during downtrends.
+// Project Hosting for Open Source Software on Github : https://github.com/abhacid/cAlgoBot 
+#endregion
+
+using System;
 using cAlgo.API;
 
 namespace cAlgo.Indicators

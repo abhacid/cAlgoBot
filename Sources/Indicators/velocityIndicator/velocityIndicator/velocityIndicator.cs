@@ -29,42 +29,75 @@
 
 using System;
 using cAlgo.API;
+using cAlgo.API.Indicators;
+using cAlgo.Lib;
 
 
 namespace cAlgo.Indicators
 {
     [Indicator(TimeZone = TimeZones.UTC, IsOverlay = false, AccessRights = AccessRights.None)]
+    [Levels(-5, -3, -2, -1, -0.75, -0.5, -0.25, 0, 0.25, 0.5,
+    0.75, 1, 2, 3, 5)]
     public class VelocityIndicator : Indicator
     {
         #region cIndicators Parammeters
-        [Parameter()]
-        public DataSeries Source { get; set; }
 
-        [Parameter("VelocityPeriod", DefaultValue = 14, MinValue = 2)]
-        public int VelocityPeriod { get; set; }
+        [Parameter("Number Of Candle", DefaultValue = 5, MinValue = 1)]
+        public int NumberOfCandle { get; set; }
 
-        [Output("Acceleration", Color = Colors.BlueViolet)]
-        public IndicatorDataSeries acceleration { get; set; }
+        [Parameter("Moving Average", DefaultValue = MovingAverageType.Exponential)]
+        public MovingAverageType MovingAverageType { get; set; }
 
-        [Output("VelocityIndicator", Color = Colors.Gray)]
-        public IndicatorDataSeries velocity { get; set; }
+        [Parameter("MA Period", DefaultValue = 14, MinValue = 2)]
+        public int Period { get; set; }
+
+        [Output("High Acceleration", Color = Colors.Green, Thickness = 1)]
+        public IndicatorDataSeries HighAccelerationSeries { get; set; }
+
+        [Output("Low Acceleration", Color = Colors.Red, Thickness = 1)]
+        public IndicatorDataSeries LowAccelerationSeries { get; set; }
+
+        [Output("Moving Average", Color = Colors.Blue, Thickness = 2)]
+        public IndicatorDataSeries MovingAverageSeries { get; set; }
+
         #endregion
+
+        MovingAverage _movingAverage;
+        double _elapsedTime;
 
         protected override void Initialize()
         {
+            _movingAverage = Indicators.MovingAverage(HighAccelerationSeries, Period, MovingAverageType);
 
+            long elapsedTicks = (long)Math.Ceiling((NumberOfCandle + 0.5) * MarketSeries.TimeFrame.ToTimeSpan().Ticks);
+            TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
+            _elapsedTime = elapsedSpan.TotalSeconds;
         }
 
+        /// <summary>
+        /// S = S0 + V0t +(at^2)/2   a = (2*(S-S0))/t^2.
+        /// v = v0 +at
+        /// </summary>
+        /// <param name="index"></param>
         public override void Calculate(int index)
         {
+            double high = MarketSeries.High[index];
+            double previewHigh = MarketSeries.High[index - NumberOfCandle];
+            double actualPriceOrHigh = (MarketSeries.Bars() - 1) == index ? Symbol.Mid() : high;
 
-            double a = ((2 * (Source[index] - Source[index - VelocityPeriod]) * (1 / Symbol.PipSize)) / Math.Pow(VelocityPeriod, 2));
-            // S = S0 + V0t +(at^2)/2   a = (2*(S-S0))/t^2
-            velocity[index] = (a * VelocityPeriod);
-            // v = v0 +at
-            acceleration[index] = 10 * a;
+            double low = MarketSeries.Low[index];
+            double previewLow = MarketSeries.Low[index - NumberOfCandle];
+            double actualPriceOrLow = (MarketSeries.Bars() - 1) == index ? Symbol.Mid() : low;
 
-            //acceleration[index] =(((2 * (Math.Abs(Source[index] - Source[index - VelocityPeriod])   * (1/Symbol.PipSize) ))/ Math.Pow(VelocityPeriod,2)))*10 ;
+            double highAcceleration = (2 * (high - previewHigh) / Math.Pow(_elapsedTime, 2)) * Math.Pow(10, 2 * Symbol.Digits);
+            double lowAcceleration = (2 * (low - previewLow) / Math.Pow(_elapsedTime, 2)) * Math.Pow(10, 2 * Symbol.Digits);
+
+            HighAccelerationSeries[index] = highAcceleration;
+            LowAccelerationSeries[index] = lowAcceleration;
+            MovingAverageSeries[index] = _movingAverage.Result[index];
+
+
+            // Print("{0} {1} {2} {3} {4}",highAcceleration, lowAcceleration, elapsedTime, MarketSeries.Bars()-1, index);
 
         }
     }

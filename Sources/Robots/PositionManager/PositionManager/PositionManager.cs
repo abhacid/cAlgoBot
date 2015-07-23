@@ -1,7 +1,7 @@
 ﻿/*
   DreamzFX Position Manager
   http://dreamzfx.net
-  Version: 1.0
+  Version: 1.0.1
 */
 
 using System;
@@ -69,6 +69,7 @@ namespace cAlgo
         private int ticks = 10;
         public int i;
         public double Bid, Ask;
+        public Symbol symbol;
         public List<int> Partial_Positions = new List<int>();
         TradeResult result;
         string FileName = "PosManager_Partials.txt";
@@ -151,8 +152,7 @@ namespace cAlgo
                 try
                 {
                     DoWork();
-                } 
-				finally
+                } finally
                 {
                     Monitor.Exit(this);
                 }
@@ -162,7 +162,7 @@ namespace cAlgo
         // Main function to process positions
         private void DoWork()
         {
-            if (--ticks > 0 && Math.Abs(last - MarketSeries.Close.LastValue) < Symbol.PipSize / 2)
+            if (--ticks > 0 && Math.Abs(last - MarketSeries.Close.LastValue) < symbol.PipSize / 2)
                 return;
 
             RefreshData();
@@ -175,7 +175,7 @@ namespace cAlgo
                 if (!ManageThisPosition(position))
                     continue;
 
-                Symbol symbol = MarketData.GetSymbol(position.SymbolCode);
+                symbol = MarketData.GetSymbol(position.SymbolCode);
                 Bid = symbol.Bid;
                 Ask = symbol.Ask;
 
@@ -261,9 +261,9 @@ namespace cAlgo
                 }
 
                 if (position.TradeType == TradeType.Buy)
-                    NewSL = RND(position.EntryPrice - StopLoss_Initial * Symbol.PipSize);
+                    NewSL = RND(position.EntryPrice - StopLoss_Initial * symbol.PipSize);
                 else
-                    NewSL = RND(position.EntryPrice + StopLoss_Initial * Symbol.PipSize);
+                    NewSL = RND(position.EntryPrice + StopLoss_Initial * symbol.PipSize);
             }
 
             if (TakeProfit_Initial > 0 && position.TakeProfit == null)
@@ -276,9 +276,9 @@ namespace cAlgo
                 }
 
                 if (position.TradeType == TradeType.Buy)
-                    NewTP = RND(position.EntryPrice + TakeProfit_Initial * Symbol.PipSize);
+                    NewTP = RND(position.EntryPrice + TakeProfit_Initial * symbol.PipSize);
                 else
-                    NewTP = RND(position.EntryPrice - TakeProfit_Initial * Symbol.PipSize);
+                    NewTP = RND(position.EntryPrice - TakeProfit_Initial * symbol.PipSize);
             }
 
 
@@ -293,7 +293,7 @@ namespace cAlgo
             double BE_Price;
             if (position.TradeType == TradeType.Buy)
             {
-                BE_Price = RND(position.EntryPrice + BE_Profit * Symbol.PipSize);
+                BE_Price = RND(position.EntryPrice + BE_Profit * symbol.PipSize);
                 if (!(position.StopLoss >= BE_Price) && BE_Price < Bid)
                 {
                     result = ModifyPosition(position, BE_Price, position.TakeProfit);
@@ -303,7 +303,7 @@ namespace cAlgo
             }
             else
             {
-                BE_Price = RND(position.EntryPrice - BE_Profit * Symbol.PipSize);
+                BE_Price = RND(position.EntryPrice - BE_Profit * symbol.PipSize);
                 if (!(position.StopLoss <= BE_Price) && BE_Price > Ask)
                 {
                     result = ModifyPosition(position, BE_Price, position.TakeProfit);
@@ -322,13 +322,13 @@ namespace cAlgo
 
             if (position.TradeType == TradeType.Buy)
             {
-                NewSL = position.EntryPrice + NewJump * Symbol.PipSize;
+                NewSL = position.EntryPrice + NewJump * symbol.PipSize;
                 if (NewSL <= position.StopLoss)
                     return;
             }
             else
             {
-                NewSL = position.EntryPrice - NewJump * Symbol.PipSize;
+                NewSL = position.EntryPrice - NewJump * symbol.PipSize;
                 if (NewSL >= position.StopLoss)
                     return;
             }

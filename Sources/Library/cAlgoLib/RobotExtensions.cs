@@ -54,7 +54,7 @@ namespace cAlgo.Lib
 		/// <param name="risk">le pourcentage de risque (perte) maximun accepté</param>
 		/// <param name="stopLoss">Le stop Loss en PIPS nécessaire à la position à prendre</param>
 		/// <returns></returns>
-		public static double moneyManagement(this Robot robot, double risk, double? stopLoss, bool isPips)
+		public static double moneyManagement(this Robot robot, double risk, double? stopLoss, bool isPips=true)
 		{
 			if (!(stopLoss.HasValue) || stopLoss.Value <=0)
 				return 0;

@@ -38,7 +38,7 @@ namespace cAlgo.Lib
 		/// <param name="marketSeries">L'instance de MarketSeries actuel</param>
 		/// <param name="robot">instance of the current robot</param>
 		/// <returns>nombre de bougies des prix du marché</returns>
-		public static int bars(this MarketSeries marketSeries)
+		public static int Bars(this MarketSeries marketSeries)
 		{
 			return marketSeries.Open.Count;
 		}
@@ -52,7 +52,7 @@ namespace cAlgo.Lib
 		/// <returns>true si la bougie est haussière, false sinon</returns>
 		public static bool? isBullCandle(this MarketSeries marketSeries, int index)
 		{
-			int count = marketSeries.bars();
+			int count = marketSeries.Bars();
 
 			if (index >= 0 && index < count)
 			{
@@ -103,7 +103,7 @@ namespace cAlgo.Lib
 		/// <returns>true si la bougie est au dessus de la limite, false sinon</returns>
 		public static bool isCandleAbove(this MarketSeries marketSeries, int index, double limit)
 		{
-			int count = marketSeries.bars();
+			int count = marketSeries.Bars();
 
 			if (index >= 0 && index < count)
 				return marketSeries.Low[count - 1 - index] >= limit;
@@ -122,7 +122,7 @@ namespace cAlgo.Lib
 		/// <returns>true si la bougie est au dessous de la limite, false sinon</returns>
 		public static bool iscandleBelow(this MarketSeries marketSeries, int index, double limit)
 		{
-			int count = marketSeries.bars();
+			int count = marketSeries.Bars();
 
 			if (index >= 0 && index < count)
 				return marketSeries.High[count - 1 - index] <= limit;
@@ -141,7 +141,7 @@ namespace cAlgo.Lib
 		/// <returns>true si la bougie est sur la frontière, false sinon</returns>
 		public static bool isCandleOver(this MarketSeries marketSeries, int index, double frontier)
 		{
-			int count = marketSeries.bars();
+			int count = marketSeries.Bars();
 
 			if (index >= 0 && index < count)
 			{

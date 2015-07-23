@@ -181,8 +181,10 @@ namespace cAlgo.Lib
 					ticks = 7 * TimeSpan.TicksPerDay;
 					break;
 
+					// One year have 4 month of 30 days, 7 months of 31 days and 1 month of 28 or 29 days.
+					// so the barycentre is (4*30+7*31+28.5)/12
 				case TimeFrameEnum.Monthly:
-					ticks = (long)(30.5 * TimeSpan.TicksPerDay);
+					ticks = (long)(((4 * 30 + 7 * 31 + 28.5) / 12) * TimeSpan.TicksPerDay);
 					break;
 			}
 
